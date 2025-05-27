@@ -1,20 +1,25 @@
-// Custom cursor
-const cursor = document.querySelector('.cursor');
-const cursorDot = document.querySelector('.cursor-dot');
+// Check if mobile device
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
-if (cursor && cursorDot) {
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        cursorDot.style.left = e.clientX + 'px';
-        cursorDot.style.top = e.clientY + 'px';
-    });
+// Custom cursor (desktop only)
+if (!isMobile) {
+    const cursor = document.querySelector('.cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
 
-    // Add hover effect
-    document.querySelectorAll('a, button').forEach(elem => {
-        elem.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        elem.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
+    if (cursor && cursorDot) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        // Add hover effect
+        document.querySelectorAll('a, button').forEach(elem => {
+            elem.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            elem.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+    }
 }
 
 // Typewriter effect
@@ -54,15 +59,34 @@ typeWriter();
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
+        // Only prevent default for internal links
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#') && href.length > 1) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         }
     });
 });
+
+// Performance optimization: Throttle function for scroll/resize events
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
 
 // Neural network background animation
 function createNeuralBackground() {
@@ -131,12 +155,20 @@ function createNeuralBackground() {
 // Initialize neural background
 createNeuralBackground();
 
+// Check for canvas support
+function supportsCanvas() {
+    const elem = document.createElement('canvas');
+    return !!(elem.getContext && elem.getContext('2d'));
+}
+
 // Particle background for hero
 function createParticleBackground() {
     const canvas = document.getElementById('particles-bg');
-    if (!canvas) return;
+    if (!canvas || !supportsCanvas()) return;
     
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
@@ -1244,8 +1276,514 @@ function createFeedbackSystem() {
 // Initialize feedback system
 createFeedbackSystem();
 
-// Window resize handler
-window.addEventListener('resize', () => {
+// Journey Timeline Visualizations
+function createTimelineVisualizations() {
+    // Brain Visualization
+    const brainCanvas = document.getElementById('brain-viz');
+    if (brainCanvas) {
+        const ctx = brainCanvas.getContext('2d');
+        brainCanvas.width = brainCanvas.offsetWidth;
+        brainCanvas.height = 300;
+        
+        let neurons = [];
+        let connections = [];
+        
+        // Create neurons
+        for (let i = 0; i < 20; i++) {
+            neurons.push({
+                x: Math.random() * brainCanvas.width,
+                y: Math.random() * brainCanvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                radius: Math.random() * 3 + 2,
+                pulsePhase: Math.random() * Math.PI * 2
+            });
+        }
+        
+        function animateBrain() {
+            ctx.fillStyle = 'rgba(10, 14, 39, 0.05)';
+            ctx.fillRect(0, 0, brainCanvas.width, brainCanvas.height);
+            
+            // Update neurons
+            neurons.forEach((neuron, i) => {
+                neuron.x += neuron.vx;
+                neuron.y += neuron.vy;
+                neuron.pulsePhase += 0.05;
+                
+                if (neuron.x < 0 || neuron.x > brainCanvas.width) neuron.vx *= -1;
+                if (neuron.y < 0 || neuron.y > brainCanvas.height) neuron.vy *= -1;
+                
+                // Draw connections
+                neurons.forEach((other, j) => {
+                    if (i < j) {
+                        const dist = Math.hypot(neuron.x - other.x, neuron.y - other.y);
+                        if (dist < 100) {
+                            ctx.strokeStyle = `rgba(0, 212, 255, ${0.3 * (1 - dist / 100)})`;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(neuron.x, neuron.y);
+                            ctx.lineTo(other.x, other.y);
+                            ctx.stroke();
+                        }
+                    }
+                });
+                
+                // Draw neuron
+                const pulse = Math.sin(neuron.pulsePhase) * 0.5 + 0.5;
+                ctx.beginPath();
+                ctx.arc(neuron.x, neuron.y, neuron.radius + pulse * 2, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 212, 255, ${0.8})`;
+                ctx.fill();
+            });
+            
+            requestAnimationFrame(animateBrain);
+        }
+        animateBrain();
+    }
+    
+    // Pattern Visualization
+    const patternCanvas = document.getElementById('pattern-viz');
+    if (patternCanvas) {
+        const ctx = patternCanvas.getContext('2d');
+        patternCanvas.width = patternCanvas.offsetWidth;
+        patternCanvas.height = 300;
+        
+        let dots = [];
+        let time = 0;
+        
+        // Create grid of dots
+        const gridSize = 8;
+        const spacing = 30;
+        const offsetX = (patternCanvas.width - (gridSize - 1) * spacing) / 2;
+        const offsetY = (patternCanvas.height - (gridSize - 1) * spacing) / 2;
+        
+        for (let i = 0; i < gridSize; i++) {
+            for (let j = 0; j < gridSize; j++) {
+                dots.push({
+                    x: offsetX + i * spacing,
+                    y: offsetY + j * spacing,
+                    baseX: offsetX + i * spacing,
+                    baseY: offsetY + j * spacing,
+                    phase: (i + j) * 0.3
+                });
+            }
+        }
+        
+        function animatePattern() {
+            ctx.fillStyle = 'rgba(10, 14, 39, 0.08)';
+            ctx.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
+            
+            time += 0.02;
+            
+            // Update and draw dots
+            dots.forEach((dot, i) => {
+                // Create wave pattern
+                dot.x = dot.baseX + Math.sin(time + dot.phase) * 10;
+                dot.y = dot.baseY + Math.cos(time * 1.3 + dot.phase) * 10;
+                
+                // Draw connections to nearby dots
+                dots.forEach((other, j) => {
+                    if (i < j) {
+                        const dist = Math.hypot(dot.x - other.x, dot.y - other.y);
+                        if (dist < 50) {
+                            ctx.strokeStyle = `rgba(255, 190, 11, ${0.3 * (1 - dist / 50)})`;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(dot.x, dot.y);
+                            ctx.lineTo(other.x, other.y);
+                            ctx.stroke();
+                        }
+                    }
+                });
+                
+                // Draw dot
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, 4, 0, Math.PI * 2);
+                ctx.fillStyle = '#ffbe0b';
+                ctx.fill();
+            });
+            
+            requestAnimationFrame(animatePattern);
+        }
+        animatePattern();
+    }
+    
+    // Theory of Mind Visualization
+    const tomCanvas = document.getElementById('tom-timeline-viz');
+    if (tomCanvas) {
+        const ctx = tomCanvas.getContext('2d');
+        tomCanvas.width = tomCanvas.offsetWidth;
+        tomCanvas.height = 300;
+        
+        let agents = [];
+        let thoughtBubbles = [];
+        
+        // Create agents
+        for (let i = 0; i < 3; i++) {
+            agents.push({
+                x: (i + 1) * tomCanvas.width / 4,
+                y: tomCanvas.height / 2,
+                thoughts: [],
+                angle: i * Math.PI * 2 / 3
+            });
+        }
+        
+        function animateToM() {
+            ctx.fillStyle = 'rgba(10, 14, 39, 0.08)';
+            ctx.fillRect(0, 0, tomCanvas.width, tomCanvas.height);
+            
+            // Draw connections between agents
+            agents.forEach((agent, i) => {
+                agents.forEach((other, j) => {
+                    if (i < j) {
+                        ctx.strokeStyle = 'rgba(124, 58, 237, 0.2)';
+                        ctx.lineWidth = 2;
+                        ctx.setLineDash([5, 5]);
+                        ctx.beginPath();
+                        ctx.moveTo(agent.x, agent.y);
+                        ctx.lineTo(other.x, other.y);
+                        ctx.stroke();
+                        ctx.setLineDash([]);
+                    }
+                });
+            });
+            
+            // Update and draw agents
+            agents.forEach((agent, i) => {
+                agent.angle += 0.02;
+                
+                // Draw agent
+                ctx.beginPath();
+                ctx.arc(agent.x, agent.y, 25, 0, Math.PI * 2);
+                ctx.fillStyle = '#7c3aed';
+                ctx.fill();
+                
+                // Draw thought bubble
+                const thoughtX = agent.x + Math.cos(agent.angle) * 50;
+                const thoughtY = agent.y + Math.sin(agent.angle) * 50;
+                
+                ctx.beginPath();
+                ctx.arc(thoughtX, thoughtY, 15, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 0, 110, 0.3)';
+                ctx.fill();
+                
+                // Small bubbles connecting
+                for (let k = 1; k <= 3; k++) {
+                    const bx = agent.x + (thoughtX - agent.x) * k / 4;
+                    const by = agent.y + (thoughtY - agent.y) * k / 4;
+                    ctx.beginPath();
+                    ctx.arc(bx, by, 3 - k * 0.5, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(255, 0, 110, 0.2)';
+                    ctx.fill();
+                }
+            });
+            
+            requestAnimationFrame(animateToM);
+        }
+        animateToM();
+    }
+    
+    // AI Safety Visualization
+    const aiSafetyCanvas = document.getElementById('ai-safety-viz');
+    if (aiSafetyCanvas) {
+        const ctx = aiSafetyCanvas.getContext('2d');
+        aiSafetyCanvas.width = aiSafetyCanvas.offsetWidth;
+        aiSafetyCanvas.height = 300;
+        
+        let shield = {
+            x: aiSafetyCanvas.width / 2,
+            y: aiSafetyCanvas.height / 2,
+            radius: 60,
+            rotation: 0,
+            particles: []
+        };
+        
+        // Create protective particles
+        for (let i = 0; i < 30; i++) {
+            shield.particles.push({
+                angle: Math.random() * Math.PI * 2,
+                distance: shield.radius + Math.random() * 30,
+                speed: 0.5 + Math.random() * 0.5,
+                size: Math.random() * 3 + 1
+            });
+        }
+        
+        function animateAISafety() {
+            ctx.fillStyle = 'rgba(10, 14, 39, 0.08)';
+            ctx.fillRect(0, 0, aiSafetyCanvas.width, aiSafetyCanvas.height);
+            
+            shield.rotation += 0.01;
+            
+            // Draw shield
+            ctx.save();
+            ctx.translate(shield.x, shield.y);
+            ctx.rotate(shield.rotation);
+            
+            // Shield layers
+            for (let i = 3; i > 0; i--) {
+                ctx.beginPath();
+                ctx.arc(0, 0, shield.radius * i / 3, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(16, 185, 129, ${0.3 / i})`;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+            
+            // Shield segments
+            for (let i = 0; i < 6; i++) {
+                const angle = i * Math.PI / 3;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(Math.cos(angle) * shield.radius, Math.sin(angle) * shield.radius);
+                ctx.strokeStyle = 'rgba(16, 185, 129, 0.2)';
+                ctx.stroke();
+            }
+            
+            ctx.restore();
+            
+            // Update and draw particles
+            shield.particles.forEach(particle => {
+                particle.angle += particle.speed * 0.01;
+                
+                const x = shield.x + Math.cos(particle.angle) * particle.distance;
+                const y = shield.y + Math.sin(particle.angle) * particle.distance;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, particle.size, 0, Math.PI * 2);
+                ctx.fillStyle = '#10b981';
+                ctx.fill();
+            });
+            
+            // Central lock icon
+            ctx.font = '30px Arial';
+            ctx.fillStyle = '#10b981';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('🔒', shield.x, shield.y);
+            
+            requestAnimationFrame(animateAISafety);
+        }
+        animateAISafety();
+    }
+}
+
+// Mission Visualization
+function createMissionVisualization() {
+    const canvas = document.getElementById('mission-viz');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth;
+    canvas.height = 200;
+    
+    let nodes = [];
+    let connections = [];
+    let time = 0;
+    
+    // Create network nodes
+    const nodeCount = 15;
+    for (let i = 0; i < nodeCount; i++) {
+        nodes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+            protected: i < 5,
+            radius: 4
+        });
+    }
+    
+    function animate() {
+        ctx.fillStyle = 'rgba(0, 212, 255, 0.02)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        time += 0.02;
+        
+        // Update nodes
+        nodes.forEach((node, i) => {
+            node.x += node.vx;
+            node.y += node.vy;
+            
+            if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+            if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+            
+            // Convert nodes to protected over time
+            if (!node.protected && Math.random() > 0.995) {
+                node.protected = true;
+            }
+        });
+        
+        // Draw connections
+        nodes.forEach((node, i) => {
+            nodes.forEach((other, j) => {
+                if (i < j) {
+                    const dist = Math.hypot(node.x - other.x, node.y - other.y);
+                    if (dist < 100) {
+                        ctx.strokeStyle = node.protected && other.protected ? 
+                            `rgba(16, 185, 129, ${0.3 * (1 - dist / 100)})` : 
+                            `rgba(255, 255, 255, ${0.1 * (1 - dist / 100)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(node.x, node.y);
+                        ctx.lineTo(other.x, other.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+        });
+        
+        // Draw nodes
+        nodes.forEach(node => {
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+            ctx.fillStyle = node.protected ? '#10b981' : '#ffffff';
+            ctx.fill();
+            
+            if (node.protected) {
+                // Protection aura
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, node.radius + 5 + Math.sin(time) * 2, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(16, 185, 129, 0.3)';
+                ctx.stroke();
+            }
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+// Publications Network Visualization
+function createPublicationsNetwork() {
+    const canvas = document.getElementById('pub-network');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth;
+    canvas.height = 400;
+    
+    // Define publication nodes
+    const publications = [
+        // Neuroscience (blue)
+        { x: 150, y: 100, type: 'neuroscience', label: 'DCM Studies', connections: [1, 4] },
+        { x: 250, y: 150, type: 'neuroscience', label: 'ToM Research', connections: [0, 2, 5] },
+        { x: 200, y: 250, type: 'neuroscience', label: 'Gaze Processing', connections: [1, 6] },
+        { x: 100, y: 200, type: 'neuroscience', label: 'Schizophrenia', connections: [0, 4] },
+        
+        // Bridging (yellow)
+        { x: 400, y: 120, type: 'bridging', label: 'Apophenia', connections: [0, 1, 7] },
+        { x: 450, y: 200, type: 'bridging', label: 'Dual-Use ToM', connections: [1, 8] },
+        { x: 350, y: 280, type: 'bridging', label: 'Cybernetics', connections: [2, 9] },
+        
+        // AI Safety (pink)
+        { x: 600, y: 150, type: 'ai-safety', label: 'Hallucination', connections: [4, 8] },
+        { x: 650, y: 250, type: 'ai-safety', label: 'AI Alignment', connections: [5, 7, 9] },
+        { x: 550, y: 350, type: 'ai-safety', label: 'Metacognition', connections: [6, 8] }
+    ];
+    
+    const colors = {
+        'neuroscience': '#00d4ff',
+        'bridging': '#ffbe0b',
+        'ai-safety': '#ff006e'
+    };
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    
+    canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+    });
+    
+    function animate() {
+        ctx.fillStyle = 'rgba(10, 14, 39, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw connections
+        publications.forEach((pub, i) => {
+            pub.connections.forEach(targetIdx => {
+                const target = publications[targetIdx];
+                if (target && i < targetIdx) {
+                    const dist = Math.hypot(mouseX - pub.x, mouseY - pub.y);
+                    const highlight = dist < 100;
+                    
+                    ctx.strokeStyle = highlight ? 
+                        `rgba(255, 255, 255, 0.5)` : 
+                        `rgba(136, 146, 176, 0.2)`;
+                    ctx.lineWidth = highlight ? 2 : 1;
+                    ctx.beginPath();
+                    ctx.moveTo(pub.x, pub.y);
+                    ctx.lineTo(target.x, target.y);
+                    ctx.stroke();
+                }
+            });
+        });
+        
+        // Draw nodes
+        publications.forEach(pub => {
+            const dist = Math.hypot(mouseX - pub.x, mouseY - pub.y);
+            const hover = dist < 30;
+            
+            // Node
+            ctx.beginPath();
+            ctx.arc(pub.x, pub.y, hover ? 12 : 8, 0, Math.PI * 2);
+            ctx.fillStyle = colors[pub.type];
+            ctx.fill();
+            
+            // Glow effect
+            if (hover) {
+                ctx.beginPath();
+                ctx.arc(pub.x, pub.y, 20, 0, Math.PI * 2);
+                ctx.fillStyle = colors[pub.type] + '20';
+                ctx.fill();
+                
+                // Label
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '12px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText(pub.label, pub.x, pub.y - 20);
+            }
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+// Initialize all visualizations
+function initializeAllVisualizations() {
+    createTimelineVisualizations();
+    createMissionVisualization();
+    createPublicationsNetwork();
+}
+
+// Call initialization
+initializeAllVisualizations();
+
+// Hidden section visualizations (in case they're shown)
+function initializeHiddenSectionVisualizations() {
+    // The visualizations for these are already implemented in initNewResearchVisualizations()
+    // Just need to ensure they're called
+    if (document.getElementById('behavioral-viz') || 
+        document.getElementById('neuroscience-viz') ||
+        document.getElementById('dual-use-viz') ||
+        document.getElementById('gaze-viz') ||
+        document.getElementById('tom-bench-viz') ||
+        document.getElementById('core-tom-viz')) {
+        // These are already implemented in the initNewResearchVisualizations function
+        // which was called earlier
+    }
+}
+
+// Initialize hidden visualizations if they exist
+initializeHiddenSectionVisualizations();
+
+// Window resize handler with throttling
+window.addEventListener('resize', throttle(() => {
+    // Update mobile check
+    const wasMobile = isMobile;
+    const isNowMobile = window.innerWidth <= 768;
+    
     // Recreate neural background
     const neuralBg = document.getElementById('neural-bg');
     if (neuralBg) {
@@ -1253,10 +1791,19 @@ window.addEventListener('resize', () => {
         createNeuralBackground();
     }
     
-    // Recreate alignment visualization
+    // Recreate all visualizations
     createAlignmentVisualization();
-    
-    // Recreate other canvases
     createApopheniaDemo();
     createFeedbackSystem();
-});
+    initializeAllVisualizations();
+    
+    // Handle cursor visibility on resize
+    if (wasMobile !== isNowMobile) {
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        if (cursor && cursorDot) {
+            cursor.style.display = isNowMobile ? 'none' : 'block';
+            cursorDot.style.display = isNowMobile ? 'none' : 'block';
+        }
+    }
+}, 250));
