@@ -1,10 +1,66 @@
+// Custom cursor
+const cursor = document.querySelector('.cursor');
+const cursorDot = document.querySelector('.cursor-dot');
+
+if (cursor && cursorDot) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
+    });
+
+    // Add hover effect
+    document.querySelectorAll('a, button').forEach(elem => {
+        elem.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        elem.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+}
+
+// Typewriter effect
+const taglines = [
+    "Bridging Cognitive Science & AI Safety",
+    "From Apophenia to AI Hallucinations",
+    "Making AI Systems More Human-Compatible",
+    "35+ Publications → 1 Mission: Safe AI"
+];
+
+let taglineIndex = 0;
+const typewriterElement = document.getElementById('typewriter-text');
+
+function typeWriter() {
+    if (!typewriterElement) return;
+    
+    const currentTagline = taglines[taglineIndex];
+    typewriterElement.textContent = '';
+    let charIndex = 0;
+    
+    const typeInterval = setInterval(() => {
+        typewriterElement.textContent += currentTagline[charIndex];
+        charIndex++;
+        
+        if (charIndex === currentTagline.length) {
+            clearInterval(typeInterval);
+            setTimeout(() => {
+                taglineIndex = (taglineIndex + 1) % taglines.length;
+                setTimeout(typeWriter, 500);
+            }, 3000);
+        }
+    }, 50);
+}
+
+typeWriter();
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
@@ -74,6 +130,96 @@ function createNeuralBackground() {
 
 // Initialize neural background
 createNeuralBackground();
+
+// Particle background for hero
+function createParticleBackground() {
+    const canvas = document.getElementById('particles-bg');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const particles = [];
+    const particleCount = 100;
+    
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = (Math.random() - 0.5) * 0.5;
+            this.speedY = (Math.random() - 0.5) * 0.5;
+            this.opacity = Math.random() * 0.5 + 0.5;
+        }
+        
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            
+            if (this.x < 0) this.x = canvas.width;
+            if (this.x > canvas.width) this.x = 0;
+            if (this.y < 0) this.y = canvas.height;
+            if (this.y > canvas.height) this.y = 0;
+        }
+        
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0, 212, 255, ${this.opacity})`;
+            ctx.fill();
+        }
+    }
+    
+    // Create particles
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+    
+    // Connect particles
+    function connectParticles() {
+        for (let a = 0; a < particles.length; a++) {
+            for (let b = a + 1; b < particles.length; b++) {
+                const distance = Math.sqrt(
+                    Math.pow(particles[a].x - particles[b].x, 2) +
+                    Math.pow(particles[a].y - particles[b].y, 2)
+                );
+                
+                if (distance < 100) {
+                    ctx.strokeStyle = `rgba(0, 212, 255, ${0.2 * (1 - distance / 100)})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[a].x, particles[a].y);
+                    ctx.lineTo(particles[b].x, particles[b].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+        
+        connectParticles();
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    // Resize handler
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
+
+// Initialize particle background
+createParticleBackground();
 
 // Mind network visualization using Three.js
 function createMindNetwork() {
@@ -912,7 +1058,43 @@ function createAlignmentVisualization() {
 createAlignmentVisualization();
 
 
-// Add scroll animations
+// Timeline animations with GSAP
+if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Animate timeline items
+    gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+        gsap.from(item, {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            scrollTrigger: {
+                trigger: item,
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            },
+            delay: index * 0.2
+        });
+    });
+    
+    // Animate research bridges
+    gsap.utils.toArray('.research-bridge').forEach((bridge, index) => {
+        gsap.from(bridge, {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: bridge,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            delay: index * 0.1
+        });
+    });
+}
+
+// Add scroll animations for other sections
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -927,21 +1109,154 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
+// Observe sections without GSAP animation
+document.querySelectorAll('section:not(.journey-section):not(.research-section)').forEach(section => {
     section.style.opacity = '0';
     section.style.transform = 'translateY(50px)';
     section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(section);
 });
 
+// Apophenia demo
+function createApopheniaDemo() {
+    const canvas = document.getElementById('dots-canvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth;
+    canvas.height = 200;
+    
+    const dots = [];
+    let revealed = false;
+    
+    // Create random dots
+    for (let i = 0; i < 50; i++) {
+        dots.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 3 + 2
+        });
+    }
+    
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw dots
+        dots.forEach(dot => {
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+            ctx.fillStyle = revealed ? '#00d4ff' : '#00d4ff80';
+            ctx.fill();
+        });
+        
+        if (revealed) {
+            // Show it's random
+            ctx.font = '20px Inter';
+            ctx.fillStyle = '#ff006e';
+            ctx.textAlign = 'center';
+            ctx.fillText('100% Random Dots!', canvas.width / 2, canvas.height / 2);
+        }
+    }
+    
+    draw();
+    
+    // Reveal button
+    const revealBtn = document.querySelector('.demo-reveal');
+    if (revealBtn) {
+        revealBtn.addEventListener('click', () => {
+            revealed = !revealed;
+            revealBtn.textContent = revealed ? 'Hide Truth' : 'Reveal Truth';
+            draw();
+        });
+    }
+}
+
+// Initialize apophenia demo
+createApopheniaDemo();
+
+// Interactive feedback system for cybernetics
+function createFeedbackSystem() {
+    const canvas = document.getElementById('feedback-system');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth;
+    canvas.height = 300;
+    
+    const gainInput = document.getElementById('gain');
+    const delayInput = document.getElementById('delay');
+    const thresholdInput = document.getElementById('threshold');
+    
+    let time = 0;
+    
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const gain = gainInput ? gainInput.value / 100 : 0.5;
+        const delay = delayInput ? delayInput.value / 100 : 0.3;
+        const threshold = thresholdInput ? thresholdInput.value / 100 : 0.4;
+        
+        // Draw system response
+        ctx.strokeStyle = '#00d4ff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        
+        for (let x = 0; x < canvas.width; x++) {
+            const t = x / canvas.width * Math.PI * 4;
+            const response = gain * Math.sin(t - delay * Math.PI) * (1 - Math.exp(-t / 2));
+            const y = canvas.height / 2 - response * 100 * (1 - threshold);
+            
+            if (x === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+        
+        ctx.stroke();
+        
+        // Draw threshold line
+        ctx.strokeStyle = '#ff006e';
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height / 2 - threshold * 100);
+        ctx.lineTo(canvas.width, canvas.height / 2 - threshold * 100);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        
+        // Labels
+        ctx.fillStyle = '#8892b0';
+        ctx.font = '12px Inter';
+        ctx.fillText('Response', 10, 20);
+        ctx.fillText('Time →', canvas.width - 50, canvas.height - 10);
+    }
+    
+    // Update on input change
+    [gainInput, delayInput, thresholdInput].forEach(input => {
+        if (input) {
+            input.addEventListener('input', draw);
+        }
+    });
+    
+    draw();
+}
+
+// Initialize feedback system
+createFeedbackSystem();
+
 // Window resize handler
 window.addEventListener('resize', () => {
     // Recreate neural background
     const neuralBg = document.getElementById('neural-bg');
-    neuralBg.innerHTML = '';
-    createNeuralBackground();
+    if (neuralBg) {
+        neuralBg.innerHTML = '';
+        createNeuralBackground();
+    }
     
     // Recreate alignment visualization
     createAlignmentVisualization();
+    
+    // Recreate other canvases
+    createApopheniaDemo();
+    createFeedbackSystem();
 });

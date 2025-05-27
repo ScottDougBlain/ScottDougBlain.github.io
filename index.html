@@ -10,8 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    
     <!-- Neural Network Background Animation -->
     <div id="neural-bg"></div>
     
@@ -29,33 +34,235 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <canvas id="particles-bg"></canvas>
         <div class="hero-content">
             <h1 class="glitch" data-text="Scott Blain">Scott Blain</h1>
-            <p class="hero-subtitle">Bridging Cognitive Science & AI Safety Research</p>
+            <p class="hero-subtitle">
+                <span class="typewriter" id="typewriter-text">Bridging Cognitive Science & AI Safety</span>
+            </p>
             <div class="hero-tags">
-                <span class="tag">Social Cognition</span>
-                <span class="tag">Hallucination Mitigation</span>
+                <span class="tag">Apophenia Research</span>
+                <span class="tag">AI Hallucination Mitigation</span>
                 <span class="tag">Theory of Mind</span>
-                <span class="tag">AI Alignment</span>
+                <span class="tag">35+ Publications</span>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">71%</span>
+                    <span class="stat-label">Hallucination Reduction</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Years Research</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Curiosity Level</span>
+                </div>
             </div>
             <div class="hero-cta">
-                <a href="#research" class="btn btn-primary">Explore Research</a>
-                <a href="Scott Blain RESUME 2025.docx" class="btn btn-secondary" download>Download Resume</a>
+                <a href="#journey" class="btn btn-primary">Explore My Journey</a>
+                <a href="Blain_CV.pdf" class="btn btn-secondary" download>Download CV</a>
             </div>
         </div>
-        <div class="hero-visual">
-            <div id="mind-network"></div>
+    </section>
+
+    <!-- Journey Timeline Section -->
+    <section id="journey" class="journey-section">
+        <div class="container">
+            <h2 class="section-title">From Minds to Machines</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-year="2014-2023">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">🧠</div>
+                        <h3>Cognitive Neuroscience Foundation</h3>
+                        <p>PhD research exploring pattern detection, social cognition, and personality. Published 35+ papers on neural mechanisms underlying human behavior.</p>
+                        <div class="timeline-links">
+                            <a href="SchizBull.pdf" class="timeline-link">Key Research →</a>
+                        </div>
+                    </div>
+                    <div class="timeline-visual">
+                        <canvas id="brain-viz"></canvas>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2022">
+                    <div class="timeline-visual">
+                        <canvas id="pattern-viz"></canvas>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">🔍</div>
+                        <h3>The Pattern Connection</h3>
+                        <p>Discovered striking parallels between human apophenia and AI hallucinations. Both systems generate false patterns when creativity outpaces verification.</p>
+                        <div class="timeline-links">
+                            <a href="https://scottdblain.substack.com/p/hallucinations-arent-new" target="_blank" class="timeline-link">Read Insight →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2023">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">🤝</div>
+                        <h3>Theory of Mind & AI Deception</h3>
+                        <p>Research revealed how enhanced mentalizing enables both compassion and manipulation - critical for AI alignment as systems become more socially aware.</p>
+                        <div class="timeline-links">
+                            <a href="ToM_DualUse.pdf" class="timeline-link">Dual-Use Research →</a>
+                        </div>
+                    </div>
+                    <div class="timeline-visual">
+                        <canvas id="tom-timeline-viz"></canvas>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2024-Present">
+                    <div class="timeline-visual">
+                        <canvas id="ai-safety-viz"></canvas>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">🔐</div>
+                        <h3>AI Safety Mission</h3>
+                        <p>Applying cognitive frameworks to AI alignment. Developed metacognitive approach reducing hallucinations by 71%. Seeking to ensure AI systems remain beneficial as capabilities scale.</p>
+                        <div class="timeline-links">
+                            <a href="#framework-demo" class="timeline-link">View Framework →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Research Overview Section -->
+    <!-- Research Bridges Section -->
     <section id="research" class="research-section">
         <div class="container">
-            <h2 class="section-title">Research Themes</h2>
-            <p class="section-subtitle">Three core areas bridging cognitive science and AI safety</p>
+            <h2 class="section-title">Research Bridges</h2>
+            <p class="section-subtitle">From human cognition to AI safety</p>
+            
+            <!-- Apophenia Bridge -->
+            <div class="research-bridge" id="apophenia-bridge">
+                <div class="bridge-header">
+                    <h3>Apophenia → AI Hallucinations</h3>
+                    <span class="bridge-insight">Same pattern, different substrate</span>
+                </div>
+                
+                <div class="bridge-content">
+                    <div class="bridge-left">
+                        <h4>Human Pattern Detection</h4>
+                        <div class="research-card interactive" id="apophenia-demo">
+                            <canvas id="dots-canvas"></canvas>
+                            <p class="demo-instruction">Do you see a pattern in these dots?</p>
+                            <button class="demo-reveal">Reveal Truth</button>
+                        </div>
+                        <div class="research-papers">
+                            <a href="SchizBull.pdf" class="paper-link">
+                                <span class="paper-icon">📄</span>
+                                Neural Basis of Apophenia
+                            </a>
+                            <a href="DCM.pdf" class="paper-link">
+                                <span class="paper-icon">📄</span>
+                                Predictive Coding Gone Wrong
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bridge-center">
+                        <div class="connection-line"></div>
+                        <div class="insight-bubble">
+                            <p>"Both humans and AI systems face the same fundamental challenge: balancing pattern detection with accuracy."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bridge-right">
+                        <h4>AI Hallucination Mitigation</h4>
+                        <div class="framework-showcase" id="framework-demo">
+                            <div class="framework-stats">
+                                <div class="before-after">
+                                    <span class="before">7/7 hallucinations</span>
+                                    <span class="arrow">→</span>
+                                    <span class="after">2/7 hallucinations</span>
+                                </div>
+                                <div class="reduction">71% reduction</div>
+                            </div>
+                            <a href="https://gist.github.com/ScottDougBlain/df9038db3af6239686c7a113a8ce7936" target="_blank" class="framework-link">
+                                Explore Metacognitive Framework →
+                            </a>
+                        </div>
+                        <div class="blog-callout">
+                            <a href="https://scottdblain.substack.com/p/hallucinations-arent-new" target="_blank">
+                                <span class="blog-icon">✍️</span>
+                                "Hallucinations Aren't New" - What psychology teaches us about AI
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theory of Mind Bridge -->
+            <div class="research-bridge" id="tom-bridge">
+                <div class="bridge-header">
+                    <h3>Theory of Mind → AI Alignment</h3>
+                    <span class="bridge-insight">Understanding minds to build safe minds</span>
+                </div>
+                
+                <div class="bridge-content">
+                    <div class="bridge-full">
+                        <div class="tom-warning">
+                            <span class="warning-icon">⚠️</span>
+                            <p><strong>Critical Insight:</strong> Enhanced social reasoning can enable both compassion and deception. As AI systems develop theory of mind, alignment becomes crucial.</p>
+                        </div>
+                        
+                        <div class="tom-research-grid">
+                            <div class="tom-card">
+                                <h4>Dual-Use Nature</h4>
+                                <p>How mentalizing abilities serve both prosocial and antisocial ends</p>
+                                <div class="paper-links">
+                                    <a href="ToM_DualUse.pdf">Study 1</a>
+                                    <a href="ToM_DualUse2.pdf">Study 2</a>
+                                </div>
+                            </div>
+                            
+                            <div class="tom-card">
+                                <h4>Gaze & Self-Reference</h4>
+                                <p>Understanding attention and self-awareness mechanisms</p>
+                                <div class="paper-links">
+                                    <a href="Gaze.pdf">Gaze Research</a>
+                                    <a href="Affiliation.pdf">Self-Reference</a>
+                                </div>
+                            </div>
+                            
+                            <div class="tom-card">
+                                <h4>ToM Benchmarking</h4>
+                                <p>Building evaluation frameworks for AI social reasoning</p>
+                                <div class="status">🚧 In Development</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cybernetics Bridge -->
+            <div class="research-bridge" id="cybernetics-bridge">
+                <div class="bridge-header">
+                    <h3>Cybernetic Personality → AI Behavior</h3>
+                    <span class="bridge-insight">Control systems shape both human and artificial personalities</span>
+                </div>
+                
+                <div class="bridge-content">
+                    <div class="cybernetics-interactive">
+                        <canvas id="feedback-system"></canvas>
+                        <div class="system-controls">
+                            <label>Gain: <input type="range" id="gain" min="0" max="100" value="50"></label>
+                            <label>Delay: <input type="range" id="delay" min="0" max="100" value="30"></label>
+                            <label>Threshold: <input type="range" id="threshold" min="0" max="100" value="40"></label>
+                        </div>
+                        <p class="system-description">Adjust parameters to see how feedback loops create different "personalities"</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Old sections hidden for now -->
+    <div style="display: none;">
     <!-- Apophenia & Pattern Detection Section -->
     <section id="apophenia" class="apophenia-section">
         <div class="container">
@@ -267,42 +474,66 @@
             </div>
         </div>
     </section>
+    </div>
 
-    <!-- AI Safety Pivot Section -->
+    <!-- AI Safety Contributions Section -->
     <section id="ai-safety" class="ai-safety-section">
         <div class="container">
-            <h2 class="section-title">Pivoting to AI Safety Research</h2>
-            <div class="pivot-content">
-                <div class="pivot-narrative">
-                    <p>My journey from cognitive neuroscience to AI safety research represents a natural evolution of understanding intelligence systems—from biological to artificial.</p>
-                    <div class="skill-transfer">
-                        <h3>Transferable Expertise</h3>
-                        <div class="skill-grid">
-                            <div class="skill-item">
-                                <span class="skill-icon">🧠</span>
-                                <h4>Cognitive Modeling</h4>
-                                <p>Deep understanding of how minds process information and make decisions</p>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-icon">📊</span>
-                                <h4>Statistical Analysis</h4>
-                                <p>Advanced methods for understanding complex systems and their behaviors</p>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-icon">🔬</span>
-                                <h4>Experimental Design</h4>
-                                <p>Rigorous approaches to testing hypotheses about intelligent behavior</p>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-icon">🤖</span>
-                                <h4>AI Understanding</h4>
-                                <p>Bridging human cognition insights to artificial intelligence challenges</p>
-                            </div>
+            <h2 class="section-title">AI Safety Contributions</h2>
+            
+            <div class="contributions-grid">
+                <div class="contribution-card featured">
+                    <div class="card-header">
+                        <span class="card-icon">🧠</span>
+                        <h3>Metacognitive Self-Correction</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Psychology-informed framework that reduced Claude's hallucination rate by 71% using principles from cognitive therapy.</p>
+                        <div class="framework-preview">
+                            <code>
+                            Before: "I'll make up plausible references"<br>
+                            After: "I cannot verify specific citations"
+                            </code>
+                        </div>
+                        <a href="https://gist.github.com/ScottDougBlain/df9038db3af6239686c7a113a8ce7936" target="_blank" class="contribution-link">Full Framework →</a>
+                    </div>
+                </div>
+                
+                <div class="contribution-card">
+                    <div class="card-header">
+                        <span class="card-icon">🎯</span>
+                        <h3>Behavioral Evaluation Design</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Developing rigorous frameworks for evaluating AI behavior across domains like honesty, helpfulness, and harmlessness.</p>
+                        <div class="skills-used">
+                            <span class="skill">Psychometrics</span>
+                            <span class="skill">Experimental Design</span>
+                            <span class="skill">Statistical Analysis</span>
                         </div>
                     </div>
                 </div>
-                <div class="alignment-viz">
-                    <canvas id="alignment-canvas"></canvas>
+                
+                <div class="contribution-card">
+                    <div class="card-header">
+                        <span class="card-icon">🔬</span>
+                        <h3>Model Annotation</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Contributing to AI safety through careful evaluation and annotation of model outputs at Anthropic and Cohere.</p>
+                        <div class="impact-metric">
+                            <span class="metric-number">1000+</span>
+                            <span class="metric-label">Evaluations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="current-mission">
+                <h3>Current Mission: Model Behavior Architect</h3>
+                <p>Seeking to apply a decade of behavioral research to ensure AI systems behave reliably, honestly, and beneficially as capabilities scale.</p>
+                <div class="mission-visual">
+                    <canvas id="mission-viz"></canvas>
                 </div>
             </div>
         </div>
@@ -312,31 +543,36 @@
     <!-- Publications Section -->
     <section id="publications" class="publications-section">
         <div class="container">
-            <h2 class="section-title">Selected Publications</h2>
-            <div class="publications-grid">
-                <a href="SchizBull.pdf" class="pub-card" target="_blank">
-                    <div class="pub-icon">📄</div>
-                    <h4>Schizophrenia Research</h4>
-                    <p>Investigations into cognitive mechanisms</p>
-                </a>
-                <a href="ToM.pdf" class="pub-card" target="_blank">
-                    <div class="pub-icon">📄</div>
-                    <h4>Theory of Mind Studies</h4>
-                    <p>Understanding mental state attribution</p>
-                </a>
-                <a href="Gaze.pdf" class="pub-card" target="_blank">
-                    <div class="pub-icon">📄</div>
-                    <h4>Gaze & Attention Research</h4>
-                    <p>Visual attention in social contexts</p>
-                </a>
-                <a href="DCM.pdf" class="pub-card" target="_blank">
-                    <div class="pub-icon">📄</div>
-                    <h4>Dynamic Causal Modeling</h4>
-                    <p>Neural connectivity analysis methods</p>
-                </a>
+            <h2 class="section-title">Research Network</h2>
+            <p class="section-subtitle">35+ publications connecting neuroscience to AI safety</p>
+            
+            <div class="publications-viz">
+                <canvas id="pub-network"></canvas>
+                <div class="pub-legend">
+                    <span class="legend-item neuroscience">● Neuroscience</span>
+                    <span class="legend-item bridging">● Bridging Work</span>
+                    <span class="legend-item ai-safety">● AI Safety</span>
+                </div>
             </div>
-            <div class="full-publications">
+            
+            <div class="pub-highlights">
+                <div class="pub-stat">
+                    <span class="stat-number">35+</span>
+                    <span class="stat-label">Publications</span>
+                </div>
+                <div class="pub-stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Citations</span>
+                </div>
+                <div class="pub-stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Research Domains</span>
+                </div>
+            </div>
+            
+            <div class="pub-cta">
                 <a href="Blain_CV.pdf" class="btn btn-primary" target="_blank">View Full CV</a>
+                <a href="https://scholar.google.com/citations?user=NL_JEtkAAAAJ&hl=en" class="btn btn-secondary" target="_blank">Google Scholar</a>
             </div>
         </div>
     </section>
@@ -344,20 +580,33 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Connect</h2>
-            <div class="contact-content">
-                <p>Interested in collaborating on AI safety research or discussing cognitive science applications to AI alignment?</p>
-                <div class="contact-links">
-                    <a href="mailto:scottdougblain@gmail.com" class="contact-link">
-                        <span class="icon">✉️</span> Email
-                    </a>
-                    <a href="https://www.linkedin.com/in/scott-blain-phd/" class="contact-link" target="_blank">
-                        <span class="icon">💼</span> LinkedIn
-                    </a>
-                    <a href="https://scholar.google.com/citations?user=NL_JEtkAAAAJ&hl=en" class="contact-link" target="_blank">
-                        <span class="icon">🎓</span> Google Scholar
-                    </a>
-                </div>
+            <h2 class="section-title">Let's Build Safe AI Together</h2>
+            <p class="contact-subtitle">Interested in collaborating on AI safety research or discussing cognitive science applications to alignment?</p>
+            
+            <div class="contact-grid">
+                <a href="mailto:scottdougblain@gmail.com" class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h4>Email</h4>
+                    <p>Direct correspondence</p>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/scott-blain-phd/" target="_blank" class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h4>LinkedIn</h4>
+                    <p>Professional network</p>
+                </a>
+                
+                <a href="https://scottdblain.substack.com" target="_blank" class="contact-card">
+                    <div class="contact-icon">✍️</div>
+                    <h4>Substack</h4>
+                    <p>Latest thoughts</p>
+                </a>
+                
+                <a href="https://scholar.google.com/citations?user=NL_JEtkAAAAJ&hl=en" target="_blank" class="contact-card">
+                    <div class="contact-icon">🎓</div>
+                    <h4>Google Scholar</h4>
+                    <p>Research publications</p>
+                </a>
             </div>
         </div>
     </section>
