@@ -336,6 +336,257 @@ function initResearchVisualizations() {
 // Initialize research visualizations
 initResearchVisualizations();
 
+// Cybernetic visualizations
+function initCyberneticVisualizations() {
+    // Feedback Loops Visualization
+    const feedbackCanvas = document.getElementById('feedback-loops');
+    if (feedbackCanvas) {
+        const ctx = feedbackCanvas.getContext('2d');
+        feedbackCanvas.width = feedbackCanvas.offsetWidth;
+        feedbackCanvas.height = 180;
+        
+        let time = 0;
+        
+        function drawFeedbackLoops() {
+            ctx.clearRect(0, 0, feedbackCanvas.width, feedbackCanvas.height);
+            
+            const centerX = feedbackCanvas.width / 2;
+            const centerY = feedbackCanvas.height / 2;
+            
+            // Draw main system circle
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 40, 0, Math.PI * 2);
+            ctx.strokeStyle = '#2563eb';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            
+            // Draw feedback loops
+            const radius = 60;
+            const feedbackAngle = time * 0.02;
+            
+            // Negative feedback loop
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, feedbackAngle, feedbackAngle + Math.PI * 1.5);
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Positive feedback loop
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius + 20, -feedbackAngle, -feedbackAngle + Math.PI * 1.5);
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Draw arrows
+            const arrowSize = 8;
+            // Negative feedback arrow
+            const negX = centerX + radius * Math.cos(feedbackAngle + Math.PI * 1.5);
+            const negY = centerY + radius * Math.sin(feedbackAngle + Math.PI * 1.5);
+            drawArrowHead(ctx, negX, negY, feedbackAngle + Math.PI * 1.5 - Math.PI/2, arrowSize, '#ef4444');
+            
+            // Positive feedback arrow
+            const posX = centerX + (radius + 20) * Math.cos(-feedbackAngle + Math.PI * 1.5);
+            const posY = centerY + (radius + 20) * Math.sin(-feedbackAngle + Math.PI * 1.5);
+            drawArrowHead(ctx, posX, posY, -feedbackAngle + Math.PI * 1.5 + Math.PI/2, arrowSize, '#10b981');
+            
+            // Labels
+            ctx.fillStyle = '#6b7280';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('System', centerX, centerY + 5);
+            ctx.fillText('Negative FB', centerX - 70, centerY - 50);
+            ctx.fillText('Positive FB', centerX + 70, centerY + 50);
+            
+            time++;
+            requestAnimationFrame(drawFeedbackLoops);
+        }
+        
+        drawFeedbackLoops();
+    }
+    
+    // System Variation Visualization
+    const variationCanvas = document.getElementById('system-variation');
+    if (variationCanvas) {
+        const ctx = variationCanvas.getContext('2d');
+        variationCanvas.width = variationCanvas.offsetWidth;
+        variationCanvas.height = 180;
+        
+        let phase = 0;
+        
+        function drawSystemVariation() {
+            ctx.clearRect(0, 0, variationCanvas.width, variationCanvas.height);
+            
+            // Draw multiple systems with different parameters
+            const systems = [
+                { gain: 0.5, delay: 0, color: '#2563eb', label: 'Low Gain' },
+                { gain: 1.0, delay: Math.PI/4, color: '#7c3aed', label: 'Medium' },
+                { gain: 1.5, delay: Math.PI/2, color: '#06b6d4', label: 'High Gain' }
+            ];
+            
+            // Draw axes
+            ctx.strokeStyle = '#e5e7eb';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(20, variationCanvas.height - 20);
+            ctx.lineTo(variationCanvas.width - 20, variationCanvas.height - 20);
+            ctx.moveTo(20, 20);
+            ctx.lineTo(20, variationCanvas.height - 20);
+            ctx.stroke();
+            
+            // Draw response curves
+            systems.forEach((system, index) => {
+                ctx.beginPath();
+                ctx.strokeStyle = system.color;
+                ctx.lineWidth = 2;
+                
+                for (let x = 20; x < variationCanvas.width - 20; x++) {
+                    const t = (x - 20) / (variationCanvas.width - 40) * Math.PI * 2;
+                    const y = variationCanvas.height - 40 - 
+                             system.gain * 40 * (1 - Math.exp(-t)) * Math.sin(phase + t + system.delay);
+                    
+                    if (x === 20) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.stroke();
+                
+                // Labels
+                ctx.fillStyle = system.color;
+                ctx.font = '10px Arial';
+                ctx.fillText(system.label, variationCanvas.width - 80, 30 + index * 15);
+            });
+            
+            phase += 0.03;
+            requestAnimationFrame(drawSystemVariation);
+        }
+        
+        drawSystemVariation();
+    }
+    
+    // AI Personality Visualization
+    const personalityCanvas = document.getElementById('ai-personality');
+    if (personalityCanvas) {
+        const ctx = personalityCanvas.getContext('2d');
+        personalityCanvas.width = personalityCanvas.offsetWidth;
+        personalityCanvas.height = 180;
+        
+        let rotation = 0;
+        
+        function drawAIPersonality() {
+            ctx.clearRect(0, 0, personalityCanvas.width, personalityCanvas.height);
+            
+            const centerX = personalityCanvas.width / 2;
+            const centerY = personalityCanvas.height / 2;
+            
+            // Personality dimensions
+            const dimensions = [
+                { label: 'Creativity', value: 0.7 + Math.sin(rotation) * 0.2 },
+                { label: 'Caution', value: 0.5 + Math.cos(rotation * 1.3) * 0.2 },
+                { label: 'Verbosity', value: 0.6 + Math.sin(rotation * 0.7) * 0.2 },
+                { label: 'Empathy', value: 0.8 + Math.cos(rotation * 0.9) * 0.1 },
+                { label: 'Logic', value: 0.9 + Math.sin(rotation * 1.1) * 0.1 }
+            ];
+            
+            const angleStep = (Math.PI * 2) / dimensions.length;
+            const maxRadius = 60;
+            
+            // Draw web background
+            for (let r = 20; r <= maxRadius; r += 20) {
+                ctx.beginPath();
+                ctx.strokeStyle = '#e5e7eb';
+                ctx.lineWidth = 1;
+                
+                for (let i = 0; i <= dimensions.length; i++) {
+                    const angle = i * angleStep - Math.PI / 2;
+                    const x = centerX + r * Math.cos(angle);
+                    const y = centerY + r * Math.sin(angle);
+                    
+                    if (i === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.closePath();
+                ctx.stroke();
+            }
+            
+            // Draw spokes
+            dimensions.forEach((dim, i) => {
+                const angle = i * angleStep - Math.PI / 2;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(
+                    centerX + maxRadius * Math.cos(angle),
+                    centerY + maxRadius * Math.sin(angle)
+                );
+                ctx.strokeStyle = '#e5e7eb';
+                ctx.stroke();
+            });
+            
+            // Draw personality shape
+            ctx.beginPath();
+            ctx.fillStyle = 'rgba(124, 58, 237, 0.2)';
+            ctx.strokeStyle = '#7c3aed';
+            ctx.lineWidth = 2;
+            
+            dimensions.forEach((dim, i) => {
+                const angle = i * angleStep - Math.PI / 2;
+                const r = dim.value * maxRadius;
+                const x = centerX + r * Math.cos(angle);
+                const y = centerY + r * Math.sin(angle);
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            
+            // Draw labels
+            ctx.fillStyle = '#4b5563';
+            ctx.font = '10px Arial';
+            ctx.textAlign = 'center';
+            
+            dimensions.forEach((dim, i) => {
+                const angle = i * angleStep - Math.PI / 2;
+                const x = centerX + (maxRadius + 20) * Math.cos(angle);
+                const y = centerY + (maxRadius + 20) * Math.sin(angle);
+                ctx.fillText(dim.label, x, y);
+            });
+            
+            rotation += 0.02;
+            requestAnimationFrame(drawAIPersonality);
+        }
+        
+        drawAIPersonality();
+    }
+}
+
+function drawArrowHead(ctx, x, y, angle, size, color) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(-size, -size/2);
+    ctx.lineTo(-size, size/2);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+}
+
+// Initialize cybernetic visualizations
+initCyberneticVisualizations();
+
 // AI Alignment visualization
 function createAlignmentVisualization() {
     const canvas = document.getElementById('alignment-canvas');

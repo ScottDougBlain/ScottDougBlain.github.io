@@ -301,6 +301,164 @@ body {
     color: white;
 }
 
+/* Cybernetics Section */
+.cybernetics-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #f3f4f6 100%);
+}
+
+.cybernetics-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.theory-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.lead-text {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cybernetics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.cyber-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.cyber-card:hover::before {
+    opacity: 0.05;
+}
+
+.cyber-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.cyber-visual {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.cyber-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 1;
+}
+
+.cyber-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.connections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.connection-tag {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.connection-tag:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+.theory-applications {
+    background: white;
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.theory-applications h3 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.bridge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.bridge-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.bridge-item:hover {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+}
+
+.bridge-item:hover h4,
+.bridge-item:hover p {
+    color: white;
+}
+
+.bridge-item h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.bridge-item p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
 /* AI Safety Section */
 .ai-safety-section {
     padding: 5rem 2rem;
