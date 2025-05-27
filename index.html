@@ -22,7 +22,6 @@
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#research" class="nav-link">Research</a></li>
             <li><a href="#ai-safety" class="nav-link">AI Safety</a></li>
-            <li><a href="#blog" class="nav-link">Blog</a></li>
             <li><a href="#publications" class="nav-link">Publications</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -49,49 +48,143 @@
         </div>
     </section>
 
-    <!-- Research Themes Section -->
+    <!-- Research Overview Section -->
     <section id="research" class="research-section">
         <div class="container">
             <h2 class="section-title">Research Themes</h2>
-            <div class="research-grid">
-                <!-- Apophenia & Pattern Recognition -->
-                <div class="research-card" data-theme="apophenia">
+            <p class="section-subtitle">Three core areas bridging cognitive science and AI safety</p>
+        </div>
+    </section>
+
+    <!-- Apophenia & Pattern Detection Section -->
+    <section id="apophenia" class="apophenia-section">
+        <div class="container">
+            <h2 class="section-title">Apophenia & Pattern Detection</h2>
+            <p class="section-subtitle">From human behavioral studies to AI hallucination mitigation</p>
+            
+            <div class="apophenia-grid">
+                <!-- Human Behavioral Study -->
+                <div class="research-card" data-theme="behavioral">
                     <div class="card-icon">
-                        <canvas id="apophenia-viz"></canvas>
+                        <canvas id="behavioral-viz"></canvas>
                     </div>
-                    <h3>Apophenia & Pattern Recognition</h3>
-                    <p>Investigating the tendency to perceive meaningful patterns in random data and its implications for AI systems.</p>
-                    <button class="explore-btn" onclick="openResearchModal('apophenia')">Explore Concept</button>
+                    <h3>Human Behavioral Studies</h3>
+                    <p>Investigating how humans perceive meaningful patterns in random data, with implications for understanding false pattern detection across cognitive systems.</p>
+                    <div class="research-links">
+                        <a href="SchizBull.pdf" target="_blank" class="research-link">Schizophrenia Research</a>
+                    </div>
                 </div>
 
-                <!-- Social Cognition -->
-                <div class="research-card" data-theme="social">
+                <!-- Neuroscience Study -->
+                <div class="research-card" data-theme="neuroscience">
                     <div class="card-icon">
-                        <canvas id="social-viz"></canvas>
+                        <canvas id="neuroscience-viz"></canvas>
                     </div>
-                    <h3>Social Cognition & Theory of Mind</h3>
-                    <p>Understanding how humans and AI systems model others' mental states and beliefs.</p>
-                    <button class="explore-btn" onclick="openResearchModal('social')">Explore Concept</button>
+                    <h3>Neuroscience of Pattern Recognition</h3>
+                    <p>Understanding the neural mechanisms underlying apophenia through predictive coding frameworks and aberrant salience attribution.</p>
+                    <div class="research-links">
+                        <a href="DCM.pdf" target="_blank" class="research-link">Neural Connectivity Analysis</a>
+                    </div>
                 </div>
 
-                <!-- Hallucination Mitigation -->
-                <div class="research-card" data-theme="hallucination">
-                    <div class="card-icon">
-                        <canvas id="hallucination-viz"></canvas>
+                <!-- Blog Connection -->
+                <div class="research-card featured" data-theme="blog">
+                    <div class="blog-meta">
+                        <span class="blog-type">Blog Post</span>
+                        <span class="blog-date">SubStack</span>
                     </div>
-                    <h3>Hallucination Mitigation</h3>
-                    <p>Developing methods to reduce false or unsupported outputs in AI systems.</p>
-                    <button class="explore-btn" onclick="openResearchModal('hallucination')">Explore Concept</button>
+                    <h3>Hallucinations Aren't New</h3>
+                    <blockquote class="mini-quote">
+                        "Seeing patterns where none exist might be less a bug than a feature..."
+                    </blockquote>
+                    <p>Connecting human apophenia research to AI safety challenges.</p>
+                    <a href="https://scottdblain.substack.com/p/hallucinations-arent-new" target="_blank" class="read-more">
+                        Read Article →
+                    </a>
                 </div>
 
-                <!-- Dynamic Causal Modeling -->
-                <div class="research-card" data-theme="dcm">
-                    <div class="card-icon">
-                        <canvas id="dcm-viz"></canvas>
+                <!-- Hallucination Mitigation Framework -->
+                <div class="research-card demo" data-theme="framework">
+                    <div class="blog-meta">
+                        <span class="blog-type">Research Demo</span>
+                        <span class="blog-date">71% Reduction</span>
                     </div>
-                    <h3>Dynamic Causal Modeling</h3>
-                    <p>Applying neuroscience methods to understand information flow in cognitive and AI systems.</p>
-                    <button class="explore-btn" onclick="openResearchModal('dcm')">Explore Concept</button>
+                    <h3>Psychology-Informed Mitigation</h3>
+                    <div class="mini-results">
+                        <span class="before">7/7</span>
+                        <span class="arrow">→</span>
+                        <span class="after">2/7</span>
+                    </div>
+                    <p>Metacognitive self-correction framework based on human cognitive principles.</p>
+                    <a href="https://gist.github.com/ScottDougBlain/df9038db3af6239686c7a113a8ce7936" target="_blank" class="read-more">
+                        View Framework →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Cognition Section -->
+    <section id="social-cognition" class="social-cognition-section">
+        <div class="container">
+            <h2 class="section-title">Social Cognition & Theory of Mind</h2>
+            <p class="section-subtitle">Understanding and implementing social intelligence in AI systems</p>
+            
+            <div class="social-grid">
+                <!-- Theory of Mind & Dual Use -->
+                <div class="research-card" data-theme="dual-use">
+                    <div class="card-icon">
+                        <canvas id="dual-use-viz"></canvas>
+                    </div>
+                    <h3>Dual-Use Nature of Social Intelligence</h3>
+                    <p>How general and social cognitive abilities can be leveraged for both compassion and deception—critical considerations for AI alignment.</p>
+                    <div class="research-links">
+                        <a href="ToM_DualUse.pdf" target="_blank" class="research-link">Dual Use Study 1</a>
+                        <a href="ToM_DualUse2.pdf" target="_blank" class="research-link">Dual Use Study 2</a>
+                    </div>
+                    <div class="warning-note">
+                        ⚠️ Key insight: Enhanced social reasoning capabilities in AI must be carefully aligned to prevent manipulation
+                    </div>
+                </div>
+
+                <!-- Gaze & Self-Reference -->
+                <div class="research-card" data-theme="gaze">
+                    <div class="card-icon">
+                        <canvas id="gaze-viz"></canvas>
+                    </div>
+                    <h3>Gaze Perception & Self-Reference</h3>
+                    <p>Research on gaze processing and self-referential cognition in humans, with potential applications for AI attention mechanisms and self-awareness.</p>
+                    <div class="research-links">
+                        <a href="Gaze.pdf" target="_blank" class="research-link">Gaze Processing Research</a>
+                        <a href="Affiliation.pdf" target="_blank" class="research-link">Self-Reference Studies</a>
+                    </div>
+                </div>
+
+                <!-- ToM Bench -->
+                <div class="research-card" data-theme="tom-bench">
+                    <div class="card-icon">
+                        <canvas id="tom-bench-viz"></canvas>
+                    </div>
+                    <h3>Building AI Mentalizing Frameworks</h3>
+                    <p>Developing benchmarks and frameworks for implementing theory of mind capabilities in AI systems while maintaining safety and interpretability.</p>
+                    <div class="research-links">
+                        <span class="folder-indicator">📁 ToM Bench Project</span>
+                    </div>
+                    <div class="benchmark-info">
+                        Creating comprehensive evaluation frameworks for AI social reasoning capabilities
+                    </div>
+                </div>
+
+                <!-- Core ToM Research -->
+                <div class="research-card" data-theme="core-tom">
+                    <div class="card-icon">
+                        <canvas id="core-tom-viz"></canvas>
+                    </div>
+                    <h3>Foundations of Theory of Mind</h3>
+                    <p>Core research on mental state attribution, belief reasoning, and perspective-taking in both typical and clinical populations.</p>
+                    <div class="research-links">
+                        <a href="ToM.pdf" target="_blank" class="research-link">Theory of Mind Studies</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -215,76 +308,6 @@
         </div>
     </section>
 
-    <!-- Blog/Insights Section -->
-    <section id="blog" class="blog-section">
-        <div class="container">
-            <h2 class="section-title">Recent Insights & Research</h2>
-            <div class="blog-grid">
-                <!-- Blog Post Card -->
-                <div class="blog-card featured">
-                    <div class="blog-meta">
-                        <span class="blog-type">Blog Post</span>
-                        <span class="blog-date">SubStack</span>
-                    </div>
-                    <h3>Hallucinations Aren't New</h3>
-                    <h4>What Human Psychology Can Teach Us About AI Safety</h4>
-                    <blockquote class="blog-quote">
-                        "Seeing patterns where none exist might be less a bug than a feature, a survival-driven quirk that both humans and their AI creations can't quite shake."
-                    </blockquote>
-                    <p>Exploring how AI hallucinations mirror human apophenia and what this means for AI safety design.</p>
-                    <div class="blog-concepts">
-                        <span class="concept-tag">Apophenia</span>
-                        <span class="concept-tag">Predictive Processing</span>
-                        <span class="concept-tag">System 1 & 2</span>
-                    </div>
-                    <a href="https://scottdblain.substack.com/p/hallucinations-arent-new" target="_blank" class="read-more">
-                        Read Full Article →
-                    </a>
-                </div>
-                
-                <!-- Research Gist Card -->
-                <div class="blog-card research">
-                    <div class="blog-meta">
-                        <span class="blog-type">Research Demo</span>
-                        <span class="blog-date">GitHub Gist</span>
-                    </div>
-                    <h3>Metacognitive Self-Correction Framework</h3>
-                    <h4>Reducing AI Hallucinations by 71%</h4>
-                    <div class="results-highlight">
-                        <div class="result-stat">
-                            <span class="stat-label">Baseline</span>
-                            <span class="stat-value">7/7</span>
-                            <span class="stat-desc">hallucinations</span>
-                        </div>
-                        <div class="result-arrow">→</div>
-                        <div class="result-stat improved">
-                            <span class="stat-label">With Framework</span>
-                            <span class="stat-value">2/7</span>
-                            <span class="stat-desc">hallucinations</span>
-                        </div>
-                    </div>
-                    <p>A novel meta-prompt approach implementing epistemic humility and structured verification to dramatically reduce AI confabulation.</p>
-                    <div class="blog-concepts">
-                        <span class="concept-tag">Metacognition</span>
-                        <span class="concept-tag">Self-Correction</span>
-                        <span class="concept-tag">Epistemic Humility</span>
-                    </div>
-                    <a href="https://gist.github.com/ScottDougBlain/df9038db3af6239686c7a113a8ce7936" target="_blank" class="read-more">
-                        View Research →
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Connection Visualization -->
-            <div class="insights-connection">
-                <canvas id="insights-flow"></canvas>
-                <div class="connection-text">
-                    <h3>Bridging Theory & Practice</h3>
-                    <p>From understanding human cognitive biases to developing practical AI safety solutions</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Publications Section -->
     <section id="publications" class="publications-section">
@@ -339,13 +362,6 @@
         </div>
     </section>
 
-    <!-- Research Modal -->
-    <div id="research-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modal-body"></div>
-        </div>
-    </div>
 
     <script src="scripts.js"></script>
 </body>

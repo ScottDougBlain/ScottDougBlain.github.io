@@ -213,10 +213,44 @@ body {
     height: 500px;
 }
 
-/* Research Section */
+/* Research Overview Section */
 .research-section {
-    padding: 5rem 2rem;
+    padding: 3rem 2rem 2rem;
     background: var(--bg-secondary);
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+}
+
+/* Apophenia Section */
+.apophenia-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #f9fafb 100%);
+}
+
+.apophenia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Social Cognition Section */
+.social-cognition-section {
+    padding: 4rem 2rem;
+    background: var(--bg-secondary);
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
 .container {
@@ -283,6 +317,101 @@ body {
 .research-card p {
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
+}
+
+/* New card styles for restructured sections */
+.research-card.featured {
+    border-top: 4px solid var(--primary-color);
+}
+
+.research-card.demo {
+    border-top: 4px solid var(--secondary-color);
+}
+
+.mini-quote {
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--primary-color);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.mini-results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    font-weight: 700;
+}
+
+.mini-results .before {
+    color: #ef4444;
+    font-size: 1.5rem;
+}
+
+.mini-results .arrow {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+}
+
+.mini-results .after {
+    color: #10b981;
+    font-size: 1.5rem;
+}
+
+.research-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.research-link {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.research-link:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.warning-note {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #92400e;
+    border-radius: 0.5rem;
+}
+
+.folder-indicator {
+    background: var(--bg-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    display: inline-block;
+}
+
+.benchmark-info {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-style: italic;
 }
 
 .explore-btn {

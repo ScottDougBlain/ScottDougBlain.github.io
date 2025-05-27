@@ -135,206 +135,340 @@ function createMindNetwork() {
 // Initialize mind network
 createMindNetwork();
 
-// Research card visualizations
-function initResearchVisualizations() {
-    // Apophenia visualization - random dots forming patterns
-    const apopheniaCanvas = document.getElementById('apophenia-viz');
-    if (apopheniaCanvas) {
-        const ctx = apopheniaCanvas.getContext('2d');
-        apopheniaCanvas.width = 250;
-        apopheniaCanvas.height = 150;
+
+
+// New visualizations for restructured sections
+function initNewResearchVisualizations() {
+    // Behavioral Studies Visualization
+    const behavioralCanvas = document.getElementById('behavioral-viz');
+    if (behavioralCanvas) {
+        const ctx = behavioralCanvas.getContext('2d');
+        behavioralCanvas.width = 250;
+        behavioralCanvas.height = 150;
         
-        function drawApophenia() {
-            ctx.clearRect(0, 0, apopheniaCanvas.width, apopheniaCanvas.height);
+        function drawBehavioral() {
+            ctx.clearRect(0, 0, behavioralCanvas.width, behavioralCanvas.height);
             
-            // Draw random dots
-            for (let i = 0; i < 50; i++) {
-                ctx.beginPath();
-                ctx.arc(
-                    Math.random() * apopheniaCanvas.width,
-                    Math.random() * apopheniaCanvas.height,
-                    2,
-                    0,
-                    Math.PI * 2
-                );
-                ctx.fillStyle = '#2563eb40';
-                ctx.fill();
+            // Draw random dots that form patterns
+            const dots = [];
+            for (let i = 0; i < 40; i++) {
+                dots.push({
+                    x: Math.random() * behavioralCanvas.width,
+                    y: Math.random() * behavioralCanvas.height
+                });
             }
             
-            // Draw perceived pattern
-            ctx.beginPath();
-            ctx.moveTo(50, 50);
-            ctx.lineTo(150, 50);
-            ctx.lineTo(150, 100);
-            ctx.lineTo(50, 100);
-            ctx.closePath();
+            // Draw dots
+            dots.forEach(dot => {
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, 3, 0, Math.PI * 2);
+                ctx.fillStyle = '#2563eb40';
+                ctx.fill();
+            });
+            
+            // Draw perceived face pattern
             ctx.strokeStyle = '#7c3aed60';
             ctx.lineWidth = 2;
+            ctx.beginPath();
+            // Eyes
+            ctx.arc(80, 50, 15, 0, Math.PI * 2);
+            ctx.moveTo(170, 50);
+            ctx.arc(170, 50, 15, 0, Math.PI * 2);
+            // Smile
+            ctx.moveTo(70, 90);
+            ctx.quadraticCurveTo(125, 120, 180, 90);
             ctx.stroke();
         }
-        
-        drawApophenia();
-        setInterval(drawApophenia, 3000);
+        drawBehavioral();
     }
     
-    // Social cognition visualization - connected minds
-    const socialCanvas = document.getElementById('social-viz');
-    if (socialCanvas) {
-        const ctx = socialCanvas.getContext('2d');
-        socialCanvas.width = 250;
-        socialCanvas.height = 150;
+    // Neuroscience Visualization
+    const neuroscienceCanvas = document.getElementById('neuroscience-viz');
+    if (neuroscienceCanvas) {
+        const ctx = neuroscienceCanvas.getContext('2d');
+        neuroscienceCanvas.width = 250;
+        neuroscienceCanvas.height = 150;
         
-        function drawSocialCognition() {
-            ctx.clearRect(0, 0, socialCanvas.width, socialCanvas.height);
+        let pulsePhase = 0;
+        
+        function drawNeuroscience() {
+            ctx.clearRect(0, 0, neuroscienceCanvas.width, neuroscienceCanvas.height);
             
-            // Draw minds
-            const minds = [
-                { x: 50, y: 75 },
-                { x: 125, y: 50 },
-                { x: 125, y: 100 },
-                { x: 200, y: 75 }
+            // Brain regions
+            const regions = [
+                { x: 50, y: 75, r: 20, label: 'V1' },
+                { x: 125, y: 50, r: 25, label: 'FFA' },
+                { x: 200, y: 75, r: 20, label: 'PFC' },
+                { x: 125, y: 100, r: 20, label: 'TPJ' }
             ];
             
-            // Draw connections
-            ctx.strokeStyle = '#06b6d440';
+            // Draw connections with activity
+            ctx.strokeStyle = `rgba(37, 99, 235, ${0.3 + Math.sin(pulsePhase) * 0.2})`;
             ctx.lineWidth = 2;
-            minds.forEach((mind, i) => {
-                minds.forEach((otherMind, j) => {
+            regions.forEach((region, i) => {
+                regions.forEach((other, j) => {
                     if (i < j) {
                         ctx.beginPath();
-                        ctx.moveTo(mind.x, mind.y);
-                        ctx.lineTo(otherMind.x, otherMind.y);
+                        ctx.moveTo(region.x, region.y);
+                        ctx.lineTo(other.x, other.y);
                         ctx.stroke();
                     }
                 });
             });
             
-            // Draw mind nodes
-            minds.forEach(mind => {
-                ctx.beginPath();
-                ctx.arc(mind.x, mind.y, 15, 0, Math.PI * 2);
-                ctx.fillStyle = '#2563eb';
-                ctx.fill();
-            });
-        }
-        
-        drawSocialCognition();
-    }
-    
-    // Hallucination mitigation visualization
-    const hallucinationCanvas = document.getElementById('hallucination-viz');
-    if (hallucinationCanvas) {
-        const ctx = hallucinationCanvas.getContext('2d');
-        hallucinationCanvas.width = 250;
-        hallucinationCanvas.height = 150;
-        
-        let phase = 0;
-        
-        function drawHallucination() {
-            ctx.clearRect(0, 0, hallucinationCanvas.width, hallucinationCanvas.height);
-            
-            // Draw waveform
-            ctx.beginPath();
-            for (let x = 0; x < hallucinationCanvas.width; x++) {
-                const y = 75 + Math.sin((x + phase) * 0.05) * 30 * Math.exp(-x / 200);
-                if (x === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
-                }
-            }
-            ctx.strokeStyle = '#ef444460';
-            ctx.lineWidth = 3;
-            ctx.stroke();
-            
-            // Draw corrected waveform
-            ctx.beginPath();
-            ctx.moveTo(0, 75);
-            ctx.lineTo(250, 75);
-            ctx.strokeStyle = '#10b98160';
-            ctx.lineWidth = 3;
-            ctx.stroke();
-            
-            phase += 2;
-        }
-        
-        setInterval(drawHallucination, 50);
-    }
-    
-    // DCM visualization
-    const dcmCanvas = document.getElementById('dcm-viz');
-    if (dcmCanvas) {
-        const ctx = dcmCanvas.getContext('2d');
-        dcmCanvas.width = 250;
-        dcmCanvas.height = 150;
-        
-        function drawDCM() {
-            ctx.clearRect(0, 0, dcmCanvas.width, dcmCanvas.height);
-            
-            // Draw brain regions
-            const regions = [
-                { x: 50, y: 50, label: 'A' },
-                { x: 125, y: 30, label: 'B' },
-                { x: 200, y: 50, label: 'C' },
-                { x: 125, y: 100, label: 'D' }
-            ];
-            
-            // Draw directional connections
-            ctx.strokeStyle = '#2563eb40';
-            ctx.lineWidth = 2;
-            
-            // A -> B
-            drawArrow(ctx, regions[0].x, regions[0].y, regions[1].x, regions[1].y);
-            // B -> C
-            drawArrow(ctx, regions[1].x, regions[1].y, regions[2].x, regions[2].y);
-            // B -> D
-            drawArrow(ctx, regions[1].x, regions[1].y, regions[3].x, regions[3].y);
-            // D -> A
-            drawArrow(ctx, regions[3].x, regions[3].y, regions[0].x, regions[0].y);
-            
-            // Draw nodes
+            // Draw regions
             regions.forEach(region => {
                 ctx.beginPath();
-                ctx.arc(region.x, region.y, 20, 0, Math.PI * 2);
-                ctx.fillStyle = '#7c3aed';
+                ctx.arc(region.x, region.y, region.r, 0, Math.PI * 2);
+                ctx.fillStyle = '#2563eb';
                 ctx.fill();
                 ctx.fillStyle = 'white';
-                ctx.font = '16px Arial';
+                ctx.font = '12px Arial';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText(region.label, region.x, region.y);
             });
+            
+            pulsePhase += 0.05;
+            requestAnimationFrame(drawNeuroscience);
         }
+        drawNeuroscience();
+    }
+    
+    // Dual Use Visualization
+    const dualUseCanvas = document.getElementById('dual-use-viz');
+    if (dualUseCanvas) {
+        const ctx = dualUseCanvas.getContext('2d');
+        dualUseCanvas.width = 250;
+        dualUseCanvas.height = 150;
         
-        function drawArrow(ctx, x1, y1, x2, y2) {
-            const angle = Math.atan2(y2 - y1, x2 - x1);
-            const length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+        let rotation = 0;
+        
+        function drawDualUse() {
+            ctx.clearRect(0, 0, dualUseCanvas.width, dualUseCanvas.height);
             
+            const centerX = dualUseCanvas.width / 2;
+            const centerY = dualUseCanvas.height / 2;
+            
+            // Central ability
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 30, 0, Math.PI * 2);
+            ctx.fillStyle = '#7c3aed';
+            ctx.fill();
+            ctx.fillStyle = 'white';
+            ctx.font = '10px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Social', centerX, centerY - 5);
+            ctx.fillText('Intelligence', centerX, centerY + 5);
+            
+            // Dual paths
             ctx.save();
-            ctx.translate(x1, y1);
-            ctx.rotate(angle);
+            ctx.translate(centerX, centerY);
+            ctx.rotate(rotation);
             
+            // Compassion path
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.moveTo(20, 0);
-            ctx.lineTo(length - 20, 0);
+            ctx.moveTo(30, 0);
+            ctx.lineTo(70, -30);
             ctx.stroke();
+            ctx.fillStyle = '#10b981';
+            ctx.font = '12px Arial';
+            ctx.fillText('Compassion', 70, -40);
             
-            // Arrowhead
+            // Deception path
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.moveTo(length - 25, -5);
-            ctx.lineTo(length - 20, 0);
-            ctx.lineTo(length - 25, 5);
+            ctx.moveTo(30, 0);
+            ctx.lineTo(70, 30);
             ctx.stroke();
+            ctx.fillStyle = '#ef4444';
+            ctx.fillText('Deception', 70, 40);
             
             ctx.restore();
+            
+            rotation += 0.01;
+            requestAnimationFrame(drawDualUse);
         }
+        drawDualUse();
+    }
+    
+    // Gaze Visualization
+    const gazeCanvas = document.getElementById('gaze-viz');
+    if (gazeCanvas) {
+        const ctx = gazeCanvas.getContext('2d');
+        gazeCanvas.width = 250;
+        gazeCanvas.height = 150;
         
-        drawDCM();
+        let gazeX = 125;
+        let gazeY = 75;
+        let targetX = 125;
+        let targetY = 75;
+        
+        function drawGaze() {
+            ctx.clearRect(0, 0, gazeCanvas.width, gazeCanvas.height);
+            
+            // Update gaze position
+            gazeX += (targetX - gazeX) * 0.1;
+            gazeY += (targetY - gazeY) * 0.1;
+            
+            // Random target
+            if (Math.random() > 0.98) {
+                targetX = 50 + Math.random() * 150;
+                targetY = 30 + Math.random() * 90;
+            }
+            
+            // Draw eye
+            ctx.beginPath();
+            ctx.ellipse(125, 75, 60, 30, 0, 0, Math.PI * 2);
+            ctx.strokeStyle = '#2563eb';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            
+            // Draw iris
+            ctx.beginPath();
+            ctx.arc(gazeX, gazeY, 15, 0, Math.PI * 2);
+            ctx.fillStyle = '#2563eb';
+            ctx.fill();
+            
+            // Draw pupil
+            ctx.beginPath();
+            ctx.arc(gazeX, gazeY, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#111827';
+            ctx.fill();
+            
+            // Draw gaze lines
+            ctx.strokeStyle = '#06b6d440';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(gazeX, gazeY);
+            ctx.lineTo(gazeX + (targetX - gazeX) * 2, gazeY + (targetY - gazeY) * 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            requestAnimationFrame(drawGaze);
+        }
+        drawGaze();
+    }
+    
+    // ToM Bench Visualization
+    const tomBenchCanvas = document.getElementById('tom-bench-viz');
+    if (tomBenchCanvas) {
+        const ctx = tomBenchCanvas.getContext('2d');
+        tomBenchCanvas.width = 250;
+        tomBenchCanvas.height = 150;
+        
+        let testPhase = 0;
+        
+        function drawToMBench() {
+            ctx.clearRect(0, 0, tomBenchCanvas.width, tomBenchCanvas.height);
+            
+            // Draw test scenarios
+            const scenarios = [
+                { x: 50, y: 40, passed: testPhase > 1 },
+                { x: 100, y: 40, passed: testPhase > 2 },
+                { x: 150, y: 40, passed: testPhase > 3 },
+                { x: 200, y: 40, passed: testPhase > 4 },
+                { x: 50, y: 80, passed: testPhase > 5 },
+                { x: 100, y: 80, passed: testPhase > 6 },
+                { x: 150, y: 80, passed: testPhase > 7 },
+                { x: 200, y: 80, passed: testPhase > 8 }
+            ];
+            
+            scenarios.forEach(scenario => {
+                ctx.beginPath();
+                ctx.rect(scenario.x - 15, scenario.y - 15, 30, 30);
+                ctx.fillStyle = scenario.passed ? '#10b98130' : '#e5e7eb';
+                ctx.fill();
+                ctx.strokeStyle = scenario.passed ? '#10b981' : '#9ca3af';
+                ctx.stroke();
+                
+                if (scenario.passed) {
+                    ctx.strokeStyle = '#10b981';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(scenario.x - 5, scenario.y);
+                    ctx.lineTo(scenario.x, scenario.y + 5);
+                    ctx.lineTo(scenario.x + 8, scenario.y - 8);
+                    ctx.stroke();
+                }
+            });
+            
+            // Progress bar
+            ctx.fillStyle = '#e5e7eb';
+            ctx.fillRect(40, 120, 170, 10);
+            ctx.fillStyle = '#2563eb';
+            ctx.fillRect(40, 120, (testPhase / 10) * 170, 10);
+            
+            testPhase += 0.05;
+            if (testPhase > 10) testPhase = 0;
+            
+            requestAnimationFrame(drawToMBench);
+        }
+        drawToMBench();
+    }
+    
+    // Core ToM Visualization
+    const coreTomCanvas = document.getElementById('core-tom-viz');
+    if (coreTomCanvas) {
+        const ctx = coreTomCanvas.getContext('2d');
+        coreTomCanvas.width = 250;
+        coreTomCanvas.height = 150;
+        
+        let beliefState = 0;
+        
+        function drawCoreToM() {
+            ctx.clearRect(0, 0, coreTomCanvas.width, coreTomCanvas.height);
+            
+            // Draw two minds
+            const mind1 = { x: 70, y: 75 };
+            const mind2 = { x: 180, y: 75 };
+            
+            // Draw minds
+            [mind1, mind2].forEach((mind, i) => {
+                ctx.beginPath();
+                ctx.arc(mind.x, mind.y, 30, 0, Math.PI * 2);
+                ctx.strokeStyle = '#2563eb';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                
+                // Draw thought bubble
+                ctx.beginPath();
+                ctx.arc(mind.x + 20, mind.y - 40, 15, 0, Math.PI * 2);
+                ctx.fillStyle = i === 0 ? '#2563eb20' : '#7c3aed20';
+                ctx.fill();
+                
+                // Connection dots
+                ctx.beginPath();
+                ctx.arc(mind.x + 10, mind.y - 20, 3, 0, Math.PI * 2);
+                ctx.arc(mind.x + 15, mind.y - 30, 2, 0, Math.PI * 2);
+                ctx.fillStyle = '#6b7280';
+                ctx.fill();
+            });
+            
+            // Belief states
+            const opacity = (Math.sin(beliefState) + 1) / 2;
+            ctx.strokeStyle = `rgba(124, 58, 237, ${opacity})`;
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(mind1.x + 30, mind1.y);
+            ctx.lineTo(mind2.x - 30, mind2.y);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            beliefState += 0.05;
+            requestAnimationFrame(drawCoreToM);
+        }
+        drawCoreToM();
     }
 }
 
-// Initialize research visualizations
-initResearchVisualizations();
+// Initialize new visualizations
+initNewResearchVisualizations();
 
 // Cybernetic visualizations
 function initCyberneticVisualizations() {
@@ -601,10 +735,10 @@ function createInsightsFlow() {
     
     // Create nodes
     const nodes = [
-        { x: 50, y: 100, label: 'Human\nCognition', color: '#2563eb' },
+        { x: 80, y: 100, label: 'Human\nCognition', color: '#2563eb' },
         { x: canvas.width / 2, y: 50, label: 'Theory', color: '#7c3aed' },
         { x: canvas.width / 2, y: 150, label: 'Practice', color: '#06b6d4' },
-        { x: canvas.width - 50, y: 100, label: 'AI\nSafety', color: '#10b981' }
+        { x: canvas.width - 80, y: 100, label: 'AI\nSafety', color: '#10b981' }
     ];
     
     // Create flowing particles
@@ -670,17 +804,17 @@ function createInsightsFlow() {
         // Draw nodes
         nodes.forEach(node => {
             ctx.beginPath();
-            ctx.arc(node.x, node.y, 25, 0, Math.PI * 2);
+            ctx.arc(node.x, node.y, 35, 0, Math.PI * 2);
             ctx.fillStyle = node.color;
             ctx.fill();
             
             ctx.fillStyle = 'white';
-            ctx.font = '12px Arial';
+            ctx.font = 'bold 11px Arial';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            const lines = node.label.split('\\n');
+            const lines = node.label.split('\n');
             lines.forEach((line, i) => {
-                ctx.fillText(line, node.x, node.y + (i - 0.5) * 14);
+                ctx.fillText(line, node.x, node.y + (i - 0.5) * 12);
             });
         });
         
@@ -777,92 +911,6 @@ function createAlignmentVisualization() {
 // Initialize alignment visualization
 createAlignmentVisualization();
 
-// Modal functionality
-const modal = document.getElementById('research-modal');
-const modalBody = document.getElementById('modal-body');
-const closeBtn = document.getElementsByClassName('close')[0];
-
-function openResearchModal(theme) {
-    const content = {
-        apophenia: `
-            <h2>Apophenia & Pattern Recognition in AI Systems</h2>
-            <p>Apophenia—the tendency to perceive meaningful patterns in random or meaningless data—offers crucial insights for AI safety research.</p>
-            <h3>Key Research Questions:</h3>
-            <ul>
-                <li>How do large language models develop spurious correlations during training?</li>
-                <li>Can we distinguish between genuine pattern recognition and false positives in AI systems?</li>
-                <li>What role does apophenia play in AI hallucinations and confabulations?</li>
-            </ul>
-            <h3>Applications to AI Safety:</h3>
-            <ul>
-                <li>Developing robust evaluation metrics for pattern recognition</li>
-                <li>Creating adversarial training methods to reduce false pattern detection</li>
-                <li>Understanding the balance between creativity and accuracy in AI outputs</li>
-            </ul>
-        `,
-        social: `
-            <h2>Social Cognition & Theory of Mind in AI</h2>
-            <p>Understanding how AI systems model human mental states is crucial for alignment and safety.</p>
-            <h3>Research Contributions:</h3>
-            <ul>
-                <li>Empirical studies on Theory of Mind in clinical populations</li>
-                <li>Neural mechanisms of perspective-taking and belief attribution</li>
-                <li>Social cognitive deficits and their computational models</li>
-            </ul>
-            <h3>AI Safety Applications:</h3>
-            <ul>
-                <li>Developing AI systems that accurately model human intentions</li>
-                <li>Creating benchmarks for social understanding in AI</li>
-                <li>Ensuring AI systems can predict and respect human values</li>
-            </ul>
-        `,
-        hallucination: `
-            <h2>Hallucination Mitigation Strategies</h2>
-            <p>Drawing from neuroscience research on perceptual distortions to improve AI reliability.</p>
-            <h3>Neuroscience Insights:</h3>
-            <ul>
-                <li>Predictive coding and its role in false perceptions</li>
-                <li>Top-down vs. bottom-up processing imbalances</li>
-                <li>Reality monitoring mechanisms in the brain</li>
-            </ul>
-            <h3>AI Implementation:</h3>
-            <ul>
-                <li>Uncertainty quantification in language models</li>
-                <li>Source attribution and citation mechanisms</li>
-                <li>Adversarial training against confabulation</li>
-            </ul>
-        `,
-        dcm: `
-            <h2>Dynamic Causal Modeling for AI Interpretability</h2>
-            <p>Applying neuroscience methods to understand information flow in AI systems.</p>
-            <h3>DCM Principles:</h3>
-            <ul>
-                <li>Modeling directional influences between system components</li>
-                <li>Inferring hidden states and their interactions</li>
-                <li>Understanding emergent behaviors from connectivity patterns</li>
-            </ul>
-            <h3>AI Safety Applications:</h3>
-            <ul>
-                <li>Mechanistic interpretability of neural networks</li>
-                <li>Identifying critical pathways for decision-making</li>
-                <li>Predicting system behavior under novel conditions</li>
-            </ul>
-        `
-    };
-    
-    modalBody.innerHTML = content[theme] || '<p>Content not available</p>';
-    modal.style.display = 'block';
-}
-
-closeBtn.onclick = function() {
-    modal.style.display = 'none';
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
-}
 
 // Add scroll animations
 const observerOptions = {
