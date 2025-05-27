@@ -22,6 +22,7 @@
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#research" class="nav-link">Research</a></li>
             <li><a href="#ai-safety" class="nav-link">AI Safety</a></li>
+            <li><a href="#blog" class="nav-link">Blog</a></li>
             <li><a href="#publications" class="nav-link">Publications</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -209,6 +210,77 @@
                 </div>
                 <div class="alignment-viz">
                     <canvas id="alignment-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog/Insights Section -->
+    <section id="blog" class="blog-section">
+        <div class="container">
+            <h2 class="section-title">Recent Insights & Research</h2>
+            <div class="blog-grid">
+                <!-- Blog Post Card -->
+                <div class="blog-card featured">
+                    <div class="blog-meta">
+                        <span class="blog-type">Blog Post</span>
+                        <span class="blog-date">SubStack</span>
+                    </div>
+                    <h3>Hallucinations Aren't New</h3>
+                    <h4>What Human Psychology Can Teach Us About AI Safety</h4>
+                    <blockquote class="blog-quote">
+                        "Seeing patterns where none exist might be less a bug than a feature, a survival-driven quirk that both humans and their AI creations can't quite shake."
+                    </blockquote>
+                    <p>Exploring how AI hallucinations mirror human apophenia and what this means for AI safety design.</p>
+                    <div class="blog-concepts">
+                        <span class="concept-tag">Apophenia</span>
+                        <span class="concept-tag">Predictive Processing</span>
+                        <span class="concept-tag">System 1 & 2</span>
+                    </div>
+                    <a href="https://scottdblain.substack.com/p/hallucinations-arent-new" target="_blank" class="read-more">
+                        Read Full Article →
+                    </a>
+                </div>
+                
+                <!-- Research Gist Card -->
+                <div class="blog-card research">
+                    <div class="blog-meta">
+                        <span class="blog-type">Research Demo</span>
+                        <span class="blog-date">GitHub Gist</span>
+                    </div>
+                    <h3>Metacognitive Self-Correction Framework</h3>
+                    <h4>Reducing AI Hallucinations by 71%</h4>
+                    <div class="results-highlight">
+                        <div class="result-stat">
+                            <span class="stat-label">Baseline</span>
+                            <span class="stat-value">7/7</span>
+                            <span class="stat-desc">hallucinations</span>
+                        </div>
+                        <div class="result-arrow">→</div>
+                        <div class="result-stat improved">
+                            <span class="stat-label">With Framework</span>
+                            <span class="stat-value">2/7</span>
+                            <span class="stat-desc">hallucinations</span>
+                        </div>
+                    </div>
+                    <p>A novel meta-prompt approach implementing epistemic humility and structured verification to dramatically reduce AI confabulation.</p>
+                    <div class="blog-concepts">
+                        <span class="concept-tag">Metacognition</span>
+                        <span class="concept-tag">Self-Correction</span>
+                        <span class="concept-tag">Epistemic Humility</span>
+                    </div>
+                    <a href="https://gist.github.com/ScottDougBlain/df9038db3af6239686c7a113a8ce7936" target="_blank" class="read-more">
+                        View Research →
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Connection Visualization -->
+            <div class="insights-connection">
+                <canvas id="insights-flow"></canvas>
+                <div class="connection-text">
+                    <h3>Bridging Theory & Practice</h3>
+                    <p>From understanding human cognitive biases to developing practical AI safety solutions</p>
                 </div>
             </div>
         </div>

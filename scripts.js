@@ -587,6 +587,112 @@ function drawArrowHead(ctx, x, y, angle, size, color) {
 // Initialize cybernetic visualizations
 initCyberneticVisualizations();
 
+// Insights Flow Visualization
+function createInsightsFlow() {
+    const canvas = document.getElementById('insights-flow');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth;
+    canvas.height = 200;
+    
+    let particles = [];
+    let connections = [];
+    
+    // Create nodes
+    const nodes = [
+        { x: 50, y: 100, label: 'Human\nCognition', color: '#2563eb' },
+        { x: canvas.width / 2, y: 50, label: 'Theory', color: '#7c3aed' },
+        { x: canvas.width / 2, y: 150, label: 'Practice', color: '#06b6d4' },
+        { x: canvas.width - 50, y: 100, label: 'AI\nSafety', color: '#10b981' }
+    ];
+    
+    // Create flowing particles
+    function createParticle(startNode, endNode) {
+        return {
+            x: startNode.x,
+            y: startNode.y,
+            targetX: endNode.x,
+            targetY: endNode.y,
+            progress: 0,
+            speed: 0.01 + Math.random() * 0.01,
+            startNode: startNode,
+            endNode: endNode
+        };
+    }
+    
+    // Initialize particles
+    setInterval(() => {
+        if (particles.length < 20) {
+            particles.push(createParticle(nodes[0], nodes[1]));
+            particles.push(createParticle(nodes[0], nodes[2]));
+            particles.push(createParticle(nodes[1], nodes[3]));
+            particles.push(createParticle(nodes[2], nodes[3]));
+        }
+    }, 500);
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw connections
+        ctx.strokeStyle = '#e5e7eb';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(nodes[0].x, nodes[0].y);
+        ctx.lineTo(nodes[1].x, nodes[1].y);
+        ctx.lineTo(nodes[3].x, nodes[3].y);
+        ctx.moveTo(nodes[0].x, nodes[0].y);
+        ctx.lineTo(nodes[2].x, nodes[2].y);
+        ctx.lineTo(nodes[3].x, nodes[3].y);
+        ctx.stroke();
+        
+        // Update and draw particles
+        particles = particles.filter(particle => {
+            particle.progress += particle.speed;
+            
+            if (particle.progress >= 1) {
+                return false;
+            }
+            
+            // Calculate position along path
+            particle.x = particle.startNode.x + (particle.targetX - particle.startNode.x) * particle.progress;
+            particle.y = particle.startNode.y + (particle.targetY - particle.startNode.y) * particle.progress;
+            
+            // Draw particle
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, 3, 0, Math.PI * 2);
+            ctx.fillStyle = particle.startNode.color + '80';
+            ctx.fill();
+            
+            return true;
+        });
+        
+        // Draw nodes
+        nodes.forEach(node => {
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, 25, 0, Math.PI * 2);
+            ctx.fillStyle = node.color;
+            ctx.fill();
+            
+            ctx.fillStyle = 'white';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            const lines = node.label.split('\\n');
+            lines.forEach((line, i) => {
+                ctx.fillText(line, node.x, node.y + (i - 0.5) * 14);
+            });
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+}
+
+// Initialize insights flow
+createInsightsFlow();
+
 // AI Alignment visualization
 function createAlignmentVisualization() {
     const canvas = document.getElementById('alignment-canvas');
