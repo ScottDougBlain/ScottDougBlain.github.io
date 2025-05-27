@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scott Blain - AI Safety & Cognitive Science Research</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Neural Network Background Animation -->
+    <div id="neural-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-brand">Scott Blain</div>
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#research" class="nav-link">Research</a></li>
+            <li><a href="#ai-safety" class="nav-link">AI Safety</a></li>
+            <li><a href="#publications" class="nav-link">Publications</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="Scott Blain">Scott Blain</h1>
+            <p class="hero-subtitle">Bridging Cognitive Science & AI Safety Research</p>
+            <div class="hero-tags">
+                <span class="tag">Social Cognition</span>
+                <span class="tag">Hallucination Mitigation</span>
+                <span class="tag">Theory of Mind</span>
+                <span class="tag">AI Alignment</span>
+            </div>
+            <div class="hero-cta">
+                <a href="#research" class="btn btn-primary">Explore Research</a>
+                <a href="Scott Blain RESUME 2025.docx" class="btn btn-secondary" download>Download Resume</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div id="mind-network"></div>
+        </div>
+    </section>
+
+    <!-- Research Themes Section -->
+    <section id="research" class="research-section">
+        <div class="container">
+            <h2 class="section-title">Research Themes</h2>
+            <div class="research-grid">
+                <!-- Apophenia & Pattern Recognition -->
+                <div class="research-card" data-theme="apophenia">
+                    <div class="card-icon">
+                        <canvas id="apophenia-viz"></canvas>
+                    </div>
+                    <h3>Apophenia & Pattern Recognition</h3>
+                    <p>Investigating the tendency to perceive meaningful patterns in random data and its implications for AI systems.</p>
+                    <button class="explore-btn" onclick="openResearchModal('apophenia')">Explore Concept</button>
+                </div>
+
+                <!-- Social Cognition -->
+                <div class="research-card" data-theme="social">
+                    <div class="card-icon">
+                        <canvas id="social-viz"></canvas>
+                    </div>
+                    <h3>Social Cognition & Theory of Mind</h3>
+                    <p>Understanding how humans and AI systems model others' mental states and beliefs.</p>
+                    <button class="explore-btn" onclick="openResearchModal('social')">Explore Concept</button>
+                </div>
+
+                <!-- Hallucination Mitigation -->
+                <div class="research-card" data-theme="hallucination">
+                    <div class="card-icon">
+                        <canvas id="hallucination-viz"></canvas>
+                    </div>
+                    <h3>Hallucination Mitigation</h3>
+                    <p>Developing methods to reduce false or unsupported outputs in AI systems.</p>
+                    <button class="explore-btn" onclick="openResearchModal('hallucination')">Explore Concept</button>
+                </div>
+
+                <!-- Dynamic Causal Modeling -->
+                <div class="research-card" data-theme="dcm">
+                    <div class="card-icon">
+                        <canvas id="dcm-viz"></canvas>
+                    </div>
+                    <h3>Dynamic Causal Modeling</h3>
+                    <p>Applying neuroscience methods to understand information flow in cognitive and AI systems.</p>
+                    <button class="explore-btn" onclick="openResearchModal('dcm')">Explore Concept</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Safety Pivot Section -->
+    <section id="ai-safety" class="ai-safety-section">
+        <div class="container">
+            <h2 class="section-title">Pivoting to AI Safety Research</h2>
+            <div class="pivot-content">
+                <div class="pivot-narrative">
+                    <p>My journey from cognitive neuroscience to AI safety research represents a natural evolution of understanding intelligence systems—from biological to artificial.</p>
+                    <div class="skill-transfer">
+                        <h3>Transferable Expertise</h3>
+                        <div class="skill-grid">
+                            <div class="skill-item">
+                                <span class="skill-icon">🧠</span>
+                                <h4>Cognitive Modeling</h4>
+                                <p>Deep understanding of how minds process information and make decisions</p>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-icon">📊</span>
+                                <h4>Statistical Analysis</h4>
+                                <p>Advanced methods for understanding complex systems and their behaviors</p>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-icon">🔬</span>
+                                <h4>Experimental Design</h4>
+                                <p>Rigorous approaches to testing hypotheses about intelligent behavior</p>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-icon">🤖</span>
+                                <h4>AI Understanding</h4>
+                                <p>Bridging human cognition insights to artificial intelligence challenges</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="alignment-viz">
+                    <canvas id="alignment-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="publications-section">
+        <div class="container">
+            <h2 class="section-title">Selected Publications</h2>
+            <div class="publications-grid">
+                <a href="SchizBull.pdf" class="pub-card" target="_blank">
+                    <div class="pub-icon">📄</div>
+                    <h4>Schizophrenia Research</h4>
+                    <p>Investigations into cognitive mechanisms</p>
+                </a>
+                <a href="ToM.pdf" class="pub-card" target="_blank">
+                    <div class="pub-icon">📄</div>
+                    <h4>Theory of Mind Studies</h4>
+                    <p>Understanding mental state attribution</p>
+                </a>
+                <a href="Gaze.pdf" class="pub-card" target="_blank">
+                    <div class="pub-icon">📄</div>
+                    <h4>Gaze & Attention Research</h4>
+                    <p>Visual attention in social contexts</p>
+                </a>
+                <a href="DCM.pdf" class="pub-card" target="_blank">
+                    <div class="pub-icon">📄</div>
+                    <h4>Dynamic Causal Modeling</h4>
+                    <p>Neural connectivity analysis methods</p>
+                </a>
+            </div>
+            <div class="full-publications">
+                <a href="Blain_CV.pdf" class="btn btn-primary" target="_blank">View Full CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Connect</h2>
+            <div class="contact-content">
+                <p>Interested in collaborating on AI safety research or discussing cognitive science applications to AI alignment?</p>
+                <div class="contact-links">
+                    <a href="mailto:scottdougblain@gmail.com" class="contact-link">
+                        <span class="icon">✉️</span> Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/scott-blain-phd/" class="contact-link" target="_blank">
+                        <span class="icon">💼</span> LinkedIn
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=NL_JEtkAAAAJ&hl=en" class="contact-link" target="_blank">
+                        <span class="icon">🎓</span> Google Scholar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Modal -->
+    <div id="research-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
