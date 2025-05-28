@@ -345,8 +345,17 @@ function initPareidoliaPlayground() {
     // Set canvas dimensions
     function resizeCanvas() {
         const rect = canvas.getBoundingClientRect();
-        canvas.width = rect.width || 400;
-        canvas.height = rect.height || 300;
+        const width = rect.width || 400;
+        const height = rect.height || 300;
+        
+        console.log('Pareidolia canvas resize - rect:', width, 'x', height);
+        
+        // Ensure minimum dimensions
+        canvas.width = Math.max(width, 300);
+        canvas.height = Math.max(height, 200);
+        
+        console.log('Pareidolia canvas internal size set to:', canvas.width, 'x', canvas.height);
+        
         generateStars(); // Regenerate stars when canvas resizes
         draw();
     }
@@ -357,13 +366,18 @@ function initPareidoliaPlayground() {
     function generateStars() {
         stars = [];
         const numStars = 50;
+        console.log('Generating', numStars, 'stars for canvas size:', canvas.width, 'x', canvas.height);
+        
         for (let i = 0; i < numStars; i++) {
-            stars.push({
+            const star = {
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 size: Math.random() * 2 + 1
-            });
+            };
+            stars.push(star);
         }
+        
+        console.log('Generated', stars.length, 'stars. First star:', stars[0]);
     }
     
     generateStars();
