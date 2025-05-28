@@ -192,8 +192,9 @@ function initializeInteractiveDemos() {
         const meanings = document.getElementById('pattern-meanings');
         console.log('Pareidolia elements found:', { canvas: !!canvas, slider: !!slider, meanings: !!meanings });
         
-        initPareidoliaPlayground();
-        console.log('✅ Pareidolia playground initialized');
+        // Temporarily disable main function to test canvas independently
+        // initPareidoliaPlayground();
+        console.log('✅ Pareidolia playground initialization skipped for testing');
     } catch (e) {
         console.error('❌ Pareidolia error:', e);
     }
