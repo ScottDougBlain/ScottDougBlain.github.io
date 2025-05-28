@@ -2084,14 +2084,15 @@ a, button {
     color: var(--text-primary);
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
+    font-weight: 600;
 }
 
 .output-before h5 {
-    color: #ff6b6b;
+    color: #ef4444; /* Red from the bar chart */
 }
 
 .output-after h5 {
-    color: #4ade80;
+    color: #6366f1; /* Indigo from the bar chart */
 }
 
 .sample-output {
@@ -2103,11 +2104,11 @@ a, button {
 }
 
 .output-before .sample-output {
-    border-color: rgba(255, 107, 107, 0.3);
+    border-color: rgba(239, 68, 68, 0.3); /* Red border to match bar chart */
 }
 
 .output-after .sample-output {
-    border-color: rgba(74, 222, 128, 0.3);
+    border-color: rgba(99, 102, 241, 0.3); /* Indigo border to match bar chart */
 }
 
 @media (max-width: 768px) {
