@@ -172,6 +172,36 @@ a, button {
     position: relative;
 }
 
+.hero-title {
+    margin-bottom: 1.5rem;
+}
+
+.name-primary {
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    text-shadow: none;
+    letter-spacing: 0.05em;
+}
+
+.hero-tagline {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.hero-mission {
+    font-size: 1.25rem;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
 .hero-description {
     font-size: 1.1rem;
     line-height: 1.8;
@@ -272,23 +302,70 @@ a, button {
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .tag {
-    background: var(--bg-secondary);
+    background: var(--card-bg);
     border: 1px solid var(--border-color);
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     font-size: 0.875rem;
-    color: var(--text-secondary);
+    color: var(--gray);
     transition: all 0.3s ease;
+    font-weight: 500;
 }
 
-.tag:hover {
-    background: var(--primary-color);
+.tag:nth-child(1), .tag:nth-child(3), .tag:nth-child(5) {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     color: white;
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+.tag:nth-child(2), .tag:nth-child(4) {
+    background: transparent;
+    border: none;
+    color: var(--accent);
+    font-size: 1.2rem;
+    padding: 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+.stat-label small {
+    font-size: 0.8em;
+    color: var(--gray);
+    font-weight: 300;
+}
+
+/* Particle animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-20px) scale(1.1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-40px) scale(0.9);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translateY(-20px) scale(1.05);
+        opacity: 0.5;
+    }
+}
+
+.particle {
+    pointer-events: none;
+    z-index: 1;
 }
 
 .hero-cta {
@@ -1616,6 +1693,58 @@ a, button {
     color: var(--dark);
 }
 
+/* Career Focus Section */
+.career-focus-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+}
+
+.career-statement {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--card-bg);
+    border: 2px solid var(--primary);
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+}
+
+.career-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.career-statement h3 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.career-statement p {
+    color: var(--gray);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.career-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.keyword {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
 #mission-viz {
     width: 100%;
     height: 200px;
@@ -2134,8 +2263,21 @@ a, button {
         text-align: center;
     }
     
-    .glitch {
+    .name-primary {
         font-size: 2.5rem;
+    }
+    
+    .hero-tagline {
+        font-size: 1.25rem;
+    }
+    
+    .hero-mission {
+        font-size: 1.1rem;
+    }
+    
+    .hero-tags {
+        flex-direction: column;
+        gap: 0.5rem;
     }
     
     .hero-stats {
@@ -2209,6 +2351,15 @@ a, button {
     /* Hide custom cursor on mobile */
     .cursor, .cursor-dot {
         display: none;
+    }
+    
+    .career-statement {
+        padding: 2rem;
+    }
+    
+    .career-keywords {
+        flex-direction: column;
+        align-items: center;
     }
     
     body {

@@ -22,12 +22,58 @@ if (!isMobile) {
     }
 }
 
+// Animated counters
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number[data-count]');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            counter.textContent = Math.floor(current);
+        }, 16);
+    });
+}
+
+// Simple particle background
+function createParticles() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    // Create subtle particles
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation: float ${3 + Math.random() * 4}s ease-in-out infinite;
+            animation-delay: ${Math.random() * 2}s;
+        `;
+        hero.appendChild(particle);
+    }
+}
+
 // Typewriter effect
 const taglines = [
-    "Bridging Cognitive Science & AI Safety",
-    "From Apophenia to AI Hallucinations",
-    "Making AI Systems More Human-Compatible",
-    "35+ Publications → 1 Mission: Safe AI"
+    "From understanding human minds to building safe AI systems",
+    "Bridging pattern detection research with hallucination mitigation",
+    "Applying theory of mind insights to AI alignment challenges",
+    "Translating 35+ publications into practical AI safety solutions"
 ];
 
 let taglineIndex = 0;
@@ -107,13 +153,28 @@ document.querySelectorAll('.research-pillar, .timeline-item, .contribution-card,
     observer.observe(el);
 });
 
-// Add glitch effect on hover for hero title
-const glitchText = document.querySelector('.glitch');
-if (glitchText) {
-    glitchText.addEventListener('mouseenter', () => {
-        glitchText.classList.add('glitching');
-        setTimeout(() => {
-            glitchText.classList.remove('glitching');
-        }, 500);
+// Initialize enhancements
+document.addEventListener('DOMContentLoaded', () => {
+    // Start typewriter after a brief delay
+    setTimeout(() => {
+        typeWriter();
+    }, 1000);
+    
+    // Animate counters when they come into view
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                statsObserver.unobserve(entry.target);
+            }
+        });
     });
-}
+    
+    const statsSection = document.querySelector('.hero-stats');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+    
+    // Create particle background
+    createParticles();
+});
