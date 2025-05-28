@@ -1278,12 +1278,25 @@ createFeedbackSystem();
 
 // Journey Timeline Visualizations
 function createTimelineVisualizations() {
+    console.log('Creating timeline visualizations...');
+    
+    // Helper function to get canvas dimensions
+    function getCanvasDimensions(canvas) {
+        const rect = canvas.getBoundingClientRect();
+        const computedStyle = window.getComputedStyle(canvas);
+        const width = rect.width || parseInt(computedStyle.width) || 400;
+        const height = rect.height || parseInt(computedStyle.height) || 300;
+        return { width: Math.max(width, 100), height: Math.max(height, 100) };
+    }
+    
     // Brain Visualization
     const brainCanvas = document.getElementById('brain-viz');
     if (brainCanvas) {
         const ctx = brainCanvas.getContext('2d');
-        brainCanvas.width = brainCanvas.offsetWidth;
-        brainCanvas.height = 300;
+        const dims = getCanvasDimensions(brainCanvas);
+        brainCanvas.width = dims.width;
+        brainCanvas.height = dims.height;
+        console.log('Brain canvas dimensions:', dims);
         
         let neurons = [];
         let connections = [];
@@ -1345,8 +1358,10 @@ function createTimelineVisualizations() {
     const patternCanvas = document.getElementById('pattern-viz');
     if (patternCanvas) {
         const ctx = patternCanvas.getContext('2d');
-        patternCanvas.width = patternCanvas.offsetWidth;
-        patternCanvas.height = 300;
+        const dims = getCanvasDimensions(patternCanvas);
+        patternCanvas.width = dims.width;
+        patternCanvas.height = dims.height;
+        console.log('Pattern canvas dimensions:', dims);
         
         let dots = [];
         let time = 0;
@@ -1412,8 +1427,10 @@ function createTimelineVisualizations() {
     const tomCanvas = document.getElementById('tom-timeline-viz');
     if (tomCanvas) {
         const ctx = tomCanvas.getContext('2d');
-        tomCanvas.width = tomCanvas.offsetWidth;
-        tomCanvas.height = 300;
+        const dims = getCanvasDimensions(tomCanvas);
+        tomCanvas.width = dims.width;
+        tomCanvas.height = dims.height;
+        console.log('ToM canvas dimensions:', dims);
         
         let agents = [];
         let thoughtBubbles = [];
@@ -1487,8 +1504,10 @@ function createTimelineVisualizations() {
     const aiSafetyCanvas = document.getElementById('ai-safety-viz');
     if (aiSafetyCanvas) {
         const ctx = aiSafetyCanvas.getContext('2d');
-        aiSafetyCanvas.width = aiSafetyCanvas.offsetWidth;
-        aiSafetyCanvas.height = 300;
+        const dims = getCanvasDimensions(aiSafetyCanvas);
+        aiSafetyCanvas.width = dims.width;
+        aiSafetyCanvas.height = dims.height;
+        console.log('AI Safety canvas dimensions:', dims);
         
         let shield = {
             x: aiSafetyCanvas.width / 2,
@@ -1572,8 +1591,12 @@ function createMissionVisualization() {
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = 200;
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width || parseInt(window.getComputedStyle(canvas).width) || 400;
+    const height = rect.height || parseInt(window.getComputedStyle(canvas).height) || 200;
+    canvas.width = Math.max(width, 100);
+    canvas.height = Math.max(height, 100);
+    console.log('Mission canvas dimensions:', canvas.width, canvas.height);
     
     let nodes = [];
     let connections = [];
@@ -1658,8 +1681,12 @@ function createPublicationsNetwork() {
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = 400;
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width || parseInt(window.getComputedStyle(canvas).width) || 600;
+    const height = rect.height || parseInt(window.getComputedStyle(canvas).height) || 400;
+    canvas.width = Math.max(width, 100);
+    canvas.height = Math.max(height, 100);
+    console.log('Publications canvas dimensions:', canvas.width, canvas.height);
     
     // Define publication nodes
     const publications = [
@@ -1752,13 +1779,24 @@ function createPublicationsNetwork() {
 
 // Initialize all visualizations
 function initializeAllVisualizations() {
-    createTimelineVisualizations();
-    createMissionVisualization();
-    createPublicationsNetwork();
+    console.log('Initializing all visualizations...');
+    
+    // Add delay to ensure DOM layout is complete
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            createTimelineVisualizations();
+            createMissionVisualization();
+            createPublicationsNetwork();
+        }, 200);
+    });
 }
 
-// Call initialization
-initializeAllVisualizations();
+// Call initialization when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAllVisualizations);
+} else {
+    initializeAllVisualizations();
+}
 
 // Hidden section visualizations (in case they're shown)
 function initializeHiddenSectionVisualizations() {
