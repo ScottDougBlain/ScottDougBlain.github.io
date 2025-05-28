@@ -192,9 +192,8 @@ function initializeInteractiveDemos() {
         const meanings = document.getElementById('pattern-meanings');
         console.log('Pareidolia elements found:', { canvas: !!canvas, slider: !!slider, meanings: !!meanings });
         
-        // Temporarily disable main function to test canvas independently
-        // initPareidoliaPlayground();
-        console.log('✅ Pareidolia playground initialization skipped for testing');
+        initPareidoliaPlayground();
+        console.log('✅ Pareidolia playground initialized');
     } catch (e) {
         console.error('❌ Pareidolia error:', e);
     }
@@ -343,6 +342,42 @@ function initPareidoliaPlayground() {
     const ctx = canvas.getContext('2d');
     let stars = [];
     
+    // Predefined constellation patterns (moved here to avoid initialization error)
+    const constellations = [
+        // Simple patterns that emerge first
+        {
+            name: "Triangle",
+            stars: [0, 1, 2],
+            threshold: 0.3,
+            color: 'rgba(139, 92, 246, 0.6)'
+        },
+        {
+            name: "Big Dipper",
+            stars: [5, 8, 12, 15, 18, 22, 25],
+            threshold: 0.4,
+            color: 'rgba(15, 118, 110, 0.6)'
+        },
+        // More complex patterns at higher sensitivity
+        {
+            name: "Face",
+            stars: [3, 7, 11, 19, 23, 28],
+            threshold: 0.6,
+            color: 'rgba(255, 165, 0, 0.6)'
+        },
+        {
+            name: "Message Pattern",
+            stars: [1, 4, 9, 14, 20, 26, 30, 35],
+            threshold: 0.7,
+            color: 'rgba(220, 38, 38, 0.6)'
+        },
+        {
+            name: "Divine Connection",
+            stars: [2, 6, 10, 16, 21, 27, 32, 38, 42],
+            threshold: 0.8,
+            color: 'rgba(168, 85, 247, 0.8)'
+        }
+    ];
+    
     // Set canvas dimensions
     function resizeCanvas() {
         const rect = canvas.getBoundingClientRect();
@@ -382,42 +417,6 @@ function initPareidoliaPlayground() {
     }
     
     generateStars();
-    
-    // Predefined constellation patterns
-    const constellations = [
-        // Simple patterns that emerge first
-        {
-            name: "Triangle",
-            stars: [0, 1, 2],
-            threshold: 0.3,
-            color: 'rgba(139, 92, 246, 0.6)'
-        },
-        {
-            name: "Big Dipper",
-            stars: [5, 8, 12, 15, 18, 22, 25],
-            threshold: 0.4,
-            color: 'rgba(15, 118, 110, 0.6)'
-        },
-        // More complex patterns at higher sensitivity
-        {
-            name: "Face",
-            stars: [3, 7, 11, 19, 23, 28],
-            threshold: 0.6,
-            color: 'rgba(255, 165, 0, 0.6)'
-        },
-        {
-            name: "Message Pattern",
-            stars: [1, 4, 9, 14, 20, 26, 30, 35],
-            threshold: 0.7,
-            color: 'rgba(220, 38, 38, 0.6)'
-        },
-        {
-            name: "Divine Connection",
-            stars: [2, 6, 10, 16, 21, 27, 32, 38, 42],
-            threshold: 0.8,
-            color: 'rgba(168, 85, 247, 0.8)'
-        }
-    ];
     
     function updateInterpretations(sensitivity) {
         if (sensitivity < 0.15) {
@@ -480,7 +479,6 @@ function initPareidoliaPlayground() {
     
     function draw() {
         const sensitivity = parseFloat(slider.value) / 100;
-        console.log('Drawing pareidolia with sensitivity:', sensitivity);
         
         // Clear canvas
         ctx.fillStyle = '#0a0e27';
