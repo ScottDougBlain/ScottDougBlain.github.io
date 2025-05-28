@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPersonalityPentagon();
     
     // Initialize Theory of Mind Demo
-    if (document.querySelector('.tom-interactive')) {
+    if (document.querySelector('.tom-interactive-embedded')) {
         TOMDemo.init();
     }
 });
