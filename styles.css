@@ -553,6 +553,45 @@ a, button {
     line-height: 1.6;
 }
 
+/* Video Container for ToM Visualization */
+.tom-visualization {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(139, 92, 246, 0.05);
+    border-radius: 1rem;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.tom-visualization h4 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.video-caption {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
 /* Pareidolia Playground */
 .pareidolia-playground {
     margin-top: 2rem;
