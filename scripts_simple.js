@@ -176,17 +176,67 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create particle background
     createParticles();
     
+    // Initialize demos with error logging
+    initializeInteractiveDemos();
+});
+
+// Initialize all interactive demos with comprehensive error logging
+function initializeInteractiveDemos() {
+    console.log('🚀 Initializing all interactive demos...');
+    
     // Initialize Pareidolia Playground
-    initPareidoliaPlayground();
+    try {
+        console.log('🌟 Initializing Pareidolia Playground...');
+        const canvas = document.getElementById('constellation-canvas');
+        const slider = document.getElementById('pattern-slider');
+        const meanings = document.getElementById('pattern-meanings');
+        console.log('Pareidolia elements found:', { canvas: !!canvas, slider: !!slider, meanings: !!meanings });
+        
+        initPareidoliaPlayground();
+        console.log('✅ Pareidolia playground initialized');
+    } catch (e) {
+        console.error('❌ Pareidolia error:', e);
+    }
     
     // Initialize Personality Pentagon
-    initPersonalityPentagon();
+    try {
+        console.log('🔷 Initializing Personality Pentagon...');
+        const canvas = document.getElementById('pentagon-chart');
+        console.log('Pentagon canvas found:', !!canvas);
+        if (canvas) {
+            console.log('Canvas dimensions:', canvas.offsetWidth, 'x', canvas.offsetHeight);
+        }
+        
+        initPersonalityPentagon();
+        console.log('✅ Pentagon initialized');
+    } catch (e) {
+        console.error('❌ Pentagon error:', e);
+    }
     
     // Initialize Theory of Mind Demo
-    if (document.querySelector('.tom-interactive-embedded')) {
-        TOMDemo.init();
+    try {
+        console.log('🧠 Initializing TOM Demo...');
+        const tomContainer = document.querySelector('.tom-interactive-embedded');
+        const startButton = document.getElementById('start-test');
+        const storyContent = document.getElementById('story-content');
+        console.log('TOM elements found:', { 
+            container: !!tomContainer, 
+            startButton: !!startButton, 
+            storyContent: !!storyContent 
+        });
+        
+        if (tomContainer) {
+            TOMDemo.init();
+            console.log('✅ TOM Demo initialized');
+        } else {
+            console.warn('⚠️ TOM container not found');
+        }
+    } catch (e) {
+        console.error('❌ TOM Demo error:', e);
     }
-});
+    
+    console.log('🏁 Demo initialization complete');
+}
 
 // Pareidolia Playground - Noise to Face Slider
 function initPareidoliaPlayground() {
@@ -195,7 +245,17 @@ function initPareidoliaPlayground() {
     const meanings = document.getElementById('pattern-meanings');
     const regenerateBtn = document.getElementById('regenerate-stars');
     
-    if (!canvas || !slider || !meanings) return;
+    console.log('Pareidolia elements check:', {
+        canvas: !!canvas,
+        slider: !!slider, 
+        meanings: !!meanings,
+        regenerateBtn: !!regenerateBtn
+    });
+    
+    if (!canvas || !slider || !meanings) {
+        console.error('Missing required pareidolia elements');
+        return;
+    }
     
     const ctx = canvas.getContext('2d');
     let stars = [];
@@ -323,6 +383,7 @@ function initPareidoliaPlayground() {
     
     function draw() {
         const sensitivity = parseFloat(slider.value) / 100;
+        console.log('Drawing pareidolia with sensitivity:', sensitivity);
         
         // Clear canvas
         ctx.fillStyle = '#0a0e27';
@@ -382,7 +443,10 @@ function initPareidoliaPlayground() {
     draw();
     
     // Update on slider change
-    slider.addEventListener('input', draw);
+    slider.addEventListener('input', () => {
+        console.log('Pareidolia slider changed to:', slider.value);
+        draw();
+    });
     
     // Regenerate stars button
     if (regenerateBtn) {
@@ -396,12 +460,18 @@ function initPareidoliaPlayground() {
 // Personality Pentagon Chart
 function initPersonalityPentagon() {
     const canvas = document.getElementById('pentagon-chart');
-    if (!canvas) return;
+    console.log('Pentagon canvas element:', canvas);
+    if (!canvas) {
+        console.error('Pentagon canvas not found!');
+        return;
+    }
     
     const ctx = canvas.getContext('2d');
+    console.log('Pentagon canvas context:', ctx);
     
     // Draw pentagon function (defined early for use in resizeCanvas)
     function drawPentagon() {
+        console.log('Drawing pentagon, canvas size:', canvas.width, 'x', canvas.height);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         const centerX = getCenterX();
         const centerY = getCenterY();
@@ -713,10 +783,37 @@ const TOMDemo = {
     userAnswers: [],
     
     init() {
-        document.getElementById('story-content').textContent = this.story.text;
-        document.getElementById('start-test').addEventListener('click', () => this.startTest());
-        document.getElementById('submit-answer').addEventListener('click', () => this.submitAnswer());
-        document.getElementById('restart-test').addEventListener('click', () => this.restart());
+        console.log('TOM Demo init called');
+        const storyContent = document.getElementById('story-content');
+        const startButton = document.getElementById('start-test');
+        const submitButton = document.getElementById('submit-answer');
+        const restartButton = document.getElementById('restart-test');
+        
+        console.log('TOM elements found in init:', {
+            storyContent: !!storyContent,
+            startButton: !!startButton,
+            submitButton: !!submitButton,
+            restartButton: !!restartButton
+        });
+        
+        if (storyContent) {
+            storyContent.textContent = this.story.text;
+        }
+        
+        if (startButton) {
+            startButton.addEventListener('click', () => {
+                console.log('Start test button clicked');
+                this.startTest();
+            });
+        }
+        
+        if (submitButton) {
+            submitButton.addEventListener('click', () => this.submitAnswer());
+        }
+        
+        if (restartButton) {
+            restartButton.addEventListener('click', () => this.restart());
+        }
     },
     
     startTest() {
