@@ -166,10 +166,18 @@ a, button {
 
 .hero-content {
     flex: 1;
-    max-width: 800px;
+    max-width: 900px;
     text-align: center;
     z-index: 2;
     position: relative;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--gray);
+    margin: 2rem auto;
+    max-width: 750px;
 }
 
 .typewriter {
@@ -319,6 +327,27 @@ a, button {
     color: white;
 }
 
+.btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: none;
+    margin: 0 0.5rem;
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: var(--dark);
+    transform: translateY(-2px);
+    box-shadow: var(--glow);
+}
+
 .hero-visual {
     display: none; /* Hidden in new design */
 }
@@ -327,6 +356,19 @@ a, button {
 .journey-section {
     padding: 5rem 2rem;
     background: var(--darker);
+}
+
+.journey-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--gray);
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    padding: 2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
 }
 
 .timeline {
@@ -1325,6 +1367,29 @@ a, button {
     background: var(--darker);
 }
 
+.ai-safety-philosophy {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.ai-safety-philosophy h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.ai-safety-philosophy p {
+    color: var(--gray);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .contributions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1434,6 +1499,87 @@ a, button {
 }
 
 /* Current Mission */
+.ai-safety-training {
+    margin-bottom: 4rem;
+}
+
+.ai-safety-training h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.training-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.training-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.training-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.training-item h4 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.training-item p {
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+.future-directions {
+    margin-bottom: 4rem;
+}
+
+.future-directions h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.research-ideas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.idea-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--secondary);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.idea-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(255, 0, 110, 0.1);
+}
+
+.idea-card h4 {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.idea-card p {
+    color: var(--gray);
+    line-height: 1.6;
+}
+
 .current-mission {
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     padding: 3rem;
@@ -1453,6 +1599,21 @@ a, button {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.mission-cta {
+    margin-top: 2rem;
+}
+
+.mission-cta .btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+}
+
+.mission-cta .btn:hover {
+    background: white;
+    color: var(--dark);
 }
 
 #mission-viz {
