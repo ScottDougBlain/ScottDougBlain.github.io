@@ -3168,6 +3168,90 @@ a, button {
     padding-left: 1rem;
 }
 
+/* Hallucination Framework Styling */
+.hallucination-framework {
+    background: rgba(139, 92, 246, 0.05);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.featured-framework h4 {
+    color: var(--accent);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.framework-results {
+    margin-bottom: 2rem;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.result-stat {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(10, 14, 39, 0.6);
+    border-radius: 0.5rem;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.framework-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.step {
+    background: rgba(10, 14, 39, 0.4);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 3px solid var(--primary);
+}
+
+.step h5 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.step p {
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.implementation-note {
+    background: rgba(15, 118, 110, 0.1);
+    border-left: 3px solid var(--primary);
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+}
+
+.implementation-note p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
 /* Model Behavior Experience Section */
 .model-behavior-section {
     padding: 5rem 0;
