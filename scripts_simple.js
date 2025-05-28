@@ -192,11 +192,14 @@ function initPareidoliaPlayground() {
     
     const ctx = canvas.getContext('2d');
     
-    // Set canvas dimensions
+    // Set canvas dimensions with better aspect ratio
     function resizeCanvas() {
         const rect = canvas.getBoundingClientRect();
         canvas.width = rect.width;
         canvas.height = rect.height;
+        // Ensure minimum dimensions for proper visualization
+        if (canvas.width < 300) canvas.width = 300;
+        if (canvas.height < 250) canvas.height = 250;
     }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
@@ -365,7 +368,7 @@ function initPersonalityPentagon() {
     const ctx = canvas.getContext('2d');
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
-    const radius = 80;
+    const radius = 90;
     
     // Five factors
     const factors = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Neuroticism'];
@@ -503,8 +506,8 @@ function initPersonalityPentagon() {
         
         for (let i = 0; i < 5; i++) {
             const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
-            const x = centerX + Math.cos(angle) * (radius + 20);
-            const y = centerY + Math.sin(angle) * (radius + 20);
+            const x = centerX + Math.cos(angle) * (radius + 25);
+            const y = centerY + Math.sin(angle) * (radius + 25);
             ctx.fillText(factors[i], x, y);
         }
     }
