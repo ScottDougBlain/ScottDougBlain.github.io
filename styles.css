@@ -3506,6 +3506,19 @@ a, button {
 /* Brief highlight cards for simplified experience section */
 .highlight-card.brief {
     padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.highlight-card.brief .highlight-header {
+    margin-bottom: 1rem;
+}
+
+.highlight-card.brief .impact-badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-left: 1rem;
+    display: inline-block;
 }
 
 .highlight-card.brief .highlight-content {
