@@ -398,7 +398,7 @@ function initPersonalityPentagon() {
     // Five factors with OCEAN labels
     const factors = ['O', 'C', 'E', 'A', 'N'];
     const fullNames = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Neuroticism'];
-    const colors = ['#8b5cf6', '#0f766e', '#f59e0b', '#3b82f6', '#ef4444']; // Purple, Teal, Amber, Blue, Red
+    const colors = ['#8b5cf6', '#0f766e', '#d97706', '#4f46e5', '#c026d3']; // Purple, Teal, Dark Gold, Dark Indigo, Dark Magenta
     const values = {
         openness: 50,
         conscientiousness: 50,

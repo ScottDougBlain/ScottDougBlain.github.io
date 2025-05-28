@@ -652,11 +652,17 @@ a, button {
 }
 
 .ocean-legend strong {
-    color: var(--accent);
     margin-right: 0.3rem;
     font-size: 1.1rem;
     font-weight: 700;
 }
+
+/* Individual colors for OCEAN letters */
+.ocean-legend span:nth-child(1) strong { color: #8b5cf6; } /* O - Purple */
+.ocean-legend span:nth-child(2) strong { color: #0f766e; } /* C - Teal */
+.ocean-legend span:nth-child(3) strong { color: #d97706; } /* E - Dark Gold */
+.ocean-legend span:nth-child(4) strong { color: #4f46e5; } /* A - Dark Indigo */
+.ocean-legend span:nth-child(5) strong { color: #c026d3; } /* N - Dark Magenta */
 
 .factor-controls {
     width: 100%;
@@ -674,8 +680,15 @@ a, button {
 
 .factor-slider label {
     font-size: 0.9rem;
-    color: var(--text-primary);
+    font-weight: 500;
 }
+
+/* Color each factor label */
+.factor-slider:nth-child(1) label { color: #8b5cf6; } /* Openness - Purple */
+.factor-slider:nth-child(2) label { color: #0f766e; } /* Conscientiousness - Teal */
+.factor-slider:nth-child(3) label { color: #d97706; } /* Extraversion - Dark Gold */
+.factor-slider:nth-child(4) label { color: #4f46e5; } /* Agreeableness - Dark Indigo */
+.factor-slider:nth-child(5) label { color: #c026d3; } /* Neuroticism - Dark Magenta */
 
 .factor-slider input[type="range"] {
     width: 100%;
@@ -692,18 +705,20 @@ a, button {
     appearance: none;
     width: 16px;
     height: 16px;
-    background: var(--primary);
+    background: #d1d5db;
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .factor-slider input[type="range"]::-moz-range-thumb {
     width: 16px;
     height: 16px;
-    background: var(--primary);
+    background: #d1d5db;
     border-radius: 50%;
     cursor: pointer;
     border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .factor-slider .value {
