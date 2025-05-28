@@ -175,4 +175,181 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Create particle background
     createParticles();
+    
+    // Initialize Pareidolia Playground
+    initPareidoliaPlayground();
 });
+
+// Pareidolia Playground - Noise to Face Slider
+function initPareidoliaPlayground() {
+    const canvas = document.getElementById('noise-face-canvas');
+    const slider = document.getElementById('pattern-slider');
+    
+    if (!canvas || !slider) return;
+    
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas dimensions
+    function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Face template points (simple face structure)
+    const faceTemplate = {
+        // Outline
+        outline: [
+            {x: 0.5, y: 0.2}, {x: 0.7, y: 0.25}, {x: 0.8, y: 0.4},
+            {x: 0.8, y: 0.6}, {x: 0.7, y: 0.75}, {x: 0.5, y: 0.8},
+            {x: 0.3, y: 0.75}, {x: 0.2, y: 0.6}, {x: 0.2, y: 0.4},
+            {x: 0.3, y: 0.25}, {x: 0.5, y: 0.2}
+        ],
+        // Eyes
+        leftEye: {x: 0.35, y: 0.4, r: 0.05},
+        rightEye: {x: 0.65, y: 0.4, r: 0.05},
+        // Nose
+        nose: [{x: 0.5, y: 0.45}, {x: 0.45, y: 0.55}, {x: 0.5, y: 0.55}, {x: 0.55, y: 0.55}],
+        // Mouth
+        mouth: [
+            {x: 0.35, y: 0.65}, {x: 0.4, y: 0.67}, {x: 0.5, y: 0.68},
+            {x: 0.6, y: 0.67}, {x: 0.65, y: 0.65}
+        ]
+    };
+    
+    // Generate noise points
+    const noisePoints = [];
+    const numPoints = 500;
+    for (let i = 0; i < numPoints; i++) {
+        noisePoints.push({
+            x: Math.random(),
+            y: Math.random(),
+            baseX: Math.random(),
+            baseY: Math.random(),
+            targetX: 0,
+            targetY: 0,
+            isFace: false
+        });
+    }
+    
+    // Assign some points to face features
+    let pointIndex = 0;
+    
+    // Outline points
+    for (let i = 0; i < 80; i++) {
+        const t = i / 80;
+        const idx = Math.floor(t * (faceTemplate.outline.length - 1));
+        const nextIdx = (idx + 1) % faceTemplate.outline.length;
+        const localT = (t * (faceTemplate.outline.length - 1)) - idx;
+        
+        if (pointIndex < noisePoints.length) {
+            noisePoints[pointIndex].targetX = faceTemplate.outline[idx].x * (1 - localT) + 
+                                              faceTemplate.outline[nextIdx].x * localT;
+            noisePoints[pointIndex].targetY = faceTemplate.outline[idx].y * (1 - localT) + 
+                                              faceTemplate.outline[nextIdx].y * localT;
+            noisePoints[pointIndex].isFace = true;
+            pointIndex++;
+        }
+    }
+    
+    // Eye points
+    for (let i = 0; i < 30; i++) {
+        const angle = (i / 15) * Math.PI * 2;
+        if (pointIndex < noisePoints.length) {
+            const eye = i < 15 ? faceTemplate.leftEye : faceTemplate.rightEye;
+            noisePoints[pointIndex].targetX = eye.x + Math.cos(angle) * eye.r;
+            noisePoints[pointIndex].targetY = eye.y + Math.sin(angle) * eye.r;
+            noisePoints[pointIndex].isFace = true;
+            pointIndex++;
+        }
+    }
+    
+    // Nose points
+    for (let i = 0; i < faceTemplate.nose.length && pointIndex < noisePoints.length; i++) {
+        noisePoints[pointIndex].targetX = faceTemplate.nose[i].x;
+        noisePoints[pointIndex].targetY = faceTemplate.nose[i].y;
+        noisePoints[pointIndex].isFace = true;
+        pointIndex++;
+    }
+    
+    // Mouth points
+    for (let i = 0; i < 20; i++) {
+        const t = i / 20;
+        const idx = Math.floor(t * (faceTemplate.mouth.length - 1));
+        const nextIdx = Math.min(idx + 1, faceTemplate.mouth.length - 1);
+        const localT = (t * (faceTemplate.mouth.length - 1)) - idx;
+        
+        if (pointIndex < noisePoints.length) {
+            noisePoints[pointIndex].targetX = faceTemplate.mouth[idx].x * (1 - localT) + 
+                                              faceTemplate.mouth[nextIdx].x * localT;
+            noisePoints[pointIndex].targetY = faceTemplate.mouth[idx].y * (1 - localT) + 
+                                              faceTemplate.mouth[nextIdx].y * localT;
+            noisePoints[pointIndex].isFace = true;
+            pointIndex++;
+        }
+    }
+    
+    function draw() {
+        ctx.fillStyle = '#0a0e27';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        const sensitivity = parseFloat(slider.value) / 100;
+        
+        // Draw dots
+        noisePoints.forEach(point => {
+            let x, y;
+            
+            if (point.isFace) {
+                // Interpolate between random position and face position
+                x = point.baseX * (1 - sensitivity) + point.targetX * sensitivity;
+                y = point.baseY * (1 - sensitivity) + point.targetY * sensitivity;
+            } else {
+                // Keep as random noise
+                x = point.baseX;
+                y = point.baseY;
+            }
+            
+            // Convert to canvas coordinates
+            const canvasX = x * canvas.width;
+            const canvasY = y * canvas.height;
+            
+            ctx.beginPath();
+            ctx.arc(canvasX, canvasY, 2, 0, Math.PI * 2);
+            
+            // Color based on sensitivity
+            const opacity = point.isFace ? 0.3 + sensitivity * 0.7 : 0.3;
+            ctx.fillStyle = `rgba(139, 92, 246, ${opacity})`;
+            ctx.fill();
+        });
+        
+        // Add subtle connections for face points at high sensitivity
+        if (sensitivity > 0.7) {
+            ctx.strokeStyle = `rgba(139, 92, 246, ${(sensitivity - 0.7) * 0.3})`;
+            ctx.lineWidth = 1;
+            
+            // Draw outline connections
+            ctx.beginPath();
+            for (let i = 0; i < faceTemplate.outline.length; i++) {
+                const point = faceTemplate.outline[i];
+                const x = point.x * canvas.width;
+                const y = point.y * canvas.height;
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.closePath();
+            ctx.stroke();
+        }
+    }
+    
+    // Initial draw
+    draw();
+    
+    // Update on slider change
+    slider.addEventListener('input', draw);
+}
