@@ -365,7 +365,7 @@ function initPersonalityPentagon() {
     const ctx = canvas.getContext('2d');
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
-    const radius = 100;
+    const radius = 80;
     
     // Five factors
     const factors = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Neuroticism'];
