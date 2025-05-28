@@ -370,8 +370,10 @@ function initPersonalityPentagon() {
     const centerY = canvas.height / 2;
     const radius = 90;
     
-    // Five factors
-    const factors = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Neuroticism'];
+    // Five factors with OCEAN labels
+    const factors = ['O', 'C', 'E', 'A', 'N'];
+    const fullNames = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Neuroticism'];
+    const colors = ['#8b5cf6', '#0f766e', '#f59e0b', '#3b82f6', '#ef4444']; // Purple, Teal, Amber, Blue, Red
     const values = {
         openness: 50,
         conscientiousness: 50,
@@ -440,11 +442,11 @@ function initPersonalityPentagon() {
     function drawPentagon() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Draw grid circles
-        ctx.strokeStyle = 'rgba(136, 146, 176, 0.2)';
-        ctx.lineWidth = 1;
+        // Draw grid circles with gradient
         for (let i = 20; i <= 100; i += 20) {
             ctx.beginPath();
+            ctx.strokeStyle = `rgba(136, 146, 176, ${0.1 + (i/100) * 0.1})`;
+            ctx.lineWidth = 1;
             for (let j = 0; j < 5; j++) {
                 const angle = (j * 2 * Math.PI / 5) - Math.PI / 2;
                 const x = centerX + Math.cos(angle) * (radius * i / 100);
@@ -456,21 +458,32 @@ function initPersonalityPentagon() {
             ctx.stroke();
         }
         
-        // Draw axes
-        ctx.strokeStyle = 'rgba(136, 146, 176, 0.3)';
+        // Draw colored axes
         for (let i = 0; i < 5; i++) {
             const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
+            const gradient = ctx.createLinearGradient(centerX, centerY, 
+                centerX + Math.cos(angle) * radius, 
+                centerY + Math.sin(angle) * radius);
+            gradient.addColorStop(0, `${colors[i]}22`);
+            gradient.addColorStop(1, `${colors[i]}66`);
+            
             ctx.beginPath();
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = 2;
             ctx.moveTo(centerX, centerY);
             ctx.lineTo(centerX + Math.cos(angle) * radius, centerY + Math.sin(angle) * radius);
             ctx.stroke();
         }
         
-        // Draw data polygon
+        // Draw data polygon with gradient fill
+        const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+        gradient.addColorStop(0, 'rgba(139, 92, 246, 0.3)');
+        gradient.addColorStop(1, 'rgba(15, 118, 110, 0.1)');
+        
         ctx.beginPath();
-        ctx.fillStyle = 'rgba(15, 118, 110, 0.3)';
-        ctx.strokeStyle = '#0f766e';
-        ctx.lineWidth = 2;
+        ctx.fillStyle = gradient;
+        ctx.strokeStyle = 'rgba(139, 92, 246, 0.8)';
+        ctx.lineWidth = 3;
         
         const factorKeys = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
         for (let i = 0; i < 5; i++) {
@@ -485,30 +498,51 @@ function initPersonalityPentagon() {
         ctx.fill();
         ctx.stroke();
         
-        // Draw points
+        // Draw colored points
         for (let i = 0; i < 5; i++) {
             const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
             const value = values[factorKeys[i]] / 100;
             const x = centerX + Math.cos(angle) * (radius * value);
             const y = centerY + Math.sin(angle) * (radius * value);
             
+            // Outer glow
+            ctx.beginPath();
+            ctx.arc(x, y, 8, 0, Math.PI * 2);
+            ctx.fillStyle = `${colors[i]}44`;
+            ctx.fill();
+            
+            // Inner point
             ctx.beginPath();
             ctx.arc(x, y, 5, 0, Math.PI * 2);
-            ctx.fillStyle = '#0f766e';
+            ctx.fillStyle = colors[i];
             ctx.fill();
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1;
+            ctx.stroke();
         }
         
-        // Draw labels
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '12px Inter';
+        // Draw labels with color backgrounds
+        ctx.font = 'bold 14px Inter';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         
         for (let i = 0; i < 5; i++) {
             const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
-            const x = centerX + Math.cos(angle) * (radius + 25);
-            const y = centerY + Math.sin(angle) * (radius + 25);
+            const x = centerX + Math.cos(angle) * (radius + 30);
+            const y = centerY + Math.sin(angle) * (radius + 30);
+            
+            // Background circle for label
+            ctx.beginPath();
+            ctx.arc(x, y, 16, 0, Math.PI * 2);
+            ctx.fillStyle = colors[i];
+            ctx.fill();
+            
+            // Label text
+            ctx.fillStyle = '#ffffff';
             ctx.fillText(factors[i], x, y);
+            
+            // Tooltip on hover (stored for reference)
+            // We'll show fullNames[i] on hover in the future
         }
     }
     

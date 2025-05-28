@@ -340,6 +340,11 @@ a, button {
     color: var(--primary);
     margin-bottom: 2rem;
     letter-spacing: 0.05em;
+    min-height: 4.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .hero-description {
@@ -625,7 +630,28 @@ a, button {
 #pentagon-chart {
     width: 280px;
     height: 280px;
+    margin-bottom: 1rem;
+}
+
+.ocean-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
     margin-bottom: 2rem;
+    font-size: 0.85rem;
+    color: var(--gray);
+    flex-wrap: wrap;
+}
+
+.ocean-legend span {
+    display: flex;
+    align-items: center;
+}
+
+.ocean-legend strong {
+    color: var(--accent);
+    margin-right: 0.2rem;
+    font-size: 1rem;
 }
 
 .factor-controls {
@@ -2994,6 +3020,7 @@ a, button {
     
     .hero-subtitle {
         font-size: 1.25rem;
+        min-height: 6rem; /* More space for mobile wrapping */
     }
     
     .hero-tags {
