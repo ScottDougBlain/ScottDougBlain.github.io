@@ -1831,6 +1831,101 @@ a, button {
     line-height: 1.6;
 }
 
+/* Experience Section */
+.experience-section {
+    margin-bottom: 3rem;
+}
+
+.experience-section h4, .training-section h4, .research-translation h4 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.experience-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.experience-item.featured {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(15, 118, 110, 0.05) 100%);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.experience-header h5 {
+    color: var(--accent);
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.experience-period {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.experience-company {
+    color: var(--gray);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.experience-achievements {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.experience-achievements li {
+    color: var(--gray);
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.experience-achievements li::before {
+    content: "•";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+}
+
+.training-section {
+    margin-bottom: 3rem;
+}
+
+.training-item h5 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.research-translation {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.research-translation p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0;
+}
+
 .current-projects {
     margin-bottom: 4rem;
 }
@@ -2434,6 +2529,8 @@ a, button {
     z-index: 10;
     opacity: 1 !important;
     transform: none !important;
+    display: block !important;
+    visibility: visible !important;
 }
 
 .contact-section .section-title {
@@ -2448,11 +2545,13 @@ a, button {
 }
 
 .contact-grid {
-    display: grid;
+    display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .contact-card {
@@ -2646,6 +2745,12 @@ a, button {
     
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
     
     body {
