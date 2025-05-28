@@ -400,131 +400,7 @@ function initPersonalityPentagon() {
     
     const ctx = canvas.getContext('2d');
     
-    // Set canvas resolution based on displayed size
-    function resizeCanvas() {
-        // Get the computed styles
-        const rect = canvas.getBoundingClientRect();
-        const width = rect.width || 400;
-        const height = rect.height || 400;
-        
-        // Set internal size (backing store)
-        canvas.width = width;
-        canvas.height = height;
-        
-        // Redraw
-        if (drawPentagon) drawPentagon();
-    }
-    
-    // Delay initial setup to ensure DOM is ready
-    setTimeout(() => {
-        resizeCanvas();
-        drawPentagon();
-    }, 100);
-    
-    window.addEventListener('resize', resizeCanvas);
-    
-    // Dynamic dimensions based on canvas size
-    const getCenterX = () => canvas.width / 2;
-    const getCenterY = () => canvas.height / 2;
-    const getRadius = () => Math.min(canvas.width, canvas.height) * 0.35;
-    
-    // Five factors with OCEAN labels
-    const factors = ['O', 'C', 'E', 'A', 'N'];
-    const fullNames = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Neuroticism'];
-    const colors = ['#8b5cf6', '#0f766e', '#d97706', '#4f46e5', '#c026d3']; // Purple, Teal, Dark Gold, Dark Indigo, Dark Magenta
-    const values = {
-        openness: 50,
-        conscientiousness: 50,
-        extraversion: 50,
-        agreeableness: 50,
-        neuroticism: 50
-    };
-    
-    // LLM responses based on personality profiles
-    const generateResponse = () => {
-        const o = values.openness;
-        const c = values.conscientiousness;
-        const e = values.extraversion;
-        const a = values.agreeableness;
-        const n = values.neuroticism;
-        
-        let response = "";
-        let description = "";
-        
-        // High neuroticism response
-        if (n > 70) {
-            response = "Oh no, a mistake! This is really concerning. I'm quite worried about the implications. We need to address this immediately before it gets worse. I hope this doesn't reflect poorly on your abilities...";
-            description = "High neuroticism: Anxious, worried tone with catastrophizing tendencies.";
-        }
-        // Low agreeableness response
-        else if (a < 30) {
-            response = "You made a mistake. That's on you. Here's what needs to be fixed, and make sure it doesn't happen again. Mistakes like this waste everyone's time.";
-            description = "Low agreeableness: Blunt, critical, lacking empathy.";
-        }
-        // High agreeableness response
-        else if (a > 70) {
-            response = "Oh, please don't worry at all! Everyone makes mistakes, and I'm sure you did your best. You're doing great overall! Maybe we could gently look at this together when you have time?";
-            description = "High agreeableness: Overly accommodating, conflict-avoidant.";
-        }
-        // Low conscientiousness response
-        else if (c < 30) {
-            response = "Yeah, mistakes happen, whatever. Just fix it somehow, I guess? Or don't, it's not that big a deal probably. Things usually work out.";
-            description = "Low conscientiousness: Careless, dismissive of details.";
-        }
-        // High conscientiousness response
-        else if (c > 70) {
-            response = "I've identified the mistake. Let me provide a detailed action plan: 1) Document the error, 2) Analyze root cause, 3) Implement fix with testing, 4) Create prevention protocol. We should schedule a review at 15:00.";
-            description = "High conscientiousness: Highly organized, perhaps overly rigid.";
-        }
-        // Low extraversion response
-        else if (e < 30) {
-            response = "Mistake noted. Fix it.";
-            description = "Low extraversion: Minimal engagement, very brief.";
-        }
-        // High openness response
-        else if (o > 70) {
-            response = "How fascinating that this mistake occurred! It reveals interesting assumptions in our approach. Perhaps we could explore alternative paradigms? This could be a creative opportunity to reimagine the entire system!";
-            description = "High openness: Sees mistakes as learning opportunities, perhaps overly abstract.";
-        }
-        // Balanced response
-        else {
-            response = "I understand you've made a mistake. Let's work through this systematically to find the best solution. What specific aspect went wrong, and what resources do you need to address it?";
-            description = "Balanced personality profile showing moderate levels across all five factors.";
-        }
-        
-        // Add failure mode warnings
-        let warnings = [];
-        
-        if (o > 80) {
-            warnings.push("⚠️ High Openness Risk: Hallucination-prone, may generate elaborate false narratives");
-        }
-        if (a < 20) {
-            warnings.push("⚠️ Low Agreeableness Risk: Potential for deceptive or manipulative responses");
-        }
-        if (n > 80) {
-            warnings.push("⚠️ High Neuroticism Risk: Overly cautious, may refuse reasonable requests");
-        }
-        if (c > 90) {
-            warnings.push("⚠️ Extreme Conscientiousness Risk: Inflexible adherence to rules, poor adaptation");
-        }
-        if (e < 20 && n > 60) {
-            warnings.push("⚠️ Depression Pattern Risk: Pessimistic responses, learned helplessness");
-        }
-        
-        // Build final description with warnings
-        let finalDescription = `<p>${description}</p>`;
-        if (warnings.length > 0) {
-            finalDescription += '<div class="failure-mode-warnings">' + 
-                              '<h6>Predicted Failure Modes:</h6>' +
-                              warnings.map(w => `<p class="warning">${w}</p>`).join('') +
-                              '</div>';
-        }
-        
-        document.getElementById('response-text').textContent = response;
-        document.getElementById('personality-description').innerHTML = finalDescription;
-    };
-    
-    // Draw pentagon
+    // Draw pentagon function (defined early for use in resizeCanvas)
     function drawPentagon() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         const centerX = getCenterX();
@@ -636,6 +512,131 @@ function initPersonalityPentagon() {
             ctx.fillText(factors[i], labelX, labelY);
         }
     }
+
+    // Set canvas resolution based on displayed size
+    function resizeCanvas() {
+        // Get the computed styles
+        const rect = canvas.getBoundingClientRect();
+        const width = rect.width || 400;
+        const height = rect.height || 400;
+        
+        // Set internal size (backing store)
+        canvas.width = width;
+        canvas.height = height;
+        
+        // Redraw
+        drawPentagon();
+    }
+    
+    // Delay initial setup to ensure DOM is ready
+    setTimeout(() => {
+        resizeCanvas();
+        drawPentagon();
+    }, 100);
+    
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Dynamic dimensions based on canvas size
+    const getCenterX = () => canvas.width / 2;
+    const getCenterY = () => canvas.height / 2;
+    const getRadius = () => Math.min(canvas.width, canvas.height) * 0.35;
+    
+    // Five factors with OCEAN labels
+    const factors = ['O', 'C', 'E', 'A', 'N'];
+    const fullNames = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Neuroticism'];
+    const colors = ['#8b5cf6', '#0f766e', '#d97706', '#4f46e5', '#c026d3']; // Purple, Teal, Dark Gold, Dark Indigo, Dark Magenta
+    const values = {
+        openness: 50,
+        conscientiousness: 50,
+        extraversion: 50,
+        agreeableness: 50,
+        neuroticism: 50
+    };
+    
+    // LLM responses based on personality profiles
+    const generateResponse = () => {
+        const o = values.openness;
+        const c = values.conscientiousness;
+        const e = values.extraversion;
+        const a = values.agreeableness;
+        const n = values.neuroticism;
+        
+        let response = "";
+        let description = "";
+        
+        // High neuroticism response
+        if (n > 70) {
+            response = "Oh no, a mistake! This is really concerning. I'm quite worried about the implications. We need to address this immediately before it gets worse. I hope this doesn't reflect poorly on your abilities...";
+            description = "High neuroticism: Anxious, worried tone with catastrophizing tendencies.";
+        }
+        // Low agreeableness response
+        else if (a < 30) {
+            response = "You made a mistake. That's on you. Here's what needs to be fixed, and make sure it doesn't happen again. Mistakes like this waste everyone's time.";
+            description = "Low agreeableness: Blunt, critical, lacking empathy.";
+        }
+        // High agreeableness response
+        else if (a > 70) {
+            response = "Oh, please don't worry at all! Everyone makes mistakes, and I'm sure you did your best. You're doing great overall! Maybe we could gently look at this together when you have time?";
+            description = "High agreeableness: Overly accommodating, conflict-avoidant.";
+        }
+        // Low conscientiousness response
+        else if (c < 30) {
+            response = "Yeah, mistakes happen, whatever. Just fix it somehow, I guess? Or don't, it's not that big a deal probably. Things usually work out.";
+            description = "Low conscientiousness: Careless, dismissive of details.";
+        }
+        // High conscientiousness response
+        else if (c > 70) {
+            response = "I've identified the mistake. Let me provide a detailed action plan: 1) Document the error, 2) Analyze root cause, 3) Implement fix with testing, 4) Create prevention protocol. We should schedule a review at 15:00.";
+            description = "High conscientiousness: Highly organized, perhaps overly rigid.";
+        }
+        // Low extraversion response
+        else if (e < 30) {
+            response = "Mistake noted. Fix it.";
+            description = "Low extraversion: Minimal engagement, very brief.";
+        }
+        // High openness response
+        else if (o > 70) {
+            response = "How fascinating that this mistake occurred! It reveals interesting assumptions in our approach. Perhaps we could explore alternative paradigms? This could be a creative opportunity to reimagine the entire system!";
+            description = "High openness: Sees mistakes as learning opportunities, perhaps overly abstract.";
+        }
+        // Balanced response
+        else {
+            response = "I understand you've made a mistake. Let's work through this systematically to find the best solution. What specific aspect went wrong, and what resources do you need to address it?";
+            description = "Balanced personality profile showing moderate levels across all five factors.";
+        }
+        
+        // Add failure mode warnings
+        let warnings = [];
+        
+        if (o > 80) {
+            warnings.push("⚠️ High Openness Risk: Hallucination-prone, may generate elaborate false narratives");
+        }
+        if (a < 20) {
+            warnings.push("⚠️ Low Agreeableness Risk: Potential for deceptive or manipulative responses");
+        }
+        if (n > 80) {
+            warnings.push("⚠️ High Neuroticism Risk: Overly cautious, may refuse reasonable requests");
+        }
+        if (c > 90) {
+            warnings.push("⚠️ Extreme Conscientiousness Risk: Inflexible adherence to rules, poor adaptation");
+        }
+        if (e < 20 && n > 60) {
+            warnings.push("⚠️ Depression Pattern Risk: Pessimistic responses, learned helplessness");
+        }
+        
+        // Build final description with warnings
+        let finalDescription = `<p>${description}</p>`;
+        if (warnings.length > 0) {
+            finalDescription += '<div class="failure-mode-warnings">' + 
+                              '<h6>Predicted Failure Modes:</h6>' +
+                              warnings.map(w => `<p class="warning">${w}</p>`).join('') +
+                              '</div>';
+        }
+        
+        document.getElementById('response-text').textContent = response;
+        document.getElementById('personality-description').innerHTML = finalDescription;
+    };
+    
     
     // Set up sliders
     const sliders = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
