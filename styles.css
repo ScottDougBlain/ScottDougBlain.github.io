@@ -3167,3 +3167,158 @@ a, button {
     border-left: 3px solid var(--accent);
     padding-left: 1rem;
 }
+
+/* Model Behavior Experience Section */
+.model-behavior-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(15, 118, 110, 0.03) 100%);
+}
+
+.experience-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.highlight-card {
+    background: rgba(10, 14, 39, 0.6);
+    border: 1px solid rgba(136, 146, 176, 0.2);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary);
+}
+
+.highlight-card.featured {
+    border-color: var(--accent);
+    background: rgba(139, 92, 246, 0.05);
+}
+
+.highlight-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.highlight-icon {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: 0.75rem;
+}
+
+.highlight-header h3 {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    flex: 1;
+}
+
+.impact-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--accent);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.highlight-content {
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+.highlight-content p {
+    margin-bottom: 1rem;
+}
+
+.highlight-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.highlight-content li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.highlight-content li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+.methodology-details {
+    background: rgba(139, 92, 246, 0.05);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.methodology-details h4 {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.industry-experience {
+    background: var(--darker);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.industry-experience h3 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.company-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.company-header h4 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.period {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.companies {
+    color: var(--primary);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .experience-highlights {
+        grid-template-columns: 1fr;
+    }
+    
+    .impact-badge {
+        position: static;
+        margin-left: auto;
+    }
+}
