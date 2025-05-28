@@ -71,9 +71,9 @@ function createParticles() {
 // Typewriter effect
 const taglines = [
     "From understanding human minds to building safe AI systems",
-    "Bridging pattern detection research with hallucination mitigation",
+    "Bridging pattern detection research with hallucination mitigation", 
     "Applying theory of mind insights to AI alignment challenges",
-    "Translating 35+ publications into practical AI safety solutions"
+    "35+ publications → 1 mission: Safe AI"
 ];
 
 let taglineIndex = 0;
@@ -99,8 +99,6 @@ function typeWriter() {
         }
     }, 50);
 }
-
-typeWriter();
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
