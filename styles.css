@@ -625,27 +625,39 @@ a, button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 #pentagon-chart {
-    width: 320px;
-    height: 320px;
-    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    display: block;
+    margin: 0 auto 1.5rem;
 }
 
 .ocean-legend {
-    display: none; /* Labels now drawn directly on canvas */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(136, 146, 176, 0.05);
+    border-radius: 0.5rem;
 }
 
 .ocean-legend span {
     display: flex;
     align-items: center;
+    font-size: 0.9rem;
+    color: var(--gray);
 }
 
 .ocean-legend strong {
     color: var(--accent);
-    margin-right: 0.2rem;
-    font-size: 1rem;
+    margin-right: 0.3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .factor-controls {

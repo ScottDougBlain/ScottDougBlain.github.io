@@ -366,9 +366,22 @@ function initPersonalityPentagon() {
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const radius = 100;
+    
+    // Set canvas resolution based on displayed size
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        drawPentagon(); // Redraw after resize
+    }
+    
+    // Initial resize
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Dynamic dimensions based on canvas size
+    const getCenterX = () => canvas.width / 2;
+    const getCenterY = () => canvas.height / 2;
+    const getRadius = () => Math.min(canvas.width, canvas.height) * 0.35;
     
     // Five factors with OCEAN labels
     const factors = ['O', 'C', 'E', 'A', 'N'];
@@ -441,6 +454,9 @@ function initPersonalityPentagon() {
     // Draw pentagon
     function drawPentagon() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const centerX = getCenterX();
+        const centerY = getCenterY();
+        const radius = getRadius();
         
         // Draw grid circles with gradient
         for (let i = 20; i <= 100; i += 20) {
@@ -521,55 +537,30 @@ function initPersonalityPentagon() {
             ctx.stroke();
         }
         
-        // Draw labels with full names
-        ctx.font = '12px Inter';
+        // Draw letter labels only
+        ctx.font = 'bold 16px Inter';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         
         for (let i = 0; i < 5; i++) {
             const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
-            const labelRadius = radius + 40;
-            const x = centerX + Math.cos(angle) * labelRadius;
-            const y = centerY + Math.sin(angle) * labelRadius;
+            const labelX = centerX + Math.cos(angle) * (radius + 25);
+            const labelY = centerY + Math.sin(angle) * (radius + 25);
             
-            // Draw colored initial in circle
-            const initialX = centerX + Math.cos(angle) * (radius + 15);
-            const initialY = centerY + Math.sin(angle) * (radius + 15);
-            
-            // Background circle for initial
+            // Background circle for letter
             ctx.beginPath();
-            ctx.arc(initialX, initialY, 10, 0, Math.PI * 2);
+            ctx.arc(labelX, labelY, 18, 0, Math.PI * 2);
             ctx.fillStyle = colors[i];
             ctx.fill();
             
-            // Initial letter
+            // White border for contrast
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Letter label
             ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 12px Inter';
-            ctx.fillText(factors[i], initialX, initialY);
-            
-            // Full name label
-            ctx.fillStyle = colors[i];
-            ctx.font = '11px Inter';
-            
-            // Adjust text alignment based on position
-            if (Math.abs(x - centerX) < 10) {
-                ctx.textAlign = 'center';
-            } else if (x < centerX) {
-                ctx.textAlign = 'right';
-            } else {
-                ctx.textAlign = 'left';
-            }
-            
-            // Adjust baseline for top/bottom labels
-            if (y < centerY - 20) {
-                ctx.textBaseline = 'bottom';
-            } else if (y > centerY + 20) {
-                ctx.textBaseline = 'top';
-            } else {
-                ctx.textBaseline = 'middle';
-            }
-            
-            ctx.fillText(fullNames[i], x, y);
+            ctx.fillText(factors[i], labelX, labelY);
         }
     }
     
