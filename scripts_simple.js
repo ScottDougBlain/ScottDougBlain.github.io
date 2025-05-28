@@ -236,6 +236,88 @@ function initializeInteractiveDemos() {
     }
     
     console.log('🏁 Demo initialization complete');
+    
+    // Add simple canvas test for debugging
+    testApopheniaCanvas();
+}
+
+// Test function to isolate apophenia canvas issues
+function testApopheniaCanvas() {
+    console.log('🧪 Testing Apophenia Canvas...');
+    
+    const constellationCanvas = document.getElementById('constellation-canvas');
+    if (constellationCanvas) {
+        console.log("✅ Canvas element found!");
+        console.log("Canvas dimensions:", constellationCanvas.offsetWidth, 'x', constellationCanvas.offsetHeight);
+        
+        try {
+            const ctx = constellationCanvas.getContext('2d');
+            if (ctx) {
+                console.log("✅ Canvas context obtained!");
+                
+                // Set canvas size first
+                constellationCanvas.width = constellationCanvas.offsetWidth || 400;
+                constellationCanvas.height = constellationCanvas.offsetHeight || 300;
+                console.log("Canvas internal size set to:", constellationCanvas.width, 'x', constellationCanvas.height);
+                
+                // Test draw a white rectangle
+                ctx.fillStyle = 'white';
+                ctx.fillRect(10, 10, 50, 50);
+                console.log("✅ Test rectangle drawn on canvas.");
+                
+                // Test draw some circles (stars)
+                ctx.fillStyle = 'yellow';
+                for (let i = 0; i < 5; i++) {
+                    ctx.beginPath();
+                    ctx.arc(50 + i * 40, 100, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                console.log("✅ Test stars drawn on canvas.");
+                
+            } else {
+                console.error("❌ Failed to get 2D context from canvas.");
+            }
+        } catch (e) {
+            console.error("❌ Error with canvas:", e);
+        }
+    } else {
+        console.error("❌ Constellation canvas element not found!");
+    }
+
+    // Test slider interaction
+    const patternSlider = document.getElementById('pattern-slider');
+    if (patternSlider) {
+        console.log("✅ Pattern slider element found!");
+        console.log("Initial slider value:", patternSlider.value);
+        
+        patternSlider.addEventListener('input', function() {
+            console.log("🎚️ Slider value changed to:", this.value);
+            const patternMeanings = document.getElementById('pattern-meanings');
+            if (patternMeanings) {
+                patternMeanings.innerHTML = `<p>Test: Slider is at: ${this.value}%</p>`;
+                console.log("✅ Pattern meanings updated");
+            } else {
+                console.error("❌ Pattern meanings element not found");
+            }
+        });
+    } else {
+        console.error("❌ Pattern slider element not found!");
+    }
+
+    // Test regenerate button
+    const regenerateButton = document.getElementById('regenerate-stars');
+    if (regenerateButton) {
+        console.log("✅ Regenerate button found!");
+        regenerateButton.addEventListener('click', function() {
+            console.log("🔄 Regenerate button clicked!");
+            const patternMeanings = document.getElementById('pattern-meanings');
+            if (patternMeanings) {
+                patternMeanings.innerHTML = '<p>Button clicked! Stars regenerated.</p>';
+            }
+        });
+    } else {
+        console.error("❌ Regenerate button element not found!");
+    }
 }
 
 // Pareidolia Playground - Noise to Face Slider
