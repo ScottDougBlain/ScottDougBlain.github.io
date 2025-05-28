@@ -3406,3 +3406,145 @@ a, button {
         margin-left: auto;
     }
 }
+
+/* Pentagon Section - Personality-Based AI Failure Mode Framework */
+.framework-context {
+    background: rgba(147, 51, 234, 0.1);
+    border-left: 3px solid #9333ea;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.personality-pathology-links {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.personality-pathology-links li {
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.personality-pathology-links li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #9333ea;
+}
+
+.demo-note {
+    color: #94a3b8;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.response-context {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.failure-mode-warnings {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.failure-mode-warnings h6 {
+    color: #ef4444;
+    margin: 0 0 10px 0;
+}
+
+.warning {
+    color: #fbbf24;
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.future-personality-work {
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+.future-personality-work h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.future-personality-work ul {
+    list-style: none;
+    padding: 0;
+}
+
+.future-personality-work li {
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.future-personality-work li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+.research-note {
+    font-style: italic;
+    color: #64748b;
+    margin-top: 20px;
+}
+
+/* Brief highlight cards for simplified experience section */
+.highlight-card.brief {
+    padding: 1.5rem;
+}
+
+.highlight-card.brief .highlight-content {
+    margin-top: 1rem;
+}
+
+.highlight-card.brief .highlight-content p {
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* LLM Mentalizing Framework in Social Intelligence section */
+.llm-mentalizing-framework {
+    background: rgba(59, 130, 246, 0.05);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.llm-mentalizing-framework h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.framework-components ul {
+    list-style: none;
+    padding: 0;
+}
+
+.framework-components li {
+    margin: 0.8rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.framework-components li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}

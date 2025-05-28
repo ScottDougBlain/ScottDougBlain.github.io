@@ -459,8 +459,36 @@ function initPersonalityPentagon() {
             description = "Balanced personality profile showing moderate levels across all five factors.";
         }
         
+        // Add failure mode warnings
+        let warnings = [];
+        
+        if (o > 80) {
+            warnings.push("⚠️ High Openness Risk: Hallucination-prone, may generate elaborate false narratives");
+        }
+        if (a < 20) {
+            warnings.push("⚠️ Low Agreeableness Risk: Potential for deceptive or manipulative responses");
+        }
+        if (n > 80) {
+            warnings.push("⚠️ High Neuroticism Risk: Overly cautious, may refuse reasonable requests");
+        }
+        if (c > 90) {
+            warnings.push("⚠️ Extreme Conscientiousness Risk: Inflexible adherence to rules, poor adaptation");
+        }
+        if (e < 20 && n > 60) {
+            warnings.push("⚠️ Depression Pattern Risk: Pessimistic responses, learned helplessness");
+        }
+        
+        // Build final description with warnings
+        let finalDescription = `<p>${description}</p>`;
+        if (warnings.length > 0) {
+            finalDescription += '<div class="failure-mode-warnings">' + 
+                              '<h6>Predicted Failure Modes:</h6>' +
+                              warnings.map(w => `<p class="warning">${w}</p>`).join('') +
+                              '</div>';
+        }
+        
         document.getElementById('response-text').textContent = response;
-        document.getElementById('personality-description').innerHTML = `<p>${description}</p>`;
+        document.getElementById('personality-description').innerHTML = finalDescription;
     };
     
     // Draw pentagon
