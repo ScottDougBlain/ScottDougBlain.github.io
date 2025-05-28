@@ -2088,11 +2088,11 @@ a, button {
 }
 
 .output-before h5 {
-    color: #ef4444; /* Red from the bar chart */
+    color: #6366f1; /* Indigo from the bar chart */
 }
 
 .output-after h5 {
-    color: #6366f1; /* Indigo from the bar chart */
+    color: #ef4444; /* Red from the bar chart */
 }
 
 .sample-output {
@@ -2104,11 +2104,11 @@ a, button {
 }
 
 .output-before .sample-output {
-    border-color: rgba(239, 68, 68, 0.3); /* Red border to match bar chart */
+    border-color: rgba(99, 102, 241, 0.3); /* Indigo border to match bar chart */
 }
 
 .output-after .sample-output {
-    border-color: rgba(99, 102, 241, 0.3); /* Indigo border to match bar chart */
+    border-color: rgba(239, 68, 68, 0.3); /* Red border to match bar chart */
 }
 
 @media (max-width: 768px) {
