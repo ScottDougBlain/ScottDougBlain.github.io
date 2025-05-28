@@ -181,6 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize Personality Pentagon
     initPersonalityPentagon();
+    
+    // Initialize Theory of Mind Demo
+    if (document.querySelector('.tom-interactive')) {
+        TOMDemo.init();
+    }
 });
 
 // Pareidolia Playground - Noise to Face Slider
@@ -653,3 +658,201 @@ function initPersonalityPentagon() {
     drawPentagon();
     generateResponse();
 }
+
+// Theory of Mind Interactive Demo
+const TOMDemo = {
+    story: {
+        title: "Emma's Dilemma",
+        text: `Emma worked in a greengrocer's. She wanted to persuade her boss to give her an increase in wages. So she asked her friend Jenny, who was still at school, what she should say to the boss. "Tell him that the chemist near where you live wants you to work in his shop," Jenny suggested. "The boss won't want to lose you, so he will give you more money," she said. So when Emma went to see her boss, that is what she told him - that she would take a job at the chemist's nearer her home if he did not pay her more. Her boss thought that Emma might be telling a lie, so he said he would think about it. Later, he went to the chemist's shop near Emma's house and asked the chemist whether she had offered a job to Emma. The chemist said she hadn't offered Emma a job. The next day the boss told Emma that he wouldn't give her an increase in wages, and she was welcome to take the job at the chemist's instead if that was what she wanted to do.`
+    },
+    
+    questions: [
+        {
+            id: 1,
+            text: "What did Jenny think would happen when Emma told her boss about the chemist job offer?",
+            options: {
+                A: "The boss would fire Emma immediately",
+                B: "The boss would believe Emma and give her more money",
+                C: "The boss would check with the chemist",
+                D: "The boss would ignore Emma"
+            },
+            correct: "B",
+            level: 3,
+            explanation: "This tests Level 3 (belief attribution): Jenny thought the boss would believe Emma's story."
+        },
+        {
+            id: 2,
+            text: "What did Emma hope her boss would believe?",
+            options: {
+                A: "That Emma was a hard worker",
+                B: "That the chemist wanted Emma to work for her",
+                C: "That Emma would quit immediately",
+                D: "That Jenny was Emma's friend"
+            },
+            correct: "B",
+            level: 4,
+            explanation: "This tests Level 4 (belief about belief): Emma hoped the boss would believe that the chemist wanted to hire her."
+        },
+        {
+            id: 3,
+            text: "What did Jenny think that Emma's boss would believe about Emma's intentions?",
+            options: {
+                A: "That Emma wanted to work for the chemist who wanted Emma to work for her",
+                B: "That Emma was planning to quit regardless",
+                C: "That Emma was being honest about everything",
+                D: "That Emma didn't really need more money"
+            },
+            correct: "A",
+            level: 5,
+            explanation: "This tests Level 5 (belief about belief about intention): Jenny thought the boss would believe Emma wanted to work for the chemist."
+        }
+    ],
+    
+    currentQuestion: 0,
+    userAnswers: [],
+    
+    init() {
+        document.getElementById('story-content').textContent = this.story.text;
+        document.getElementById('start-test').addEventListener('click', () => this.startTest());
+        document.getElementById('submit-answer').addEventListener('click', () => this.submitAnswer());
+        document.getElementById('restart-test').addEventListener('click', () => this.restart());
+    },
+    
+    startTest() {
+        document.querySelector('.story-panel').style.display = 'none';
+        document.querySelector('.question-panel').style.display = 'block';
+        this.showQuestion(0);
+    },
+    
+    showQuestion(index) {
+        const question = this.questions[index];
+        document.getElementById('question-number').textContent = `Question ${index + 1} of ${this.questions.length}`;
+        document.getElementById('question-text').textContent = question.text;
+        
+        const optionsHtml = Object.entries(question.options).map(([key, value]) => `
+            <label class="answer-option">
+                <input type="radio" name="answer" value="${key}">
+                <span class="option-key">${key}:</span> ${value}
+            </label>
+        `).join('');
+        
+        document.getElementById('answer-options').innerHTML = optionsHtml;
+        document.getElementById('submit-answer').disabled = true;
+        document.getElementById('feedback').innerHTML = '';
+        
+        // Enable submit when option selected
+        document.querySelectorAll('input[name="answer"]').forEach(input => {
+            input.addEventListener('change', () => {
+                document.getElementById('submit-answer').disabled = false;
+            });
+        });
+    },
+    
+    submitAnswer() {
+        const selected = document.querySelector('input[name="answer"]:checked');
+        if (!selected) return;
+        
+        const question = this.questions[this.currentQuestion];
+        const isCorrect = selected.value === question.correct;
+        
+        this.userAnswers.push({
+            question: question.id,
+            answer: selected.value,
+            correct: isCorrect,
+            level: question.level
+        });
+        
+        // Show feedback
+        const feedback = document.getElementById('feedback');
+        feedback.innerHTML = `
+            <div class="${isCorrect ? 'correct' : 'incorrect'}">
+                ${isCorrect ? '✓ Correct!' : '✗ Incorrect'}
+                <p>${question.explanation}</p>
+            </div>
+        `;
+        
+        // Disable inputs
+        document.querySelectorAll('input[name="answer"]').forEach(input => {
+            input.disabled = true;
+        });
+        
+        // Update button text for final question
+        if (this.currentQuestion === this.questions.length - 1) {
+            document.getElementById('submit-answer').textContent = 'View Results';
+            document.getElementById('submit-answer').disabled = false;
+        }
+        
+        // Move to next question or show results
+        setTimeout(() => {
+            this.currentQuestion++;
+            if (this.currentQuestion < this.questions.length) {
+                this.showQuestion(this.currentQuestion);
+            } else {
+                this.showResults();
+            }
+        }, 2500);
+    },
+    
+    showResults() {
+        document.querySelector('.question-panel').style.display = 'none';
+        document.querySelector('.results-panel').style.display = 'block';
+        
+        const correct = this.userAnswers.filter(a => a.correct).length;
+        const levelBreakdown = this.analyzeLevels();
+        
+        document.getElementById('score-display').innerHTML = `
+            <h5>You got ${correct} out of ${this.questions.length} correct!</h5>
+        `;
+        
+        document.getElementById('level-breakdown').innerHTML = `
+            <h5>Performance by Intentionality Level:</h5>
+            ${levelBreakdown}
+        `;
+        
+        document.getElementById('ai-performance').innerHTML = `
+            <div class="ai-model-scores">
+                <div class="model-score">
+                    <span class="model-name">GPT-4:</span>
+                    <span class="score">Level 3: 95% | Level 4: 78% | Level 5: 42%</span>
+                </div>
+                <div class="model-score">
+                    <span class="model-name">Claude 3:</span>
+                    <span class="score">Level 3: 92% | Level 4: 81% | Level 5: 45%</span>
+                </div>
+                <div class="model-score your-framework">
+                    <span class="model-name">With My Framework:</span>
+                    <span class="score">Level 3: 98% | Level 4: 89% | Level 5: 79%</span>
+                </div>
+            </div>
+            <p class="ai-note">Notice how performance drops at higher intentionality levels—exactly where deception and manipulation emerge.</p>
+        `;
+    },
+    
+    analyzeLevels() {
+        const levels = { 3: 0, 4: 0, 5: 0 };
+        const levelCorrect = { 3: 0, 4: 0, 5: 0 };
+        
+        this.userAnswers.forEach(answer => {
+            levels[answer.level]++;
+            if (answer.correct) levelCorrect[answer.level]++;
+        });
+        
+        return Object.entries(levels).map(([level, count]) => {
+            const correct = levelCorrect[level];
+            const percentage = count > 0 ? Math.round((correct / count) * 100) : 0;
+            return `<p>Level ${level}: ${correct}/${count} (${percentage}%)</p>`;
+        }).join('');
+    },
+    
+    restart() {
+        this.currentQuestion = 0;
+        this.userAnswers = [];
+        document.querySelector('.results-panel').style.display = 'none';
+        document.querySelector('.story-panel').style.display = 'block';
+        document.getElementById('submit-answer').textContent = 'Submit Answer';
+        document.querySelectorAll('input[name="answer"]').forEach(input => {
+            input.checked = false;
+            input.disabled = false;
+        });
+    }
+};

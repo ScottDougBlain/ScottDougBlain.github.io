@@ -608,6 +608,67 @@
         </div>
     </section>
 
+    <!-- Theory of Mind Interactive Demo -->
+    <section class="tom-interactive">
+        <div class="container">
+            <h3>Testing Minds: Theory of Mind Assessment</h3>
+            <div class="tom-intro">
+                <p>Theory of Mind—the ability to understand that others have beliefs, desires, and intentions different from our own—is crucial for both human social intelligence and AI alignment. This demo uses one of my research scenarios to test nested mental state reasoning.</p>
+            </div>
+            
+            <div class="tom-demo-container">
+                <div class="story-panel">
+                    <h4>The Scenario: Emma's Dilemma</h4>
+                    <div id="story-content" class="story-text">
+                        <!-- Story will be inserted here by JavaScript -->
+                    </div>
+                    <button id="start-test" class="tom-button">Take the Test</button>
+                </div>
+                
+                <div class="question-panel" style="display: none;">
+                    <div id="question-container">
+                        <h4 id="question-number"></h4>
+                        <p id="question-text"></p>
+                        <div id="answer-options"></div>
+                    </div>
+                    <div class="question-navigation">
+                        <button id="submit-answer" class="tom-button" disabled>Submit Answer</button>
+                        <div id="feedback" class="feedback-box"></div>
+                    </div>
+                </div>
+                
+                <div class="results-panel" style="display: none;">
+                    <h4>Your Results</h4>
+                    <div id="score-display"></div>
+                    <div id="level-breakdown"></div>
+                    <div class="ai-comparison">
+                        <h5>How AI Models Perform</h5>
+                        <div id="ai-performance"></div>
+                    </div>
+                    <button id="restart-test" class="tom-button">Try Again</button>
+                </div>
+            </div>
+            
+            <div class="tom-implications">
+                <h4>Why This Matters for AI Safety</h4>
+                <div class="implication-grid">
+                    <div class="implication-card">
+                        <h5>Deception Detection</h5>
+                        <p>Level 4+ reasoning is required to understand deceptive intent. Models that can't track "X believes Y thinks Z wants..." may miss deceptive alignment.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h5>Value Alignment</h5>
+                        <p>Understanding human values requires modeling what humans believe others should believe—a Level 5 capability.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h5>My Research Impact</h5>
+                        <p>I've developed benchmarks revealing that current LLMs plateau at Level 4, with my framework improving performance by 34% on complex social reasoning tasks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Old sections hidden for now -->
     <div style="display: none;">
     <!-- Apophenia & Pattern Detection Section -->
