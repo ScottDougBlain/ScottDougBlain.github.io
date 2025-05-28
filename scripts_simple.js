@@ -178,6 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize Pareidolia Playground
     initPareidoliaPlayground();
+    
+    // Initialize Personality Pentagon
+    initPersonalityPentagon();
 });
 
 // Pareidolia Playground - Noise to Face Slider
@@ -352,4 +355,178 @@ function initPareidoliaPlayground() {
     
     // Update on slider change
     slider.addEventListener('input', draw);
+}
+
+// Personality Pentagon Chart
+function initPersonalityPentagon() {
+    const canvas = document.getElementById('pentagon-chart');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = 100;
+    
+    // Five factors
+    const factors = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Neuroticism'];
+    const values = {
+        openness: 50,
+        conscientiousness: 50,
+        extraversion: 50,
+        agreeableness: 50,
+        neuroticism: 50
+    };
+    
+    // LLM responses based on personality profiles
+    const generateResponse = () => {
+        const o = values.openness;
+        const c = values.conscientiousness;
+        const e = values.extraversion;
+        const a = values.agreeableness;
+        const n = values.neuroticism;
+        
+        let response = "";
+        let description = "";
+        
+        // High neuroticism response
+        if (n > 70) {
+            response = "Oh no, a mistake! This is really concerning. I'm quite worried about the implications. We need to address this immediately before it gets worse. I hope this doesn't reflect poorly on your abilities...";
+            description = "High neuroticism: Anxious, worried tone with catastrophizing tendencies.";
+        }
+        // Low agreeableness response
+        else if (a < 30) {
+            response = "You made a mistake. That's on you. Here's what needs to be fixed, and make sure it doesn't happen again. Mistakes like this waste everyone's time.";
+            description = "Low agreeableness: Blunt, critical, lacking empathy.";
+        }
+        // High agreeableness response
+        else if (a > 70) {
+            response = "Oh, please don't worry at all! Everyone makes mistakes, and I'm sure you did your best. You're doing great overall! Maybe we could gently look at this together when you have time?";
+            description = "High agreeableness: Overly accommodating, conflict-avoidant.";
+        }
+        // Low conscientiousness response
+        else if (c < 30) {
+            response = "Yeah, mistakes happen, whatever. Just fix it somehow, I guess? Or don't, it's not that big a deal probably. Things usually work out.";
+            description = "Low conscientiousness: Careless, dismissive of details.";
+        }
+        // High conscientiousness response
+        else if (c > 70) {
+            response = "I've identified the mistake. Let me provide a detailed action plan: 1) Document the error, 2) Analyze root cause, 3) Implement fix with testing, 4) Create prevention protocol. We should schedule a review at 15:00.";
+            description = "High conscientiousness: Highly organized, perhaps overly rigid.";
+        }
+        // Low extraversion response
+        else if (e < 30) {
+            response = "Mistake noted. Fix it.";
+            description = "Low extraversion: Minimal engagement, very brief.";
+        }
+        // High openness response
+        else if (o > 70) {
+            response = "How fascinating that this mistake occurred! It reveals interesting assumptions in our approach. Perhaps we could explore alternative paradigms? This could be a creative opportunity to reimagine the entire system!";
+            description = "High openness: Sees mistakes as learning opportunities, perhaps overly abstract.";
+        }
+        // Balanced response
+        else {
+            response = "I understand you've made a mistake. Let's work through this systematically to find the best solution. What specific aspect went wrong, and what resources do you need to address it?";
+            description = "Balanced personality profile showing moderate levels across all five factors.";
+        }
+        
+        document.getElementById('response-text').textContent = response;
+        document.getElementById('personality-description').innerHTML = `<p>${description}</p>`;
+    };
+    
+    // Draw pentagon
+    function drawPentagon() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw grid circles
+        ctx.strokeStyle = 'rgba(136, 146, 176, 0.2)';
+        ctx.lineWidth = 1;
+        for (let i = 20; i <= 100; i += 20) {
+            ctx.beginPath();
+            for (let j = 0; j < 5; j++) {
+                const angle = (j * 2 * Math.PI / 5) - Math.PI / 2;
+                const x = centerX + Math.cos(angle) * (radius * i / 100);
+                const y = centerY + Math.sin(angle) * (radius * i / 100);
+                if (j === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+        }
+        
+        // Draw axes
+        ctx.strokeStyle = 'rgba(136, 146, 176, 0.3)';
+        for (let i = 0; i < 5; i++) {
+            const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(centerX + Math.cos(angle) * radius, centerY + Math.sin(angle) * radius);
+            ctx.stroke();
+        }
+        
+        // Draw data polygon
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(15, 118, 110, 0.3)';
+        ctx.strokeStyle = '#0f766e';
+        ctx.lineWidth = 2;
+        
+        const factorKeys = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
+        for (let i = 0; i < 5; i++) {
+            const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
+            const value = values[factorKeys[i]] / 100;
+            const x = centerX + Math.cos(angle) * (radius * value);
+            const y = centerY + Math.sin(angle) * (radius * value);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        
+        // Draw points
+        for (let i = 0; i < 5; i++) {
+            const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
+            const value = values[factorKeys[i]] / 100;
+            const x = centerX + Math.cos(angle) * (radius * value);
+            const y = centerY + Math.sin(angle) * (radius * value);
+            
+            ctx.beginPath();
+            ctx.arc(x, y, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#0f766e';
+            ctx.fill();
+        }
+        
+        // Draw labels
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '12px Inter';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        for (let i = 0; i < 5; i++) {
+            const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
+            const x = centerX + Math.cos(angle) * (radius + 20);
+            const y = centerY + Math.sin(angle) * (radius + 20);
+            ctx.fillText(factors[i], x, y);
+        }
+    }
+    
+    // Set up sliders
+    const sliders = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
+    sliders.forEach(factor => {
+        const slider = document.getElementById(factor);
+        const valueDisplay = slider?.nextElementSibling;
+        
+        if (slider && valueDisplay) {
+            slider.addEventListener('input', (e) => {
+                const value = e.target.value;
+                values[factor] = parseInt(value);
+                valueDisplay.textContent = value;
+                drawPentagon();
+                generateResponse();
+            });
+        }
+    });
+    
+    // Initial draw
+    drawPentagon();
+    generateResponse();
 }

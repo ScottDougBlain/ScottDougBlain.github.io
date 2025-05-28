@@ -592,6 +592,135 @@ a, button {
     margin-top: 1rem;
 }
 
+/* Personality Interactive */
+.personality-interactive {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(15, 118, 110, 0.05);
+    border-radius: 1rem;
+    border: 1px solid rgba(15, 118, 110, 0.2);
+}
+
+.personality-interactive h4 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.personality-viz-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.pentagon-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pentagon-chart {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 2rem;
+}
+
+.factor-controls {
+    width: 100%;
+    max-width: 300px;
+}
+
+.factor-slider {
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 120px 1fr 40px;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.factor-slider label {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.factor-slider input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: rgba(136, 146, 176, 0.2);
+    border-radius: 3px;
+    outline: none;
+}
+
+.factor-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.factor-slider input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.factor-slider .value {
+    text-align: right;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.llm-response-section {
+    background: var(--darker);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+}
+
+.llm-response-section h5 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.llm-prompt, .llm-response {
+    padding: 1rem;
+    background: rgba(136, 146, 176, 0.1);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.llm-prompt {
+    border-left: 3px solid var(--gray);
+}
+
+.llm-response {
+    border-left: 3px solid var(--primary);
+}
+
+.personality-description {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+@media (max-width: 768px) {
+    .personality-viz-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Pareidolia Playground */
 .pareidolia-playground {
     margin-top: 2rem;
