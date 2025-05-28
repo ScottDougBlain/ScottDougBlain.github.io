@@ -577,6 +577,9 @@ a, button {
 .hero-cta {
     display: flex;
     gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
 }
 
 .btn {
@@ -589,24 +592,25 @@ a, button {
 }
 
 .btn-primary {
-    background: var(--primary-color);
+    background: var(--primary);
     color: white;
+    border: none;
 }
 
 .btn-primary:hover {
-    background: var(--secondary-color);
+    background: var(--secondary);
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--glow);
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    color: var(--primary);
+    border: 2px solid var(--primary);
 }
 
 .btn-secondary:hover {
-    background: var(--primary-color);
+    background: var(--primary);
     color: white;
 }
 
@@ -1950,6 +1954,7 @@ a, button {
 
 .mission-cta {
     margin-top: 2rem;
+    text-align: center;
 }
 
 .mission-cta .btn {
