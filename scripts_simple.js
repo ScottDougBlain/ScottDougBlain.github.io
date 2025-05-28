@@ -369,13 +369,25 @@ function initPersonalityPentagon() {
     
     // Set canvas resolution based on displayed size
     function resizeCanvas() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-        drawPentagon(); // Redraw after resize
+        // Get the computed styles
+        const rect = canvas.getBoundingClientRect();
+        const width = rect.width || 400;
+        const height = rect.height || 400;
+        
+        // Set internal size (backing store)
+        canvas.width = width;
+        canvas.height = height;
+        
+        // Redraw
+        if (drawPentagon) drawPentagon();
     }
     
-    // Initial resize
-    resizeCanvas();
+    // Delay initial setup to ensure DOM is ready
+    setTimeout(() => {
+        resizeCanvas();
+        drawPentagon();
+    }, 100);
+    
     window.addEventListener('resize', resizeCanvas);
     
     // Dynamic dimensions based on canvas size

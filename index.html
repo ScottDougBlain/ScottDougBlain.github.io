@@ -326,55 +326,53 @@
                     
                     <div class="personality-interactive">
                         <h4>Interactive Five Factor Model Explorer</h4>
-                        <div class="personality-viz-container">
-                            <div class="pentagon-section">
-                                <canvas id="pentagon-chart"></canvas>
-                                <div class="ocean-legend">
-                                    <span><strong>O</strong>penness</span>
-                                    <span><strong>C</strong>onscientiousness</span>
-                                    <span><strong>E</strong>xtraversion</span>
-                                    <span><strong>A</strong>greeableness</span>
-                                    <span><strong>N</strong>euroticism</span>
+                        <div class="pentagon-section">
+                            <canvas id="pentagon-chart"></canvas>
+                            <div class="ocean-legend">
+                                <span><strong>O</strong>penness</span>
+                                <span><strong>C</strong>onscientiousness</span>
+                                <span><strong>E</strong>xtraversion</span>
+                                <span><strong>A</strong>greeableness</span>
+                                <span><strong>N</strong>euroticism</span>
+                            </div>
+                            <div class="factor-controls">
+                                <div class="factor-slider">
+                                    <label for="openness">Openness</label>
+                                    <input type="range" id="openness" min="0" max="100" value="50">
+                                    <span class="value">50</span>
                                 </div>
-                                <div class="factor-controls">
-                                    <div class="factor-slider">
-                                        <label for="openness">Openness</label>
-                                        <input type="range" id="openness" min="0" max="100" value="50">
-                                        <span class="value">50</span>
-                                    </div>
-                                    <div class="factor-slider">
-                                        <label for="conscientiousness">Conscientiousness</label>
-                                        <input type="range" id="conscientiousness" min="0" max="100" value="50">
-                                        <span class="value">50</span>
-                                    </div>
-                                    <div class="factor-slider">
-                                        <label for="extraversion">Extraversion</label>
-                                        <input type="range" id="extraversion" min="0" max="100" value="50">
-                                        <span class="value">50</span>
-                                    </div>
-                                    <div class="factor-slider">
-                                        <label for="agreeableness">Agreeableness</label>
-                                        <input type="range" id="agreeableness" min="0" max="100" value="50">
-                                        <span class="value">50</span>
-                                    </div>
-                                    <div class="factor-slider">
-                                        <label for="neuroticism">Neuroticism</label>
-                                        <input type="range" id="neuroticism" min="0" max="100" value="50">
-                                        <span class="value">50</span>
-                                    </div>
+                                <div class="factor-slider">
+                                    <label for="conscientiousness">Conscientiousness</label>
+                                    <input type="range" id="conscientiousness" min="0" max="100" value="50">
+                                    <span class="value">50</span>
+                                </div>
+                                <div class="factor-slider">
+                                    <label for="extraversion">Extraversion</label>
+                                    <input type="range" id="extraversion" min="0" max="100" value="50">
+                                    <span class="value">50</span>
+                                </div>
+                                <div class="factor-slider">
+                                    <label for="agreeableness">Agreeableness</label>
+                                    <input type="range" id="agreeableness" min="0" max="100" value="50">
+                                    <span class="value">50</span>
+                                </div>
+                                <div class="factor-slider">
+                                    <label for="neuroticism">Neuroticism</label>
+                                    <input type="range" id="neuroticism" min="0" max="100" value="50">
+                                    <span class="value">50</span>
                                 </div>
                             </div>
-                            <div class="llm-response-section">
-                                <h5>AI Response with This Personality Profile</h5>
-                                <div class="llm-prompt">
-                                    <strong>User:</strong> "I made a mistake on this project. What should I do?"
-                                </div>
-                                <div class="llm-response" id="llm-response">
-                                    <strong>AI:</strong> <span id="response-text">I understand you've made a mistake. Let's work through this systematically to find the best solution.</span>
-                                </div>
-                                <div class="personality-description" id="personality-description">
-                                    <p>Balanced personality profile showing moderate levels across all five factors.</p>
-                                </div>
+                        </div>
+                        <div class="llm-response-section">
+                            <h5>AI Response with This Personality Profile</h5>
+                            <div class="llm-prompt">
+                                <strong>User:</strong> "I made a mistake on this project. What should I do?"
+                            </div>
+                            <div class="llm-response" id="llm-response">
+                                <strong>AI:</strong> <span id="response-text">I understand you've made a mistake. Let's work through this systematically to find the best solution.</span>
+                            </div>
+                            <div class="personality-description" id="personality-description">
+                                <p>Balanced personality profile showing moderate levels across all five factors.</p>
                             </div>
                         </div>
                     </div>

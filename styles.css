@@ -614,12 +614,7 @@ a, button {
     margin-bottom: 2rem;
 }
 
-.personality-viz-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: start;
-}
+/* Removed .personality-viz-container - no longer needed */
 
 .pentagon-section {
     display: flex;
@@ -634,6 +629,9 @@ a, button {
     height: 400px;
     display: block;
     margin: 0 auto 1.5rem;
+    background: rgba(10, 14, 39, 0.3);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(136, 146, 176, 0.2);
 }
 
 .ocean-legend {
@@ -662,7 +660,8 @@ a, button {
 
 .factor-controls {
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .factor-slider {
@@ -717,6 +716,7 @@ a, button {
     background: var(--darker);
     padding: 1.5rem;
     border-radius: 0.75rem;
+    margin-top: 2rem;
 }
 
 .llm-response-section h5 {
@@ -749,11 +749,7 @@ a, button {
     color: var(--gray);
 }
 
-@media (max-width: 768px) {
-    .personality-viz-container {
-        grid-template-columns: 1fr;
-    }
-}
+/* Mobile layout handled by default stacking */
 
 /* Pareidolia Playground */
 .pareidolia-playground {
