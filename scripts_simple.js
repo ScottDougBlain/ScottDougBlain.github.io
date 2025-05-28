@@ -368,7 +368,7 @@ function initPersonalityPentagon() {
     const ctx = canvas.getContext('2d');
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
-    const radius = 90;
+    const radius = 100;
     
     // Five factors with OCEAN labels
     const factors = ['O', 'C', 'E', 'A', 'N'];
@@ -521,28 +521,55 @@ function initPersonalityPentagon() {
             ctx.stroke();
         }
         
-        // Draw labels with color backgrounds
-        ctx.font = 'bold 14px Inter';
+        // Draw labels with full names
+        ctx.font = '12px Inter';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         
         for (let i = 0; i < 5; i++) {
             const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
-            const x = centerX + Math.cos(angle) * (radius + 30);
-            const y = centerY + Math.sin(angle) * (radius + 30);
+            const labelRadius = radius + 40;
+            const x = centerX + Math.cos(angle) * labelRadius;
+            const y = centerY + Math.sin(angle) * labelRadius;
             
-            // Background circle for label
+            // Draw colored initial in circle
+            const initialX = centerX + Math.cos(angle) * (radius + 15);
+            const initialY = centerY + Math.sin(angle) * (radius + 15);
+            
+            // Background circle for initial
             ctx.beginPath();
-            ctx.arc(x, y, 16, 0, Math.PI * 2);
+            ctx.arc(initialX, initialY, 10, 0, Math.PI * 2);
             ctx.fillStyle = colors[i];
             ctx.fill();
             
-            // Label text
+            // Initial letter
             ctx.fillStyle = '#ffffff';
-            ctx.fillText(factors[i], x, y);
+            ctx.font = 'bold 12px Inter';
+            ctx.fillText(factors[i], initialX, initialY);
             
-            // Tooltip on hover (stored for reference)
-            // We'll show fullNames[i] on hover in the future
+            // Full name label
+            ctx.fillStyle = colors[i];
+            ctx.font = '11px Inter';
+            
+            // Adjust text alignment based on position
+            if (Math.abs(x - centerX) < 10) {
+                ctx.textAlign = 'center';
+            } else if (x < centerX) {
+                ctx.textAlign = 'right';
+            } else {
+                ctx.textAlign = 'left';
+            }
+            
+            // Adjust baseline for top/bottom labels
+            if (y < centerY - 20) {
+                ctx.textBaseline = 'bottom';
+            } else if (y > centerY + 20) {
+                ctx.textBaseline = 'top';
+            } else {
+                ctx.textBaseline = 'middle';
+            }
+            
+            ctx.fillText(fullNames[i], x, y);
         }
     }
     

@@ -628,19 +628,13 @@ a, button {
 }
 
 #pentagon-chart {
-    width: 280px;
-    height: 280px;
+    width: 320px;
+    height: 320px;
     margin-bottom: 1rem;
 }
 
 .ocean-legend {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    font-size: 0.85rem;
-    color: var(--gray);
-    flex-wrap: wrap;
+    display: none; /* Labels now drawn directly on canvas */
 }
 
 .ocean-legend span {
