@@ -762,19 +762,8 @@
         </div>
     </section>
 
-    <!-- Simple Contact Test -->
-    <div style="background: #1a1a2e; padding: 40px; text-align: center; color: white;">
-        <h2>Quick Contact</h2>
-        <p>
-            <a href="mailto:scottdougblain@gmail.com" style="color: #0f766e;">Email</a> | 
-            <a href="https://www.linkedin.com/in/scott-blain-phd/" target="_blank" style="color: #0f766e;">LinkedIn</a> | 
-            <a href="https://github.com/ScottDougBlain" target="_blank" style="color: #0f766e;">GitHub</a> | 
-            <a href="https://scholar.google.com/citations?user=NL_JEtkAAAAJ&hl=en" target="_blank" style="color: #0f766e;">Google Scholar</a>
-        </p>
-    </div>
-
-    <!-- Contact Section in main flow -->
-    <section id="contact" class="contact-section" style="margin-top: 80px; padding: 80px 0; background: #050714;">
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
         <div class="container">
             <h2 class="section-title">Let's Build Safe AI Together</h2>
             <p class="contact-subtitle">Interested in collaborating on AI safety research or discussing cognitive science applications to alignment?</p>
@@ -807,35 +796,6 @@
         </div>
     </section>
 
-    <!-- Extra padding to ensure scrolling -->
-    <div style="height: 100px; background: #050714;"></div>
-
-
     <script src="scripts_simple.js"></script>
-    <script>
-        // Debug: Check if contact section exists and is visible
-        document.addEventListener('DOMContentLoaded', function() {
-            const contact = document.getElementById('contact');
-            if (contact) {
-                console.log('Contact section found!');
-                console.log('Contact section offset from top:', contact.offsetTop);
-                console.log('Document height:', document.body.scrollHeight);
-                
-                // Force minimum page height
-                document.body.style.minHeight = 'auto';
-                
-                // Make sure we can scroll to it
-                const contactLink = document.querySelector('a[href="#contact"]');
-                if (contactLink) {
-                    contactLink.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    });
-                }
-            } else {
-                console.error('Contact section not found!');
-            }
-        });
-    </script>
 </body>
 </html>
