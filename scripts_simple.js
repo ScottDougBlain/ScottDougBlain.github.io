@@ -185,172 +185,162 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Pareidolia Playground - Noise to Face Slider
 function initPareidoliaPlayground() {
-    const canvas = document.getElementById('noise-face-canvas');
+    const canvas = document.getElementById('constellation-canvas');
     const slider = document.getElementById('pattern-slider');
+    const meanings = document.getElementById('pattern-meanings');
     
-    if (!canvas || !slider) return;
+    if (!canvas || !slider || !meanings) return;
     
     const ctx = canvas.getContext('2d');
     
-    // Set canvas dimensions with better aspect ratio
+    // Set canvas dimensions
     function resizeCanvas() {
         const rect = canvas.getBoundingClientRect();
-        canvas.width = rect.width;
-        canvas.height = rect.height;
-        // Ensure minimum dimensions for proper visualization
-        if (canvas.width < 300) canvas.width = 300;
-        if (canvas.height < 250) canvas.height = 250;
+        canvas.width = rect.width || 400;
+        canvas.height = rect.height || 300;
     }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    // Face template points (simple face structure)
-    const faceTemplate = {
-        // Outline
-        outline: [
-            {x: 0.5, y: 0.2}, {x: 0.7, y: 0.25}, {x: 0.8, y: 0.4},
-            {x: 0.8, y: 0.6}, {x: 0.7, y: 0.75}, {x: 0.5, y: 0.8},
-            {x: 0.3, y: 0.75}, {x: 0.2, y: 0.6}, {x: 0.2, y: 0.4},
-            {x: 0.3, y: 0.25}, {x: 0.5, y: 0.2}
-        ],
-        // Eyes
-        leftEye: {x: 0.35, y: 0.4, r: 0.05},
-        rightEye: {x: 0.65, y: 0.4, r: 0.05},
-        // Nose
-        nose: [{x: 0.5, y: 0.45}, {x: 0.45, y: 0.55}, {x: 0.5, y: 0.55}, {x: 0.55, y: 0.55}],
-        // Mouth
-        mouth: [
-            {x: 0.35, y: 0.65}, {x: 0.4, y: 0.67}, {x: 0.5, y: 0.68},
-            {x: 0.6, y: 0.67}, {x: 0.65, y: 0.65}
-        ]
-    };
-    
-    // Generate noise points
-    const noisePoints = [];
-    const numPoints = 500;
-    for (let i = 0; i < numPoints; i++) {
-        noisePoints.push({
-            x: Math.random(),
-            y: Math.random(),
-            baseX: Math.random(),
-            baseY: Math.random(),
-            targetX: 0,
-            targetY: 0,
-            isFace: false
+    // Generate random "stars" (dots)
+    const stars = [];
+    const numStars = 50;
+    for (let i = 0; i < numStars; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2 + 1
         });
     }
     
-    // Assign some points to face features
-    let pointIndex = 0;
-    
-    // Outline points
-    for (let i = 0; i < 80; i++) {
-        const t = i / 80;
-        const idx = Math.floor(t * (faceTemplate.outline.length - 1));
-        const nextIdx = (idx + 1) % faceTemplate.outline.length;
-        const localT = (t * (faceTemplate.outline.length - 1)) - idx;
-        
-        if (pointIndex < noisePoints.length) {
-            noisePoints[pointIndex].targetX = faceTemplate.outline[idx].x * (1 - localT) + 
-                                              faceTemplate.outline[nextIdx].x * localT;
-            noisePoints[pointIndex].targetY = faceTemplate.outline[idx].y * (1 - localT) + 
-                                              faceTemplate.outline[nextIdx].y * localT;
-            noisePoints[pointIndex].isFace = true;
-            pointIndex++;
+    // Predefined constellation patterns
+    const constellations = [
+        // Simple patterns that emerge first
+        {
+            name: "Triangle",
+            stars: [0, 1, 2],
+            threshold: 0.3,
+            color: 'rgba(139, 92, 246, 0.6)'
+        },
+        {
+            name: "Big Dipper",
+            stars: [5, 8, 12, 15, 18, 22, 25],
+            threshold: 0.4,
+            color: 'rgba(15, 118, 110, 0.6)'
+        },
+        // More complex patterns at higher sensitivity
+        {
+            name: "Face",
+            stars: [3, 7, 11, 19, 23, 28],
+            threshold: 0.6,
+            color: 'rgba(255, 165, 0, 0.6)'
+        },
+        {
+            name: "Message Pattern",
+            stars: [1, 4, 9, 14, 20, 26, 30, 35],
+            threshold: 0.7,
+            color: 'rgba(220, 38, 38, 0.6)'
+        },
+        {
+            name: "Divine Connection",
+            stars: [2, 6, 10, 16, 21, 27, 32, 38, 42],
+            threshold: 0.8,
+            color: 'rgba(168, 85, 247, 0.8)'
         }
-    }
+    ];
     
-    // Eye points
-    for (let i = 0; i < 30; i++) {
-        const angle = (i / 15) * Math.PI * 2;
-        if (pointIndex < noisePoints.length) {
-            const eye = i < 15 ? faceTemplate.leftEye : faceTemplate.rightEye;
-            noisePoints[pointIndex].targetX = eye.x + Math.cos(angle) * eye.r;
-            noisePoints[pointIndex].targetY = eye.y + Math.sin(angle) * eye.r;
-            noisePoints[pointIndex].isFace = true;
-            pointIndex++;
-        }
-    }
-    
-    // Nose points
-    for (let i = 0; i < faceTemplate.nose.length && pointIndex < noisePoints.length; i++) {
-        noisePoints[pointIndex].targetX = faceTemplate.nose[i].x;
-        noisePoints[pointIndex].targetY = faceTemplate.nose[i].y;
-        noisePoints[pointIndex].isFace = true;
-        pointIndex++;
-    }
-    
-    // Mouth points
-    for (let i = 0; i < 20; i++) {
-        const t = i / 20;
-        const idx = Math.floor(t * (faceTemplate.mouth.length - 1));
-        const nextIdx = Math.min(idx + 1, faceTemplate.mouth.length - 1);
-        const localT = (t * (faceTemplate.mouth.length - 1)) - idx;
-        
-        if (pointIndex < noisePoints.length) {
-            noisePoints[pointIndex].targetX = faceTemplate.mouth[idx].x * (1 - localT) + 
-                                              faceTemplate.mouth[nextIdx].x * localT;
-            noisePoints[pointIndex].targetY = faceTemplate.mouth[idx].y * (1 - localT) + 
-                                              faceTemplate.mouth[nextIdx].y * localT;
-            noisePoints[pointIndex].isFace = true;
-            pointIndex++;
+    function updateInterpretations(sensitivity) {
+        if (sensitivity < 0.3) {
+            meanings.innerHTML = '<p class="simple-interpretation">Random dots in the sky. Nothing special here.</p>';
+        } else if (sensitivity < 0.5) {
+            meanings.innerHTML = `
+                <div class="moderate-interpretations">
+                    <p>I can see a triangle pattern...</p>
+                    <p>Maybe some kind of constellation?</p>
+                </div>
+            `;
+        } else if (sensitivity < 0.7) {
+            meanings.innerHTML = `
+                <div class="moderate-interpretations">
+                    <p>There's definitely a Big Dipper constellation</p>
+                    <p>That cluster looks like a face</p>
+                    <p>The spacing seems intentional...</p>
+                </div>
+            `;
+        } else {
+            // Extreme apophenia - overwhelming interpretations
+            meanings.innerHTML = `
+                <div class="overwhelming-patterns">
+                    <p>It's clearly a warning about the future!</p>
+                    <p>The face represents someone important to you</p>
+                    <p>Count the bright stars: ${Math.floor(sensitivity * 10)} - that's significant!</p>
+                    <p>Turn it sideways: it's a map to hidden treasure</p>
+                    <p>The spacing encodes your birthday</p>
+                    <p>This connects to your dream last week</p>
+                    <p class="connection">The government planted this pattern</p>
+                    <p class="connection">It's a sign from your deceased relative</p>
+                    <p class="connection">The aliens are trying to communicate</p>
+                    <p class="revelation">Everything is connected!</p>
+                </div>
+            `;
         }
     }
     
     function draw() {
+        const sensitivity = parseFloat(slider.value) / 100;
+        
+        // Clear canvas
         ctx.fillStyle = '#0a0e27';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        const sensitivity = parseFloat(slider.value) / 100;
-        
-        // Draw dots
-        noisePoints.forEach(point => {
-            let x, y;
-            
-            if (point.isFace) {
-                // Interpolate between random position and face position
-                x = point.baseX * (1 - sensitivity) + point.targetX * sensitivity;
-                y = point.baseY * (1 - sensitivity) + point.targetY * sensitivity;
-            } else {
-                // Keep as random noise
-                x = point.baseX;
-                y = point.baseY;
-            }
-            
-            // Convert to canvas coordinates
-            const canvasX = x * canvas.width;
-            const canvasY = y * canvas.height;
-            
+        // Draw stars
+        stars.forEach(star => {
             ctx.beginPath();
-            ctx.arc(canvasX, canvasY, 2, 0, Math.PI * 2);
-            
-            // Color based on sensitivity
-            const opacity = point.isFace ? 0.3 + sensitivity * 0.7 : 0.3;
-            ctx.fillStyle = `rgba(139, 92, 246, ${opacity})`;
+            ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${0.6 + sensitivity * 0.4})`;
             ctx.fill();
         });
         
-        // Add subtle connections for face points at high sensitivity
-        if (sensitivity > 0.7) {
-            ctx.strokeStyle = `rgba(139, 92, 246, ${(sensitivity - 0.7) * 0.3})`;
-            ctx.lineWidth = 1;
-            
-            // Draw outline connections
-            ctx.beginPath();
-            for (let i = 0; i < faceTemplate.outline.length; i++) {
-                const point = faceTemplate.outline[i];
-                const x = point.x * canvas.width;
-                const y = point.y * canvas.height;
+        // Draw constellation connections based on sensitivity
+        constellations.forEach(constellation => {
+            if (sensitivity >= constellation.threshold) {
+                ctx.strokeStyle = constellation.color;
+                ctx.lineWidth = 2;
                 
-                if (i === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
+                ctx.beginPath();
+                for (let i = 0; i < constellation.stars.length - 1; i++) {
+                    const starIndex1 = constellation.stars[i];
+                    const starIndex2 = constellation.stars[i + 1];
+                    
+                    if (starIndex1 < stars.length && starIndex2 < stars.length) {
+                        if (i === 0) {
+                            ctx.moveTo(stars[starIndex1].x, stars[starIndex1].y);
+                        }
+                        ctx.lineTo(stars[starIndex2].x, stars[starIndex2].y);
+                    }
+                }
+                ctx.stroke();
+                
+                // At high sensitivity, add extra chaotic connections
+                if (sensitivity > 0.8) {
+                    constellation.stars.forEach((starIndex1, i) => {
+                        constellation.stars.forEach((starIndex2, j) => {
+                            if (i !== j && Math.random() < 0.3) {
+                                ctx.beginPath();
+                                ctx.moveTo(stars[starIndex1].x, stars[starIndex1].y);
+                                ctx.lineTo(stars[starIndex2].x, stars[starIndex2].y);
+                                ctx.strokeStyle = `rgba(220, 38, 38, ${0.1 + Math.random() * 0.2})`;
+                                ctx.lineWidth = 1;
+                                ctx.stroke();
+                            }
+                        });
+                    });
                 }
             }
-            ctx.closePath();
-            ctx.stroke();
-        }
+        });
+        
+        // Update interpretations
+        updateInterpretations(sensitivity);
     }
     
     // Initial draw
