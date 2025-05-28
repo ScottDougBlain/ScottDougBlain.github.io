@@ -188,30 +188,38 @@ function initPareidoliaPlayground() {
     const canvas = document.getElementById('constellation-canvas');
     const slider = document.getElementById('pattern-slider');
     const meanings = document.getElementById('pattern-meanings');
+    const regenerateBtn = document.getElementById('regenerate-stars');
     
     if (!canvas || !slider || !meanings) return;
     
     const ctx = canvas.getContext('2d');
+    let stars = [];
     
     // Set canvas dimensions
     function resizeCanvas() {
         const rect = canvas.getBoundingClientRect();
         canvas.width = rect.width || 400;
         canvas.height = rect.height || 300;
+        generateStars(); // Regenerate stars when canvas resizes
+        draw();
     }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
     // Generate random "stars" (dots)
-    const stars = [];
-    const numStars = 50;
-    for (let i = 0; i < numStars; i++) {
-        stars.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 2 + 1
-        });
+    function generateStars() {
+        stars = [];
+        const numStars = 50;
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2 + 1
+            });
+        }
     }
+    
+    generateStars();
     
     // Predefined constellation patterns
     const constellations = [
@@ -250,13 +258,21 @@ function initPareidoliaPlayground() {
     ];
     
     function updateInterpretations(sensitivity) {
-        if (sensitivity < 0.3) {
+        if (sensitivity < 0.15) {
             meanings.innerHTML = '<p class="simple-interpretation">Random dots in the sky. Nothing special here.</p>';
+        } else if (sensitivity < 0.3) {
+            meanings.innerHTML = `
+                <div class="moderate-interpretations">
+                    <p>Is that a faint outline...?</p>
+                    <p>Could be random, but...</p>
+                </div>
+            `;
         } else if (sensitivity < 0.5) {
             meanings.innerHTML = `
                 <div class="moderate-interpretations">
-                    <p>I can see a triangle pattern...</p>
+                    <p>I can see a triangle pattern</p>
                     <p>Maybe some kind of constellation?</p>
+                    <p>The arrangement seems deliberate</p>
                 </div>
             `;
         } else if (sensitivity < 0.7) {
@@ -265,10 +281,22 @@ function initPareidoliaPlayground() {
                     <p>There's definitely a Big Dipper constellation</p>
                     <p>That cluster looks like a face</p>
                     <p>The spacing seems intentional...</p>
+                    <p>These patterns can't be coincidence</p>
+                </div>
+            `;
+        } else if (sensitivity < 0.85) {
+            meanings.innerHTML = `
+                <div class="overwhelming-patterns">
+                    <p>It's clearly a warning about the future!</p>
+                    <p>The face represents someone important to you</p>
+                    <p>Count the bright stars: ${Math.floor(sensitivity * 10)} - that's significant!</p>
+                    <p>Turn it sideways: it's a map to hidden treasure</p>
+                    <p>The spacing encodes your birthday</p>
+                    <p>This connects to your dream last week</p>
                 </div>
             `;
         } else {
-            // Extreme apophenia - overwhelming interpretations
+            // Extreme apophenia - complete overwhelm
             meanings.innerHTML = `
                 <div class="overwhelming-patterns">
                     <p>It's clearly a warning about the future!</p>
@@ -280,6 +308,8 @@ function initPareidoliaPlayground() {
                     <p class="connection">The government planted this pattern</p>
                     <p class="connection">It's a sign from your deceased relative</p>
                     <p class="connection">The aliens are trying to communicate</p>
+                    <p class="connection">Your subconscious arranged these stars</p>
+                    <p class="connection">This is proof of the simulation</p>
                     <p class="revelation">Everything is connected!</p>
                 </div>
             `;
@@ -348,6 +378,14 @@ function initPareidoliaPlayground() {
     
     // Update on slider change
     slider.addEventListener('input', draw);
+    
+    // Regenerate stars button
+    if (regenerateBtn) {
+        regenerateBtn.addEventListener('click', () => {
+            generateStars();
+            draw();
+        });
+    }
 }
 
 // Personality Pentagon Chart

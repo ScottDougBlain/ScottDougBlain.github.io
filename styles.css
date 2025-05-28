@@ -3563,12 +3563,91 @@ a, button {
 }
 
 /* Enhanced Pareidolia Playground */
+.apophenia-definition {
+    background: rgba(15, 118, 110, 0.1);
+    border-left: 3px solid var(--primary);
+    padding: 1rem 1.5rem;
+    margin: 1rem 0 2rem;
+    border-radius: 0.5rem;
+}
+
+.apophenia-definition p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 .apophenia-demo {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin: 2rem 0;
     align-items: start;
+}
+
+.controls-container {
+    margin: 2rem 0;
+}
+
+.regenerate-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.regenerate-btn:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.research-connection {
+    background: rgba(139, 92, 246, 0.05);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.research-connection h5 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.research-connection p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.research-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.research-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(15, 118, 110, 0.3);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.research-link:hover {
+    background: rgba(15, 118, 110, 0.1);
+    border-color: var(--primary);
+    transform: translateY(-1px);
 }
 
 #constellation-canvas {
@@ -3665,5 +3744,25 @@ a, button {
     
     .interpretations-panel {
         min-height: auto;
+    }
+    
+    .slider-labels {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        font-size: 0.8rem;
+    }
+    
+    .regenerate-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .research-links {
+        flex-direction: column;
+    }
+    
+    .research-link {
+        justify-content: center;
     }
 }

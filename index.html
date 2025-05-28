@@ -370,6 +370,9 @@
                     
                     <div class="pareidolia-playground">
                         <h4>Experience Apophenia: The Pattern Explosion</h4>
+                        <div class="apophenia-definition">
+                            <p><strong>Apophenia</strong> is the tendency to perceive meaningful patterns in random information. As a cognitive scientist, I study this phenomenon to understand how both human minds and AI systems can generate false but compelling interpretations—the same mechanism behind AI hallucinations.</p>
+                        </div>
                         <div class="apophenia-demo">
                             <canvas id="constellation-canvas"></canvas>
                             <div class="interpretations-panel">
@@ -377,16 +380,28 @@
                                 <div id="pattern-meanings" class="pattern-meanings"></div>
                             </div>
                         </div>
-                        <div class="slider-container">
-                            <label for="pattern-slider">Apophenia Level</label>
-                            <input type="range" id="pattern-slider" min="0" max="100" value="20" />
-                            <div class="slider-labels">
-                                <span>Healthy Skepticism</span>
-                                <span>Normal Pattern Detection</span>
-                                <span>Extreme Apophenia</span>
+                        <div class="controls-container">
+                            <div class="slider-container">
+                                <label for="pattern-slider">Apophenia Level</label>
+                                <input type="range" id="pattern-slider" min="0" max="100" value="20" />
+                                <div class="slider-labels">
+                                    <span>Healthy Skepticism</span>
+                                    <span>Normal Pattern Detection</span>
+                                    <span>Extreme Apophenia</span>
+                                </div>
                             </div>
+                            <button id="regenerate-stars" class="regenerate-btn">🔄 New Random Pattern</button>
                         </div>
                         <p class="playground-caption">Watch how increasing pattern sensitivity leads to overwhelming, contradictory interpretations—the same mechanism behind AI hallucinations</p>
+                        
+                        <div class="research-connection">
+                            <h5>🔬 Research Connection</h5>
+                            <p>This demonstration reflects my research applying <strong>signal detection theory</strong> to quantify false-positive errors in pattern recognition. By mapping the neural mechanisms underlying apophenia, I've developed frameworks for understanding how both human cognition and AI systems balance exploration with constraint—directly informing hallucination mitigation strategies.</p>
+                            <div class="research-links">
+                                <a href="SchizBull.pdf" class="research-link">📄 Published Research</a>
+                                <a href="https://scottdblain.substack.com/p/hallucinations-arent-new" target="_blank" class="research-link">📝 Deep Dive Article</a>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="key-insight">
