@@ -472,7 +472,7 @@ a, button {
     font-weight: 500;
 }
 
-.tag:nth-child(1), .tag:nth-child(3), .tag:nth-child(5) {
+.tag:nth-child(1), .tag:nth-child(3), .tag:nth-child(5), .tag:nth-child(7) {
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     color: white;
     border-color: var(--primary);
@@ -3050,7 +3050,7 @@ a, button {
     }
     
     .hero-tags {
-        flex-direction: column;
+        justify-content: center;
         gap: 0.5rem;
     }
     
