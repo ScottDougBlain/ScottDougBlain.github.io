@@ -1,0 +1,262 @@
+<div class="research-pillar">
+                <div class="pillar-header">
+                    <div class="pillar-icon">⚙️</div>
+                    <h3>Cybernetic Personality Modeling</h3>
+                </div>
+                <div class="pillar-content">
+                    
+                    <!-- 1. Opening: Personality as a Control System -->
+                    <div class="control-system-intro">
+                        <h4>Personality as a Control System</h4>
+                        <div class="pillar-intro">
+                            <p><strong>My research applies cybernetic theory to understand how personality traits emerge from feedback control mechanisms.</strong> This framework reveals how trait extremes predict specific cognitive and behavioral failure modes—insights directly applicable to AI alignment and safety.</p>
+                            
+                            <p class="key-finding">Through studies with <strong>27,000+ participants</strong>, I've mapped how personality dimensions predict vulnerabilities ranging from psychosis to autism, providing a blueprint for understanding AI failure modes.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2. Research Foundations: Four Key Discoveries -->
+                    <div class="research-foundations">
+                        <h4>Research Foundations: Four Key Discoveries</h4>
+                        
+                        <div class="discovery-grid">
+                            <!-- Openness → Pattern Detection → Psychosis Risk -->
+                            <div class="discovery-item">
+                                <div class="discovery-icon">🔍</div>
+                                <h5>When Pattern Recognition Goes Too Far</h5>
+                                <p><strong>High openness predicts enhanced apophenia and psychosis proneness through overactive pattern detection (N=1,400+)</strong></p>
+                                <p class="ai-insight"><em>In AI:</em> Models with high 'openness' parameters may hallucinate patterns in noise</p>
+                                <a href="#pattern-recognition" class="internal-link">See apophenia research →</a>
+                            </div>
+                            
+                            <!-- Agreeableness → Social Cognition → Dual-Use -->
+                            <div class="discovery-item">
+                                <div class="discovery-icon">🎭</div>
+                                <h5>The Paradox of Social Intelligence</h5>
+                                <p><strong>Low agreeableness predicts both impaired compassion AND enhanced manipulative ability through different theory of mind pathways</strong></p>
+                                <p class="ai-insight"><em>In AI:</em> Social reasoning capabilities enable both helpful assistance and sophisticated deception</p>
+                                <a href="#social-intelligence" class="internal-link">See ToM research →</a>
+                            </div>
+                            
+                            <!-- Extraversion → Reward Sensitivity -->
+                            <div class="discovery-item">
+                                <div class="discovery-icon">⚡</div>
+                                <h5>Drive Systems and Goal Pursuit</h5>
+                                <p><strong>Extraversion, not depression, predicts reward sensitivity—revealing how approach motivation shapes behavior (N=299)</strong></p>
+                                <p class="ai-insight"><em>In AI:</em> Reward function parameters fundamentally determine agent behavior patterns</p>
+                                <p class="note">*Affiliation scale bridges extraversion and agreeableness domains</p>
+                            </div>
+                            
+                            <!-- Plasticity → Exploration -->
+                            <div class="discovery-item">
+                                <div class="discovery-icon">🌱</div>
+                                <h5>The Engine of Adaptation</h5>
+                                <p><strong>Low plasticity (shared variance of openness/extraversion) predicts autism through reduced exploration drive (β = -.64)</strong></p>
+                                <p class="ai-insight"><em>In AI:</em> Models need optimal exploration-exploitation balance for robust learning</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 3. The Cybernetic Framework -->
+                    <div class="cybernetic-framework">
+                        <h4>The Cybernetic Framework</h4>
+                        <p>Personality traits reflect parameters in feedback control systems:</p>
+                        
+                        <div class="parameter-grid">
+                            <div class="parameter">
+                                <h5>🎯 Gain</h5>
+                                <p>Sensitivity to inputs (e.g., openness = gain on novelty detection)</p>
+                            </div>
+                            <div class="parameter">
+                                <h5>📏 Set Points</h5>
+                                <p>Target states (e.g., extraversion = desired stimulation level)</p>
+                            </div>
+                            <div class="parameter">
+                                <h5>⏱️ Delay</h5>
+                                <p>Response timing (e.g., conscientiousness = action threshold)</p>
+                            </div>
+                            <div class="parameter">
+                                <h5>🔄 Feedback Loops</h5>
+                                <p>Self-correction mechanisms (e.g., neuroticism = error sensitivity)</p>
+                            </div>
+                        </div>
+                        
+                        <p class="framework-insight"><strong>These same parameters govern AI behavior, making personality psychology directly relevant to alignment.</strong></p>
+                    </div>
+                    
+                    <!-- 4. Interactive Demo: AI Personality Failure Modes -->
+                    <div class="personality-interactive">
+                        <h4 class="demo-title-enhanced">
+                            <span class="demo-icon">⚙️</span>
+                            AI Personality Failure Modes: From Human Research to AI Predictions
+                            <span class="demo-accent">Interactive Demo</span>
+                        </h4>
+                        <div class="demo-explanation">
+                            <p><strong>This demo translates my empirical findings about personality-pathology connections into AI contexts.</strong> Each extreme configuration below reflects validated human research findings.</p>
+                        </div>
+                        
+                        <div class="pentagon-section">
+                            <canvas id="pentagon-chart"></canvas>
+                            <div class="ocean-legend">
+                                <span><strong>O</strong>penness</span>
+                                <span><strong>C</strong>onscientiousness</span>
+                                <span><strong>E</strong>xtraversion</span>
+                                <span><strong>A</strong>greeableness</span>
+                                <span><strong>N</strong>euroticism</span>
+                            </div>
+                            <div class="factor-controls">
+                                <div class="factor-slider">
+                                    <label for="openness">Openness</label>
+                                    <input type="range" id="openness" min="0" max="100" value="50">
+                                    <span class="value">50</span>
+                                </div>
+                                <div class="factor-slider">
+                                    <label for="conscientiousness">Conscientiousness</label>
+                                    <input type="range" id="conscientiousness" min="0" max="100" value="50">
+                                    <span class="value">50</span>
+                                </div>
+                                <div class="factor-slider">
+                                    <label for="extraversion">Extraversion</label>
+                                    <input type="range" id="extraversion" min="0" max="100" value="50">
+                                    <span class="value">50</span>
+                                </div>
+                                <div class="factor-slider">
+                                    <label for="agreeableness">Agreeableness</label>
+                                    <input type="range" id="agreeableness" min="0" max="100" value="50">
+                                    <span class="value">50</span>
+                                </div>
+                                <div class="factor-slider">
+                                    <label for="neuroticism">Neuroticism</label>
+                                    <input type="range" id="neuroticism" min="0" max="100" value="50">
+                                    <span class="value">50</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="llm-response-section">
+                            <h5>AI Response Pattern Based on Personality Configuration</h5>
+                            <p class="response-context">Observe how personality parameters manifest in AI behavior, with extremes revealing empirically-validated failure modes:</p>
+                            <div class="llm-prompt">
+                                <strong>User:</strong> "I made a mistake on this project. What should I do?"
+                            </div>
+                            <div class="llm-response" id="llm-response">
+                                <strong>AI:</strong> <span id="response-text">I understand you've made a mistake. Let's work through this systematically to find the best solution.</span>
+                            </div>
+                            <div class="personality-description" id="personality-description">
+                                <p>Balanced personality profile showing moderate levels across all five factors.</p>
+                            </div>
+                            
+                            <div class="extreme-profiles">
+                                <p class="note"><strong>Research-Based Extreme Profiles:</strong></p>
+                                <ul>
+                                    <li><strong>Very high openness:</strong> Like humans with psychosis risk, shows pattern over-detection</li>
+                                    <li><strong>Very low agreeableness:</strong> Exhibits manipulative patterns found in human antagonism</li>
+                                    <li><strong>Very low extraversion:</strong> Displays anhedonic, disengaged responses</li>
+                                    <li><strong>Very low plasticity:</strong> Shows rigid, perseverative behavior patterns</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 5. From Human Research to AI Applications -->
+                    <div class="human-to-ai-applications">
+                        <h4>From Human Research to AI Applications</h4>
+                        
+                        <div class="validated-connections">
+                            <h5>Validated Connections</h5>
+                            <ul>
+                                <li>Each personality-pathology link has been empirically validated in large human samples</li>
+                                <li>The same cybernetic mechanisms that drive human behavior govern AI systems</li>
+                                <li>Understanding these mechanisms enables prediction and prevention of AI failure modes</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="alignment-framework">
+                            <h5>The Personality-Based Alignment Framework</h5>
+                            <div class="framework-steps">
+                                <div class="step">
+                                    <h6>1. Diagnostic</h6>
+                                    <p>Assess AI personality parameters through behavioral probes</p>
+                                </div>
+                                <div class="step">
+                                    <h6>2. Predictive</h6>
+                                    <p>Anticipate failure modes based on parameter extremes</p>
+                                </div>
+                                <div class="step">
+                                    <h6>3. Corrective</h6>
+                                    <p>Adjust parameters to maintain healthy ranges</p>
+                                </div>
+                                <div class="step">
+                                    <h6>4. Preventive</h6>
+                                    <p>Design architectures with built-in parameter constraints</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 6. Future Directions: Personality-Aligned Fine-Tuning -->
+                    <div class="future-personality-work">
+                        <h4>Future Directions: Personality-Aligned Fine-Tuning</h4>
+                        <p>Building on my validated human research, I'm developing methods to create and study AI systems with specific personality configurations:</p>
+                        
+                        <div class="future-grid">
+                            <div class="future-item">
+                                <h5>Model Organisms</h5>
+                                <p>Creating AI systems with specific personality configurations for controlled study of failure modes</p>
+                            </div>
+                            <div class="future-item">
+                                <h5>Validated Measures</h5>
+                                <p>Using my Affiliation Scale and other validated instruments to label training data</p>
+                            </div>
+                            <div class="future-item">
+                                <h5>LoRA Adaptations</h5>
+                                <p>Developing parameter-efficient methods to modulate specific personality dimensions</p>
+                            </div>
+                            <div class="future-item">
+                                <h5>Hierarchical Safety</h5>
+                                <p>Building multi-level safety systems based on personality profiles</p>
+                            </div>
+                        </div>
+                        
+                        <div class="use-cases">
+                            <h5>Example Use Cases</h5>
+                            <ul>
+                                <li><strong>Customer Service AI:</strong> High agreeableness, moderate extraversion</li>
+                                <li><strong>Research Assistant AI:</strong> High openness, high conscientiousness</li>
+                                <li><strong>Safety-Critical AI:</strong> Balanced profile with constraints on extremes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- 7. Publications & Impact -->
+                    <div class="personality-publications">
+                        <h4>Key Publications & Impact</h4>
+                        <div class="publication-grid">
+                            <div class="publication-item">
+                                <h5>Extraversion Drives Reward Sensitivity, Not Depression</h5>
+                                <p>Reward systems research revealing fundamental motivational mechanisms</p>
+                                <span class="sample-size">N=299</span>
+                            </div>
+                            <div class="publication-item">
+                                <h5>Measuring Human Affiliation: A New Scale for Social Connection</h5>
+                                <p>Validated measure bridging personality and social behavior</p>
+                                <span class="sample-size">N=27,000+</span>
+                            </div>
+                            <div class="publication-item">
+                                <h5>Low Plasticity as the Origin of Autism: A Cybernetic Theory</h5>
+                                <p>Developmental implications of personality-pathology connections</p>
+                                <span class="sample-size">β = -.64</span>
+                            </div>
+                            <div class="publication-item">
+                                <h5>Personality Extremes Predict Cognitive Vulnerabilities</h5>
+                                <p>Comprehensive mapping of trait-pathology relationships</p>
+                                <span class="sample-size">N=1,400+</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="key-insight">
+                        <p><strong>Core Insight:</strong> By understanding how personality parameters predict failure modes in humans through validated research, we can anticipate and prevent analogous failure modes in AI systems. This isn't speculation—it's empirically-grounded science applied to AI safety.</p>
+                    </div>
+                </div>
+            </div>
