@@ -5186,3 +5186,145 @@ video {
     color: var(--gray);
     margin: 1rem 0 1.5rem;
     line-height: 1.6;
+
+/* Fix page header overlap and enhance subtitles */
+.page-header {
+    padding: 8rem 0 3rem !important;
+}
+
+.page-header p {
+    font-size: 1.5rem !important;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 0.5rem;
+
+/* Purple arrow styling for final tag */
+.hero-tags .tag:contains('→'):last-of-type {
+    background: var(--accent);
+    color: white;
+    border: 2px solid var(--accent);
+    font-weight: 600;
+}
+
+/* All arrow tags should be purple/teal */
+.hero-tags .tag:nth-child(even) {
+    background: var(--accent);
+    color: white;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+
+/* Smaller contact cards for desktop */
+@media (min-width: 768px) {
+    .contact-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem;
+    }
+    .contact-card {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* Large purple contact CTA */
+.contact-cta {
+    font-size: 1.5rem !important;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+/* Special ToM Bridge Section */
+.tom-bridge-special {
+    margin: 3rem 0;
+    padding: 0;
+}
+
+.bridge-header-large {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.bridge-content-block {
+    background: rgba(139, 92, 246, 0.1);
+    border-left: 4px solid var(--accent);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.bridge-content-block p {
+    margin-bottom: 1.5rem;
+    color: var(--light);
+
+/* Profile Grid for Personality Page */
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.profile-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.profile-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.profile-item h5 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.research-note {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Framework Steps Grid */
+.framework-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.framework-step {
+    background: rgba(15, 118, 110, 0.05);
+    border: 1px solid var(--primary);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.framework-step h5 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.framework-note {
+    text-align: center;
+    font-style: italic;
+    color: var(--gray);
+    margin-top: 1rem;
