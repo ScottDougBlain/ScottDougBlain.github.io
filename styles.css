@@ -5090,3 +5090,91 @@ EOF < /dev/null
     }
 }
 EOF < /dev/null
+/* Video and Image Fallback Styles */
+video {
+    background-color: #1a1a1a;
+    min-height: 200px;
+}
+
+/* Ensure images have min dimensions */
+.sample-output {
+    min-height: 100px;
+    background-color: #2a2a2a;
+    display: block;
+}
+
+/* Comparison Table for Research Pages */
+.comparison-table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comparison-table th {
+    background: rgba(15, 118, 110, 0.1);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.science-points {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.science-points li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.science-points li:before {
+    content: '•';
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+}
+
+.subtitle {
+    font-style: italic;
+    color: var(--gray);
+    margin-top: -0.5rem;
+    margin-bottom: 2rem;
+
+/* Framework List Style */
+.framework-list {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.framework-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+
+/* Section Subtitle */
+.section-subtitle {
+    font-style: italic;
+    color: var(--gray);
+    font-size: 1.1rem;
+    margin-top: -0.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+
+/* Contact CTA */
+.contact-cta {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 1.25rem;
+    color: var(--primary);
+    font-style: italic;
