@@ -38,7 +38,12 @@ function animateCounters() {
                 current = target;
                 clearInterval(timer);
             }
-            counter.textContent = Math.floor(current);
+            // Add plus sign for 1000 citations
+            if (target === 1000 && current === target) {
+                counter.textContent = Math.floor(current) + '+';
+            } else {
+                counter.textContent = Math.floor(current);
+            }
         }, 16);
     });
 }
