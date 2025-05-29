@@ -21,9 +21,9 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 // Typewriter effect
 const taglines = [
     "Bridging Cognitive Science & AI Safety",
-    "From Apophenia to AI Hallucinations",
-    "Making AI Systems More Human-Compatible",
-    "35+ Publications → 1 Mission: Safe AI"
+    "From Apophenia to AI Hallucinations: 71% Reduction",
+    "Theory of Mind → Deception Detection → AI Alignment",
+    "27,000+ Participants → 35+ Publications → 1 Mission"
 ];
 
 let taglineIndex = 0;

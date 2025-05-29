@@ -5171,6 +5171,31 @@ EOF < /dev/null
     .nav-next {
         text-align: center;
     }
+    
+    /* Enhanced mobile responsiveness */
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .research-preview-grid,
+    .impact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .achievement-badge {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .research-metrics {
+        justify-content: center;
+    }
+    
+    /* Ensure demos are touch-friendly */
+    .tom-button,
+    .regenerate-btn {
+        min-height: 44px; /* Apple's touch target recommendation */
+    }
 }
 
 /* Video and Image Fallback Styles */
@@ -5284,6 +5309,45 @@ video {
     margin: 0 !important;
     text-align: center !important;
     transition: none;
+}
+
+/* Hero Achievement Badge */
+.hero-achievement {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.achievement-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3); }
+    50% { transform: scale(1.02); box-shadow: 0 6px 25px rgba(139, 92, 246, 0.4); }
+}
+
+/* Research Metrics */
+.research-metrics {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.metric {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
 }
 
 .page-header {
