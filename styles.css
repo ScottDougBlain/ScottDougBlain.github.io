@@ -172,9 +172,11 @@ a, button {
 .hero-content {
     flex: 1;
     max-width: 900px;
-    text-align: center;
+    text-align: center !important;
     z-index: 2;
     position: relative;
+    display: block;
+    margin: 0 auto;
 }
 
 .glitch {
@@ -5262,46 +5264,45 @@ video {
     font-size: 1.5rem;
     font-weight: 400;
     color: var(--accent);
-    margin: 1rem 0 1.5rem;
+    margin: 1rem auto 1.5rem auto;
     line-height: 1.6;
     min-height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
     text-align: center;
 }
 
-/* Typewriter effect styling */
+/* Typewriter effect styling with grid */
 #typewriter-text {
-    color: var(--accent);
+    color: var(--accent) !important;
     min-height: 3rem;
-    display: block !important;
+    display: grid !important;
+    place-items: center;
+    width: 100% !important;
+    margin: 1rem auto 1.5rem auto !important;
     text-align: center !important;
-    width: 100%;
-    line-height: 3rem;
     transition: none;
 }
 
-/* Navigation overlap fix using CSS variables */
+/* Navigation overlap fix with fixed padding */
 .page-header {
-    padding-top: calc(var(--nav-height) + 4rem);
+    padding-top: 140px !important;
     padding-bottom: 3rem;
     margin-top: 0;
 }
 
 /* For sections that might be anchor targets */
 section[id] {
-    scroll-margin-top: var(--nav-height);
+    scroll-margin-top: 100px;
 }
 
 /* First section after nav on any page */
 body > section:first-of-type:not(.hero) {
-    padding-top: calc(var(--nav-height) + 2rem);
+    padding-top: 120px;
 }
 
 /* Special handling for hero section */
 .hero {
-    padding-top: calc(var(--nav-height) + 4rem);
+    padding-top: 140px !important;
 }
 
 .page-header p {
