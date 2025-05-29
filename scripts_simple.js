@@ -1,3 +1,20 @@
+// Dynamic navigation height calculation
+document.addEventListener('DOMContentLoaded', function() {
+    const nav = document.querySelector('.nav-container');
+    if (nav) {
+        const navHeight = nav.offsetHeight;
+        document.documentElement.style.setProperty('--nav-height', navHeight + 'px');
+        
+        // Update on scroll if nav height changes
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100 && nav.classList.contains('scrolled')) {
+                const scrolledHeight = nav.offsetHeight;
+                document.documentElement.style.setProperty('--nav-height-scrolled', scrolledHeight + 'px');
+            }
+        });
+    }
+});
+
 // Check if mobile device
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 

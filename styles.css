@@ -9,6 +9,10 @@
     --card-bg: rgba(10, 14, 39, 0.8);
     --glow: 0 0 20px rgba(15, 118, 110, 0.5);
     
+    /* Navigation height variables */
+    --nav-height: 80px;
+    --nav-height-scrolled: 72px;
+    
     /* Legacy support */
     --primary-color: #0f766e;
     --secondary-color: #0d9488;
@@ -5138,6 +5142,14 @@ EOF < /dev/null
 
 /* Mobile adjustments for multi-page layout */
 @media (max-width: 768px) {
+    :root {
+        --nav-height: 60px; /* Smaller navigation on mobile */
+    }
+    
+    .page-header {
+        padding-top: calc(var(--nav-height) + 2rem);
+    }
+    
     .page-header h1 {
         font-size: 2rem;
     }
@@ -5152,7 +5164,7 @@ EOF < /dev/null
         text-align: center;
     }
 }
-EOF < /dev/null
+
 /* Video and Image Fallback Styles */
 video {
     background-color: #1a1a1a;
@@ -5251,15 +5263,26 @@ video {
     line-height: 1.6;
 }
 
-/* Fix page header overlap and enhance subtitles */
-section.page-header {
-    padding: 12rem 0 3rem !important;
-    margin-top: 0 !important;
+/* Navigation overlap fix using CSS variables */
+.page-header {
+    padding-top: calc(var(--nav-height) + 4rem);
+    padding-bottom: 3rem;
+    margin-top: 0;
 }
 
-.page-header {
-    padding: 12rem 0 3rem !important;
-    margin-top: 0 !important;
+/* For sections that might be anchor targets */
+section[id] {
+    scroll-margin-top: var(--nav-height);
+}
+
+/* First section after nav on any page */
+body > section:first-of-type:not(.hero) {
+    padding-top: calc(var(--nav-height) + 2rem);
+}
+
+/* Special handling for hero section */
+.hero {
+    padding-top: calc(var(--nav-height) + 4rem);
 }
 
 .page-header p {
