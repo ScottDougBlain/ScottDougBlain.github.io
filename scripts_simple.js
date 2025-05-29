@@ -18,6 +18,43 @@ document.addEventListener('DOMContentLoaded', function() {
 // Check if mobile device
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
+// Typewriter effect
+const taglines = [
+    "Bridging Cognitive Science & AI Safety",
+    "From Apophenia to AI Hallucinations",
+    "Making AI Systems More Human-Compatible",
+    "35+ Publications → 1 Mission: Safe AI"
+];
+
+let taglineIndex = 0;
+const typewriterElement = document.getElementById('typewriter-text');
+
+function typeWriter() {
+    if (!typewriterElement) return;
+    
+    const currentTagline = taglines[taglineIndex];
+    typewriterElement.textContent = '';
+    let charIndex = 0;
+    
+    const typeInterval = setInterval(() => {
+        typewriterElement.textContent += currentTagline[charIndex];
+        charIndex++;
+        
+        if (charIndex === currentTagline.length) {
+            clearInterval(typeInterval);
+            setTimeout(() => {
+                taglineIndex = (taglineIndex + 1) % taglines.length;
+                setTimeout(typeWriter, 500);
+            }, 3000);
+        }
+    }, 50);
+}
+
+// Start typewriter effect when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    typeWriter();
+});
+
 // Custom cursor (desktop only)
 if (!isMobile) {
     const cursor = document.querySelector('.cursor');
