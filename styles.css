@@ -5275,6 +5275,8 @@ video {
     min-height: 3rem;
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     transition: none;
 }
 
@@ -5309,15 +5311,7 @@ body > section:first-of-type:not(.hero) {
     margin-top: 0.5rem;
 }
 
-/* Purple arrow styling for final tag */
-.hero-tags .tag:contains('→'):last-of-type {
-    background: var(--accent);
-    color: white;
-    border: 2px solid var(--accent);
-    font-weight: 600;
-}
-
-/* All arrow tags should be purple/teal */
+/* All arrow tags should be purple */
 .hero-tags .tag:nth-child(even) {
     background: var(--accent);
     color: white;
