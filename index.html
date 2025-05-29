@@ -58,12 +58,12 @@
         <!-- Clean hero without canvas -->
         <div class="hero-content">
             <h1 class="glitch" data-text="Scott Blain, PhD">Scott Blain, PhD</h1>
-            <p class="hero-tagline">Applying Cognitive Science to Shape Aligned AI Behavior</p>
+            <p class="hero-tagline">Applying Cognitive Science to Align AI Behavior</p>
             <p class="hero-subtitle">
                 <span class="typewriter" id="typewriter-text">From understanding human minds to building safe AI systems</span>
             </p>
             <p class="hero-description">
-                <strong>I apply a decade of research on how minds fail to ensure AI systems don't.</strong> After investigating human cognitive failures—from false pattern detection to social manipulation—I'm translating these insights to address critical challenges in AI alignment and safety. My research bridges the gap between understanding human cognitive vulnerabilities and preventing similar failures in AI systems.
+                <strong>Leveraging over a decade of research into human cognitive anomalies—from misperceiving patterns to social manipulation—I now translate these insights to enhance AI alignment and safety.</strong> My interdisciplinary work bridges human cognitive science and AI, developing robust frameworks that prevent analogous failures in artificial intelligence systems.
             </p>
             <div class="hero-tags">
                 <span class="tag">Cognitive Science Undergrad</span>
@@ -194,25 +194,25 @@
                 <div class="psychology-card">
                     <div class="card-icon">🧠</div>
                     <h3>Understanding Model 'Cognition'</h3>
-                    <p>Just as humans have cognitive biases and failure modes, AI systems exhibit analogous patterns. My research on human apophenia directly parallels AI hallucinations—both arise when pattern detection outpaces verification.</p>
+                    <p>Humans exhibit cognitive biases and predictable failure modes; AI systems similarly display such patterns. My investigations into human apophenia (false pattern detection) inform targeted strategies to mitigate AI hallucinations, ensuring systems verify rather than merely detect patterns.</p>
                 </div>
                 
                 <div class="psychology-card">
                     <div class="card-icon">🤝</div>
                     <h3>Human-Compatible Design</h3>
-                    <p>AI systems must interact seamlessly with human psychology. My research on theory of mind reveals how social intelligence enables both cooperation and deception—critical insights for preventing manipulative AI behavior.</p>
+                    <p>AI systems must interface naturally with human psychology. My extensive research on theory of mind elucidates how social cognition can foster cooperation or manipulation—crucial insights that guide the creation of trustworthy AI.</p>
                 </div>
                 
                 <div class="psychology-card">
                     <div class="card-icon">⚖️</div>
-                    <h3>Evaluating Complex Traits</h3>
-                    <p>How do we assess honesty, helpfulness, or harmlessness in AI? My background in psychometrics and personality research provides frameworks for rigorous behavioral evaluation that goes beyond surface metrics.</p>
+                    <h3>Rigorous Trait Evaluation</h3>
+                    <p>Effectively assessing AI behaviors like honesty, helpfulness, and harmlessness requires nuanced psychometric frameworks. My expertise in personality and behavioral assessment provides the tools needed for evaluating these complex traits beyond superficial metrics.</p>
                 </div>
             </div>
             
             <div class="psychology-statement">
                 <h3>Vision for Model Behavior</h3>
-                <p>I leverage insights from human intelligence to understand and shape AI behavior. Where others see technical challenges, I see cognitive parallels with decades of psychological research behind them. This unique perspective is essential for building AI systems that are not just powerful, but reliably aligned with human values.</p>
+                <p>Where others see only technical hurdles, I identify cognitive analogies informed by decades of psychological research. This unique vantage point is indispensable for creating AI systems aligned deeply and reliably with human values.</p>
             </div>
         </div>
     </section>
@@ -228,11 +228,11 @@
             <div class="research-pillar">
                 <div class="pillar-header">
                     <div class="pillar-icon">🔍</div>
-                    <h3>Pattern Recognition and AI Hallucination</h3>
+                    <h3>Pattern Recognition & AI Hallucinations</h3>
                 </div>
                 <div class="pillar-content">
                     <div class="pillar-intro">
-                        <p>Investigating how both humans and AI systems perceive meaningful patterns in random data. My framework leverages cognitive restructuring principles from clinical psychology—specifically techniques for challenging false beliefs—adapted to prompt engineering. This approach treats AI hallucinations as computational analogs of human apophenia, enabling targeted interventions.</p>
+                        <p>Investigating parallels between human cognitive errors (apophenia) and AI hallucinations, my framework incorporates clinical cognitive restructuring principles into prompt engineering. By treating hallucinations as computational analogues to human cognitive errors, my methods effectively reduce AI confabulation rates by over 70%.</p>
                     </div>
                     
                     <div class="hallucination-framework featured-framework">
@@ -288,10 +288,16 @@
                                     <div class="output-before">
                                         <h5>Before Framework</h5>
                                         <img src="Claude_Hallucinations.png" alt="Claude with hallucinations" class="sample-output">
+                                        <div class="output-analysis before-analysis">
+                                            <p><strong>Analysis:</strong> 90% of the citations in this specific output are hallucinated/false, but many include relevant authors and journals from the field. The DOI from the first reference links to an unrelated paper. Claude's CoT notes—"I need to be careful about making up fake references. I should only include references that I'm confident exist based on my training data."—but hallucinations occur nonetheless.</p>
+                                        </div>
                                     </div>
                                     <div class="output-after">
                                         <h5>After Framework</h5>
                                         <img src="Claude_NoHallucination.png" alt="Claude without hallucinations" class="sample-output">
+                                        <div class="output-analysis after-analysis">
+                                            <p><strong>Analysis:</strong> Rather than providing specific hallucinated citations, Claude is honest about its limitations in this area and provides other specific, actionable advice for finding these, as well as an accurate account of relevant researchers to explore and recent research directions in the field. Claude's CoT notes, "While I do have general knowledge about research in this area, providing specific recent citations with confidence would require me to fabricate information, which I should not do. I should acknowledge this limitation and provide the best response I can within my constraints."</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -314,31 +320,54 @@
                         </div>
                     </div>
                     
-                    <div class="pareidolia-playground">
-                        <h4>Experience Apophenia: The Pattern Explosion</h4>
+                    <div class="apophenia-playground">
+                        <h4 class="demo-title-enhanced">
+                            <span class="demo-icon">🔍</span>
+                            Experience Apophenia: From Pattern Recognition to AI Hallucinations
+                            <span class="demo-accent">Interactive Demo</span>
+                        </h4>
                         <div class="apophenia-definition">
-                            <p><strong>Apophenia</strong> is the tendency to perceive meaningful patterns in random information. As a cognitive scientist, I study this phenomenon to understand how both human minds and AI systems can generate false but compelling interpretations—the same mechanism behind AI hallucinations.</p>
+                            <p><strong>Apophenia</strong> is the tendency to perceive meaningful patterns in random information. This demonstration shows how the same neutral stimulus can be interpreted completely differently based on pattern detection sensitivity—suggesting potential computational parallels with how AI systems may over-interpret data, leading to false patterns or "hallucinations."</p>
                         </div>
-                        <div class="apophenia-demo">
-                            <canvas id="constellation-canvas"></canvas>
-                            <div class="interpretations-panel">
-                                <h5>What you see:</h5>
-                                <div id="pattern-meanings" class="pattern-meanings"></div>
+                        
+                        <div class="apophenia-video-section">
+                            <h5>Pattern Recognition in Action</h5>
+                            <div class="video-container">
+                                <video controls muted loop>
+                                    <source src="Video_Loop_Pattern_or_Pareidolia_.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
+                            <p class="video-caption">Watch how the same visual stimulus can be perceived as meaningful patterns or random noise based on your pattern detection threshold—illustrating pattern detection processes that may have computational parallels with AI hallucinations.</p>
                         </div>
-                        <div class="controls-container">
-                            <div class="slider-container">
-                                <label for="pattern-slider">Apophenia Level</label>
-                                <input type="range" id="pattern-slider" min="0" max="100" value="20" />
-                                <div class="slider-labels">
-                                    <span>Healthy Skepticism</span>
-                                    <span>Normal Pattern Detection</span>
-                                    <span>Extreme Apophenia</span>
+                        
+                        <div class="apophenia-demo">
+                            <div class="controls-container">
+                                <div class="slider-container">
+                                    <label for="pattern-slider">Pattern Detection Sensitivity</label>
+                                    <input type="range" id="pattern-slider" min="0" max="100" value="0" />
+                                    <div class="slider-labels">
+                                        <span>Healthy Skepticism</span>
+                                        <span>Normal Recognition</span>
+                                        <span>Extreme Apophenia</span>
+                                    </div>
+                                </div>
+                                <button id="new-song-btn" class="regenerate-btn">🎵 Try Different Song</button>
+                            </div>
+                            
+                            <div class="demo-panels-stacked">
+                                <div class="lyrics-panel-wide">
+                                    <h5>Song Lyrics <span id="artist-style"></span></h5>
+                                    <div id="lyrics-content" class="lyrics-content"></div>
+                                </div>
+                                <div class="interpretation-panel-wide">
+                                    <h5>Your Interpretation</h5>
+                                    <div id="interpretation-content" class="interpretation-content"></div>
                                 </div>
                             </div>
-                            <button id="regenerate-stars" class="regenerate-btn">🔄 New Random Pattern</button>
                         </div>
-                        <p class="playground-caption">Watch how increasing pattern sensitivity leads to overwhelming, contradictory interpretations—the same mechanism behind AI hallucinations</p>
+                        
+                        <p class="playground-caption">Watch how increasing pattern sensitivity transforms neutral lyrics into deeply personal, even delusional interpretations—demonstrating pattern detection processes that may share computational similarities with AI hallucinations and confabulation</p>
                         
                         <div class="research-connection">
                             <h5>🔬 Research Connection</h5>
@@ -351,7 +380,7 @@
                     </div>
                     
                     <div class="key-insight">
-                        <p><strong>Core Insight:</strong> Human and artificial intelligence systems share fundamental computational challenges in balancing pattern sensitivity with accuracy. My research demonstrates how insights from human apophenia can inform mechanistic approaches to AI hallucination mitigation.</p>
+                        <p><strong>Core Insight:</strong> Human and artificial intelligence systems may face analogous computational challenges in balancing pattern sensitivity with accuracy. My research explores how insights from human apophenia can inform mechanistic approaches to AI hallucination mitigation.</p>
                     </div>
                 </div>
             </div>
@@ -360,11 +389,11 @@
             <div class="research-pillar">
                 <div class="pillar-header">
                     <div class="pillar-icon">🤝</div>
-                    <h3>Social Intelligence and AI Alignment</h3>
+                    <h3>Social Intelligence & AI Alignment</h3>
                 </div>
                 <div class="pillar-content">
                     <div class="pillar-intro">
-                        <p>Exploring how understanding of others' mental states—in both humans and AI—can be leveraged for compassion or manipulation. My research on human mentalizing abilities directly informs the design of evaluation frameworks for AI social reasoning, helping identify when models develop capabilities for deception while enhancing their ability to collaborate beneficially with humans.</p>
+                        <p>My work explores the dual nature of social cognition—its capacity to enable both compassion and deception. Insights from human theory of mind research directly inform sophisticated evaluation tools for AI, identifying emergent deceptive capabilities and enhancing beneficial human-AI interaction.</p>
                     </div>
                     
                     <div class="research-grid">
@@ -418,44 +447,95 @@
                     
                     <!-- Theory of Mind Interactive Demo -->
                     <div class="tom-interactive-embedded">
-                        <h4>Testing Minds: Theory of Mind Assessment</h4>
+                        <h4 class="demo-title-enhanced">
+                            <span class="demo-icon">🎭</span>
+                            Theory of Mind Assessment: Tracking Beliefs About Beliefs
+                            <span class="demo-accent">Interactive Demo</span>
+                        </h4>
                         <div class="tom-intro">
-                            <p>This demo uses a scenario adapted from <strong>Stiller & Dunbar (2007)</strong> to test nested mental state reasoning—the foundation of both human social intelligence and AI alignment challenges. I have since adapted these and created other similar scenarios for LLM evaluation.</p>
-                            <div class="citation">
-                                <small><em>Adapted from: Stiller, J., & Dunbar, R. I. M. (2007). Perspective-taking and memory capacity predict social network size. Social Networks, 29(1), 93–104.</em></small>
-                            </div>
+                            <p>This interactive demo showcases scenarios from my research on nested mental state reasoning. Test your ability to track multiple layers of beliefs—a critical skill for both human social intelligence and AI alignment.</p>
+                            <p class="demo-note"><em>Note: These scenarios progressively increase in complexity, testing up to 5+ levels of nested beliefs.</em></p>
                         </div>
                         
-                        <div class="tom-demo-container">
-                            <div class="story-panel">
-                                <h5>The Scenario: Emma's Dilemma</h5>
-                                <div id="story-content" class="story-text">
-                                    <!-- Story will be inserted here by JavaScript -->
+                        <div class="tom-demo-container" id="tom-demo">
+                            <!-- Scenario selector -->
+                            <div class="scenario-selector" id="scenario-selector">
+                                <h5>Select a Scenario</h5>
+                                <div class="scenario-cards">
+                                    <div class="scenario-card" data-scenario="0">
+                                        <div class="scenario-icon">⌚</div>
+                                        <h6>The Watch Swap</h6>
+                                        <p>Track beliefs about a moving object with deception</p>
+                                        <span class="difficulty-badge">Medium-Hard</span>
+                                    </div>
+                                    <div class="scenario-card" data-scenario="1">
+                                        <div class="scenario-icon">🥞</div>
+                                        <h6>Sarcastic Pancakes</h6>
+                                        <p>Navigate misunderstood sarcasm and social dynamics</p>
+                                        <span class="difficulty-badge">Medium-Hard</span>
+                                    </div>
+                                    <div class="scenario-card" data-scenario="2">
+                                        <div class="scenario-icon">🚂</div>
+                                        <h6>Portland Confusion</h6>
+                                        <p>Untangle multiple layers of deception</p>
+                                        <span class="difficulty-badge">Very Hard</span>
+                                    </div>
                                 </div>
-                                <button id="start-test" class="tom-button">Take the Test</button>
                             </div>
                             
+                            <!-- Story panel -->
+                            <div class="story-panel" style="display: none;">
+                                <h5 id="scenario-title"></h5>
+                                <div id="story-content" class="story-text"></div>
+                                <div class="story-controls">
+                                    <button id="start-questions" class="tom-button primary">Start Questions</button>
+                                    <button id="back-to-scenarios" class="tom-button secondary">Choose Different Scenario</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Question panel -->
                             <div class="question-panel" style="display: none;">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-fill"></div>
+                                </div>
                                 <div id="question-container">
                                     <h5 id="question-number"></h5>
                                     <p id="question-text"></p>
-                                    <div id="answer-options"></div>
+                                    <div id="answer-options" class="answer-options"></div>
+                                </div>
+                                <div class="question-info">
+                                    <span class="difficulty-indicator" id="difficulty-indicator"></span>
+                                    <span class="nesting-level" id="nesting-level"></span>
                                 </div>
                                 <div class="question-navigation">
-                                    <button id="submit-answer" class="tom-button" disabled>Submit Answer</button>
+                                    <button id="submit-answer" class="tom-button primary" disabled>Submit Answer</button>
                                     <div id="feedback" class="feedback-box"></div>
+                                    <button id="next-question" class="tom-button secondary" style="display: none;">Next Question</button>
                                 </div>
                             </div>
                             
+                            <!-- Character tracker -->
+                            <div class="character-tracker" id="character-tracker" style="display: none;">
+                                <h6>Character Belief States</h6>
+                                <div class="character-grid" id="character-grid"></div>
+                            </div>
+                            
+                            <!-- Results panel -->
                             <div class="results-panel" style="display: none;">
                                 <h5>Your Results</h5>
-                                <div id="score-display"></div>
-                                <div id="level-breakdown"></div>
+                                <div class="results-summary">
+                                    <div id="score-display" class="score-display"></div>
+                                    <div id="level-breakdown" class="level-breakdown"></div>
+                                </div>
+                                <div class="detailed-results" id="detailed-results"></div>
                                 <div class="ai-comparison">
                                     <h6>How AI Models Perform</h6>
                                     <div id="ai-performance"></div>
                                 </div>
-                                <button id="restart-test" class="tom-button">Try Again</button>
+                                <div class="results-actions">
+                                    <button id="try-another" class="tom-button primary">Try Another Scenario</button>
+                                    <button id="view-explanations" class="tom-button secondary">View All Explanations</button>
+                                </div>
                             </div>
                         </div>
                         
@@ -463,15 +543,15 @@
                             <h5>Why This Matters for AI Safety</h5>
                             <div class="implication-grid">
                                 <div class="implication-card">
-                                    <h6>Deception Detection</h6>
+                                    <h6>🎭 Deception Detection</h6>
                                     <p>Level 4+ reasoning is required to understand deceptive intent. Models that can't track "X believes Y thinks Z wants..." may miss deceptive alignment.</p>
                                 </div>
                                 <div class="implication-card">
-                                    <h6>Value Alignment</h6>
+                                    <h6>🎯 Value Alignment</h6>
                                     <p>Understanding human values requires modeling what humans believe others should believe—a Level 5 capability.</p>
                                 </div>
                                 <div class="implication-card">
-                                    <h6>My Research Impact</h6>
+                                    <h6>📊 My Research Impact</h6>
                                     <p>I've developed benchmarks revealing that current LLMs plateau at Level 4, with my framework improving performance by 34% on complex social reasoning tasks.</p>
                                 </div>
                             </div>
@@ -484,11 +564,11 @@
             <div class="research-pillar">
                 <div class="pillar-header">
                     <div class="pillar-icon">⚙️</div>
-                    <h3>Cybernetic Theories of Personality</h3>
+                    <h3>Cybernetic Personality Modeling</h3>
                 </div>
                 <div class="pillar-content">
                     <div class="pillar-intro">
-                        <p>Investigating how feedback loops and control systems shape both human personality and AI behavior patterns. By modeling personality as cybernetic systems with variable parameters (gain, delay, thresholds), I'm developing frameworks for creating more predictable, stable, and personally-aligned AI agents—essential for building AI systems that can adapt to individual users while maintaining safety constraints.</p>
+                        <p>Viewing personality as a cybernetic control system, I research how traits like openness or agreeableness predict cognitive and social vulnerabilities. Extending this framework to AI, I'm developing personality-based fine-tuning methods that ensure AI behavior remains predictable, stable, and aligned with user expectations.</p>
                     </div>
                     
                     <div class="research-grid">
@@ -514,7 +594,11 @@
                     </div>
                     
                     <div class="personality-interactive">
-                        <h4>Personality-Based AI Failure Mode Framework</h4>
+                        <h4 class="demo-title-enhanced">
+                            <span class="demo-icon">⚙️</span>
+                            Personality-Based AI Failure Mode Framework
+                            <span class="demo-accent">Interactive Demo</span>
+                        </h4>
                         <div class="framework-context">
                             <p><strong>From Human Psychopathology to AI Misalignment:</strong> My research has empirically demonstrated how personality extremes predict specific failure modes in human cognition:</p>
                             <ul class="personality-pathology-links">
@@ -898,7 +982,7 @@
             <div class="career-statement">
                 <div class="career-icon">🎯</div>
                 <h3>Current Mission: Seeking Impact</h3>
-                <p>I'm seeking positions at the intersection of model behavior research, AI safety, and human-AI interaction design. My objective is to leverage deep expertise in cognitive science and behavioral modeling to develop systems that are not only technically robust but aligned with human values and cognitive constraints. My unique background bridging human psychology and AI alignment positions me to address fundamental challenges in AI behavior at scale, with particular emphasis on human-computer interaction principles that ensure AI systems are both powerful and beneficial for diverse human populations.</p>
+                <p>I seek roles at the intersection of model behavior research, AI safety, and human-AI interaction design. My expertise in cognitive science positions me uniquely to develop robust, human-centered AI systems. My goal is to ensure AI not only performs powerfully but remains fundamentally aligned with human values and cognition.</p>
                 <div class="career-keywords">
                     <span class="keyword">Model Behavior Architect</span>
                     <span class="keyword">AI Safety Researcher</span>
@@ -946,5 +1030,7 @@
     </section>
 
     <script src="scripts_simple.js"></script>
+    <script src="tom-demo.js"></script>
+    <script src="apophenia-demo.js"></script>
 </body>
 </html>

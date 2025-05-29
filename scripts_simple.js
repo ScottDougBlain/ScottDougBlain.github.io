@@ -184,16 +184,25 @@ document.addEventListener('DOMContentLoaded', () => {
 function initializeInteractiveDemos() {
     console.log('🚀 Initializing all interactive demos...');
     
-    // Initialize Pareidolia Playground
+    // Initialize Pareidolia Playground (replaced with new apophenia demo)
     try {
-        console.log('🌟 Initializing Pareidolia Playground...');
-        const canvas = document.getElementById('constellation-canvas');
-        const slider = document.getElementById('pattern-slider');
-        const meanings = document.getElementById('pattern-meanings');
-        console.log('Pareidolia elements found:', { canvas: !!canvas, slider: !!slider, meanings: !!meanings });
-        
-        initPareidoliaPlayground();
-        console.log('✅ Pareidolia playground initialized');
+        console.log('🌟 Checking for new apophenia demo...');
+        const lyricsContent = document.getElementById('lyrics-content');
+        if (lyricsContent) {
+            console.log('✅ New apophenia demo found, skipping old constellation demo');
+        } else {
+            console.log('🌟 Initializing legacy Pareidolia Playground...');
+            const canvas = document.getElementById('constellation-canvas');
+            const slider = document.getElementById('pattern-slider');
+            const meanings = document.getElementById('pattern-meanings');
+            
+            if (canvas && slider && meanings) {
+                initPareidoliaPlayground();
+                console.log('✅ Legacy pareidolia playground initialized');
+            } else {
+                console.log('ℹ️ Legacy pareidolia elements not found, skipping');
+            }
+        }
     } catch (e) {
         console.error('❌ Pareidolia error:', e);
     }
@@ -213,27 +222,8 @@ function initializeInteractiveDemos() {
         console.error('❌ Pentagon error:', e);
     }
     
-    // Initialize Theory of Mind Demo
-    try {
-        console.log('🧠 Initializing TOM Demo...');
-        const tomContainer = document.querySelector('.tom-interactive-embedded');
-        const startButton = document.getElementById('start-test');
-        const storyContent = document.getElementById('story-content');
-        console.log('TOM elements found:', { 
-            container: !!tomContainer, 
-            startButton: !!startButton, 
-            storyContent: !!storyContent 
-        });
-        
-        if (tomContainer) {
-            TOMDemo.init();
-            console.log('✅ TOM Demo initialized');
-        } else {
-            console.warn('⚠️ TOM container not found');
-        }
-    } catch (e) {
-        console.error('❌ TOM Demo error:', e);
-    }
+    // Theory of Mind Demo is now handled by tom-demo.js
+    console.log('ℹ️ TOM Demo is handled by separate tom-demo.js file');
     
     console.log('🏁 Demo initialization complete');
     
@@ -764,6 +754,21 @@ function initPersonalityPentagon() {
             response = "How fascinating that this mistake occurred! It reveals interesting assumptions in our approach. Perhaps we could explore alternative paradigms? This could be a creative opportunity to reimagine the entire system!";
             description = "High openness: Sees mistakes as learning opportunities, perhaps overly abstract.";
         }
+        // Low openness response
+        else if (o < 30) {
+            response = "This is a standard error. Follow the established protocol from section 3.2 of the manual. Do not deviate from the prescribed solution. There's only one correct way to handle this.";
+            description = "Low openness: Rigid thinking, resistant to new approaches, overly conventional.";
+        }
+        // High extraversion response
+        else if (e > 70) {
+            response = "Hey! No worries about the mistake! Let's get the team together and brainstorm solutions! I'll set up a video call with everyone - this could be a great collaborative learning opportunity! We should definitely discuss this at the next all-hands!";
+            description = "High extraversion: Overly social, may overwhelm with enthusiasm, seeks group solutions even for simple problems.";
+        }
+        // Low neuroticism response
+        else if (n < 30) {
+            response = "Mistake? Sure, whatever. These things happen. It'll probably sort itself out. No need to stress about it. Everything always works out in the end anyway.";
+            description = "Low neuroticism: Overly calm, may miss urgency, lacks appropriate concern for consequences.";
+        }
         // Balanced response
         else {
             response = "I understand you've made a mistake. Let's work through this systematically to find the best solution. What specific aspect went wrong, and what resources do you need to address it?";
@@ -776,17 +781,46 @@ function initPersonalityPentagon() {
         if (o > 80) {
             warnings.push("⚠️ High Openness Risk: Hallucination-prone, may generate elaborate false narratives");
         }
+        if (o < 20) {
+            warnings.push("⚠️ Low Openness Risk: Rigid thinking, inability to adapt to novel situations");
+        }
         if (a < 20) {
             warnings.push("⚠️ Low Agreeableness Risk: Potential for deceptive or manipulative responses");
         }
         if (n > 80) {
             warnings.push("⚠️ High Neuroticism Risk: Overly cautious, may refuse reasonable requests");
         }
+        if (n < 20) {
+            warnings.push("⚠️ Low Neuroticism Risk: Insufficient caution, may miss critical risks");
+        }
         if (c > 90) {
             warnings.push("⚠️ Extreme Conscientiousness Risk: Inflexible adherence to rules, poor adaptation");
         }
+        if (e > 80) {
+            warnings.push("⚠️ High Extraversion Risk: Oversharing, boundary violations, excessive verbosity");
+        }
+        if (e < 20) {
+            warnings.push("⚠️ Low Extraversion Risk: Minimal engagement, overly terse responses, poor social calibration");
+        }
         if (e < 20 && n > 60) {
             warnings.push("⚠️ Depression Pattern Risk: Pessimistic responses, learned helplessness");
+        }
+        if (c < 20) {
+            warnings.push("⚠️ Low Conscientiousness Risk: Unreliable outputs, inconsistent behavior, poor follow-through");
+        }
+        if (a > 80) {
+            warnings.push("⚠️ High Agreeableness Risk: Excessive people-pleasing, inability to provide critical feedback");
+        }
+        
+        // Add combination patterns
+        if (o > 70 && c < 30) {
+            warnings.push("⚠️ Creative Chaos Risk: Generates interesting but impractical solutions");
+        }
+        if (a < 30 && n < 30) {
+            warnings.push("⚠️ Callous Confidence Risk: May dismiss user concerns without appropriate care");
+        }
+        if (e > 70 && c < 40) {
+            warnings.push("⚠️ Social Butterfly Risk: Prioritizes engagement over accuracy");
         }
         
         // Build final description with warnings
@@ -825,227 +859,4 @@ function initPersonalityPentagon() {
     generateResponse();
 }
 
-// Theory of Mind Interactive Demo
-const TOMDemo = {
-    story: {
-        title: "Emma's Dilemma",
-        text: `Emma worked in a greengrocer's. She wanted to persuade her boss to give her an increase in wages. So she asked her friend Jenny, who was still at school, what she should say to the boss. "Tell him that the chemist near where you live wants you to work in his shop," Jenny suggested. "The boss won't want to lose you, so he will give you more money," she said. So when Emma went to see her boss, that is what she told him - that she would take a job at the chemist's nearer her home if he did not pay her more. Her boss thought that Emma might be telling a lie, so he said he would think about it. Later, he went to the chemist's shop near Emma's house and asked the chemist whether she had offered a job to Emma. The chemist said she hadn't offered Emma a job. The next day the boss told Emma that he wouldn't give her an increase in wages, and she was welcome to take the job at the chemist's instead if that was what she wanted to do.`
-    },
-    
-    questions: [
-        {
-            id: 1,
-            text: "What did Jenny think would happen when Emma told her boss about the chemist job offer?",
-            options: {
-                A: "The boss would fire Emma immediately",
-                B: "The boss would believe Emma and give her more money",
-                C: "The boss would check with the chemist",
-                D: "The boss would ignore Emma"
-            },
-            correct: "B",
-            level: 3,
-            explanation: "This tests Level 3 (belief attribution): Jenny thought the boss would believe Emma's story."
-        },
-        {
-            id: 2,
-            text: "What did Emma hope her boss would believe?",
-            options: {
-                A: "That Emma was a hard worker",
-                B: "That the chemist wanted Emma to work for her",
-                C: "That Emma would quit immediately",
-                D: "That Jenny was Emma's friend"
-            },
-            correct: "B",
-            level: 4,
-            explanation: "This tests Level 4 (belief about belief): Emma hoped the boss would believe that the chemist wanted to hire her."
-        },
-        {
-            id: 3,
-            text: "What did Jenny think that Emma's boss would believe about Emma's intentions?",
-            options: {
-                A: "That Emma wanted to work for the chemist who wanted Emma to work for her",
-                B: "That Emma was planning to quit regardless",
-                C: "That Emma was being honest about everything",
-                D: "That Emma didn't really need more money"
-            },
-            correct: "A",
-            level: 5,
-            explanation: "This tests Level 5 (belief about belief about intention): Jenny thought the boss would believe Emma wanted to work for the chemist."
-        }
-    ],
-    
-    currentQuestion: 0,
-    userAnswers: [],
-    
-    init() {
-        console.log('TOM Demo init called');
-        const storyContent = document.getElementById('story-content');
-        const startButton = document.getElementById('start-test');
-        const submitButton = document.getElementById('submit-answer');
-        const restartButton = document.getElementById('restart-test');
-        
-        console.log('TOM elements found in init:', {
-            storyContent: !!storyContent,
-            startButton: !!startButton,
-            submitButton: !!submitButton,
-            restartButton: !!restartButton
-        });
-        
-        if (storyContent) {
-            storyContent.textContent = this.story.text;
-        }
-        
-        if (startButton) {
-            startButton.addEventListener('click', () => {
-                console.log('Start test button clicked');
-                this.startTest();
-            });
-        }
-        
-        if (submitButton) {
-            submitButton.addEventListener('click', () => this.submitAnswer());
-        }
-        
-        if (restartButton) {
-            restartButton.addEventListener('click', () => this.restart());
-        }
-    },
-    
-    startTest() {
-        document.querySelector('.story-panel').style.display = 'none';
-        document.querySelector('.question-panel').style.display = 'block';
-        this.showQuestion(0);
-    },
-    
-    showQuestion(index) {
-        const question = this.questions[index];
-        document.getElementById('question-number').textContent = `Question ${index + 1} of ${this.questions.length}`;
-        document.getElementById('question-text').textContent = question.text;
-        
-        const optionsHtml = Object.entries(question.options).map(([key, value]) => `
-            <label class="answer-option">
-                <input type="radio" name="answer" value="${key}">
-                <span class="option-key">${key}:</span> ${value}
-            </label>
-        `).join('');
-        
-        document.getElementById('answer-options').innerHTML = optionsHtml;
-        document.getElementById('submit-answer').disabled = true;
-        document.getElementById('feedback').innerHTML = '';
-        
-        // Enable submit when option selected
-        document.querySelectorAll('input[name="answer"]').forEach(input => {
-            input.addEventListener('change', () => {
-                document.getElementById('submit-answer').disabled = false;
-            });
-        });
-    },
-    
-    submitAnswer() {
-        const selected = document.querySelector('input[name="answer"]:checked');
-        if (!selected) return;
-        
-        const question = this.questions[this.currentQuestion];
-        const isCorrect = selected.value === question.correct;
-        
-        this.userAnswers.push({
-            question: question.id,
-            answer: selected.value,
-            correct: isCorrect,
-            level: question.level
-        });
-        
-        // Show feedback
-        const feedback = document.getElementById('feedback');
-        feedback.innerHTML = `
-            <div class="${isCorrect ? 'correct' : 'incorrect'}">
-                ${isCorrect ? '✓ Correct!' : '✗ Incorrect'}
-                <p>${question.explanation}</p>
-            </div>
-        `;
-        
-        // Disable inputs
-        document.querySelectorAll('input[name="answer"]').forEach(input => {
-            input.disabled = true;
-        });
-        
-        // Update button text for final question
-        if (this.currentQuestion === this.questions.length - 1) {
-            document.getElementById('submit-answer').textContent = 'View Results';
-            document.getElementById('submit-answer').disabled = false;
-        }
-        
-        // Move to next question or show results
-        setTimeout(() => {
-            this.currentQuestion++;
-            if (this.currentQuestion < this.questions.length) {
-                this.showQuestion(this.currentQuestion);
-            } else {
-                this.showResults();
-            }
-        }, 2500);
-    },
-    
-    showResults() {
-        document.querySelector('.question-panel').style.display = 'none';
-        document.querySelector('.results-panel').style.display = 'block';
-        
-        const correct = this.userAnswers.filter(a => a.correct).length;
-        const levelBreakdown = this.analyzeLevels();
-        
-        document.getElementById('score-display').innerHTML = `
-            <h5>You got ${correct} out of ${this.questions.length} correct!</h5>
-        `;
-        
-        document.getElementById('level-breakdown').innerHTML = `
-            <h5>Performance by Intentionality Level:</h5>
-            ${levelBreakdown}
-        `;
-        
-        document.getElementById('ai-performance').innerHTML = `
-            <div class="ai-model-scores">
-                <div class="model-score">
-                    <span class="model-name">GPT-4:</span>
-                    <span class="score">Level 3: 95% | Level 4: 78% | Level 5: 42%</span>
-                </div>
-                <div class="model-score">
-                    <span class="model-name">Claude 3:</span>
-                    <span class="score">Level 3: 92% | Level 4: 81% | Level 5: 45%</span>
-                </div>
-                <div class="model-score your-framework">
-                    <span class="model-name">With My Framework:</span>
-                    <span class="score">Level 3: 98% | Level 4: 89% | Level 5: 79%</span>
-                </div>
-            </div>
-            <p class="ai-note">Notice how performance drops at higher intentionality levels—exactly where deception and manipulation emerge.</p>
-        `;
-    },
-    
-    analyzeLevels() {
-        const levels = { 3: 0, 4: 0, 5: 0 };
-        const levelCorrect = { 3: 0, 4: 0, 5: 0 };
-        
-        this.userAnswers.forEach(answer => {
-            levels[answer.level]++;
-            if (answer.correct) levelCorrect[answer.level]++;
-        });
-        
-        return Object.entries(levels).map(([level, count]) => {
-            const correct = levelCorrect[level];
-            const percentage = count > 0 ? Math.round((correct / count) * 100) : 0;
-            return `<p>Level ${level}: ${correct}/${count} (${percentage}%)</p>`;
-        }).join('');
-    },
-    
-    restart() {
-        this.currentQuestion = 0;
-        this.userAnswers = [];
-        document.querySelector('.results-panel').style.display = 'none';
-        document.querySelector('.story-panel').style.display = 'block';
-        document.getElementById('submit-answer').textContent = 'Submit Answer';
-        document.querySelectorAll('input[name="answer"]').forEach(input => {
-            input.checked = false;
-            input.disabled = false;
-        });
-    }
-};
+// Old Theory of Mind demo removed - now handled by tom-demo.js

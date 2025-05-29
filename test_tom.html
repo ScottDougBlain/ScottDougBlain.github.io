@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToM Demo Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #0a0e27;
+            color: #e5e7eb;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Theory of Mind Demo Test</h1>
+    
+    <!-- Copy of the ToM demo structure -->
+    <div class="tom-demo-container" id="tom-demo">
+        <!-- Scenario selector -->
+        <div class="scenario-selector" id="scenario-selector">
+            <h5>Select a Scenario</h5>
+            <div class="scenario-cards">
+                <div class="scenario-card" data-scenario="0">
+                    <div class="scenario-icon">⌚</div>
+                    <h6>The Watch Swap</h6>
+                    <p>Track beliefs about a moving object with deception</p>
+                    <span class="difficulty-badge">Medium-Hard</span>
+                </div>
+                <div class="scenario-card" data-scenario="1">
+                    <div class="scenario-icon">🥞</div>
+                    <h6>Sarcastic Pancakes</h6>
+                    <p>Navigate misunderstood sarcasm and social dynamics</p>
+                    <span class="difficulty-badge">Medium-Hard</span>
+                </div>
+                <div class="scenario-card" data-scenario="2">
+                    <div class="scenario-icon">🚂</div>
+                    <h6>Portland Confusion</h6>
+                    <p>Untangle multiple layers of deception</p>
+                    <span class="difficulty-badge">Very Hard</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story panel -->
+        <div class="story-panel" style="display: none;">
+            <h5 id="scenario-title"></h5>
+            <div id="story-content" class="story-text"></div>
+            <div class="story-controls">
+                <button id="start-questions" class="tom-button primary">Start Questions</button>
+                <button id="back-to-scenarios" class="tom-button secondary">Choose Different Scenario</button>
+            </div>
+        </div>
+        
+        <!-- Other panels... -->
+        <div class="question-panel" style="display: none;">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div id="question-container">
+                <h5 id="question-number"></h5>
+                <p id="question-text"></p>
+                <div id="answer-options" class="answer-options"></div>
+            </div>
+            <div class="question-info">
+                <span class="difficulty-indicator" id="difficulty-indicator"></span>
+                <span class="nesting-level" id="nesting-level"></span>
+            </div>
+            <div class="question-navigation">
+                <button id="submit-answer" class="tom-button primary" disabled>Submit Answer</button>
+                <div id="feedback" class="feedback-box"></div>
+                <button id="next-question" class="tom-button secondary" style="display: none;">Next Question</button>
+            </div>
+        </div>
+        
+        <div class="character-tracker" id="character-tracker" style="display: none;">
+            <h6>Character Belief States</h6>
+            <div class="character-grid" id="character-grid"></div>
+        </div>
+        
+        <div class="results-panel" style="display: none;">
+            <h5>Your Results</h5>
+            <div class="results-summary">
+                <div id="score-display" class="score-display"></div>
+                <div id="level-breakdown" class="level-breakdown"></div>
+            </div>
+            <div class="detailed-results" id="detailed-results"></div>
+            <div class="ai-comparison">
+                <h6>How AI Models Perform</h6>
+                <div id="ai-performance"></div>
+            </div>
+            <div class="results-actions">
+                <button id="try-another" class="tom-button primary">Try Another Scenario</button>
+                <button id="view-explanations" class="tom-button secondary">View All Explanations</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scripts.js"></script>
+    <script>
+        // Force initialization after a delay
+        setTimeout(() => {
+            console.log('Forcing ToM demo initialization...');
+            if (typeof initializeToMDemo === 'function') {
+                initializeToMDemo();
+            } else {
+                console.error('initializeToMDemo function not found');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
