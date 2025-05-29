@@ -40,9 +40,12 @@ function animateCounters() {
                 current = target;
                 clearInterval(timer);
             }
-            // Add plus sign for 1000 citations
-            if (target === 1000 && current === target) {
-                counter.textContent = Math.floor(current) + '+';
+            
+            // Format the number
+            if (target === 20000 && current === target) {
+                counter.textContent = '20,000';
+            } else if (target === 1000 && current === target) {
+                counter.textContent = '1,000';
             } else {
                 counter.textContent = Math.floor(current);
             }

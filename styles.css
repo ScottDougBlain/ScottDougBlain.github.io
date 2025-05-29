@@ -420,7 +420,15 @@ a, button {
     display: flex;
     justify-content: center;
     gap: 3rem;
-    margin: 3rem 0;
+    margin: 2rem 0 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-stats-secondary {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 1rem 0 3rem;
 }
 
 .stat {
@@ -428,11 +436,22 @@ a, button {
 }
 
 .stat-number {
-    display: block;
+    display: inline-block;
     font-size: 3rem;
     font-weight: 700;
     color: var(--primary);
     text-shadow: var(--glow);
+    line-height: 1;
+}
+
+.stat-percent,
+.stat-plus {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-shadow: var(--glow);
+    margin-left: 0.2rem;
 }
 
 .stat-label {
@@ -4989,40 +5008,6 @@ a, button {
     transform: translateX(5px);
 }
 
-/* Impact Showcase Section */
-.impact-showcase-section {
-    padding: 4rem 0;
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.impact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.impact-item {
-    text-align: center;
-    padding: 2rem;
-}
-
-.impact-number {
-    display: block;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 30px rgba(15, 118, 110, 0.5);
-}
-
-.impact-label {
-    display: block;
-    color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
 /* Call to Action Section */
 .cta-section {
     padding: 5rem 0;
@@ -5193,10 +5178,6 @@ a, button {
         grid-template-columns: 1fr;
     }
     
-    .impact-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
     
     .cta-buttons {
         flex-direction: column;
@@ -5345,6 +5326,32 @@ EOF < /dev/null
 @media (max-width: 768px) {
     :root {
         --nav-height: 60px; /* Smaller navigation on mobile */
+    }
+    
+    .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 2rem 0 1rem;
+    }
+    
+    .hero-stats-secondary {
+        display: flex;
+        gap: 2rem;
+        margin: 1rem 0 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .stat-percent,
+    .stat-plus {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
     }
     
     .page-header {
