@@ -5033,7 +5033,8 @@ a, button {
 
 /* Footer */
 /* Scroll Progress Indicator */
-.scroll-progress {
+.scroll-progress,
+.reading-progress {
     position: fixed;
     top: 0;
     left: 0;

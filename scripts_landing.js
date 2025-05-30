@@ -86,7 +86,7 @@ function typeWriter() {
 }
 
 // Scroll progress indicator
-const scrollProgress = document.querySelector('.scroll-progress');
+const scrollProgress = document.querySelector('.reading-progress');
 
 // Navbar scroll effect and progress indicator
 const nav = document.querySelector('.nav-container');

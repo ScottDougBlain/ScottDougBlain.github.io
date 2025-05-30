@@ -1,6 +1,18 @@
 // Check if mobile device
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
+// Reading Progress Bar
+document.addEventListener('DOMContentLoaded', () => {
+    const progressBar = document.querySelector('.reading-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+    }
+});
+
 // Custom cursor (desktop only)
 if (!isMobile) {
     const cursor = document.querySelector('.cursor');
