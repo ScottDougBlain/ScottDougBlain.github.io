@@ -99,63 +99,125 @@
                             <span class="demo-accent">Interactive Demo</span>
                         </h4>
                         <div class="tom-intro">
-                            <p>Explore these multi-agent nested belief scenarios to experience the complexity of nested mental states fundamental to theory of mind. Such scenarios can be used for the assessment of advanced social intelligence, both in humans and AI.</p>
+                            <p>Explore these multi-agent nested belief scenarios to experience the complexity of nested mental states fundamental to theory of mind. Each scenario tests your ability to track what different characters believe about other characters' beliefs—a crucial skill for both human social interaction and AI alignment.</p>
+                            <div class="demo-instructions">
+                                <h6>How It Works:</h6>
+                                <div class="instruction-steps">
+                                    <div class="step">
+                                        <span class="step-number">1</span>
+                                        <span class="step-text">Choose a scenario that interests you</span>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">2</span>
+                                        <span class="step-text">Read the story carefully—track who knows what</span>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">3</span>
+                                        <span class="step-text">Answer questions about nested beliefs ("What does X think Y believes?")</span>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">4</span>
+                                        <span class="step-text">Compare your performance to current AI models</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="tom-demo-container" id="tom-demo">
                             <!-- Scenario selector -->
                             <div class="scenario-selector" id="scenario-selector">
-                                <h5>Select a Scenario</h5>
+                                <h5>Choose Your Scenario</h5>
                                 <div class="scenario-cards">
-                                    <div class="scenario-card" data-scenario="0">
+                                    <div class="scenario-card card card-interactive" data-scenario="0">
                                         <div class="scenario-icon">⌚</div>
                                         <h6>The Watch Swap</h6>
-                                        <p>Track beliefs about a moving object with deception</p>
-                                        <span class="difficulty-badge">Tests: Deception Tracking</span>
+                                        <p>Track beliefs about a moving object as it's secretly moved multiple times with layers of deception</p>
+                                        <div class="scenario-meta">
+                                            <span class="difficulty-badge moderate">Moderate Complexity</span>
+                                            <span class="nesting-badge">3-Layer Nesting</span>
+                                        </div>
+                                        <div class="scenario-details">
+                                            <span class="detail-item">📊 5 Characters</span>
+                                            <span class="detail-item">❓ 3 Questions</span>
+                                            <span class="detail-item">⏱️ ~5 minutes</span>
+                                        </div>
                                     </div>
-                                    <div class="scenario-card" data-scenario="1">
+                                    <div class="scenario-card card card-interactive" data-scenario="1">
                                         <div class="scenario-icon">🥞</div>
                                         <h6>Sarcastic Pancakes</h6>
-                                        <p>Navigate misunderstood sarcasm and social dynamics</p>
-                                        <span class="difficulty-badge">Tests: Social Misinterpretation</span>
+                                        <p>Navigate the complexities of misunderstood sarcasm and layered social misinterpretations</p>
+                                        <div class="scenario-meta">
+                                            <span class="difficulty-badge challenging">Challenging</span>
+                                            <span class="nesting-badge">4-Layer Nesting</span>
+                                        </div>
+                                        <div class="scenario-details">
+                                            <span class="detail-item">📊 4 Characters</span>
+                                            <span class="detail-item">❓ 3 Questions</span>
+                                            <span class="detail-item">⏱️ ~7 minutes</span>
+                                        </div>
                                     </div>
-                                    <div class="scenario-card" data-scenario="2">
+                                    <div class="scenario-card card card-interactive" data-scenario="2">
                                         <div class="scenario-icon">🚂</div>
                                         <h6>Portland Confusion</h6>
-                                        <p>Untangle multiple layers of deception</p>
-                                        <span class="difficulty-badge">Tests: Complex Manipulation</span>
+                                        <p>Untangle multiple layers of misdirection and intentional geographic confusion</p>
+                                        <div class="scenario-meta">
+                                            <span class="difficulty-badge expert">Expert Level</span>
+                                            <span class="nesting-badge">5-Layer Nesting</span>
+                                        </div>
+                                        <div class="scenario-details">
+                                            <span class="detail-item">📊 3 Characters</span>
+                                            <span class="detail-item">❓ 4 Questions</span>
+                                            <span class="detail-item">⏱️ ~8 minutes</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Story panel -->
                             <div class="story-panel" style="display: none;">
-                                <h5 id="scenario-title"></h5>
+                                <div class="story-header">
+                                    <h5 id="scenario-title"></h5>
+                                    <div class="reading-tips">
+                                        <div class="tip-icon">💡</div>
+                                        <div class="tip-text">
+                                            <strong>Reading Strategy:</strong> Pay close attention to who observes what actions, and who is present for each conversation. Track the information each character has access to.
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="story-content" class="story-text"></div>
                                 <div class="story-controls">
-                                    <button id="start-questions" class="tom-button primary">Start Questions</button>
-                                    <button id="back-to-scenarios" class="tom-button secondary">Choose Different Scenario</button>
+                                    <button id="start-questions" class="btn btn-primary">Start Questions →</button>
+                                    <button id="back-to-scenarios" class="btn btn-outline">← Choose Different Scenario</button>
                                 </div>
                             </div>
                             
                             <!-- Question panel -->
                             <div class="question-panel" style="display: none;">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="progress-fill"></div>
+                                <div class="question-header">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="progress-fill"></div>
+                                        <div class="progress-text" id="progress-text">Question 1 of 3</div>
+                                    </div>
+                                    <div class="question-meta">
+                                        <span class="difficulty-indicator" id="difficulty-indicator"></span>
+                                        <span class="nesting-level" id="nesting-level"></span>
+                                    </div>
                                 </div>
                                 <div id="question-container">
                                     <h5 id="question-number"></h5>
-                                    <p id="question-text"></p>
+                                    <div class="question-content">
+                                        <p id="question-text"></p>
+                                        <div class="question-hint" id="question-hint" style="display: none;">
+                                            💡 <strong>Hint:</strong> <span id="hint-text"></span>
+                                        </div>
+                                    </div>
                                     <div id="answer-options" class="answer-options"></div>
                                 </div>
-                                <div class="question-info">
-                                    <span class="difficulty-indicator" id="difficulty-indicator"></span>
-                                    <span class="nesting-level" id="nesting-level"></span>
-                                </div>
                                 <div class="question-navigation">
-                                    <button id="submit-answer" class="tom-button primary" disabled>Submit Answer</button>
+                                    <button id="submit-answer" class="btn btn-primary" disabled>Submit Answer</button>
+                                    <button id="show-hint" class="btn btn-outline hint-btn" style="display: none;">Show Hint</button>
                                     <div id="feedback" class="feedback-box"></div>
-                                    <button id="next-question" class="tom-button secondary" style="display: none;">Next Question</button>
+                                    <button id="next-question" class="btn btn-secondary" style="display: none;">Next Question →</button>
                                 </div>
                             </div>
                             
@@ -167,19 +229,33 @@
                             
                             <!-- Results panel -->
                             <div class="results-panel" style="display: none;">
-                                <h5>Your Results</h5>
-                                <div class="results-summary">
-                                    <div id="score-display" class="score-display"></div>
-                                    <div id="level-breakdown" class="level-breakdown"></div>
+                                <div class="results-header">
+                                    <h5>Your Theory of Mind Assessment Results</h5>
+                                    <div class="results-summary">
+                                        <div id="score-display" class="score-display"></div>
+                                        <div id="level-breakdown" class="level-breakdown"></div>
+                                    </div>
                                 </div>
-                                <div class="detailed-results" id="detailed-results"></div>
-                                <div class="ai-comparison">
-                                    <h6>How AI Models Perform</h6>
-                                    <div id="ai-performance"></div>
+                                
+                                <div class="results-analysis">
+                                    <div class="performance-breakdown">
+                                        <h6>Performance by Complexity Level</h6>
+                                        <div id="detailed-results"></div>
+                                    </div>
+                                    
+                                    <div class="ai-comparison glass-morphism">
+                                        <h6>🤖 How Current AI Models Perform</h6>
+                                        <div id="ai-performance"></div>
+                                        <div class="comparison-note">
+                                            <p><strong>Note:</strong> These scenarios help researchers evaluate whether AI systems can track complex social reasoning—a capability crucial for both cooperation and potential manipulation.</p>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                                 <div class="results-actions">
-                                    <button id="try-another" class="tom-button primary">Try Another Scenario</button>
-                                    <button id="view-explanations" class="tom-button secondary">View All Explanations</button>
+                                    <button id="try-another" class="btn btn-primary">Try Another Scenario</button>
+                                    <button id="view-explanations" class="btn btn-secondary">View All Explanations</button>
+                                    <button id="back-to-scenarios-final" class="btn btn-outline">Back to Scenario Selection</button>
                                 </div>
                             </div>
                         </div>

@@ -123,6 +123,9 @@ And we're running out of time to speak`
     const interpretationContent = document.getElementById('interpretation-content');
     const patternSlider = document.getElementById('pattern-slider');
     const newSongBtn = document.getElementById('new-song-btn');
+    const sensitivityLevel = document.querySelector('.sensitivity-level');
+    const sensitivityValue = document.querySelector('.sensitivity-value');
+    const sensitivityDescription = document.getElementById('sensitivity-description-text');
     
     // Check if elements exist
     if (!lyricsContent || !interpretationContent || !patternSlider) {
@@ -137,6 +140,12 @@ And we're running out of time to speak`
         loadSong(songs[currentSongIndex]);
         updateInterpretation(0);
         updateHighlights(0);
+        
+        // Initialize slider appearance
+        const slider = document.getElementById('pattern-slider');
+        if (slider) {
+            slider.style.background = `linear-gradient(90deg, var(--primary) 0%, var(--primary) 0%, var(--surface-light) 0%, var(--surface-light) 100%)`;
+        }
     }
     
     // Load a song's lyrics
@@ -168,29 +177,54 @@ And we're running out of time to speak`
         const song = songs[currentSongIndex];
         let interpretation = "";
         let className = "";
+        let levelText = "";
+        let descriptionText = "";
         
         if (value <= 10) {
             interpretation = song.interpretations[0];
             className = "skeptical";
+            levelText = "Healthy Skepticism";
+            descriptionText = "Minimal pattern detection. Requires clear, objective evidence before recognizing connections.";
         } else if (value <= 35) {
             interpretation = song.interpretations[25];
             className = "moderate";
+            levelText = "Cautious Recognition";
+            descriptionText = "Beginning to notice patterns and themes. Still grounded in conventional interpretations.";
         } else if (value <= 60) {
             interpretation = song.interpretations[50];
             className = "personal";
+            levelText = "Personal Resonance";
+            descriptionText = "Finding personal meaning and connections. Relating content to own experiences and memories.";
         } else if (value <= 80) {
             interpretation = song.interpretations[75];
             className = "uncanny";
+            levelText = "Uncanny Connections";
+            descriptionText = "Detecting specific, seemingly impossible coincidences. Patterns feel too precise to be random.";
         } else if (value <= 95) {
             interpretation = song.interpretations[90];
             className = "uncanny";
+            levelText = "Hyper-Vigilant Detection";
+            descriptionText = "Every detail feels intentional and meaningful. Strong conviction that content is personally targeted.";
         } else {
             interpretation = song.interpretations[100];
             className = "extreme";
+            levelText = "Extreme Apophenia";
+            descriptionText = "Complete pattern saturation. Everything connects to everything. Reality becomes symbolic and coded.";
         }
         
         interpretationContent.textContent = interpretation;
         interpretationContent.className = `interpretation-content ${className}`;
+        
+        // Update sensitivity feedback
+        if (sensitivityLevel) {
+            sensitivityLevel.textContent = levelText;
+        }
+        if (sensitivityValue) {
+            sensitivityValue.textContent = value + '%';
+        }
+        if (sensitivityDescription) {
+            sensitivityDescription.textContent = descriptionText;
+        }
     }
     
     // Update highlights based on slider value
@@ -252,6 +286,10 @@ And we're running out of time to speak`
         currentSliderValue = parseInt(this.value);
         updateInterpretation(currentSliderValue);
         updateHighlights(currentSliderValue);
+        
+        // Add visual feedback to slider
+        const percentage = (currentSliderValue / 100) * 100;
+        this.style.background = `linear-gradient(90deg, var(--primary) 0%, var(--primary) ${percentage}%, var(--surface-light) ${percentage}%, var(--surface-light) 100%)`;
     });
     
     newSongBtn.addEventListener('click', function() {

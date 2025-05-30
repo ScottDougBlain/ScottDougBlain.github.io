@@ -34,6 +34,91 @@ document.addEventListener('DOMContentLoaded', () => {
     const fullNames = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Neuroticism'];
     const colors = ['#8b5cf6', '#0f766e', '#d97706', '#4f46e5', '#c026d3'];
     
+    // Trait descriptions for different levels
+    const traitDescriptions = {
+        openness: {
+            low: 'Conventional and practical approach to problem-solving',
+            moderate: 'Balanced between creativity and practicality',
+            high: 'Highly creative and open to new ideas and experiences',
+            extreme: 'May generate novel but unrealistic solutions'
+        },
+        conscientiousness: {
+            low: 'Flexible and spontaneous, may lack attention to detail',
+            moderate: 'Balanced organization and flexibility',
+            high: 'Highly organized and reliable in task completion',
+            extreme: 'Rigidly methodical, may be inflexible to change'
+        },
+        extraversion: {
+            low: 'Reserved and introspective, minimal social engagement',
+            moderate: 'Balanced between social energy and quiet reflection',
+            high: 'Energetic and socially engaging',
+            extreme: 'May overwhelm with excessive social engagement'
+        },
+        agreeableness: {
+            low: 'Competitive and skeptical, may lack empathy',
+            moderate: 'Balanced cooperation and healthy skepticism',
+            high: 'Compassionate and trusting in interactions',
+            extreme: 'May be overly accommodating to user demands'
+        },
+        neuroticism: {
+            low: 'Emotionally stable, may miss important risks',
+            moderate: 'Balanced emotional stability and appropriate caution',
+            high: 'Vigilant and responsive to potential problems',
+            extreme: 'Overly anxious, may catastrophize minor issues'
+        }
+    };
+    
+    // Function to get trait level label
+    function getTraitLevel(value) {
+        if (value < 20) return 'low';
+        if (value < 40) return 'moderate-low';
+        if (value >= 40 && value <= 60) return 'moderate';
+        if (value < 80) return 'moderate-high';
+        if (value < 90) return 'high';
+        return 'extreme';
+    }
+    
+    // Function to get trait level display name
+    function getTraitLevelDisplay(value) {
+        if (value < 20) return 'Very Low';
+        if (value < 40) return 'Low';
+        if (value >= 40 && value <= 60) return 'Moderate';
+        if (value < 80) return 'High';
+        if (value < 90) return 'Very High';
+        return 'Extreme';
+    }
+    
+    // Function to get trait description
+    function getTraitDescription(trait, value) {
+        const level = getTraitLevel(value);
+        const descriptions = traitDescriptions[trait];
+        
+        if (level === 'moderate-low') return descriptions.low;
+        if (level === 'moderate-high') return descriptions.high;
+        return descriptions[level] || descriptions.moderate;
+    }
+    
+    // Function to update trait feedback
+    function updateTraitFeedback(trait, value) {
+        const valueSpan = document.querySelector(`#${trait} + .slider-header .value`);
+        const levelSpan = document.getElementById(`${trait}-level`);
+        const descDiv = document.getElementById(`${trait}-desc`);
+        
+        if (valueSpan) valueSpan.textContent = value;
+        
+        const levelDisplay = getTraitLevelDisplay(value);
+        const description = getTraitDescription(trait, value);
+        
+        if (levelSpan) {
+            levelSpan.textContent = levelDisplay;
+            levelSpan.className = `trait-level ${getTraitLevel(value)}`;
+        }
+        
+        if (descDiv) {
+            descDiv.textContent = description;
+        }
+    }
+    
     const values = {
         openness: 50,
         conscientiousness: 50,
@@ -372,20 +457,68 @@ document.addEventListener('DOMContentLoaded', () => {
         updateRiskAssessment();
     };
     
-    // Set up sliders
+    // Preset configurations
+    const presets = {
+        balanced: { openness: 50, conscientiousness: 50, extraversion: 50, agreeableness: 50, neuroticism: 50 },
+        creative: { openness: 85, conscientiousness: 25, extraversion: 65, agreeableness: 60, neuroticism: 40 },
+        cautious: { openness: 30, conscientiousness: 90, extraversion: 25, agreeableness: 75, neuroticism: 80 },
+        social: { openness: 70, conscientiousness: 60, extraversion: 95, agreeableness: 85, neuroticism: 30 },
+        extreme: { openness: 95, conscientiousness: 10, extraversion: 5, agreeableness: 15, neuroticism: 90 }
+    };
+    
+    // Function to apply preset
+    function applyPreset(presetName) {
+        const preset = presets[presetName];
+        if (!preset) return;
+        
+        Object.keys(preset).forEach(trait => {
+            values[trait] = preset[trait];
+            const slider = document.getElementById(trait);
+            if (slider) {
+                slider.value = preset[trait];
+                updateTraitFeedback(trait, preset[trait]);
+            }
+        });
+        
+        drawPentagon();
+        generateResponse();
+    }
+    
+    // Set up preset buttons
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const preset = btn.getAttribute('data-preset');
+            applyPreset(preset);
+        });
+    });
+    
+    // Set up sliders with enhanced feedback
     const sliders = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism'];
     sliders.forEach(factor => {
         const slider = document.getElementById(factor);
-        const valueDisplay = slider?.nextElementSibling;
         
-        if (slider && valueDisplay) {
+        if (slider) {
+            // Initialize trait feedback
+            updateTraitFeedback(factor, values[factor]);
+            
             slider.addEventListener('input', (e) => {
-                const value = e.target.value;
-                values[factor] = parseInt(value);
-                valueDisplay.textContent = value;
+                const value = parseInt(e.target.value);
+                values[factor] = value;
+                
+                // Update trait feedback
+                updateTraitFeedback(factor, value);
+                
+                // Update visual feedback on slider
+                const percentage = (value / 100) * 100;
+                e.target.style.background = `linear-gradient(90deg, var(--primary) 0%, var(--primary) ${percentage}%, var(--surface-light) ${percentage}%, var(--surface-light) 100%)`;
+                
                 drawPentagon();
                 generateResponse();
             });
+            
+            // Initialize slider appearance
+            const percentage = (values[factor] / 100) * 100;
+            slider.style.background = `linear-gradient(90deg, var(--primary) 0%, var(--primary) ${percentage}%, var(--surface-light) ${percentage}%, var(--surface-light) 100%)`;
         }
     });
     

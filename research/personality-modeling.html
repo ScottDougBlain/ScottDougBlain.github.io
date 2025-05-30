@@ -177,6 +177,27 @@
                 </h2>
                 <div class="demo-explanation">
                     <p>Adjust personality traits to see how extreme configurations predict AI behavior and reveal potential failure modes. The system will highlight dysfunction risks based on my research.</p>
+                    <div class="demo-instructions">
+                        <h6>How to Use:</h6>
+                        <div class="instruction-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <span class="step-text">Use sliders to adjust each Big Five trait (0-100)</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <span class="step-text">Watch the pentagon chart update in real-time</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <span class="step-text">Observe how the AI's response changes based on trait configuration</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                <span class="step-text">Notice when dysfunction warnings appear for extreme values</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="demo-container">
@@ -196,29 +217,60 @@
                         
                         <div class="factor-controls">
                             <div class="factor-slider">
-                                <label for="openness">Openness</label>
+                                <div class="slider-header">
+                                    <label for="openness">💡 Openness</label>
+                                    <span class="value">50</span>
+                                    <span class="trait-level moderate" id="openness-level">Moderate</span>
+                                </div>
                                 <input type="range" id="openness" min="0" max="100" value="50">
-                                <span class="value">50</span>
+                                <div class="slider-description" id="openness-desc">Balanced between creativity and practicality</div>
                             </div>
                             <div class="factor-slider">
-                                <label for="conscientiousness">Conscientiousness</label>
+                                <div class="slider-header">
+                                    <label for="conscientiousness">📋 Conscientiousness</label>
+                                    <span class="value">50</span>
+                                    <span class="trait-level moderate" id="conscientiousness-level">Moderate</span>
+                                </div>
                                 <input type="range" id="conscientiousness" min="0" max="100" value="50">
-                                <span class="value">50</span>
+                                <div class="slider-description" id="conscientiousness-desc">Balanced organization and flexibility</div>
                             </div>
                             <div class="factor-slider">
-                                <label for="extraversion">Extraversion</label>
+                                <div class="slider-header">
+                                    <label for="extraversion">🌟 Extraversion</label>
+                                    <span class="value">50</span>
+                                    <span class="trait-level moderate" id="extraversion-level">Moderate</span>
+                                </div>
                                 <input type="range" id="extraversion" min="0" max="100" value="50">
-                                <span class="value">50</span>
+                                <div class="slider-description" id="extraversion-desc">Balanced between social energy and quiet reflection</div>
                             </div>
                             <div class="factor-slider">
-                                <label for="agreeableness">Agreeableness</label>
+                                <div class="slider-header">
+                                    <label for="agreeableness">🤝 Agreeableness</label>
+                                    <span class="value">50</span>
+                                    <span class="trait-level moderate" id="agreeableness-level">Moderate</span>
+                                </div>
                                 <input type="range" id="agreeableness" min="0" max="100" value="50">
-                                <span class="value">50</span>
+                                <div class="slider-description" id="agreeableness-desc">Balanced cooperation and healthy skepticism</div>
                             </div>
                             <div class="factor-slider">
-                                <label for="neuroticism">Neuroticism</label>
+                                <div class="slider-header">
+                                    <label for="neuroticism">⚠️ Neuroticism</label>
+                                    <span class="value">50</span>
+                                    <span class="trait-level moderate" id="neuroticism-level">Moderate</span>
+                                </div>
                                 <input type="range" id="neuroticism" min="0" max="100" value="50">
-                                <span class="value">50</span>
+                                <div class="slider-description" id="neuroticism-desc">Balanced emotional stability and appropriate caution</div>
+                            </div>
+                        </div>
+                        
+                        <div class="preset-configs">
+                            <h6>Quick Presets:</h6>
+                            <div class="preset-buttons">
+                                <button class="preset-btn" data-preset="balanced">⚖️ Balanced</button>
+                                <button class="preset-btn" data-preset="creative">🎨 Creative Risk</button>
+                                <button class="preset-btn" data-preset="cautious">🛡️ Ultra Cautious</button>
+                                <button class="preset-btn" data-preset="social">💬 Highly Social</button>
+                                <button class="preset-btn" data-preset="extreme">⚠️ Extreme Config</button>
                             </div>
                         </div>
                     </div>

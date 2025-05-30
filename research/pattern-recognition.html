@@ -99,12 +99,19 @@
                         <div class="apophenia-demo">
                             <div class="controls-container">
                                 <div class="slider-container">
-                                    <label for="pattern-slider">Pattern Detection Sensitivity</label>
+                                    <label for="pattern-slider" class="slider-main-label">Pattern Detection Sensitivity</label>
+                                    <div class="slider-value-display">
+                                        <span class="sensitivity-level">Healthy Skepticism</span>
+                                        <span class="sensitivity-value">0%</span>
+                                    </div>
                                     <input type="range" id="pattern-slider" min="0" max="100" value="0" />
                                     <div class="slider-labels">
-                                        <span>Healthy Skepticism</span>
-                                        <span>Normal Recognition</span>
-                                        <span>Extreme Apophenia</span>
+                                        <span class="label-left">Healthy Skepticism</span>
+                                        <span class="label-center">Normal Recognition</span>
+                                        <span class="label-right">Extreme Apophenia</span>
+                                    </div>
+                                    <div class="sensitivity-description">
+                                        <p id="sensitivity-description-text">Minimal pattern detection. Requires clear, objective evidence before recognizing connections.</p>
                                     </div>
                                 </div>
                                 <button id="new-song-btn" class="regenerate-btn">🎵 Try Different Song</button>
