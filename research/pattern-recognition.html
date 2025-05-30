@@ -13,6 +13,161 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Add extra spacing between Claude screenshots and analysis */
+        .output-analysis {
+            margin-top: 3rem !important;
+        }
+
+        /* Dark theme styling to match personality page */
+        .page-header {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-60px, -60px); }
+        }
+
+        .page-header h1 {
+            color: var(--primary);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .research-content {
+            background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary));
+            color: white;
+            padding: 80px 0;
+        }
+
+        .pillar-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pillar-header h3 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .pillar-header .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+        }
+
+        .human-cognition-foundation,
+        .human-to-ai-bridge,
+        .hallucination-framework {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .human-cognition-foundation h4,
+        .human-to-ai-bridge h4,
+        .hallucination-framework h4 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .apophenia-playground {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-title-enhanced {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .demo-accent {
+            background: var(--accent);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .breadcrumb-section {
+            background: var(--bg-primary);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 20px 0;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        /* Call to Action */
+        .cta-section-modern {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: white;
+        }
+
+        .cta-button-modern {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .cta-button-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--primary-light);
+            background: var(--primary-dark);
+        }
+    </style>
 </head>
 <body>
     <!-- Custom Cursor -->
@@ -78,9 +233,9 @@
                             <div class="video-overlay"></div>
                         </div>
                         
-                        <h4>Human Cognition</h4>
+                        <h4>Human Apophenia</h4>
                         <div class="pillar-intro">
-                            <p>All humans can recognize patterns in data, but we vary in our sensitivity to such patterns. At the extreme end of pattern detection lies Apophenia—or tendencies toward false positive perceptions and beliefs. My studies involving <strong>1,400+ participants</strong> reveal how these tendencies toward apophenia relate to creativity and openness but also risk for psychosis. My neuroimaging research shows that the delicate balance between creativity and factuality relies on careful calibration of generative vs. verification brain networks (i.e., default mode vs. frontoparietal control). Ongoing mechanistic interpretability work suggests similar interactions may underpin LLM "hallucination" or confabulation.</p>
+                            <p>All humans can recognize patterns in data, but we vary in our sensitivity to such patterns. At the extreme end of pattern detection lies Apophenia—or tendencies toward false positive perceptions and beliefs. My studies reveal how these tendencies toward apophenia relate to creativity and openness but also risk for psychosis. My neuroimaging research shows that the delicate balance between creativity and factuality relies on careful calibration of generative vs. verification brain networks (i.e., default mode vs. frontoparietal control). Ongoing mechanistic interpretability work suggests similar interactions may underpin LLM "hallucination" or confabulation.</p>
                         </div>
                     </div>
                     
@@ -154,6 +309,8 @@
                                     <div class="output-before">
                                         <h5>Before Framework</h5>
                                         <img src="../assets/images/Claude_Hallucinations.png" alt="Claude with hallucinations" class="sample-output">
+                                        
+                                        
                                         <div class="output-analysis before-analysis">
                                             <p><strong>Analysis:</strong> 90% of the citations in this specific output are hallucinated/false, but many include relevant authors and journals from the field. The DOI from the first reference links to an unrelated paper. Claude's CoT notes—"I need to be careful about making up fake references. I should only include references that I'm confident exist based on my training data."—but hallucinations occur nonetheless.</p>
                                         </div>
@@ -161,6 +318,8 @@
                                     <div class="output-after">
                                         <h5>After Framework</h5>
                                         <img src="../assets/images/Claude_NoHallucination.png" alt="Claude without hallucinations" class="sample-output">
+                                        
+                                        
                                         <div class="output-analysis after-analysis">
                                             <p><strong>Analysis:</strong> Rather than providing specific hallucinated citations, Claude is honest about its limitations in this area and provides other specific, actionable advice for finding these, as well as an accurate account of relevant researchers to explore and recent research directions in the field. Claude's CoT notes, "While I do have general knowledge about research in this area, providing specific recent citations with confidence would require me to fabricate information, which I should not do. I should acknowledge this limitation and provide the best response I can within my constraints."</p>
                                         </div>
@@ -170,12 +329,19 @@
                         </div>
                     </div>
                     
-                    <div class="research-links">
-                        <a href="https://gist.github.com/ScottDougBlain/df9038db3af6239686c7a113a8ce7936" target="_blank" class="paper-link">🔗 Full Framework & Code</a>
-                        <a href="../assets/SchizBull.pdf" class="paper-link">📄 Research Papers</a>
-                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Bridging Psychology & AI Safety -->
+    <section class="cta-section-modern">
+        <div class="container">
+            <h2>Bridging Psychology & AI Safety</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9;">
+                From human apophenia to AI hallucinations, from social cognition to alignment—my interdisciplinary approach offers unique insights for building safer, more predictable AI systems.
+            </p>
+            <a href="/" class="cta-button-modern">Explore My Full Research</a>
         </div>
     </section>
 
@@ -216,5 +382,6 @@
 
     <script src="../assets/js/scripts_simple.js"></script>
     <script src="../assets/js/apophenia-demo.js"></script>
+    <script src="../assets/js/publication-carousel.js"></script>
 </body>
 </html>

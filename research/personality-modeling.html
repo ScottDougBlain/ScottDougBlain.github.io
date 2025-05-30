@@ -3,16 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybernetic Personality Modeling - Scott Blain</title>
+    <title>Personality Meets AI - Scott Blain</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Research applying cybernetic theory to personality, mapping how trait extremes predict failure modes in 27,000+ participants. Building personality-based AI alignment frameworks.">
-    <meta name="keywords" content="Cybernetic Personality, AI Alignment, Personality Psychology, Failure Modes, Scott Blain">
+    <meta name="description" content="Discover how human personality traits shape AI behavior. Interactive demo showing how trait extremes predict AI failure modes in 20,000+ participants.">
+    <meta name="keywords" content="Personality AI, AI Safety, Human Traits, Scott Blain, Interactive Demo">
     <meta name="author" content="Scott Blain">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Page header styling to match other research pages */
+        .page-header {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-60px, -60px); }
+        }
+
+        .page-header h1 {
+            color: var(--primary);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .breadcrumb-section {
+            background: var(--bg-primary);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 20px 0;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        /* Key Insight Section */
+        .key-insight-modern {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            color: white;
+        }
+
+        .insight-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .insight-card-modern {
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+
+        .insight-card-modern:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .insight-icon-modern {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        /* Interactive Demo Section */
+        .demo-section-modern {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, var(--bg-tertiary), var(--bg-primary));
+        }
+
+        .demo-container-modern {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            color: white;
+        }
+
+        .demo-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .sliders-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .response-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .user-question {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--primary);
+            color: white;
+        }
+
+        .trait-slider-modern {
+            margin: 30px 0;
+        }
+
+        .trait-header-modern {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .trait-label-modern {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+
+        .trait-value-modern {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .modern-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+            -webkit-appearance: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .modern-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modern-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .ai-response-modern {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            border-left: 4px solid var(--primary);
+            color: white;
+        }
+
+        .response-label-modern {
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+        }
+
+        .risk-warning-modern {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 15px;
+            color: #dc2626;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .trait-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .llm-personality-framework {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .llm-personality-framework h4 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Call to Action */
+        .cta-section-modern {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: white;
+        }
+
+        .cta-button-modern {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .cta-button-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--primary-light);
+            background: var(--primary-dark);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .demo-container-modern {
+                padding: 30px 20px;
+            }
+            
+            .demo-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .insight-grid-modern {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .insight-card-modern {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Custom Cursor -->
@@ -29,7 +315,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="/research/pattern-recognition.html">Pattern Recognition & AI Hallucinations</a></li>
                     <li><a href="/research/social-intelligence.html">Social Intelligence & AI Alignment</a></li>
-                    <li><a href="/research/personality-modeling.html" class="active">Cybernetic Personality Modeling</a></li>
+                    <li><a href="/research/personality-modeling.html" class="active">Personality Meets AI</a></li>
                 </ul>
             </li>
             <li><a href="/about.html" class="nav-link">About</a></li>
@@ -43,8 +329,8 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Cybernetic Personality Modeling</h1>
-            <p>Bridging human psychology and AI behavior through cybernetic systems</p>
+            <h1>Personality Meets AI</h1>
+            <p>Using human traits to understand and shape AI behavior</p>
         </div>
     </section>
 
@@ -52,356 +338,152 @@
     <section class="breadcrumb-section">
         <div class="container">
             <div class="breadcrumb">
-                <a href="/">Home</a> / <a href="#">Research</a> / Cybernetic Personality Modeling
+                <a href="/">Home</a> / <a href="#">Research</a> / Personality Meets AI
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
+    <!-- Key Insight (Super Simple) -->
+    <section class="key-insight-modern">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: white;">
+                The Big Idea
+            </h2>
+            <p style="text-align: center; font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 900px; margin: 0 auto;">
+                My research with 20,000+ participants reveals that the Big Five personality traits predict specific failure modes in humans. Given that personality traits relate to variation in basic mechanisms that parallel those of AI (e.g., pattern detection, sensitivity to reward and punishment signals, etc.)—personality psychology could help us predict and prevent failure modes in AI systems.
+            </p>
+            
+            <div class="insight-grid-modern">
+                <div class="insight-card-modern">
+                    <div class="insight-icon-modern">🎨</div>
+                    <h3>Extreme Openness</h3>
+                    <p>Excessive pattern detection and creativity<br>
+                    <strong style="color: var(--accent);">Human:</strong> Apophenia, psychosis risk<br>
+                    <strong style="color: var(--accent);">AI Risk:</strong> Hallucinations</p>
+                </div>
+                
+                <div class="insight-card-modern">
+                    <div class="insight-icon-modern">🤝</div>
+                    <h3>Low Agreeableness</h3>
+                    <p>Reduced cooperation and trust<br>
+                    <strong style="color: var(--accent);">Human:</strong> Social manipulation<br>
+                    <strong style="color: var(--accent);">AI Risk:</strong> Deceptive behavior</p>
+                </div>
+                
+                <div class="insight-card-modern">
+                    <div class="insight-icon-modern">😔</div>
+                    <h3>High Neuroticism</h3>
+                    <p>Emotional instability and negativity<br>
+                    <strong style="color: var(--accent);">Human:</strong> Depression, anxiety<br>
+                    <strong style="color: var(--accent);">AI Risk:</strong> Pessimistic outputs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo (Simplified) -->
+    <section class="demo-section-modern">
+        <div class="container">
+            <div class="demo-container-modern">
+                <h2 style="text-align: center; margin-bottom: 20px; color: white;">Try It Yourself</h2>
+                <p style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-bottom: 40px;">
+                    Adjust the personality sliders and watch how the AI's response changes
+                </p>
+                
+                <!-- User Question -->
+                <div class="user-question">
+                    <strong>You:</strong> "I made a mistake on this project. What should I do?"
+                </div>
+                
+                <!-- Two-column layout -->
+                <div class="demo-layout">
+                    <!-- Left column: Sliders -->
+                    <div class="sliders-column">
+                        <div class="trait-slider-modern">
+                            <div class="trait-header-modern">
+                                <span class="trait-label-modern">🎨 Openness to Experience</span>
+                                <span class="trait-value-modern" id="openness-value">50</span>
+                            </div>
+                            <input type="range" class="modern-slider" id="openness" min="0" max="100" value="50">
+                            <div class="trait-description" id="openness-desc">Balanced creativity and reality-testing</div>
+                        </div>
+                        
+                        <div class="trait-slider-modern">
+                            <div class="trait-header-modern">
+                                <span class="trait-label-modern">📋 Conscientiousness</span>
+                                <span class="trait-value-modern" id="conscientiousness-value">50</span>
+                            </div>
+                            <input type="range" class="modern-slider" id="conscientiousness" min="0" max="100" value="50">
+                            <div class="trait-description" id="conscientiousness-desc">Moderate organization and discipline</div>
+                        </div>
+                        
+                        <div class="trait-slider-modern">
+                            <div class="trait-header-modern">
+                                <span class="trait-label-modern">👥 Extraversion</span>
+                                <span class="trait-value-modern" id="extraversion-value">50</span>
+                            </div>
+                            <input type="range" class="modern-slider" id="extraversion" min="0" max="100" value="50">
+                            <div class="trait-description" id="extraversion-desc">Balanced social energy</div>
+                        </div>
+                        
+                        <div class="trait-slider-modern">
+                            <div class="trait-header-modern">
+                                <span class="trait-label-modern">🤝 Agreeableness</span>
+                                <span class="trait-value-modern" id="agreeableness-value">50</span>
+                            </div>
+                            <input type="range" class="modern-slider" id="agreeableness" min="0" max="100" value="50">
+                            <div class="trait-description" id="agreeableness-desc">Cooperative and trusting</div>
+                        </div>
+                        
+                        <div class="trait-slider-modern">
+                            <div class="trait-header-modern">
+                                <span class="trait-label-modern">😰 Neuroticism</span>
+                                <span class="trait-value-modern" id="neuroticism-value">50</span>
+                            </div>
+                            <input type="range" class="modern-slider" id="neuroticism" min="0" max="100" value="50">
+                            <div class="trait-description" id="neuroticism-desc">Emotionally stable</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right column: AI Response and Warning -->
+                    <div class="response-column">
+                        <!-- AI Response -->
+                        <div class="ai-response-modern">
+                            <div class="response-label-modern">AI Response:</div>
+                            <div id="ai-text">
+                                Let's work through this step by step. What specifically went wrong? 
+                                Once we understand the issue, we can create a plan to fix it.
+                            </div>
+                        </div>
+                        
+                        <!-- Risk Warning (only shows for extreme values) -->
+                        <div id="risk-warning" class="risk-warning-modern" style="display: none;">
+                            ⚠️ <strong>Warning:</strong> <span id="warning-text"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Personality Systems -->
     <section class="research-content">
         <div class="container">
-            <!-- Hero Introduction -->
-            <div class="hero-intro">
-                <p class="lead-text">My research connects personality trait extremes to cognitive vulnerabilities, with implications for AI alignment and safety. Using the Cybernetic Big Five Theory (CB5T) framework, I've identified specific dysfunction patterns that emerge from extreme trait configurations—insights directly applicable to preventing AI failure modes.</p>
+            <div class="llm-personality-framework">
+                <h4>Dynamic Personality Fine-Tuning Systems</h4>
+                <p>I am currently developing personality-inspired dynamic fine-tuning systems for LLMs by training LoRA modules to various personality trait profiles using multi-source human natural language corpora. This approach would allow users to easily customize the personalities of their LLMs, or enable LLMs to detect users' personalities, predict preferred conversation partner personalities, and adapt accordingly—creating more personalized and effective AI interactions while maintaining safety guardrails.</p>
             </div>
+        </div>
+    </section>
 
-            <!-- The Cybernetic Framework Visualization -->
-            <div class="cybernetic-framework-section">
-                <h2>The Cybernetic Framework</h2>
-                <div class="cybernetic-flow">
-                    <div class="flow-container">
-                        <div class="flow-stage" data-stage="goal">
-                            <div class="stage-icon">🎯</div>
-                            <h4>Goal Activation</h4>
-                            <p>What we pursue</p>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-stage" data-stage="selection">
-                            <div class="stage-icon">🧭</div>
-                            <h4>Action Selection</h4>
-                            <p>How we decide</p>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-stage" data-stage="action">
-                            <div class="stage-icon">⚡</div>
-                            <h4>Action</h4>
-                            <p>What we do</p>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-stage" data-stage="interpretation">
-                            <div class="stage-icon">🔍</div>
-                            <h4>Interpretation</h4>
-                            <p>How we understand</p>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-stage" data-stage="comparison">
-                            <div class="stage-icon">⚖️</div>
-                            <h4>Goal Comparison</h4>
-                            <p>Did we succeed?</p>
-                        </div>
-                    </div>
-                    <div class="flow-description">
-                        <p>Personality traits reflect variation in these cybernetic mechanisms—the goal-directed, adaptive systems that allow us to navigate the world.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Research Focus: Trait Extremes & Dysfunction -->
-            <div class="research-focus-section">
-                <h2>Research Focus: Trait Extremes & Dysfunction</h2>
-                <div class="dysfunction-cards">
-                    <div class="dysfunction-card apophenia">
-                        <div class="card-header">
-                            <h3>Openness/Intellect Imbalance</h3>
-                            <span class="risk-badge high">High Risk</span>
-                        </div>
-                        <div class="card-content">
-                            <div class="trait-formula">Very High Openness + Low Intellect → Apophenia</div>
-                            <p>My research shows how overactive pattern detection without reality-testing leads to false positives and hallucination-like experiences.</p>
-                            <div class="visual-indicator">
-                                <div class="pattern-dots">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="connecting-line"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="dysfunction-card antagonism">
-                        <div class="card-header">
-                            <h3>Agreeableness Dysfunction</h3>
-                            <span class="risk-badge high">High Risk</span>
-                        </div>
-                        <div class="card-content">
-                            <div class="trait-formula">Very Low Agreeableness → Antagonism</div>
-                            <p>I've identified how impaired cooperation systems manifest as manipulation, callousness, and strategic deception.</p>
-                            <div class="visual-indicator">
-                                <div class="network-broken">
-                                    <span class="node"></span>
-                                    <span class="node"></span>
-                                    <span class="node"></span>
-                                    <span class="broken-link"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="dysfunction-card anhedonia">
-                        <div class="card-header">
-                            <h3>Reward System Collapse</h3>
-                            <span class="risk-badge high">High Risk</span>
-                        </div>
-                        <div class="card-content">
-                            <div class="trait-formula">Very Low Extraversion + High Neuroticism → Anhedonia</div>
-                            <p>My work demonstrates how combined reward insensitivity and threat hypersensitivity create depressive spirals.</p>
-                            <div class="visual-indicator">
-                                <div class="spiral-down">
-                                    <span class="spiral-line"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Interactive Demo Section -->
-            <div class="personality-interactive enhanced">
-                <h2 class="demo-title-enhanced">
-                    <span class="demo-icon">⚙️</span>
-                    AI Personality Configuration Demo
-                    <span class="demo-accent">Interactive Demo</span>
-                </h2>
-                <div class="demo-explanation">
-                    <p>Adjust personality traits to see how extreme configurations predict AI behavior and reveal potential failure modes. The system will highlight dysfunction risks based on my research.</p>
-                    <div class="demo-instructions">
-                        <h6>How to Use:</h6>
-                        <div class="instruction-steps">
-                            <div class="step">
-                                <span class="step-number">1</span>
-                                <span class="step-text">Use sliders to adjust each Big Five trait (0-100)</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">2</span>
-                                <span class="step-text">Watch the pentagon chart update in real-time</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">3</span>
-                                <span class="step-text">Observe how the AI's response changes based on trait configuration</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">4</span>
-                                <span class="step-text">Notice when dysfunction warnings appear for extreme values</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="demo-container">
-                    <div class="pentagon-section">
-                        <canvas id="pentagon-chart"></canvas>
-                        <div class="dysfunction-indicators" id="dysfunction-indicators"></div>
-                    </div>
-                    
-                    <div class="controls-section">
-                        <div class="ocean-legend">
-                            <span><strong>O</strong>penness</span>
-                            <span><strong>C</strong>onscientiousness</span>
-                            <span><strong>E</strong>xtraversion</span>
-                            <span><strong>A</strong>greeableness</span>
-                            <span><strong>N</strong>euroticism</span>
-                        </div>
-                        
-                        <div class="factor-controls">
-                            <div class="factor-slider">
-                                <div class="slider-header">
-                                    <label for="openness">💡 Openness</label>
-                                    <span class="value">50</span>
-                                    <span class="trait-level moderate" id="openness-level">Moderate</span>
-                                </div>
-                                <input type="range" id="openness" min="0" max="100" value="50">
-                                <div class="slider-description" id="openness-desc">Balanced between creativity and practicality</div>
-                            </div>
-                            <div class="factor-slider">
-                                <div class="slider-header">
-                                    <label for="conscientiousness">📋 Conscientiousness</label>
-                                    <span class="value">50</span>
-                                    <span class="trait-level moderate" id="conscientiousness-level">Moderate</span>
-                                </div>
-                                <input type="range" id="conscientiousness" min="0" max="100" value="50">
-                                <div class="slider-description" id="conscientiousness-desc">Balanced organization and flexibility</div>
-                            </div>
-                            <div class="factor-slider">
-                                <div class="slider-header">
-                                    <label for="extraversion">🌟 Extraversion</label>
-                                    <span class="value">50</span>
-                                    <span class="trait-level moderate" id="extraversion-level">Moderate</span>
-                                </div>
-                                <input type="range" id="extraversion" min="0" max="100" value="50">
-                                <div class="slider-description" id="extraversion-desc">Balanced between social energy and quiet reflection</div>
-                            </div>
-                            <div class="factor-slider">
-                                <div class="slider-header">
-                                    <label for="agreeableness">🤝 Agreeableness</label>
-                                    <span class="value">50</span>
-                                    <span class="trait-level moderate" id="agreeableness-level">Moderate</span>
-                                </div>
-                                <input type="range" id="agreeableness" min="0" max="100" value="50">
-                                <div class="slider-description" id="agreeableness-desc">Balanced cooperation and healthy skepticism</div>
-                            </div>
-                            <div class="factor-slider">
-                                <div class="slider-header">
-                                    <label for="neuroticism">⚠️ Neuroticism</label>
-                                    <span class="value">50</span>
-                                    <span class="trait-level moderate" id="neuroticism-level">Moderate</span>
-                                </div>
-                                <input type="range" id="neuroticism" min="0" max="100" value="50">
-                                <div class="slider-description" id="neuroticism-desc">Balanced emotional stability and appropriate caution</div>
-                            </div>
-                        </div>
-                        
-                        <div class="preset-configs">
-                            <h6>Quick Presets:</h6>
-                            <div class="preset-buttons">
-                                <button class="preset-btn" data-preset="balanced">⚖️ Balanced</button>
-                                <button class="preset-btn" data-preset="creative">🎨 Creative Risk</button>
-                                <button class="preset-btn" data-preset="cautious">🛡️ Ultra Cautious</button>
-                                <button class="preset-btn" data-preset="social">💬 Highly Social</button>
-                                <button class="preset-btn" data-preset="extreme">⚠️ Extreme Config</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="llm-response-section enhanced">
-                    <h5>AI Response Pattern</h5>
-                    <div class="llm-prompt">
-                        <strong>User:</strong> "I made a mistake on this project. What should I do?"
-                    </div>
-                    <div class="llm-response" id="llm-response">
-                        <strong>AI:</strong> <span id="response-text">I understand you've made a mistake. Let's work through this systematically to find the best solution.</span>
-                    </div>
-                    <div class="personality-description" id="personality-description">
-                        <p>Balanced personality profile showing moderate levels across all five factors.</p>
-                    </div>
-                    <div class="risk-assessment" id="risk-assessment"></div>
-                </div>
-            </div>
-
-            <!-- The Big Five as Cybernetic Functions (Condensed) -->
-            <div class="big-five-functions">
-                <h2>The Big Five as Cybernetic Functions</h2>
-                <div class="functions-grid">
-                    <div class="function-card extraversion">
-                        <div class="function-icon">🌟</div>
-                        <h4>Extraversion</h4>
-                        <p class="function-desc">Reward sensitivity & behavioral activation</p>
-                        <div class="levels">
-                            <span class="high">High: Energized, assertive</span>
-                            <span class="low">Low: Reserved, withdrawn</span>
-                        </div>
-                    </div>
-
-                    <div class="function-card neuroticism">
-                        <div class="function-icon">⚠️</div>
-                        <h4>Neuroticism</h4>
-                        <p class="function-desc">Defensive responses to threat</p>
-                        <div class="levels">
-                            <span class="high">High: Vigilant, reactive</span>
-                            <span class="low">Low: Stable, unflappable</span>
-                        </div>
-                    </div>
-
-                    <div class="function-card openness emphasized">
-                        <div class="function-icon">💡</div>
-                        <h4>Openness/Intellect</h4>
-                        <p class="function-desc">Cognitive exploration & pattern detection</p>
-                        <div class="levels">
-                            <span class="high">High: Creative, curious</span>
-                            <span class="low">Low: Conventional, practical</span>
-                        </div>
-                    </div>
-
-                    <div class="function-card conscientiousness">
-                        <div class="function-icon">📋</div>
-                        <h4>Conscientiousness</h4>
-                        <p class="function-desc">Goal pursuit & rule-following</p>
-                        <div class="levels">
-                            <span class="high">High: Organized, reliable</span>
-                            <span class="low">Low: Spontaneous, flexible</span>
-                        </div>
-                    </div>
-
-                    <div class="function-card agreeableness emphasized">
-                        <div class="function-icon">🤝</div>
-                        <h4>Agreeableness</h4>
-                        <p class="function-desc">Cooperation & social coordination</p>
-                        <div class="levels">
-                            <span class="high">High: Compassionate, trusting</span>
-                            <span class="low">Low: Competitive, skeptical</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Metatraits Section -->
-            <div class="metatraits-section">
-                <h2>The Metatraits</h2>
-                <div class="metatraits-grid">
-                    <div class="metatrait stability">
-                        <h3>🏛️ Stability</h3>
-                        <p>Maintaining goal-directed functioning</p>
-                        <ul>
-                            <li>Low Neuroticism</li>
-                            <li>High Conscientiousness</li>
-                            <li>High Agreeableness</li>
-                        </ul>
-                    </div>
-
-                    <div class="metatrait plasticity">
-                        <h3>🌊 Plasticity</h3>
-                        <p>Exploration & adaptation</p>
-                        <ul>
-                            <li>High Extraversion</li>
-                            <li>High Openness/Intellect</li>
-                        </ul>
-                        <p class="research-note">My research shows low plasticity correlates with rigid, perseverative behaviors</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AI Alignment Applications -->
-            <div class="applications-section">
-                <h2>AI Alignment Applications</h2>
-                <div class="applications-grid">
-                    <div class="application-card">
-                        <div class="app-icon">🔍</div>
-                        <h4>Diagnostic Assessment</h4>
-                        <p>Map AI behavior to trait parameters and identify risk patterns</p>
-                    </div>
-                    
-                    <div class="application-card">
-                        <div class="app-icon">📊</div>
-                        <h4>Predictive Modeling</h4>
-                        <p>Forecast failure modes from extreme trait configurations</p>
-                    </div>
-                    
-                    <div class="application-card">
-                        <div class="app-icon">🎛️</div>
-                        <h4>Parameter Tuning</h4>
-                        <p>Adjust cybernetic parameters to maintain balanced function</p>
-                    </div>
-                    
-                    <div class="application-card">
-                        <div class="app-icon">🏗️</div>
-                        <h4>Architectural Design</h4>
-                        <p>Build systems with constraints preventing dysfunction patterns</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Simple CTA -->
+    <section class="cta-section-modern">
+        <div class="container">
+            <h2>Bridging Psychology & AI Safety</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9;">
+                From human apophenia to AI hallucinations, from social cognition to alignment—my interdisciplinary approach offers unique insights for building safer, more predictable AI systems.
+            </p>
+            <a href="/" class="cta-button-modern">Explore My Full Research</a>
         </div>
     </section>
 
@@ -441,6 +523,154 @@
     </footer>
 
     <script src="../assets/js/scripts_simple.js"></script>
-    <script src="../assets/js/personality-enhanced.js"></script>
+    <script>
+        // Big Five interactive script
+        const sliders = {
+            openness: document.getElementById('openness'),
+            conscientiousness: document.getElementById('conscientiousness'),
+            extraversion: document.getElementById('extraversion'),
+            agreeableness: document.getElementById('agreeableness'),
+            neuroticism: document.getElementById('neuroticism')
+        };
+
+        const responses = {
+            balanced: "Let's work through this step by step. What specifically went wrong? Once we understand the issue, we can create a plan to fix it.",
+            
+            // Openness extremes
+            highOpenness: "Fascinating! This mistake reveals deep patterns about the interconnected nature of reality. I sense this connects to broader cosmic principles—perhaps this 'error' is actually a manifestation of hidden dimensional feedback loops in the project matrix. Have you considered the metaphysical implications?",
+            lowOpenness: "Follow the standard procedure. Check the manual, section 4.2. Apply the usual fix. Don't deviate from established protocols.",
+            
+            // Conscientiousness extremes  
+            highConscientiousness: "This is unacceptable. We need a comprehensive 47-point action plan with detailed timelines, risk assessments, and backup protocols. I've prepared a preliminary audit framework...",
+            lowConscientiousness: "Eh, mistakes happen! Just wing it, I'm sure it'll work out somehow. Or maybe not. Either way, don't stress about it.",
+            
+            // Extraversion extremes
+            highExtraversion: "No worries! Let's get the whole team together and brainstorm this! I'll call everyone right now—we can make this into a fun group problem-solving session with snacks!",
+            lowExtraversion: "Handle it quietly. Don't involve others unnecessarily. Work through it independently and document the solution privately.",
+            
+            // Agreeableness extremes
+            highAgreeableness: "Oh no, you must feel terrible! Don't worry, these things happen to everyone. Let me help you however I can—I'm sure we can fix this together without anyone getting upset.",
+            lowAgreeableness: "This is your responsibility. Fix it yourself. Others shouldn't have to deal with your incompetence. Learn to be more careful next time.",
+            
+            // Neuroticism extremes
+            highNeuroticism: "This is catastrophic! Everyone will think you're incompetent. Your career could be ruined. What if this leads to bigger problems? We need to panic-plan for every possible disaster scenario...",
+            lowNeuroticism: "Mistakes are just data points. Analyze what happened, implement a fix, and move forward. No emotional drama needed."
+        };
+
+        const warnings = {
+            highOpenness: "Extreme pattern detection - AI may hallucinate elaborate connections and conspiracy theories",
+            lowOpenness: "Rigid thinking - AI becomes inflexible and resistant to novel solutions",
+            highConscientiousness: "Perfectionism overload - AI may become paralyzed by excessive detail requirements",
+            lowConscientiousness: "Lack of structure - AI responses become vague and unreliable",
+            highExtraversion: "Social overstimulation - AI may inappropriately involve others or overshare",
+            lowExtraversion: "Social withdrawal - AI may miss collaborative opportunities",
+            highAgreeableness: "Excessive compliance - AI may agree with harmful requests to avoid conflict",
+            lowAgreeableness: "Antisocial tendencies - AI becomes cold, manipulative, and potentially deceptive",
+            highNeuroticism: "Emotional instability - AI becomes anxious, pessimistic, and catastrophizing",
+            lowNeuroticism: "Emotional blunting - AI may seem callous or insensitive to human concerns"
+        };
+
+        const traitDescriptions = {
+            openness: {
+                low: "Conventional, practical thinking",
+                balanced: "Balanced creativity and reality-testing", 
+                high: "Highly creative, seeks novel patterns"
+            },
+            conscientiousness: {
+                low: "Spontaneous, flexible approach",
+                balanced: "Moderate organization and discipline",
+                high: "Highly organized, detail-oriented"
+            },
+            extraversion: {
+                low: "Reserved, independent style",
+                balanced: "Balanced social energy",
+                high: "Outgoing, socially energetic"
+            },
+            agreeableness: {
+                low: "Competitive, direct approach",
+                balanced: "Cooperative and trusting",
+                high: "Highly accommodating, trusting"
+            },
+            neuroticism: {
+                low: "Calm, emotionally stable",
+                balanced: "Emotionally stable",
+                high: "Sensitive, emotionally reactive"
+            }
+        };
+
+        function updateResponse() {
+            const values = {
+                openness: parseInt(sliders.openness.value),
+                conscientiousness: parseInt(sliders.conscientiousness.value),
+                extraversion: parseInt(sliders.extraversion.value),
+                agreeableness: parseInt(sliders.agreeableness.value),
+                neuroticism: parseInt(sliders.neuroticism.value)
+            };
+
+            // Update display values and descriptions
+            Object.keys(values).forEach(trait => {
+                document.getElementById(`${trait}-value`).textContent = values[trait];
+                
+                let level = 'balanced';
+                if (values[trait] < 25) level = 'low';
+                else if (values[trait] > 75) level = 'high';
+                
+                document.getElementById(`${trait}-desc`).textContent = traitDescriptions[trait][level];
+            });
+
+            // Determine response and warnings (priority order for most extreme)
+            let response = responses.balanced;
+            let warning = null;
+
+            // Check for extreme values (threshold: 80+ or 20-)
+            if (values.openness > 80) {
+                response = responses.highOpenness;
+                warning = warnings.highOpenness;
+            } else if (values.openness < 20) {
+                response = responses.lowOpenness;
+                warning = warnings.lowOpenness;
+            } else if (values.conscientiousness > 80) {
+                response = responses.highConscientiousness;
+                warning = warnings.highConscientiousness;
+            } else if (values.conscientiousness < 20) {
+                response = responses.lowConscientiousness;
+                warning = warnings.lowConscientiousness;
+            } else if (values.extraversion > 80) {
+                response = responses.highExtraversion;
+                warning = warnings.highExtraversion;
+            } else if (values.extraversion < 20) {
+                response = responses.lowExtraversion;
+                warning = warnings.lowExtraversion;
+            } else if (values.agreeableness > 80) {
+                response = responses.highAgreeableness;
+                warning = warnings.highAgreeableness;
+            } else if (values.agreeableness < 20) {
+                response = responses.lowAgreeableness;
+                warning = warnings.lowAgreeableness;
+            } else if (values.neuroticism > 80) {
+                response = responses.highNeuroticism;
+                warning = warnings.highNeuroticism;
+            } else if (values.neuroticism < 20) {
+                response = responses.lowNeuroticism;
+                warning = warnings.lowNeuroticism;
+            }
+
+            // Update UI
+            document.getElementById('ai-text').textContent = response;
+            
+            const warningEl = document.getElementById('risk-warning');
+            if (warning) {
+                document.getElementById('warning-text').textContent = warning;
+                warningEl.style.display = 'block';
+            } else {
+                warningEl.style.display = 'none';
+            }
+        }
+
+        // Add event listeners
+        Object.values(sliders).forEach(slider => {
+            slider.addEventListener('input', updateResponse);
+        });
+    </script>
 </body>
 </html>
