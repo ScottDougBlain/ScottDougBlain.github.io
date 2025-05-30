@@ -115,6 +115,45 @@
         .demo-section-modern {
             padding: 100px 0;
             background: linear-gradient(to bottom, var(--bg-tertiary), var(--bg-primary));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Big5 Background for Demo Section */
+        .big5-demo-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../assets/images/Big5.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.08;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .big5-demo-background .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 14, 39, 0.7) 0%,
+                rgba(10, 14, 39, 0.6) 50%,
+                rgba(10, 14, 39, 0.7) 100%
+            );
+            z-index: 2;
+        }
+        
+        .demo-section-modern .container,
+        .demo-section-modern .demo-container-modern {
+            position: relative;
+            z-index: 3;
         }
 
         .demo-container-modern {
@@ -531,64 +570,66 @@
             text-align: center;
         }
         
-        /* Human Personality with Big5 Background */
+        /* Human Personality Section with Ocean Image */
         .human-personality-foundation {
-            position: relative;
-            margin: 2rem 0 4rem;
-            padding: 3rem 2rem;
-            border-radius: 1rem;
-            overflow: hidden;
-            min-height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
         
-        .big5-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('../assets/images/Big5.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.15;
-            z-index: 1;
-            pointer-events: none;
+        .personality-content-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
         
-        .big5-background .background-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                135deg,
-                rgba(10, 14, 39, 0.85) 0%,
-                rgba(10, 14, 39, 0.8) 50%,
-                rgba(10, 14, 39, 0.85) 100%
-            );
-            z-index: 2;
-        }
-        
-        .human-personality-foundation h4,
-        .human-personality-foundation .pillar-intro {
-            position: relative;
-            z-index: 3;
-        }
-        
-        .human-personality-foundation h4 {
+        .personality-text-content h4 {
             color: var(--primary);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             font-size: 2rem;
             margin-bottom: 1.5rem;
         }
         
-        .human-personality-foundation .pillar-intro p {
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        .personality-text-content .pillar-intro p {
             font-size: 1.1rem;
             line-height: 1.7;
             color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .personality-ocean-image {
+            text-align: center;
+        }
+        
+        .ocean-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+        }
+        
+        .personality-ocean-image .image-caption p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        /* Mobile responsive for personality layout */
+        @media (max-width: 968px) {
+            .personality-content-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .ocean-image {
+                max-width: 300px;
+                margin: 0 auto;
+            }
         }
 
         /* Mobile Responsive */
@@ -675,14 +716,19 @@
                     
                     <!-- Human Personality -->
                     <div class="human-personality-foundation">
-                        <!-- Big5 Background Image -->
-                        <div class="big5-background">
-                            <div class="background-overlay"></div>
-                        </div>
-                        
-                        <h4>Human Personality</h4>
-                        <div class="pillar-intro">
-                            <p>My research with 20,000+ participants reveals that the Big Five personality traits predict specific failure modes in humans. Extreme trait expressions—whether pathological openness leading to psychosis, antisocial tendencies from low agreeableness, or clinical depression from high neuroticism—offer crucial insights for AI safety. Given that personality traits relate to variation in basic mechanisms that parallel those of AI (e.g., pattern detection, sensitivity to reward and punishment signals, behavioral activation/inhibition systems), personality psychology provides a robust framework to predict and prevent analogous failure modes in AI systems. This interdisciplinary approach bridges decades of psychometric research with cutting-edge AI alignment challenges.</p>
+                        <div class="personality-content-layout">
+                            <div class="personality-text-content">
+                                <h4>Human Personality</h4>
+                                <div class="pillar-intro">
+                                    <p>My research with 20,000+ participants reveals that the Big Five personality traits predict specific failure modes in humans. Extreme trait expressions—whether pathological openness leading to psychosis, antisocial tendencies from low agreeableness, or clinical depression from high neuroticism—offer crucial insights for AI safety. Given that personality traits relate to variation in basic mechanisms that parallel those of AI (e.g., pattern detection, sensitivity to reward and punishment signals, behavioral activation/inhibition systems), personality psychology provides a robust framework to predict and prevent analogous failure modes in AI systems. This interdisciplinary approach bridges decades of psychometric research with cutting-edge AI alignment challenges.</p>
+                                </div>
+                            </div>
+                            <div class="personality-ocean-image">
+                                <img src="../assets/images/ocean.png" alt="OCEAN Big Five personality traits visualization" class="ocean-image">
+                                <div class="image-caption">
+                                    <p>The Big Five OCEAN model: Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism—fundamental dimensions of human personality that inform AI behavior modeling.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -734,6 +780,11 @@
 
     <!-- Interactive Demo (Simplified) -->
     <section class="demo-section-modern">
+        <!-- Big5 Background Image -->
+        <div class="big5-demo-background">
+            <div class="background-overlay"></div>
+        </div>
+        
         <div class="container">
             <div class="demo-container-modern">
                 <h2 style="text-align: center; margin-bottom: 20px; color: white;">Try It Yourself</h2>
