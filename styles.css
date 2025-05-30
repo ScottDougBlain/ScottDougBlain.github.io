@@ -5015,6 +5015,43 @@ a, button {
     background: linear-gradient(135deg, rgba(15, 118, 110, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-adam-watermark {
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    width: 60%;
+    height: 120%;
+    transform: translateY(-50%);
+    background-image: url('assets/images/AI_Adam.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.ai-adam-watermark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, 
+        var(--bg-darker) 0%, 
+        rgba(24, 24, 27, 0.7) 40%,
+        rgba(24, 24, 27, 0.3) 70%,
+        transparent 100%);
+}
+
+.why-matters-section .container {
+    position: relative;
+    z-index: 3;
 }
 
 .matters-text {
@@ -5028,6 +5065,15 @@ a, button {
 
 .matters-text strong {
     color: var(--text-primary);
+}
+
+/* Mobile responsive for watermark */
+@media (max-width: 768px) {
+    .ai-adam-watermark {
+        right: -30%;
+        width: 100%;
+        opacity: 0.08;
+    }
 }
 
 /* Research Preview Section */
