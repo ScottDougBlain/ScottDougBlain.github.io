@@ -5076,6 +5076,90 @@ a, button {
     }
 }
 
+/* Claude Code Banner */
+.claude-code-banner {
+    background: linear-gradient(135deg, rgba(235, 125, 75, 0.1) 0%, rgba(235, 125, 75, 0.05) 100%);
+    border-top: 1px solid rgba(235, 125, 75, 0.2);
+    padding: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.claude-code-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(235, 125, 75, 0.3) 20%, 
+        rgba(235, 125, 75, 0.6) 50%, 
+        rgba(235, 125, 75, 0.3) 80%, 
+        transparent 100%);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+.claude-banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.claude-icon {
+    font-size: 1.2rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.claude-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.claude-text strong {
+    color: #eb7d4b;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(235, 125, 75, 0.3);
+}
+
+.claude-tagline {
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .claude-banner-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .claude-text {
+        font-size: 0.9rem;
+    }
+    
+    .claude-tagline {
+        font-size: 0.8rem;
+    }
+}
+
 /* Research Preview Section */
 .research-preview-section {
     padding: 5rem 0;
