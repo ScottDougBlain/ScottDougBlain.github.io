@@ -871,11 +871,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reading Progress Bar
     const progressBar = document.querySelector('.reading-progress');
     if (progressBar) {
+        console.log('Progress bar found and initialized');
         window.addEventListener('scroll', () => {
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (window.scrollY / windowHeight) * 100;
             progressBar.style.width = scrolled + '%';
         });
+    } else {
+        console.log('Progress bar element not found');
     }
     
     // Enhanced Fade-in animations on scroll

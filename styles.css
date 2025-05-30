@@ -5039,10 +5039,11 @@ a, button {
     top: 0;
     left: 0;
     width: 0%;
-    height: 3px;
+    height: 4px; /* Slightly thicker for better visibility */
     background: linear-gradient(90deg, var(--primary), var(--accent));
-    z-index: 9999;
+    z-index: 10000; /* Higher z-index */
     transition: width 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Add shadow for visibility */
 }
 
 .site-footer {
@@ -5965,10 +5966,11 @@ h1, h2, h3, h4 {
     top: 0;
     left: 0;
     width: 0%;
-    height: 3px;
+    height: 4px; /* Slightly thicker for better visibility */
     background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-    z-index: 1001;
+    z-index: 10000; /* Higher z-index to ensure it's on top */
     transition: width 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Add shadow for visibility */
 }
 
 /* Enhanced Page Header */
