@@ -69,11 +69,11 @@
             color: var(--accent);
         }
 
-        /* Key Insight Section */
-        .key-insight-modern {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+        /* Research Content Section */
+        .research-content {
+            background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary));
             color: white;
+            padding: 80px 0;
         }
 
         .insight-grid-modern {
@@ -251,6 +251,63 @@
             margin-bottom: 20px;
         }
 
+        .human-personality-foundation {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .human-personality-foundation h4 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .research-pillar {
+            margin-bottom: 40px;
+        }
+
+        .pillar-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pillar-header h3 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .pillar-header .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+        }
+
+        .pillar-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .pillar-icon svg {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        .trait-label-modern svg {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+
+        .insight-icon-modern svg {
+            width: 100%;
+            height: 100%;
+        }
+
         /* Call to Action */
         .cta-section-modern {
             padding: 100px 0;
@@ -276,6 +333,186 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 30px var(--primary-light);
             background: var(--primary-dark);
+        }
+        
+        /* HumanAI Background Section */
+        .human-ai-background-section {
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        
+        .human-ai-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../assets/images/HumanAI.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.12;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 14, 39, 0.85) 0%,
+                rgba(10, 14, 39, 0.8) 50%,
+                rgba(10, 14, 39, 0.85) 100%
+            );
+            z-index: 2;
+        }
+        
+        .human-ai-background-section .cta-section-modern,
+        .human-ai-background-section .research-navigation {
+            position: relative;
+            z-index: 3;
+        }
+        
+        .human-ai-background-section h2,
+        .human-ai-background-section p,
+        .human-ai-background-section .btn {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Personality Systems Custom SVG Background */
+        .personality-systems-section {
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+            padding: 80px 0;
+        }
+        
+        .personality-systems-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .personality-background-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.7;
+            min-height: 400px;
+        }
+        
+        .personality-systems-background .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 14, 39, 0.4) 0%,
+                rgba(10, 14, 39, 0.3) 50%,
+                rgba(10, 14, 39, 0.4) 100%
+            );
+            z-index: 2;
+        }
+        
+        .personality-systems-section .container,
+        .personality-systems-section .llm-personality-framework {
+            position: relative;
+            z-index: 3;
+        }
+        
+        .personality-systems-section h4,
+        .personality-systems-section p {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .llm-personality-framework h4 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .llm-personality-framework p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* Human Personality with Big5 Background */
+        .human-personality-foundation {
+            position: relative;
+            margin: 2rem 0 4rem;
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            min-height: 300px;
+        }
+        
+        .big5-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../assets/images/Big5.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .big5-background .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 14, 39, 0.85) 0%,
+                rgba(10, 14, 39, 0.8) 50%,
+                rgba(10, 14, 39, 0.85) 100%
+            );
+            z-index: 2;
+        }
+        
+        .human-personality-foundation h4,
+        .human-personality-foundation .pillar-intro {
+            position: relative;
+            z-index: 3;
+        }
+        
+        .human-personality-foundation h4 {
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .human-personality-foundation .pillar-intro p {
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         /* Mobile Responsive */
@@ -343,19 +580,44 @@
         </div>
     </section>
 
-    <!-- Key Insight (Super Simple) -->
-    <section class="key-insight-modern">
+    <!-- Main Content -->
+    <section class="research-content">
         <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: white;">
-                The Big Idea
-            </h2>
-            <p style="text-align: center; font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 900px; margin: 0 auto;">
-                My research with 20,000+ participants reveals that the Big Five personality traits predict specific failure modes in humans. Given that personality traits relate to variation in basic mechanisms that parallel those of AI (e.g., pattern detection, sensitivity to reward and punishment signals, etc.)—personality psychology could help us predict and prevent failure modes in AI systems.
-            </p>
-            
-            <div class="insight-grid-modern">
+            <div class="research-pillar">
+                <div class="pillar-header">
+                    <div class="pillar-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a9 9 0 0 0-9 9c0 4 3 7 3 7s1-2 1-4c0 2 2 4 2 4s1-2 1-4c0 2 2 4 2 4s1-2 1-4c0 2 2 4 2 4s3-3 3-7a9 9 0 0 0-9-9z"></path>
+                            <path d="M8 14s0 2 1 3"></path>
+                            <path d="M16 14s0 2-1 3"></path>
+                        </svg>
+                    </div>
+                    <h3>Personality Meets AI</h3>
+                    <p class="subtitle"><strong>Using human traits to understand and shape AI behavior</strong></p>
+                </div>
+                <div class="pillar-content">
+                    
+                    <!-- Human Personality -->
+                    <div class="human-personality-foundation">
+                        <!-- Big5 Background Image -->
+                        <div class="big5-background">
+                            <div class="background-overlay"></div>
+                        </div>
+                        
+                        <h4>Human Personality</h4>
+                        <div class="pillar-intro">
+                            <p>My research with 20,000+ participants reveals that the Big Five personality traits predict specific failure modes in humans. Extreme trait expressions—whether pathological openness leading to psychosis, antisocial tendencies from low agreeableness, or clinical depression from high neuroticism—offer crucial insights for AI safety. Given that personality traits relate to variation in basic mechanisms that parallel those of AI (e.g., pattern detection, sensitivity to reward and punishment signals, behavioral activation/inhibition systems), personality psychology provides a robust framework to predict and prevent analogous failure modes in AI systems. This interdisciplinary approach bridges decades of psychometric research with cutting-edge AI alignment challenges.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Parallel Insights -->
+                    <div class="insight-grid-modern">
                 <div class="insight-card-modern">
-                    <div class="insight-icon-modern">🎨</div>
+                    <div class="insight-icon-modern">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
                     <h3>Extreme Openness</h3>
                     <p>Excessive pattern detection and creativity<br>
                     <strong style="color: var(--accent);">Human:</strong> Apophenia, psychosis risk<br>
@@ -363,7 +625,11 @@
                 </div>
                 
                 <div class="insight-card-modern">
-                    <div class="insight-icon-modern">🤝</div>
+                    <div class="insight-icon-modern">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
                     <h3>Low Agreeableness</h3>
                     <p>Reduced cooperation and trust<br>
                     <strong style="color: var(--accent);">Human:</strong> Social manipulation<br>
@@ -371,11 +637,20 @@
                 </div>
                 
                 <div class="insight-card-modern">
-                    <div class="insight-icon-modern">😔</div>
+                    <div class="insight-icon-modern">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 15s1.5-2 4-2 4 2 4 2"></path>
+                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                    </div>
                     <h3>High Neuroticism</h3>
                     <p>Emotional instability and negativity<br>
                     <strong style="color: var(--accent);">Human:</strong> Depression, anxiety<br>
                     <strong style="color: var(--accent);">AI Risk:</strong> Pessimistic outputs</p>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -401,7 +676,12 @@
                     <div class="sliders-column">
                         <div class="trait-slider-modern">
                             <div class="trait-header-modern">
-                                <span class="trait-label-modern">🎨 Openness to Experience</span>
+                                <span class="trait-label-modern">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                            Openness to Experience
+                        </span>
                                 <span class="trait-value-modern" id="openness-value">50</span>
                             </div>
                             <input type="range" class="modern-slider" id="openness" min="0" max="100" value="50">
@@ -410,7 +690,13 @@
                         
                         <div class="trait-slider-modern">
                             <div class="trait-header-modern">
-                                <span class="trait-label-modern">📋 Conscientiousness</span>
+                                <span class="trait-label-modern">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 11l3 3L22 4"></path>
+                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                            </svg>
+                            Conscientiousness
+                        </span>
                                 <span class="trait-value-modern" id="conscientiousness-value">50</span>
                             </div>
                             <input type="range" class="modern-slider" id="conscientiousness" min="0" max="100" value="50">
@@ -419,7 +705,15 @@
                         
                         <div class="trait-slider-modern">
                             <div class="trait-header-modern">
-                                <span class="trait-label-modern">👥 Extraversion</span>
+                                <span class="trait-label-modern">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            Extraversion
+                        </span>
                                 <span class="trait-value-modern" id="extraversion-value">50</span>
                             </div>
                             <input type="range" class="modern-slider" id="extraversion" min="0" max="100" value="50">
@@ -428,7 +722,12 @@
                         
                         <div class="trait-slider-modern">
                             <div class="trait-header-modern">
-                                <span class="trait-label-modern">🤝 Agreeableness</span>
+                                <span class="trait-label-modern">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                            Agreeableness
+                        </span>
                                 <span class="trait-value-modern" id="agreeableness-value">50</span>
                             </div>
                             <input type="range" class="modern-slider" id="agreeableness" min="0" max="100" value="50">
@@ -437,7 +736,15 @@
                         
                         <div class="trait-slider-modern">
                             <div class="trait-header-modern">
-                                <span class="trait-label-modern">😰 Neuroticism</span>
+                                <span class="trait-label-modern">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M16 16s-1.5-2-4-2-4 2-4 2"></path>
+                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                            </svg>
+                            Neuroticism
+                        </span>
                                 <span class="trait-value-modern" id="neuroticism-value">50</span>
                             </div>
                             <input type="range" class="modern-slider" id="neuroticism" min="0" max="100" value="50">
@@ -467,7 +774,102 @@
     </section>
 
     <!-- Dynamic Personality Systems -->
-    <section class="research-content">
+    <section class="research-content personality-systems-section">
+        <!-- Custom SVG Background for Personality Systems -->
+        <div class="personality-systems-background">
+            <svg class="personality-background-svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+                <!-- Personality trait rings (Big Five) -->
+                <defs>
+                    <radialGradient id="personalityGrad1" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#0f766e;stop-opacity:0.3"/>
+                        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.1"/>
+                    </radialGradient>
+                    <radialGradient id="personalityGrad2" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.25"/>
+                        <stop offset="100%" style="stop-color:#0f766e;stop-opacity:0.1"/>
+                    </radialGradient>
+                    <linearGradient id="loraGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#0f766e;stop-opacity:0.2"/>
+                        <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:0.3"/>
+                        <stop offset="100%" style="stop-color:#0f766e;stop-opacity:0.2"/>
+                    </linearGradient>
+                </defs>
+                
+                <!-- Central personality hub -->
+                <circle cx="600" cy="300" r="80" fill="url(#personalityGrad1)" opacity="0.4"/>
+                <circle cx="600" cy="300" r="60" fill="none" stroke="#8b5cf6" stroke-width="2" opacity="0.3"/>
+                <circle cx="600" cy="300" r="40" fill="none" stroke="#0f766e" stroke-width="1.5" opacity="0.4"/>
+                
+                <!-- Big Five personality trait nodes -->
+                <circle cx="450" cy="150" r="25" fill="url(#personalityGrad2)" opacity="0.5"/>
+                <text x="450" y="155" text-anchor="middle" fill="#0f766e" opacity="0.6" font-size="10" font-family="sans-serif">O</text>
+                
+                <circle cx="750" cy="150" r="25" fill="url(#personalityGrad1)" opacity="0.5"/>
+                <text x="750" y="155" text-anchor="middle" fill="#8b5cf6" opacity="0.6" font-size="10" font-family="sans-serif">C</text>
+                
+                <circle cx="800" cy="350" r="25" fill="url(#personalityGrad2)" opacity="0.5"/>
+                <text x="800" y="355" text-anchor="middle" fill="#0f766e" opacity="0.6" font-size="10" font-family="sans-serif">E</text>
+                
+                <circle cx="650" cy="450" r="25" fill="url(#personalityGrad1)" opacity="0.5"/>
+                <text x="650" y="455" text-anchor="middle" fill="#8b5cf6" opacity="0.6" font-size="10" font-family="sans-serif">A</text>
+                
+                <circle cx="400" cy="350" r="25" fill="url(#personalityGrad2)" opacity="0.5"/>
+                <text x="400" y="355" text-anchor="middle" fill="#0f766e" opacity="0.6" font-size="10" font-family="sans-serif">N</text>
+                
+                <!-- Dynamic adaptation arrows -->
+                <path d="M475 175 Q550 220 575 275" fill="none" stroke="#0f766e" stroke-width="2" opacity="0.4" marker-end="url(#arrowhead)"/>
+                <path d="M725 175 Q650 220 625 275" fill="none" stroke="#8b5cf6" stroke-width="2" opacity="0.4" marker-end="url(#arrowhead)"/>
+                <path d="M775 350 Q700 330 650 315" fill="none" stroke="#0f766e" stroke-width="2" opacity="0.4" marker-end="url(#arrowhead)"/>
+                <path d="M625 425 Q612 380 605 340" fill="none" stroke="#8b5cf6" stroke-width="2" opacity="0.4" marker-end="url(#arrowhead)"/>
+                <path d="M425 350 Q500 330 550 315" fill="none" stroke="#0f766e" stroke-width="2" opacity="0.4" marker-end="url(#arrowhead)"/>
+                
+                <!-- LoRA module representations -->
+                <rect x="100" y="100" width="120" height="40" rx="20" fill="url(#loraGrad)" opacity="0.4"/>
+                <text x="160" y="125" text-anchor="middle" fill="#0f766e" opacity="0.5" font-size="8" font-family="sans-serif">LoRA-O</text>
+                
+                <rect x="980" y="180" width="120" height="40" rx="20" fill="url(#loraGrad)" opacity="0.4"/>
+                <text x="1040" y="205" text-anchor="middle" fill="#8b5cf6" opacity="0.5" font-size="8" font-family="sans-serif">LoRA-C</text>
+                
+                <rect x="950" y="450" width="120" height="40" rx="20" fill="url(#loraGrad)" opacity="0.4"/>
+                <text x="1010" y="475" text-anchor="middle" fill="#0f766e" opacity="0.5" font-size="8" font-family="sans-serif">LoRA-E</text>
+                
+                <rect x="80" y="520" width="120" height="40" rx="20" fill="url(#loraGrad)" opacity="0.4"/>
+                <text x="140" y="545" text-anchor="middle" fill="#8b5cf6" opacity="0.5" font-size="8" font-family="sans-serif">LoRA-A</text>
+                
+                <rect x="50" y="300" width="120" height="40" rx="20" fill="url(#loraGrad)" opacity="0.4"/>
+                <text x="110" y="325" text-anchor="middle" fill="#0f766e" opacity="0.5" font-size="8" font-family="sans-serif">LoRA-N</text>
+                
+                <!-- Data flow connections -->
+                <line x1="220" y1="120" x2="425" y2="150" stroke="#0f766e" stroke-width="1.5" opacity="0.3" stroke-dasharray="5,5"/>
+                <line x1="980" y1="200" x2="775" y2="175" stroke="#8b5cf6" stroke-width="1.5" opacity="0.3" stroke-dasharray="5,5"/>
+                <line x1="950" y1="470" x2="775" y2="375" stroke="#0f766e" stroke-width="1.5" opacity="0.3" stroke-dasharray="5,5"/>
+                <line x1="200" y1="540" x2="625" y2="475" stroke="#8b5cf6" stroke-width="1.5" opacity="0.3" stroke-dasharray="5,5"/>
+                <line x1="170" y1="320" x2="375" y2="350" stroke="#0f766e" stroke-width="1.5" opacity="0.3" stroke-dasharray="5,5"/>
+                
+                <!-- User interaction nodes -->
+                <circle cx="300" cy="50" r="15" fill="#8b5cf6" opacity="0.4"/>
+                <text x="300" y="55" text-anchor="middle" fill="white" opacity="0.7" font-size="8" font-family="sans-serif">U1</text>
+                
+                <circle cx="900" cy="80" r="15" fill="#0f766e" opacity="0.4"/>
+                <text x="900" y="85" text-anchor="middle" fill="white" opacity="0.7" font-size="8" font-family="sans-serif">U2</text>
+                
+                <circle cx="200" cy="250" r="15" fill="#8b5cf6" opacity="0.4"/>
+                <text x="200" y="255" text-anchor="middle" fill="white" opacity="0.7" font-size="8" font-family="sans-serif">U3</text>
+                
+                <!-- Arrow markers definition -->
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#0f766e" opacity="0.4"/>
+                    </marker>
+                </defs>
+                
+                <!-- Adaptive personality waves -->
+                <path d="M0 300 Q300 280 600 300 T1200 300" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.2"/>
+                <path d="M0 320 Q300 340 600 320 T1200 320" fill="none" stroke="#0f766e" stroke-width="1" opacity="0.2"/>
+            </svg>
+            <div class="background-overlay"></div>
+        </div>
+        
         <div class="container">
             <div class="llm-personality-framework">
                 <h4>Dynamic Personality Fine-Tuning Systems</h4>
@@ -476,35 +878,43 @@
         </div>
     </section>
 
-    <!-- Simple CTA -->
-    <section class="cta-section-modern">
-        <div class="container">
-            <h2>Bridging Psychology & AI Safety</h2>
-            <p style="font-size: 1.2rem; opacity: 0.9;">
-                From human apophenia to AI hallucinations, from social cognition to alignment—my interdisciplinary approach offers unique insights for building safer, more predictable AI systems.
-            </p>
-            <a href="/" class="cta-button-modern">Explore My Full Research</a>
+    <!-- Bottom Section with HumanAI Background -->
+    <div class="human-ai-background-section">
+        <!-- Background image -->
+        <div class="human-ai-background">
+            <div class="background-overlay"></div>
         </div>
-    </section>
+        
+        <!-- Simple CTA -->
+        <section class="cta-section-modern">
+            <div class="container">
+                <h2>Bridging Psychology & AI Safety</h2>
+                <p style="font-size: 1.2rem; opacity: 0.9;">
+                    From human apophenia to AI hallucinations, from social cognition to alignment—my interdisciplinary approach offers unique insights for building safer, more predictable AI systems.
+                </p>
+                <a href="/" class="cta-button-modern">Explore My Full Research</a>
+            </div>
+        </section>
 
-    <!-- Research Navigation -->
-    <section class="research-navigation">
-        <div class="container">
-            <div class="research-nav-grid">
-                <div class="nav-prev">
-                    <a href="/research/social-intelligence.html" class="btn btn-outline">
-                        ← Previous: Social Intelligence
-                    </a>
-                </div>
-                <div class="nav-overview">
-                    <a href="/" class="btn btn-outline">Back to Research Overview</a>
-                </div>
-                <div class="nav-next">
-                    <!-- No next for last item -->
+        <!-- Research Navigation -->
+        <section class="research-navigation">
+            <div class="container">
+                <div class="research-nav-grid">
+                    <div class="nav-prev">
+                        <a href="/research/social-intelligence.html" class="btn btn-outline">
+                            ← Previous: Social Intelligence
+                        </a>
+                    </div>
+                    <div class="nav-overview">
+                        <a href="/" class="btn btn-outline">Back to Research Overview</a>
+                    </div>
+                    <div class="nav-next">
+                        <!-- No next for last item -->
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="site-footer">

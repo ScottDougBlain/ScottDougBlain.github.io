@@ -245,12 +245,12 @@ function initializeInteractiveDemos() {
     
     // Initialize Pareidolia Playground (replaced with new apophenia demo)
     try {
-        console.log('🌟 Checking for new apophenia demo...');
+        console.log('>> Checking for new apophenia demo...');
         const lyricsContent = document.getElementById('lyrics-content');
         if (lyricsContent) {
             console.log('✅ New apophenia demo found, skipping old constellation demo');
         } else {
-            console.log('🌟 Initializing legacy Pareidolia Playground...');
+            console.log('>> Initializing legacy Pareidolia Playground...');
             const canvas = document.getElementById('constellation-canvas');
             const slider = document.getElementById('pattern-slider');
             const meanings = document.getElementById('pattern-meanings');

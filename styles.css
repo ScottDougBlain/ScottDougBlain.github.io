@@ -265,11 +265,20 @@ a, button {
     justify-content: center;
     padding: 6rem 2rem 2rem;
     background: var(--dark);
-    background-image: 
-        linear-gradient(135deg, transparent 0%, rgba(15, 118, 110, 0.02) 50%, transparent 100%),
-        radial-gradient(ellipse at top, rgba(15, 118, 110, 0.1) 0%, transparent 50%);
     position: relative;
     overflow: hidden;
+}
+
+/* Neural Network Canvas */
+#neural-network-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.15;
+    pointer-events: none;
 }
 
 .hero::before {
@@ -302,7 +311,8 @@ a, button {
 
 .hero-content {
     flex: 1;
-    max-width: 900px;
+    width: 100%;
+    max-width: 1200px;
     text-align: center !important;
     z-index: 2;
     position: relative;
@@ -1892,6 +1902,7 @@ a, button {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .section-title {
@@ -3778,18 +3789,17 @@ a, button {
 
 .contact-grid {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 2rem;
-    max-width: 600px;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto 3rem;
     opacity: 1 !important;
     visibility: visible !important;
 }
 
 .contact-card {
     background: var(--card-bg);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 1rem;
     border: 1px solid var(--border-color);
     color: var(--light);
@@ -3798,6 +3808,7 @@ a, button {
     display: block;
     opacity: 1 !important;
     transform: none !important;
+    text-align: center;
 }
 
 .contact-card:hover {
@@ -3807,19 +3818,23 @@ a, button {
 }
 
 .contact-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
     display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 auto 0.75rem;
 }
 
 .contact-card h4 {
     color: var(--primary);
     margin-bottom: 0.5rem;
+    font-size: 1.1rem;
 }
 
 .contact-card p {
     color: var(--gray);
-    font-size: 0.875rem;
+    font-size: 0.8rem;
 }
 
 /* Modal */
@@ -3942,6 +3957,11 @@ a, button {
     
     .breakdown-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
     
     .hero-stats {
@@ -5079,6 +5099,19 @@ a, button {
     font-size: 3rem;
     margin-bottom: 1rem;
     display: block;
+    color: var(--primary);
+}
+
+.preview-icon svg {
+    width: 3rem;
+    height: 3rem;
+    stroke: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.research-preview-card:hover .preview-icon svg {
+    stroke: var(--accent);
+    transform: scale(1.1);
 }
 
 .research-preview-card h3 {
@@ -5583,40 +5616,51 @@ video {
 /* Contact CTA */
 .contact-cta {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 5rem;
     font-size: 1.25rem;
     color: var(--primary);
     font-style: italic;
+}
 
 /* Hero Tagline as H2 */
 .hero h2.hero-tagline {
+    /* Most styles now handled by #typewriter-text for consistency */
+    /* Keep this as a fallback for any h2.hero-tagline without the typewriter ID */
     font-size: 1.5rem;
     font-weight: 400;
     color: var(--accent);
     margin: 1rem auto 2rem auto;
     line-height: 1.6;
-    min-height: calc(1.5rem * 1.6 * 4); /* 4 lines buffer: font-size * line-height * lines */
     width: 100%;
     text-align: center;
     display: block;
-    position: relative;
-    overflow: hidden;
 }
 
-/* Typewriter effect styling */
+/* Typewriter effect styling - Updated with Gemini's robust solution */
 #typewriter-text {
     color: var(--accent) !important;
-    min-height: calc(1.5rem * 1.6 * 4); /* Match parent for consistency */
-    display: block !important;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.6;
+    
+    /* Key fix: Reserve space for 3 lines of text (1.5rem * 1.6 * 3 = 7.2rem, rounded to 7.5rem) */
+    min-height: 7.5rem !important;
+    
+    /* Use the same margins as .hero h2.hero-tagline for consistency */
+    margin: 1rem auto 2rem auto !important;
+    
     width: 100% !important;
-    margin: 0 !important;
     text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    
     transition: none;
     padding: 0 1rem; /* Add padding for mobile word wrap */
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    
+    /* Remove absolute positioning to use normal document flow */
+    position: static !important;
 }
 
 /* Hero Achievement Badge */
@@ -5728,7 +5772,7 @@ h1, h2, h3, h4 {
     font-size: 2.25rem !important;
     font-weight: 700;
     color: var(--accent);
-    margin-top: 6rem;
+    margin-top: 8rem;
     margin-bottom: 2rem;
     text-align: center;
     text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
@@ -6856,6 +6900,7 @@ h1, h2, h3, h4 {
 .research-content .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 /* Glass Morphism Effect */
@@ -7999,16 +8044,27 @@ html {
         padding-top: 60px; /* Match mobile nav height */
     }
     
-    /* Typewriter mobile adjustments */
+    /* Typewriter mobile adjustments - Updated with Gemini's robust solution */
     .hero h2.hero-tagline {
         font-size: 1.2rem;
-        min-height: calc(1.2rem * 1.6 * 4); /* 4 lines buffer for mobile */
+        /* Min-height now handled by #typewriter-text */
     }
     
     #typewriter-text {
         font-size: 1.2rem !important;
-        min-height: calc(1.2rem * 1.6 * 4); /* Match parent */
+        /* Reserve space for 4 lines on mobile (1.2rem * 1.6 * 4 = 7.68rem, rounded to 8rem) */
+        min-height: 8rem !important;
         padding: 0 0.5rem; /* Tighter padding on mobile */
+        
+        /* Ensure flexbox centering works properly on mobile */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        
+        /* Enable word wrapping and hyphenation for long words */
+        word-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
     }
 }
 

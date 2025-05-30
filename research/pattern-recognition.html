@@ -19,6 +19,210 @@
         .output-analysis {
             margin-top: 3rem !important;
         }
+        
+        /* Research image styling */
+        .research-image-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .image-container {
+            text-align: center;
+        }
+        
+        .research-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+        }
+        
+        .image-caption h5 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .image-caption p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .behavioral-measures-section h4 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        /* Updated video background styling - smaller and cropped */
+        .human-cognition-foundation {
+            position: relative;
+            margin: 2rem 0 4rem;
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            min-height: 250px;
+        }
+        
+        .pattern-video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .background-video {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            width: 60%;
+            height: 60%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            opacity: 0.2;
+            filter: blur(1px);
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 14, 39, 0.9) 0%,
+                rgba(10, 14, 39, 0.85) 50%,
+                rgba(10, 14, 39, 0.9) 100%
+            );
+            z-index: 2;
+        }
+        
+        .human-cognition-foundation h4,
+        .human-cognition-foundation .pillar-intro {
+            position: relative;
+            z-index: 3;
+        }
+        
+        /* Side-by-side research evidence grid */
+        .research-evidence-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        
+        .research-block h4 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .research-image-section-compact {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .research-image-compact {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+        }
+        
+        .research-image-section-compact .image-caption h5 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .research-image-section-compact .image-caption p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        /* Mobile responsive for side-by-side layout */
+        @media (max-width: 768px) {
+            .research-evidence-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .background-video {
+                width: 80%;
+                height: 80%;
+            }
+        }
+        
+        /* HumanAI Background Section */
+        .human-ai-background-section {
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        
+        .human-ai-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../assets/images/HumanAI.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.12;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 14, 39, 0.85) 0%,
+                rgba(10, 14, 39, 0.8) 50%,
+                rgba(10, 14, 39, 0.85) 100%
+            );
+            z-index: 2;
+        }
+        
+        .human-ai-background-section .cta-section-modern,
+        .human-ai-background-section .research-navigation {
+            position: relative;
+            z-index: 3;
+        }
+        
+        .human-ai-background-section h2,
+        .human-ai-background-section p,
+        .human-ai-background-section .btn {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
 
         /* Dark theme styling to match personality page */
         .page-header {
@@ -141,6 +345,25 @@
             color: var(--accent);
         }
 
+        .pillar-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .pillar-icon svg {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        .demo-icon svg {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
         /* Call to Action */
         .cta-section-modern {
             padding: 100px 0;
@@ -217,7 +440,12 @@
         <div class="container">
             <div class="research-pillar">
                 <div class="pillar-header">
-                    <div class="pillar-icon">🔍</div>
+                    <div class="pillar-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </div>
                     <h3>Pattern Recognition & AI Hallucinations</h3>
                     <p class="subtitle"><strong>From human apophenia to AI hallucination mitigation.</strong></p>
                 </div>
@@ -239,10 +467,46 @@
                         </div>
                     </div>
                     
+                    <!-- Research Evidence Side-by-Side -->
+                    <div class="research-evidence-grid">
+                        <!-- Behavioral Measures -->
+                        <div class="research-block">
+                            <h4>Quantifying Apophenia: Behavioral Tasks</h4>
+                            <div class="research-image-section-compact">
+                                <div class="image-container">
+                                    <img src="../assets/images/Apophenia_Tasks.jpg" alt="Behavioral tasks used to quantify apophenia in human participants" class="research-image-compact">
+                                    <div class="image-caption">
+                                        <h5>Apophenia Assessment Battery</h5>
+                                        <p>Comprehensive behavioral tasks designed to quantify individual differences in pattern detection sensitivity across visual, auditory, and conceptual domains.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Brain Networks -->
+                        <div class="research-block">
+                            <h4>Generation vs. Verification Networks</h4>
+                            <div class="research-image-section-compact">
+                                <div class="image-container">
+                                    <img src="../assets/images/BrainNetworks.jpeg" alt="Brain networks involved in pattern generation vs verification" class="research-image-compact">
+                                    <div class="image-caption">
+                                        <h5>Neuroimaging Evidence</h5>
+                                        <p>Default Mode Network vs. Frontoparietal Control Network balance underlies healthy pattern recognition and creativity-factuality trade-offs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- 2. Interactive Demo -->
                     <div class="apophenia-playground">
                         <h4 class="demo-title-enhanced">
-                            <span class="demo-icon">🔍</span>
+                            <span class="demo-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </span>
                             Interactive Demo: Pattern Sensitivity
                             <span class="demo-accent">Interactive Demo</span>
                         </h4>
@@ -334,35 +598,43 @@
         </div>
     </section>
 
-    <!-- Bridging Psychology & AI Safety -->
-    <section class="cta-section-modern">
-        <div class="container">
-            <h2>Bridging Psychology & AI Safety</h2>
-            <p style="font-size: 1.2rem; opacity: 0.9;">
-                From human apophenia to AI hallucinations, from social cognition to alignment—my interdisciplinary approach offers unique insights for building safer, more predictable AI systems.
-            </p>
-            <a href="/" class="cta-button-modern">Explore My Full Research</a>
+    <!-- Bottom Section with HumanAI Background -->
+    <div class="human-ai-background-section">
+        <!-- Background image -->
+        <div class="human-ai-background">
+            <div class="background-overlay"></div>
         </div>
-    </section>
+        
+        <!-- Bridging Psychology & AI Safety -->
+        <section class="cta-section-modern">
+            <div class="container">
+                <h2>Bridging Psychology & AI Safety</h2>
+                <p style="font-size: 1.2rem; opacity: 0.9;">
+                    From human apophenia to AI hallucinations, from social cognition to alignment—my interdisciplinary approach offers unique insights for building safer, more predictable AI systems.
+                </p>
+                <a href="/" class="cta-button-modern">Explore My Full Research</a>
+            </div>
+        </section>
 
-    <!-- Research Navigation -->
-    <section class="research-navigation">
-        <div class="container">
-            <div class="research-nav-grid">
-                <div class="nav-prev">
-                    <!-- No previous for first item -->
-                </div>
-                <div class="nav-overview">
-                    <a href="/" class="btn btn-outline">Back to Research Overview</a>
-                </div>
-                <div class="nav-next">
-                    <a href="/research/social-intelligence.html" class="btn btn-primary">
-                        Next: Social Intelligence & AI Alignment →
-                    </a>
+        <!-- Research Navigation -->
+        <section class="research-navigation">
+            <div class="container">
+                <div class="research-nav-grid">
+                    <div class="nav-prev">
+                        <!-- No previous for first item -->
+                    </div>
+                    <div class="nav-overview">
+                        <a href="/" class="btn btn-outline">Back to Research Overview</a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="/research/social-intelligence.html" class="btn btn-primary">
+                            Next: Social Intelligence & AI Alignment →
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="site-footer">

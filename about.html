@@ -86,8 +86,7 @@
             color: var(--primary) !important;
         }
 
-        .highlight-icon,
-        .card-icon {
+        .highlight-icon {
             background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
         }
 
@@ -144,6 +143,148 @@
             color: var(--primary);
             margin-bottom: 20px;
         }
+
+        /* SVG icon styling */
+        .card-icon svg,
+        .highlight-icon svg,
+        .contact-icon svg,
+        .career-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+        }
+        
+        .psychology-card .card-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .psychology-card h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        /* Personal Journey with Networks Background */
+        .personal-journey-section {
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0;
+        }
+        
+        .networks-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/images/Networks.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.18;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 14, 39, 0.85) 0%,
+                rgba(10, 14, 39, 0.8) 50%,
+                rgba(10, 14, 39, 0.85) 100%
+            );
+            z-index: 2;
+        }
+        
+        .personal-journey-section .container,
+        .personal-journey-section .section-title,
+        .personal-journey-section .journey-content {
+            position: relative;
+            z-index: 3;
+        }
+        
+        .personal-journey-section .section-title,
+        .personal-journey-section .journey-content p {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .journey-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Future Directions Custom SVG Background */
+        .future-directions {
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+            padding: 80px 0;
+        }
+        
+        .future-directions-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .future-background-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.6;
+            min-height: 400px;
+        }
+        
+        .future-directions-background .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 14, 39, 0.4) 0%,
+                rgba(10, 14, 39, 0.3) 50%,
+                rgba(10, 14, 39, 0.4) 100%
+            );
+            z-index: 2;
+        }
+        
+        .future-directions .container,
+        .future-directions .section-title,
+        .future-directions .research-ideas {
+            position: relative;
+            z-index: 3;
+        }
+        
+        .future-directions .section-title,
+        .future-directions .idea-card h4,
+        .future-directions .idea-card p {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+        }
     </style>
 </head>
 <body>
@@ -182,6 +323,11 @@
 
     <!-- Personal Journey -->
     <section class="personal-journey-section">
+        <!-- Background image -->
+        <div class="networks-background">
+            <div class="background-overlay"></div>
+        </div>
+        
         <div class="container">
             <h2 class="section-title">My Journey to AI Safety</h2>
             <div class="journey-content">
@@ -230,7 +376,12 @@
             <div class="experience-highlights">
                 <div class="highlight-card brief card card-interactive">
                     <div class="highlight-header">
-                        <span class="highlight-icon">🧠</span>
+                        <span class="highlight-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 6v6l4 2"></path>
+                            </svg>
+                        </span>
                         <h3>Metacognitive Hallucination Framework</h3>
                         <span class="impact-badge">71% Reduction</span>
                     </div>
@@ -241,7 +392,13 @@
 
                 <div class="highlight-card brief card card-interactive">
                     <div class="highlight-header">
-                        <span class="highlight-icon">🎭</span>
+                        <span class="highlight-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="9" r="7"></circle>
+                                <circle cx="15" cy="15" r="7"></circle>
+                                <path d="M8.5 9.5L15.5 15.5"></path>
+                            </svg>
+                        </span>
                         <h3>LLM Mentalizing Framework</h3>
                     </div>
                     <div class="highlight-content">
@@ -251,7 +408,14 @@
 
                 <div class="highlight-card brief card card-interactive">
                     <div class="highlight-header">
-                        <span class="highlight-icon">⚙️</span>
+                        <span class="highlight-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                                <path d="m20.5 7.5-3 3L14 7m0 10 3.5-3.5 3 3"></path>
+                                <path d="m3.5 7.5 3 3L10 7m0 10-3.5-3.5-3 3"></path>
+                            </svg>
+                        </span>
                         <h3>Dynamic Personality Layers</h3>
                     </div>
                     <div class="highlight-content">
@@ -286,15 +450,15 @@
                     <h4>AI Safety & Ethics Training</h4>
                     <div class="training-grid">
                         <div class="training-item">
-                            <h5>🌍 Global Challenges Project (2025)</h5>
+                            <h5><span style="color: var(--primary);">◆</span> Global Challenges Project (2025)</h5>
                             <p>Emerging challenges in AI safety and biosecurity and interdisciplinary approaches to existential risks</p>
                         </div>
                         <div class="training-item">
-                            <h5>🤖 Ethics of AI | University of Helsinki (2025)</h5>
+                            <h5><span style="color: var(--primary);">◆</span> Ethics of AI | University of Helsinki (2025)</h5>
                             <p>Ethical AI development/use and applying frameworks from moral philosophy to questions related to contemporary AI</p>
                         </div>
                         <div class="training-item">
-                            <h5>🎓 AI Safety Fundamentals | BlueDot Impact (2024)</h5>
+                            <h5><span style="color: var(--primary);">◆</span> AI Safety Fundamentals | BlueDot Impact (2024)</h5>
                             <p>Technical alignment studies, including inner/outer alignment, interpretability, and safety frameworks</p>
                         </div>
                     </div>
@@ -305,6 +469,63 @@
 
     <!-- Future Directions Section -->
     <section id="future" class="future-directions">
+        <!-- Custom SVG Background -->
+        <div class="future-directions-background">
+            <svg class="future-background-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+                <!-- Hierarchical layers -->
+                <defs>
+                    <linearGradient id="layer1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#0f766e;stop-opacity:0.3"/>
+                        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.3"/>
+                    </linearGradient>
+                    <linearGradient id="layer2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.25"/>
+                        <stop offset="100%" style="stop-color:#0f766e;stop-opacity:0.25"/>
+                    </linearGradient>
+                </defs>
+                
+                <!-- Base geometric patterns -->
+                <rect x="0" y="0" width="400" height="200" fill="url(#layer1)" transform="rotate(15 200 100)"/>
+                <rect x="800" y="100" width="300" height="150" fill="url(#layer2)" transform="rotate(-10 950 175)"/>
+                <rect x="200" y="600" width="500" height="100" fill="url(#layer1)" transform="rotate(5 450 650)"/>
+                
+                <!-- Neural network nodes -->
+                <circle cx="150" cy="150" r="4" fill="#0f766e" opacity="0.5"/>
+                <circle cx="350" cy="200" r="5" fill="#8b5cf6" opacity="0.5"/>
+                <circle cx="550" cy="100" r="4" fill="#0f766e" opacity="0.5"/>
+                <circle cx="750" cy="300" r="6" fill="#8b5cf6" opacity="0.5"/>
+                <circle cx="950" cy="250" r="4" fill="#0f766e" opacity="0.5"/>
+                <circle cx="250" cy="450" r="5" fill="#8b5cf6" opacity="0.5"/>
+                <circle cx="650" cy="500" r="4" fill="#0f766e" opacity="0.5"/>
+                <circle cx="850" cy="600" r="5" fill="#8b5cf6" opacity="0.5"/>
+                
+                <!-- Connection lines -->
+                <line x1="150" y1="150" x2="350" y2="200" stroke="#0f766e" stroke-width="2" opacity="0.4"/>
+                <line x1="350" y1="200" x2="550" y2="100" stroke="#8b5cf6" stroke-width="2" opacity="0.4"/>
+                <line x1="550" y1="100" x2="750" y2="300" stroke="#0f766e" stroke-width="2" opacity="0.4"/>
+                <line x1="750" y1="300" x2="950" y2="250" stroke="#8b5cf6" stroke-width="2" opacity="0.4"/>
+                <line x1="250" y1="450" x2="650" y2="500" stroke="#0f766e" stroke-width="2" opacity="0.4"/>
+                <line x1="650" y1="500" x2="850" y2="600" stroke="#8b5cf6" stroke-width="2" opacity="0.4"/>
+                
+                <!-- Hierarchical structure patterns -->
+                <polygon points="100,300 200,280 250,350 150,370" fill="url(#layer1)" opacity="0.1"/>
+                <polygon points="900,400 1000,380 1050,450 950,470" fill="url(#layer2)" opacity="0.1"/>
+                <polygon points="400,650 500,630 550,700 450,720" fill="url(#layer1)" opacity="0.1"/>
+                
+                <!-- Interpretability grid patterns -->
+                <g opacity="0.08">
+                    <line x1="0" y1="100" x2="1200" y2="100" stroke="#ffffff" stroke-width="0.5"/>
+                    <line x1="0" y1="300" x2="1200" y2="300" stroke="#ffffff" stroke-width="0.5"/>
+                    <line x1="0" y1="500" x2="1200" y2="500" stroke="#ffffff" stroke-width="0.5"/>
+                    <line x1="0" y1="700" x2="1200" y2="700" stroke="#ffffff" stroke-width="0.5"/>
+                    <line x1="200" y1="0" x2="200" y2="800" stroke="#ffffff" stroke-width="0.5"/>
+                    <line x1="600" y1="0" x2="600" y2="800" stroke="#ffffff" stroke-width="0.5"/>
+                    <line x1="1000" y1="0" x2="1000" y2="800" stroke="#ffffff" stroke-width="0.5"/>
+                </g>
+            </svg>
+            <div class="background-overlay"></div>
+        </div>
+        
         <div class="container">
             <h2 class="section-title">Next Directions</h2>
             <div class="research-ideas">
@@ -328,7 +549,9 @@
                 <h3>Current Mission</h3>
                 <p>Seeking impactful roles integrating cognitive science, AI safety, and human-computer interaction. My aim is ensuring AI remains both powerful and fundamentally aligned with human values.</p>
                 <div class="mission-cta">
-                    <a href="Scott_Blain_RESUME_2025.docx" class="btn btn-primary" download>📄 View Resume</a>
+                    <a href="Scott_Blain_RESUME_2025.docx" class="btn btn-primary" download>
+                        <span style="margin-right: 0.5rem;">↓</span> View Resume
+                    </a>
                 </div>
             </div>
         </div>
@@ -341,25 +564,45 @@
             
             <div class="contact-grid">
                 <a href="mailto:scottdougblain@gmail.com" class="contact-card card card-interactive">
-                    <div class="contact-icon">📧</div>
+                    <div class="contact-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                            <path d="m22 7-10 5L2 7"></path>
+                        </svg>
+                    </div>
                     <h4>Email</h4>
                     <p>scottdougblain@gmail.com</p>
                 </a>
                 
                 <a href="https://www.linkedin.com/in/scott-blain-phd/" target="_blank" class="contact-card card card-interactive">
-                    <div class="contact-icon">💼</div>
+                    <div class="contact-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </div>
                     <h4>LinkedIn</h4>
                     <p>/in/scott-blain-phd/</p>
                 </a>
                 
                 <a href="https://github.com/ScottDougBlain" target="_blank" class="contact-card card card-interactive">
-                    <div class="contact-icon">💻</div>
+                    <div class="contact-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </div>
                     <h4>GitHub</h4>
                     <p>@ScottDougBlain</p>
                 </a>
                 
                 <a href="https://scholar.google.com/citations?user=NL_JEtkAAAAJ&hl=en" target="_blank" class="contact-card card card-interactive">
-                    <div class="contact-icon">🎓</div>
+                    <div class="contact-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                    </div>
                     <h4>Google Scholar</h4>
                     <p>Research profile</p>
                 </a>

@@ -157,6 +157,35 @@
             font-size: 2rem;
         }
 
+        .pillar-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .pillar-icon svg {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        .demo-icon svg {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .scenario-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .tip-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
         /* Call to Action */
         .cta-section-modern {
             padding: 100px 0;
@@ -182,6 +211,163 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 30px var(--primary-light);
             background: var(--primary-dark);
+        }
+        
+        /* AI Alignment Bridge Section with Background */
+        .ai-alignment-bridge-section {
+            position: relative;
+            margin: 3rem 0;
+            padding: 4rem 2rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            min-height: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .bridging-brains-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../assets/images/BridgingBrains.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 14, 39, 0.7) 0%,
+                rgba(10, 14, 39, 0.6) 50%,
+                rgba(10, 14, 39, 0.7) 100%
+            );
+            z-index: 2;
+        }
+        
+        .ai-alignment-bridge-section .tom-bridge-special,
+        .ai-alignment-bridge-section .llm-mentalizing-framework {
+            position: relative;
+            z-index: 3;
+        }
+        
+        .ai-alignment-bridge-section .tom-bridge-special h4,
+        .ai-alignment-bridge-section .llm-mentalizing-framework h4 {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ai-alignment-bridge-section .bridge-content-block,
+        .ai-alignment-bridge-section .llm-mentalizing-framework p {
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Human Social Cognition with Faces Image */
+        .social-cognition-layout {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .cognition-content h4 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cognition-image {
+            text-align: center;
+        }
+        
+        .faces-image {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+        }
+        
+        .cognition-image .image-caption {
+            text-align: center;
+        }
+        
+        .cognition-image .image-caption p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        /* Mobile responsive for social cognition layout */
+        @media (max-width: 968px) {
+            .social-cognition-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .faces-image {
+                max-width: 300px;
+            }
+        }
+        
+        /* HumanAI Background Section */
+        .human-ai-background-section {
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        
+        .human-ai-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../assets/images/HumanAI.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.12;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 14, 39, 0.85) 0%,
+                rgba(10, 14, 39, 0.8) 50%,
+                rgba(10, 14, 39, 0.85) 100%
+            );
+            z-index: 2;
+        }
+        
+        .human-ai-background-section .cta-section-modern,
+        .human-ai-background-section .research-navigation {
+            position: relative;
+            z-index: 3;
+        }
+        
+        .human-ai-background-section h2,
+        .human-ai-background-section p,
+        .human-ai-background-section .btn {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -234,7 +420,12 @@
         <div class="container">
             <div class="research-pillar">
                 <div class="pillar-header">
-                    <div class="pillar-icon">🤝</div>
+                    <div class="pillar-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
                     <h3>Social Intelligence & AI Alignment</h3>
                     <p class="subtitle">Understanding how the same abilities that enable cooperation also enable manipulation</p>
                 </div>
@@ -242,9 +433,19 @@
                     
                     <!-- 1. Opening: Human Social Cognition -->
                     <div class="double-edged-sword scroll-fade-in">
-                        <h4>Human Social Cognition</h4>
-                        <div class="pillar-intro">
-                            <p>Social cognitive abilities include processes that allow us to understand the minds of others—including emotion perception and theory of mind. My research has shown that social cognitive abilities exhibit a dual-use nature. Many of the capabilities underpinning compassion also enable manipulative deception. As AI systems develop increasingly complex social intelligence, we must ensure these abilities are channeled for prosocial means.</p>
+                        <div class="social-cognition-layout">
+                            <div class="cognition-content">
+                                <h4>Human Social Cognition</h4>
+                                <div class="pillar-intro">
+                                    <p>Social cognitive abilities include processes that allow us to understand the minds of others—including emotion perception and theory of mind. My research has shown that social cognitive abilities exhibit a dual-use nature. Many of the capabilities underpinning compassion also enable manipulative deception. As AI systems develop increasingly complex social intelligence, we must ensure these abilities are channeled for prosocial means.</p>
+                                </div>
+                            </div>
+                            <div class="cognition-image">
+                                <img src="../assets/images/Faces.png" alt="Human faces showing various emotions for social cognition research" class="faces-image">
+                                <div class="image-caption">
+                                    <p>Emotion perception and facial recognition form the foundation of human social intelligence—capabilities that enable both empathy and manipulation.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -264,7 +465,12 @@
                     <!-- 3. Interactive Demo: Experience Nested Beliefs -->
                     <div class="tom-interactive-embedded scroll-fade-in">
                         <h4 class="demo-title-enhanced">
-                            <span class="demo-icon">🎭</span>
+                            <span class="demo-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </span>
                             Nested Beliefs Interactive Demo
                             <span class="demo-accent">Interactive Demo</span>
                         </h4>
@@ -295,7 +501,7 @@
                                 <h5>Choose Your Scenario</h5>
                                 <div class="scenario-cards">
                                     <div class="scenario-card card card-interactive" data-scenario="0">
-                                        <div class="scenario-icon">⌚</div>
+                                        <div class="scenario-icon">⏱</div>
                                         <h6>The Watch Swap</h6>
                                         <p>Track beliefs about a moving object as it's secretly moved multiple times with layers of deception</p>
                                         <div class="scenario-meta">
@@ -303,7 +509,7 @@
                                         </div>
                                     </div>
                                     <div class="scenario-card card card-interactive" data-scenario="1">
-                                        <div class="scenario-icon">🥞</div>
+                                        <div class="scenario-icon">●</div>
                                         <h6>Sarcastic Pancakes</h6>
                                         <p>Navigate the complexities of misunderstood sarcasm and layered social misinterpretations</p>
                                         <div class="scenario-meta">
@@ -311,7 +517,7 @@
                                         </div>
                                     </div>
                                     <div class="scenario-card card card-interactive" data-scenario="2">
-                                        <div class="scenario-icon">🚂</div>
+                                        <div class="scenario-icon">⇆</div>
                                         <h6>Portland Confusion</h6>
                                         <p>Untangle multiple layers of misdirection and intentional geographic confusion</p>
                                         <div class="scenario-meta">
@@ -326,7 +532,7 @@
                                 <div class="story-header">
                                     <h5 id="scenario-title"></h5>
                                     <div class="reading-tips">
-                                        <div class="tip-icon">💡</div>
+                                        <div class="tip-icon">→</div>
                                         <div class="tip-text">
                                             <strong>Reading Strategy:</strong> Pay close attention to who observes what actions, and who is present for each conversation. Track the information each character has access to.
                                         </div>
@@ -409,58 +615,74 @@
                         </div>
                     </div>
                     
-                    <!-- 4. From Human ToM to AI Alignment -->
-                    <div class="tom-bridge-special fade-in-section scroll-fade-in">
-                        <h4 class="bridge-header-large">From Human Theory of Mind to AI Alignment</h4>
-                        <div class="bridge-content-block glass-morphism">
-                            <p>Just as humans with enhanced theory of mind can choose cooperation or manipulation, AI systems with ToM capabilities face the same crossroads. This is not a theoretical concern—it's an existential challenge.</p>
-                            
-                            <p>An AI that can model human beliefs at multiple levels could predict and manipulate human behavior with unprecedented sophistication. My research on human social cognition provides crucial insights for navigating this challenge.</p>
+                    <!-- AI Alignment Bridge Section with Background -->
+                    <div class="ai-alignment-bridge-section">
+                        <!-- Background image -->
+                        <div class="bridging-brains-background">
+                            <div class="background-overlay"></div>
+                        </div>
+                        
+                        <!-- 4. From Human ToM to AI Alignment -->
+                        <div class="tom-bridge-special fade-in-section scroll-fade-in">
+                            <h4 class="bridge-header-large">From Human Theory of Mind to AI Alignment</h4>
+                            <div class="bridge-content-block glass-morphism">
+                                <p>Just as humans with enhanced theory of mind can choose cooperation or manipulation, AI systems with ToM capabilities face the same crossroads. This is not a theoretical concern—it's an existential challenge.</p>
+                                
+                                <p>An AI that can model human beliefs at multiple levels could predict and manipulate human behavior with unprecedented sophistication. My research on human social cognition provides crucial insights for navigating this challenge.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 5. The LLM Mentalizing Framework -->
+                        <div class="llm-mentalizing-framework scroll-fade-in">
+                            <h4>LLM Mentalizing Framework</h4>
+                            <p>I am currently building an evaluation suite based on these scenarios and others, to systematically assess LLM social cognition—identifying emergent capabilities relevant to both deceptive capabilities and situational awareness.</p>
                         </div>
                     </div>
                     
-                    <!-- 5. The LLM Mentalizing Framework -->
-                    <div class="llm-mentalizing-framework scroll-fade-in">
-                        <h4>LLM Mentalizing Framework</h4>
-                        <p>I am currently building an evaluation suite based on these scenarios and others, to systematically assess LLM social cognition—identifying emergent capabilities relevant to both deceptive capabilities and situational awareness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Section with HumanAI Background -->
+    <div class="human-ai-background-section">
+        <!-- Background image -->
+        <div class="human-ai-background">
+            <div class="background-overlay"></div>
+        </div>
+        
+        <!-- Bridging Psychology & AI Safety -->
+        <section class="cta-section-modern">
+            <div class="container">
+                <h2>Bridging Psychology & AI Safety</h2>
+                <p style="font-size: 1.2rem; opacity: 0.9;">
+                    From human apophenia to AI hallucinations, from social cognition to alignment—my interdisciplinary approach offers unique insights for building safer, more predictable AI systems.
+                </p>
+                <a href="/" class="cta-button-modern">Explore My Full Research</a>
+            </div>
+        </section>
+
+        <!-- Research Navigation -->
+        <section class="research-navigation">
+            <div class="container">
+                <div class="research-nav-grid">
+                    <div class="nav-prev">
+                        <a href="/research/pattern-recognition.html" class="btn btn-outline">
+                            ← Previous: Pattern Recognition
+                        </a>
                     </div>
-                    
+                    <div class="nav-overview">
+                        <a href="/" class="btn btn-outline">Back to Research Overview</a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="/research/personality-modeling.html" class="btn btn-primary">
+                            Next: Personality Modeling →
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Bridging Psychology & AI Safety -->
-    <section class="cta-section-modern">
-        <div class="container">
-            <h2>Bridging Psychology & AI Safety</h2>
-            <p style="font-size: 1.2rem; opacity: 0.9;">
-                From human apophenia to AI hallucinations, from social cognition to alignment—my interdisciplinary approach offers unique insights for building safer, more predictable AI systems.
-            </p>
-            <a href="/" class="cta-button-modern">Explore My Full Research</a>
-        </div>
-    </section>
-
-    <!-- Research Navigation -->
-    <section class="research-navigation">
-        <div class="container">
-            <div class="research-nav-grid">
-                <div class="nav-prev">
-                    <a href="/research/pattern-recognition.html" class="btn btn-outline">
-                        ← Previous: Pattern Recognition
-                    </a>
-                </div>
-                <div class="nav-overview">
-                    <a href="/" class="btn btn-outline">Back to Research Overview</a>
-                </div>
-                <div class="nav-next">
-                    <a href="/research/personality-modeling.html" class="btn btn-primary">
-                        Next: Personality Modeling →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="site-footer">

@@ -61,8 +61,10 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="glitch" data-text="Scott Blain, PhD">Scott Blain, PhD</h1>
+        <canvas id="neural-network-canvas"></canvas>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="glitch" data-text="Scott Blain, PhD">Scott Blain, PhD</h1>
             <h2 class="hero-tagline" id="typewriter-text">From understanding human minds to building safe AI systems</h2>
             <p class="hero-description lead-text">
                 Over a decade of research on human cognition—pattern detection, social reasoning, and personality mechanisms—now translated into frameworks ensuring AI capabilities remain aligned with human values.
@@ -95,10 +97,17 @@
                 </div>
             </div>
             <div class="hero-cta">
-                <a href="#research-pillars" class="btn btn-primary">🔬 Explore Research</a>
-                <a href="/about.html#contact" class="btn btn-secondary">💬 Contact</a>
-                <a href="Scott_Blain_RESUME_2025.docx" class="btn btn-outline" download>📄 Download Resume</a>
+                <a href="#research-pillars" class="btn btn-primary">
+                    <span style="margin-right: 0.5rem;">→</span> Explore Research
+                </a>
+                <a href="/about.html#contact" class="btn btn-secondary">
+                    <span style="margin-right: 0.5rem;">→</span> Contact
+                </a>
+                <a href="Scott_Blain_RESUME_2025.docx" class="btn btn-outline" download>
+                    <span style="margin-right: 0.5rem;">↓</span> Download Resume
+                </a>
             </div>
+        </div>
         </div>
     </section>
 
@@ -120,7 +129,12 @@
             <div class="research-preview-grid">
                 <!-- Pattern Recognition Card -->
                 <div class="research-preview-card card card-interactive">
-                    <div class="preview-icon">🔍</div>
+                    <div class="preview-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </div>
                     <h3>Pattern Recognition & AI Hallucinations</h3>
                     <p>From studying apophenia in human participants to developing a metacognitive framework achieving <strong>71% reduction</strong> in LLM hallucinations. Bridging human false pattern detection to AI confabulation.</p>
                     <a href="/research/pattern-recognition.html" class="btn btn-outline">Explore Research →</a>
@@ -128,7 +142,12 @@
                 
                 <!-- Social Intelligence Card -->
                 <div class="research-preview-card card card-interactive">
-                    <div class="preview-icon">🤝</div>
+                    <div class="preview-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
                     <h3>Social Intelligence & AI Alignment</h3>
                     <p>Demonstrated how the same theory-of-mind abilities that enable prosocial perspective taking also allow sophisticated deception. Essential for detecting and constraining deceptive AI misalignment.</p>
                     <a href="/research/social-intelligence.html" class="btn btn-outline">Explore Research →</a>
@@ -136,7 +155,14 @@
                 
                 <!-- Personality Modeling Card -->
                 <div class="research-preview-card card card-interactive">
-                    <div class="preview-icon">⚙️</div>
+                    <div class="preview-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                            <path d="m20.5 7.5-3 3L14 7m0 10 3.5-3.5 3 3"></path>
+                            <path d="m3.5 7.5 3 3L10 7m0 10-3.5-3.5-3 3"></path>
+                        </svg>
+                    </div>
                     <h3>Cybernetic Personality Modeling</h3>
                     <p>Mapped mechanisms of personality variation across multiple studies and over 20,000 participants. Currently building personality-informed frameworks for dynamic finetuning and model-organism research.</p>
                     <a href="/research/personality-modeling.html" class="btn btn-outline">Explore Research →</a>
@@ -155,9 +181,15 @@
                 Let's collaborate to ensure AI remains beneficial as it becomes more capable.
             </p>
             <div class="cta-buttons">
-                <a href="/about.html" class="btn btn-primary">🧑 About My Approach</a>
-                <a href="mailto:scottdougblain@gmail.com" class="btn btn-secondary">📧 Contact</a>
-                <a href="/about.html#future" class="btn btn-outline">🔮 Future Directions</a>
+                <a href="/about.html" class="btn btn-primary">
+                    <span style="margin-right: 0.5rem;">→</span> About My Approach
+                </a>
+                <a href="mailto:scottdougblain@gmail.com" class="btn btn-secondary">
+                    <span style="margin-right: 0.5rem;">→</span> Contact
+                </a>
+                <a href="/about.html#future" class="btn btn-outline">
+                    <span style="margin-right: 0.5rem;">→</span> Future Directions
+                </a>
             </div>
         </div>
     </section>
@@ -180,5 +212,6 @@
 
     <!-- Minimal JS for landing page -->
     <script src="scripts_landing.js"></script>
+    <script src="neural-network.js"></script>
 </body>
 </html>
