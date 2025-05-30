@@ -865,3 +865,115 @@ function initPersonalityPentagon() {
 }
 
 // Old Theory of Mind demo removed - now handled by tom-demo.js
+
+// Social Intelligence Page Enhancements
+document.addEventListener('DOMContentLoaded', () => {
+    // Reading Progress Bar
+    const progressBar = document.querySelector('.reading-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+    }
+    
+    // Enhanced Fade-in animations on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                
+                // Add staggered animations for child elements
+                const children = entry.target.querySelectorAll('.stagger-fade');
+                children.forEach((child, index) => {
+                    setTimeout(() => {
+                        child.classList.add('visible');
+                    }, index * 100);
+                });
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.fade-in-section, .scroll-fade-in').forEach(el => {
+        fadeObserver.observe(el);
+    });
+    
+    // Parallax Background Effect
+    const parallaxBg = document.querySelector('.parallax-bg');
+    if (parallaxBg) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxSpeed = 0.5;
+            parallaxBg.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+        });
+    }
+    
+    // Enhanced Scenario Card Interactions
+    const scenarioCards = document.querySelectorAll('.scenario-card');
+    scenarioCards.forEach(card => {
+        card.addEventListener('mouseenter', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+    
+    // Tooltip functionality
+    const tooltipElements = document.querySelectorAll('[data-tooltip]');
+    tooltipElements.forEach(elem => {
+        elem.addEventListener('mouseenter', (e) => {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = elem.getAttribute('data-tooltip');
+            document.body.appendChild(tooltip);
+            
+            const rect = elem.getBoundingClientRect();
+            tooltip.style.left = rect.left + rect.width / 2 - tooltip.offsetWidth / 2 + 'px';
+            tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
+            
+            setTimeout(() => tooltip.classList.add('visible'), 10);
+        });
+        
+        elem.addEventListener('mouseleave', () => {
+            document.querySelectorAll('.tooltip').forEach(t => t.remove());
+        });
+    });
+    
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#') && href.length > 1) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const headerOffset = 100;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+    
+    // Add parallax background if it doesn't exist
+    const researchContent = document.querySelector('.research-content');
+    if (researchContent && !researchContent.querySelector('.parallax-bg')) {
+        const parallaxDiv = document.createElement('div');
+        parallaxDiv.className = 'parallax-bg';
+        researchContent.insertBefore(parallaxDiv, researchContent.firstChild);
+    }
+});
