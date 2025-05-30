@@ -449,6 +449,56 @@
             box-shadow: 0 10px 30px var(--primary-light);
             background: var(--primary-dark);
         }
+        
+        /* Clickable research blocks styling */
+        .clickable-research-block {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .clickable-research-block:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .clickable-research-block::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .clickable-research-block:hover::before {
+            opacity: 0.3;
+        }
+        
+        .download-icon {
+            color: var(--primary);
+            margin-left: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .download-hint {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+        
+        .clickable-research-block:hover .download-hint {
+            opacity: 1;
+            color: var(--accent);
+        }
     </style>
 </head>
 <body>
@@ -531,12 +581,13 @@
                         <!-- Behavioral Measures -->
                         <div class="research-block">
                             <h4>Quantifying Apophenia: Behavioral Tasks</h4>
-                            <div class="research-image-section-compact">
+                            <div class="research-image-section-compact clickable-research-block" onclick="downloadPaper('../assets/Apophenia.pdf', 'Apophenia_Assessment_Battery.pdf')">
                                 <div class="image-container">
                                     <img src="../assets/images/Apophenia_Tasks.jpg" alt="Behavioral tasks used to quantify apophenia in human participants" class="research-image-compact">
                                     <div class="image-caption">
-                                        <h5>Apophenia Assessment Battery</h5>
+                                        <h5>Apophenia Assessment Battery <span class="download-icon">📄</span></h5>
                                         <p>Comprehensive behavioral tasks designed to quantify individual differences in pattern detection sensitivity across visual, auditory, and conceptual domains.</p>
+                                        <p class="download-hint">Click to download paper</p>
                                     </div>
                                 </div>
                             </div>
@@ -545,12 +596,13 @@
                         <!-- Brain Networks -->
                         <div class="research-block">
                             <h4>Generation vs. Verification Networks</h4>
-                            <div class="research-image-section-compact">
+                            <div class="research-image-section-compact clickable-research-block" onclick="downloadPaper('../assets/DN_FPCN.pdf', 'Neural_Networks_Pattern_Recognition.pdf')">
                                 <div class="image-container">
                                     <img src="../assets/images/BrainNetworks.jpeg" alt="Brain networks involved in pattern generation vs verification" class="research-image-compact">
                                     <div class="image-caption">
-                                        <h5>Neuroimaging Evidence</h5>
+                                        <h5>Neuroimaging Evidence <span class="download-icon">📄</span></h5>
                                         <p>Default Mode Network vs. Frontoparietal Control Network balance underlies healthy pattern recognition and creativity-factuality trade-offs.</p>
+                                        <p class="download-hint">Click to download paper</p>
                                     </div>
                                 </div>
                             </div>
@@ -714,5 +766,21 @@
     <script src="../assets/js/scripts_simple.js"></script>
     <script src="../assets/js/apophenia-demo.js"></script>
     <script src="../assets/js/publication-carousel.js"></script>
+    
+    <script>
+        // Download paper function
+        function downloadPaper(pdfPath, filename) {
+            // Create a temporary anchor element
+            const link = document.createElement('a');
+            link.href = pdfPath;
+            link.download = filename;
+            link.style.display = 'none';
+            
+            // Append to body, click, and remove
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
 </body>
 </html>
