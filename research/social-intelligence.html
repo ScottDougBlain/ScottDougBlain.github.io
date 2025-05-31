@@ -58,6 +58,8 @@
             background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary));
             color: white;
             padding: 80px 0;
+            position: relative;
+            z-index: 1;
         }
 
         .pillar-header {
@@ -84,7 +86,8 @@
             padding: 40px;
             margin: 40px 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
         }
 
         .double-edged-sword h4,
@@ -101,7 +104,8 @@
             padding: 40px;
             margin: 40px 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
         }
 
         .demo-title-enhanced {
@@ -128,7 +132,8 @@
             padding: 40px;
             margin: 40px 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
         }
 
         .tom-visualization h5 {
@@ -944,7 +949,7 @@
                 <div class="pillar-content">
                     
                     <!-- 1. Opening Hook: The Dual-Use Nature of Social Intelligence -->
-                    <div class="double-edged-sword scroll-fade-in">
+                    <div class="double-edged-sword">
                         <div class="dual-use-intro">
                             <h4 class="section-title-large">Seeing Yourself Seen: Gaze Perception and the Architecture of Social Awareness</h4>
                             <p class="lead-text">Accurately perceiving when one is the focus of someone else's attention is foundational to social cognition. This ability enables empathy and communication, but also creates vulnerability to misinterpretation and manipulation—in both humans and AI systems.</p>
@@ -1164,9 +1169,9 @@
                     
                     
                     <!-- Video Visualization -->
-                    <div class="tom-visualization fade-in-section scroll-fade-in">
+                    <div class="tom-visualization">
                         <h5>Visualizing Multi-Layer Nested Beliefs</h5>
-                        <div class="video-container glass-morphism">
+                        <div class="video-container">
                             <video controls autoplay muted loop playsinline preload="metadata">
                                 <source src="../assets/images/ToMVideo.mp4" type="video/mp4">
                                 <p>Your browser does not support the video tag. <a href="../assets/images/ToMVideo.mp4" target="_blank">Click here to view the video</a>.</p>
@@ -1176,7 +1181,7 @@
                     </div>
                     
                     <!-- 3. Interactive Demo: Experience Nested Beliefs -->
-                    <div class="tom-interactive-embedded scroll-fade-in">
+                    <div class="tom-interactive-embedded">
                         <h4 class="demo-title-enhanced">
                             <span class="demo-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1310,7 +1315,7 @@
                                         <div id="detailed-results"></div>
                                     </div>
                                     
-                                    <div class="ai-comparison glass-morphism">
+                                    <div class="ai-comparison">
                                         <h6>🤖 How Current AI Models Perform</h6>
                                         <div id="ai-performance"></div>
                                         <div class="comparison-note">
@@ -1336,9 +1341,9 @@
                         </div>
                         
                         <!-- 4. From Human ToM to AI Alignment -->
-                        <div class="tom-bridge-special fade-in-section scroll-fade-in">
+                        <div class="tom-bridge-special">
                             <h4 class="bridge-header-large">From Human Theory of Mind to AI Alignment</h4>
-                            <div class="bridge-content-block glass-morphism">
+                            <div class="bridge-content-block">
                                 <p>Just as humans with enhanced theory of mind can choose cooperation or manipulation, AI systems with ToM capabilities face the same crossroads. This is not a theoretical concern—it's an existential challenge.</p>
                                 
                                 <p>An AI that can model human beliefs at multiple levels could predict and manipulate human behavior with unprecedented sophistication. My research on human social cognition provides crucial insights for navigating this challenge.</p>
@@ -1424,7 +1429,7 @@
                         </div>
                         
                         <!-- 5. The LLM Mentalizing Framework -->
-                        <div class="llm-mentalizing-framework scroll-fade-in">
+                        <div class="llm-mentalizing-framework">
                             <h4>LLM Mentalizing Framework</h4>
                             <p>I am currently building an evaluation suite based on these scenarios and others, to systematically assess LLM social cognition—identifying emergent capabilities relevant to both deceptive capabilities and situational awareness.</p>
                         </div>
