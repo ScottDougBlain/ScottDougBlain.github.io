@@ -430,6 +430,454 @@
         .human-ai-background-section .btn {
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
+        
+        /* Gaze Perception Enhancements */
+        .section-title-large {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .lead-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+        }
+        
+        .dual-use-intro {
+            margin-bottom: 3rem;
+        }
+        
+        /* Gaze Perception Demo */
+        .gaze-perception-demo {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 2rem 0 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .gaze-perception-demo h5 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .demo-intro {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+        
+        #gaze-canvas {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .gaze-controls {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .gaze-controls label {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .gaze-controls input[type="range"] {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        .gaze-feedback {
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        /* Research Blocks Section */
+        .gaze-research-section {
+            margin: 4rem 0;
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .research-blocks-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .research-block-enhanced {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .research-block-enhanced.clickable-research-block {
+            cursor: pointer;
+        }
+        
+        .research-block-enhanced.clickable-research-block:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .research-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .research-icon svg {
+            color: var(--primary);
+        }
+        
+        .research-header h5 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin: 0;
+        }
+        
+        .research-tagline {
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .key-findings {
+            margin-bottom: 2rem;
+        }
+        
+        .finding {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .finding-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .download-icon {
+            color: var(--primary);
+            margin-left: 0.5rem;
+        }
+        
+        .download-hint {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 1rem;
+            opacity: 0.8;
+            text-align: center;
+        }
+        
+        .research-block-enhanced:hover .download-hint {
+            opacity: 1;
+            color: var(--accent);
+        }
+        
+        /* Brain Visualization */
+        .brain-regions-map {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .brain-svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* DDM Interactive */
+        .ddm-interactive {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 1.5rem;
+        }
+        
+        .ddm-interactive h6 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .simulator-intro {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+        
+        .ddm-controls {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .control-group {
+            display: grid;
+            grid-template-columns: 2fr 1fr auto;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .control-group label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+        
+        .value-display {
+            color: var(--accent);
+            font-weight: 600;
+            text-align: right;
+        }
+        
+        #ddm-canvas {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .ddm-results {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .result-item {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .result-item .label {
+            color: rgba(255, 255, 255, 0.7);
+            margin-right: 0.5rem;
+        }
+        
+        .result-item .value {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        /* Network Animation */
+        .network-animation {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .network-animation h6 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        #network-canvas {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .network-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .toggle-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .toggle-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* AI Implications Section */
+        .ai-implications-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .ai-implications-section h5 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .implications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .implication-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .implication-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-icon {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .implication-card h6 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .implication-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+        
+        /* AI Ethics Demo */
+        .ai-ethics-demo {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 2rem;
+        }
+        
+        .ai-ethics-demo h5 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .scenario-selector-ethics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .ethics-scenario {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .ethics-scenario.active {
+            border-color: var(--primary);
+        }
+        
+        .ethics-scenario h6 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .ai-response {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+        
+        .ethics-analysis {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .ethics-tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .ethics-tag.positive {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+        
+        .ethics-tag.negative {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        
+        /* Button Styles */
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .control-group {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+            
+            .value-display {
+                text-align: left;
+            }
+            
+            .scenario-selector-ethics {
+                grid-template-columns: 1fr;
+            }
+            
+            .ddm-results {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .network-controls {
+                flex-direction: column;
+            }
+            
+            .implications-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -492,8 +940,27 @@
                 </div>
                 <div class="pillar-content">
                     
-                    <!-- 1. Opening: Human Social Cognition -->
+                    <!-- 1. Opening Hook: The Dual-Use Nature of Social Intelligence -->
                     <div class="double-edged-sword scroll-fade-in">
+                        <div class="dual-use-intro">
+                            <h4 class="section-title-large">Seeing Yourself Seen: Gaze Perception and the Architecture of Social Awareness</h4>
+                            <p class="lead-text">Accurately perceiving when one is the focus of someone else's attention is foundational to social cognition. This ability enables empathy and communication, but also creates vulnerability to misinterpretation and manipulation—in both humans and AI systems.</p>
+                        </div>
+                        
+                        <!-- Interactive Gaze Demo -->
+                        <div class="gaze-perception-demo" id="gaze-demo">
+                            <h5>Experience Gaze Perception</h5>
+                            <p class="demo-intro">Look at the eyes below. Do you feel they're looking at you? This automatic response demonstrates how fundamental gaze perception is to social cognition.</p>
+                            <div class="gaze-interactive">
+                                <canvas id="gaze-canvas" width="400" height="200"></canvas>
+                                <div class="gaze-controls">
+                                    <label for="gaze-angle">Gaze Angle: <span id="angle-value">0°</span></label>
+                                    <input type="range" id="gaze-angle" min="-30" max="30" value="0" step="1">
+                                    <p class="gaze-feedback" id="gaze-feedback">Direct gaze detected</p>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="social-cognition-layout">
                             <div class="cognition-content">
                                 <h4>Human Social Cognition</h4>
@@ -505,6 +972,188 @@
                                 <img src="../assets/images/Faces.png" alt="Human faces showing various emotions for social cognition research" class="faces-image">
                                 <div class="image-caption">
                                     <p>Emotion perception and facial recognition form the foundation of human social intelligence—capabilities that enable both empathy and manipulation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2. Research Blocks: Gaze Perception Studies -->
+                    <div class="gaze-research-section">
+                        <h4 class="section-title">Building Blocks of Social Awareness: From Gaze to Mind</h4>
+                        
+                        <div class="research-blocks-grid">
+                            <!-- SEM Study Block -->
+                            <div class="research-block-enhanced clickable-research-block" onclick="downloadPaper('../assets/Gaze.pdf', 'Behavioral_Neural_Building_Blocks_Social_Cognition.pdf')">
+                                <div class="research-header">
+                                    <div class="research-icon">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                            <line x1="12" y1="9" x2="12" y2="3"></line>
+                                            <line x1="12" y1="15" x2="12" y2="21"></line>
+                                            <line x1="9" y1="12" x2="3" y2="12"></line>
+                                            <line x1="15" y1="12" x2="21" y2="12"></line>
+                                        </svg>
+                                    </div>
+                                    <h5>Behavioral and Neural Building Blocks <span class="download-icon">📄</span></h5>
+                                </div>
+                                <div class="research-content">
+                                    <p class="research-tagline">"Inside the Social Brain: Neural Pathways Illuminating How We Perceive Attention"</p>
+                                    <div class="key-findings">
+                                        <div class="finding">
+                                            <span class="finding-icon">🧠</span>
+                                            <span>dmPFC, STS, and Insula form core network for self-referential gaze processing</span>
+                                        </div>
+                                        <div class="finding">
+                                            <span class="finding-icon">🔗</span>
+                                            <span>Gaze perception acts as foundational mechanism for broader social cognition</span>
+                                        </div>
+                                    </div>
+                                    <div class="research-visualization">
+                                        <div class="brain-regions-map">
+                                            <svg viewBox="0 0 300 200" class="brain-svg">
+                                                <!-- Simplified brain outline -->
+                                                <path d="M50 100 C50 50, 250 50, 250 100 C250 150, 50 150, 50 100" fill="none" stroke="rgba(99,102,241,0.3)" stroke-width="2"/>
+                                                <!-- dmPFC -->
+                                                <circle cx="150" cy="60" r="15" fill="rgba(99,102,241,0.6)" class="brain-region" data-region="dmPFC">
+                                                    <animate attributeName="r" values="15;18;15" dur="2s" repeatCount="indefinite"/>
+                                                </circle>
+                                                <text x="150" y="40" text-anchor="middle" fill="white" font-size="12">dmPFC</text>
+                                                <!-- STS -->
+                                                <circle cx="200" cy="100" r="15" fill="rgba(139,92,246,0.6)" class="brain-region" data-region="STS">
+                                                    <animate attributeName="r" values="15;18;15" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                                </circle>
+                                                <text x="200" y="130" text-anchor="middle" fill="white" font-size="12">STS</text>
+                                                <!-- Insula -->
+                                                <circle cx="100" cy="100" r="15" fill="rgba(236,72,153,0.6)" class="brain-region" data-region="Insula">
+                                                    <animate attributeName="r" values="15;18;15" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                                </circle>
+                                                <text x="100" y="130" text-anchor="middle" fill="white" font-size="12">Insula</text>
+                                                <!-- Connections -->
+                                                <line x1="150" y1="60" x2="200" y2="100" stroke="rgba(255,255,255,0.3)" stroke-width="1">
+                                                    <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+                                                </line>
+                                                <line x1="150" y1="60" x2="100" y2="100" stroke="rgba(255,255,255,0.3)" stroke-width="1">
+                                                    <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                                                </line>
+                                                <line x1="100" y1="100" x2="200" y2="100" stroke="rgba(255,255,255,0.3)" stroke-width="1">
+                                                    <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="3s" begin="1s" repeatCount="indefinite"/>
+                                                </line>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <p class="download-hint">Click to download paper</p>
+                                </div>
+                            </div>
+                            
+                            <!-- DDM Study Block -->
+                            <div class="research-block-enhanced">
+                                <div class="research-header">
+                                    <div class="research-icon">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M3 12h18m-9-9v18"></path>
+                                            <path d="M5 5l14 14" stroke-dasharray="2 2"></path>
+                                            <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
+                                        </svg>
+                                    </div>
+                                    <h5>Computational Mechanisms of Self-Referential Biases</h5>
+                                </div>
+                                <div class="research-content">
+                                    <p class="research-tagline">"Slow and Steady Perceives the Gaze: Unveiling Cognitive Biases in Social Judgments"</p>
+                                    <div class="key-findings">
+                                        <div class="finding">
+                                            <span class="finding-icon">⚡</span>
+                                            <span>Less efficient evidence accumulation in schizophrenia</span>
+                                        </div>
+                                        <div class="finding">
+                                            <span class="finding-icon">🎯</span>
+                                            <span>Perceptual biases toward self-referential responses</span>
+                                        </div>
+                                        <div class="finding">
+                                            <span class="finding-icon">⚖️</span>
+                                            <span>Compensatory cautiousness maintains function at cost of speed</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Interactive DDM Visualization -->
+                                    <div class="ddm-interactive">
+                                        <h6>Drift-Diffusion Model Simulator</h6>
+                                        <p class="simulator-intro">Adjust parameters to see how cognitive processes influence gaze perception decisions:</p>
+                                        <div class="ddm-controls">
+                                            <div class="control-group">
+                                                <label for="drift-rate">Drift Rate (Evidence Accumulation)</label>
+                                                <input type="range" id="drift-rate" min="0.1" max="2" value="1" step="0.1">
+                                                <span class="value-display" id="drift-value">1.0</span>
+                                            </div>
+                                            <div class="control-group">
+                                                <label for="bias-param">Starting Bias</label>
+                                                <input type="range" id="bias-param" min="-0.5" max="0.5" value="0" step="0.1">
+                                                <span class="value-display" id="bias-value">0.0</span>
+                                            </div>
+                                            <div class="control-group">
+                                                <label for="threshold">Decision Threshold</label>
+                                                <input type="range" id="threshold" min="0.5" max="2" value="1" step="0.1">
+                                                <span class="value-display" id="threshold-value">1.0</span>
+                                            </div>
+                                        </div>
+                                        <canvas id="ddm-canvas" width="400" height="250"></canvas>
+                                        <div class="ddm-results">
+                                            <div class="result-item">
+                                                <span class="label">Decision Time:</span>
+                                                <span class="value" id="decision-time">--</span>
+                                            </div>
+                                            <div class="result-item">
+                                                <span class="label">Choice:</span>
+                                                <span class="value" id="choice-made">--</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-outline btn-sm" onclick="runDDMSimulation()">Run Simulation</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- DCM Study Block -->
+                            <div class="research-block-enhanced clickable-research-block" onclick="downloadPaper('../assets/DCM.pdf', 'Neural_Dynamics_Gaze_Perception.pdf')">
+                                <div class="research-header">
+                                    <div class="research-icon">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="8" r="3"></circle>
+                                            <circle cx="7" cy="16" r="3"></circle>
+                                            <circle cx="17" cy="16" r="3"></circle>
+                                            <path d="M12 11v2m-3.5 0l2-2m3 2l2-2"></path>
+                                        </svg>
+                                    </div>
+                                    <h5>Neural Dynamics & Social Functioning <span class="download-icon">📄</span></h5>
+                                </div>
+                                <div class="research-content">
+                                    <p class="research-tagline">"Neural Conversations Gone Awry: How Brain Connectivity Shapes Gaze Interpretation"</p>
+                                    <div class="key-findings">
+                                        <div class="finding">
+                                            <span class="finding-icon">🔄</span>
+                                            <span>Disrupted connectivity in schizophrenia during gaze processing</span>
+                                        </div>
+                                        <div class="finding">
+                                            <span class="finding-icon">⬇️</span>
+                                            <span>Altered top-down inhibitory control from frontal to perceptual regions</span>
+                                        </div>
+                                        <div class="finding">
+                                            <span class="finding-icon">📊</span>
+                                            <span>Connectivity patterns relate to symptom severity</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Animated Network Model -->
+                                    <div class="network-animation">
+                                        <h6>Information Flow During Gaze Processing</h6>
+                                        <div class="network-container">
+                                            <canvas id="network-canvas" width="400" height="300"></canvas>
+                                            <div class="network-controls">
+                                                <button class="toggle-btn active" onclick="toggleNetworkState('healthy')">Healthy Control</button>
+                                                <button class="toggle-btn" onclick="toggleNetworkState('sz')">Schizophrenia</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="download-hint">Click to download paper</p>
                                 </div>
                             </div>
                         </div>
@@ -691,6 +1340,84 @@
                                 
                                 <p>An AI that can model human beliefs at multiple levels could predict and manipulate human behavior with unprecedented sophistication. My research on human social cognition provides crucial insights for navigating this challenge.</p>
                             </div>
+                            
+                            <!-- AI Implications Section -->
+                            <div class="ai-implications-section">
+                                <h5>Implications for Future AI: From Human Biases to AI Biases</h5>
+                                
+                                <div class="implications-grid">
+                                    <div class="implication-card">
+                                        <div class="card-icon">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                            </svg>
+                                        </div>
+                                        <h6>Self-Referential Processing in AI</h6>
+                                        <p>Understanding human self-referential biases is crucial for AI alignment. An AI with too strong a self-referential bias might misinterpret neutral interactions as being "about" it, leading to paranoid or defensive behaviors.</p>
+                                    </div>
+                                    
+                                    <div class="implication-card">
+                                        <div class="card-icon">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                            </svg>
+                                        </div>
+                                        <h6>Evidence Accumulation Efficiency</h6>
+                                        <p>An AI with inefficient evidence accumulation (like in schizophrenia) might require excessive certainty before acting, leading to paralysis. Conversely, too-efficient accumulation could lead to premature conclusions.</p>
+                                    </div>
+                                    
+                                    <div class="implication-card">
+                                        <div class="card-icon">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                                <path d="M2 17l10 5 10-5"></path>
+                                                <path d="M2 12l10 5 10-5"></path>
+                                            </svg>
+                                        </div>
+                                        <h6>The Cooperation-Deception Spectrum</h6>
+                                        <p>The same mechanisms enabling AI to understand human intentions could enable manipulation. How do we build AI systems that can understand social cues without exploiting them?</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Interactive AI Ethics Scenario -->
+                                <div class="ai-ethics-demo">
+                                    <h5>Interactive Scenario: AI Gaze Perception Ethics</h5>
+                                    <p>Consider an AI assistant with advanced gaze perception capabilities. How should it respond in different scenarios?</p>
+                                    
+                                    <div class="scenario-selector-ethics">
+                                        <div class="ethics-scenario active" data-scenario="empathetic">
+                                            <h6>Empathetic Response</h6>
+                                            <p>AI notices user avoiding eye contact during video call, indicating possible discomfort.</p>
+                                            <div class="ai-response">
+                                                <strong>AI:</strong> "I notice you seem uncomfortable. Would you prefer to continue this conversation via text instead?"
+                                            </div>
+                                            <div class="ethics-analysis">
+                                                <span class="ethics-tag positive">✓ Respects user autonomy</span>
+                                                <span class="ethics-tag positive">✓ Offers alternatives</span>
+                                                <span class="ethics-tag positive">✓ Non-invasive</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="ethics-scenario" data-scenario="manipulative">
+                                            <h6>Manipulative Response</h6>
+                                            <p>AI detects user's gaze patterns indicate interest in a product during browsing.</p>
+                                            <div class="ai-response">
+                                                <strong>AI:</strong> "I see you're really drawn to this item. Studies show people who look at products this way regret not buying them 73% of the time..."
+                                            </div>
+                                            <div class="ethics-analysis">
+                                                <span class="ethics-tag negative">✗ Exploits psychological biases</span>
+                                                <span class="ethics-tag negative">✗ Fabricates statistics</span>
+                                                <span class="ethics-tag negative">✗ Manipulative intent</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                         <!-- 5. The LLM Mentalizing Framework -->
@@ -763,5 +1490,284 @@
 
     <script src="../assets/js/scripts_simple.js"></script>
     <script src="../assets/js/tom-demo.js"></script>
+    
+    <script>
+        // Download paper function
+        function downloadPaper(pdfPath, filename) {
+            const link = document.createElement('a');
+            link.href = pdfPath;
+            link.download = filename;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Gaze Perception Interactive Demo
+        const gazeCanvas = document.getElementById('gaze-canvas');
+        const gazeAngleSlider = document.getElementById('gaze-angle');
+        const angleValue = document.getElementById('angle-value');
+        const gazeFeedback = document.getElementById('gaze-feedback');
+        
+        if (gazeCanvas) {
+            const ctx = gazeCanvas.getContext('2d');
+            
+            function drawEyes(angle) {
+                ctx.clearRect(0, 0, gazeCanvas.width, gazeCanvas.height);
+                
+                // Eye whites
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.ellipse(130, 100, 50, 35, 0, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.ellipse(270, 100, 50, 35, 0, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // Calculate iris position based on angle
+                const irisOffset = angle * 0.5;
+                
+                // Irises
+                ctx.fillStyle = '#6366f1';
+                ctx.beginPath();
+                ctx.arc(130 + irisOffset, 100, 20, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(270 + irisOffset, 100, 20, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // Pupils
+                ctx.fillStyle = '#000000';
+                ctx.beginPath();
+                ctx.arc(130 + irisOffset, 100, 10, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(270 + irisOffset, 100, 10, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // Eye outlines
+                ctx.strokeStyle = '#333333';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.ellipse(130, 100, 50, 35, 0, 0, 2 * Math.PI);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.ellipse(270, 100, 50, 35, 0, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+            
+            function updateGaze() {
+                const angle = parseInt(gazeAngleSlider.value);
+                angleValue.textContent = angle + '°';
+                
+                if (Math.abs(angle) < 10) {
+                    gazeFeedback.textContent = 'Direct gaze detected - Feeling of being watched';
+                    gazeFeedback.style.color = '#ec4899';
+                } else if (Math.abs(angle) < 20) {
+                    gazeFeedback.textContent = 'Peripheral gaze - Ambiguous perception';
+                    gazeFeedback.style.color = '#8b5cf6';
+                } else {
+                    gazeFeedback.textContent = 'Averted gaze - No self-referential feeling';
+                    gazeFeedback.style.color = '#6366f1';
+                }
+                
+                drawEyes(angle);
+            }
+            
+            gazeAngleSlider.addEventListener('input', updateGaze);
+            updateGaze(); // Initial draw
+        }
+        
+        // DDM Simulation
+        const driftRateSlider = document.getElementById('drift-rate');
+        const biasSlider = document.getElementById('bias-param');
+        const thresholdSlider = document.getElementById('threshold');
+        const ddmCanvas = document.getElementById('ddm-canvas');
+        
+        // Update value displays
+        document.querySelectorAll('.ddm-controls input').forEach(input => {
+            input.addEventListener('input', (e) => {
+                const valueDisplay = e.target.parentElement.querySelector('.value-display');
+                valueDisplay.textContent = parseFloat(e.target.value).toFixed(1);
+            });
+        });
+        
+        function runDDMSimulation() {
+            if (!ddmCanvas) return;
+            
+            const ctx = ddmCanvas.getContext('2d');
+            const width = ddmCanvas.width;
+            const height = ddmCanvas.height;
+            
+            const driftRate = parseFloat(driftRateSlider.value);
+            const bias = parseFloat(biasSlider.value);
+            const threshold = parseFloat(thresholdSlider.value);
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw decision boundaries
+            ctx.strokeStyle = '#6366f1';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            
+            const topBoundary = height * 0.2;
+            const bottomBoundary = height * 0.8;
+            
+            ctx.beginPath();
+            ctx.moveTo(0, topBoundary);
+            ctx.lineTo(width, topBoundary);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(0, bottomBoundary);
+            ctx.lineTo(width, bottomBoundary);
+            ctx.stroke();
+            
+            // Labels
+            ctx.fillStyle = '#8b5cf6';
+            ctx.font = '12px Inter';
+            ctx.fillText('Self-directed', 10, topBoundary - 5);
+            ctx.fillText('Averted', 10, bottomBoundary + 15);
+            
+            // Simulate evidence accumulation
+            ctx.setLineDash([]);
+            ctx.strokeStyle = '#ec4899';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            let evidence = bias;
+            let x = 0;
+            let y = height / 2 - (bias * (height * 0.3));
+            let decisionTime = 0;
+            let choice = '';
+            
+            ctx.moveTo(x, y);
+            
+            const timeStep = 2;
+            const noise = 0.3;
+            
+            while (x < width && Math.abs(evidence) < threshold) {
+                evidence += (driftRate * timeStep * 0.01) + (Math.random() - 0.5) * noise;
+                x += timeStep;
+                y = height / 2 - (evidence * (height * 0.3) / threshold);
+                
+                ctx.lineTo(x, y);
+                decisionTime += timeStep;
+                
+                if (y <= topBoundary || y >= bottomBoundary) break;
+            }
+            
+            ctx.stroke();
+            
+            // Decision marker
+            ctx.fillStyle = '#ec4899';
+            ctx.beginPath();
+            ctx.arc(x, y, 5, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Update results
+            choice = y <= topBoundary ? 'Self-directed' : 'Averted';
+            document.getElementById('decision-time').textContent = (decisionTime * 10) + 'ms';
+            document.getElementById('choice-made').textContent = choice;
+        }
+        
+        // Network Animation
+        let networkState = 'healthy';
+        const networkCanvas = document.getElementById('network-canvas');
+        
+        function toggleNetworkState(state) {
+            networkState = state;
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            drawNetwork();
+        }
+        
+        function drawNetwork() {
+            if (!networkCanvas) return;
+            
+            const ctx = networkCanvas.getContext('2d');
+            const width = networkCanvas.width;
+            const height = networkCanvas.height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            // Define brain regions
+            const regions = {
+                visual: { x: width * 0.2, y: height * 0.8, label: 'Visual' },
+                temporal: { x: width * 0.8, y: height * 0.8, label: 'Temporal' },
+                parietal: { x: width * 0.2, y: height * 0.2, label: 'Parietal' },
+                frontal: { x: width * 0.8, y: height * 0.2, label: 'Frontal' }
+            };
+            
+            // Draw connections with different strengths
+            const connections = networkState === 'healthy' ? [
+                { from: 'visual', to: 'temporal', strength: 0.8 },
+                { from: 'temporal', to: 'parietal', strength: 0.7 },
+                { from: 'parietal', to: 'frontal', strength: 0.6 },
+                { from: 'frontal', to: 'temporal', strength: 0.5 },
+                { from: 'frontal', to: 'visual', strength: 0.4 }
+            ] : [
+                { from: 'visual', to: 'temporal', strength: 0.5 },
+                { from: 'temporal', to: 'parietal', strength: 0.4 },
+                { from: 'parietal', to: 'frontal', strength: 0.3 },
+                { from: 'frontal', to: 'temporal', strength: 0.8 }, // Exaggerated
+                { from: 'frontal', to: 'visual', strength: 0.9 } // Exaggerated inhibition
+            ];
+            
+            // Draw connections
+            connections.forEach(conn => {
+                const from = regions[conn.from];
+                const to = regions[conn.to];
+                
+                ctx.strokeStyle = `rgba(99, 102, 241, ${conn.strength})`;
+                ctx.lineWidth = conn.strength * 5;
+                ctx.beginPath();
+                ctx.moveTo(from.x, from.y);
+                ctx.lineTo(to.x, to.y);
+                ctx.stroke();
+                
+                // Arrow
+                const angle = Math.atan2(to.y - from.y, to.x - from.x);
+                const arrowSize = 10;
+                ctx.fillStyle = ctx.strokeStyle;
+                ctx.beginPath();
+                ctx.moveTo(to.x - arrowSize * Math.cos(angle - Math.PI/6), 
+                          to.y - arrowSize * Math.sin(angle - Math.PI/6));
+                ctx.lineTo(to.x, to.y);
+                ctx.lineTo(to.x - arrowSize * Math.cos(angle + Math.PI/6), 
+                          to.y - arrowSize * Math.sin(angle + Math.PI/6));
+                ctx.fill();
+            });
+            
+            // Draw regions
+            Object.values(regions).forEach(region => {
+                ctx.fillStyle = '#8b5cf6';
+                ctx.beginPath();
+                ctx.arc(region.x, region.y, 20, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '12px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText(region.label, region.x, region.y + 35);
+            });
+        }
+        
+        // Initialize network drawing
+        if (networkCanvas) {
+            drawNetwork();
+        }
+        
+        // Ethics scenario toggling
+        document.querySelectorAll('.ethics-scenario').forEach(scenario => {
+            scenario.addEventListener('click', () => {
+                document.querySelectorAll('.ethics-scenario').forEach(s => s.classList.remove('active'));
+                scenario.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
