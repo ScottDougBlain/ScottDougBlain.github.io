@@ -476,8 +476,9 @@
             background: rgba(0, 0, 0, 0.3);
             border-radius: 10px;
             margin-bottom: 1.5rem;
-            max-width: 100%;
-            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .gaze-controls {
@@ -656,8 +657,9 @@
             background: rgba(0, 0, 0, 0.3);
             border-radius: 10px;
             margin-bottom: 1rem;
-            width: 100%;
-            max-width: 400px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .ddm-results {
@@ -695,8 +697,9 @@
             background: rgba(0, 0, 0, 0.3);
             border-radius: 10px;
             margin-bottom: 1rem;
-            width: 100%;
-            max-width: 400px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .network-controls {
@@ -983,7 +986,7 @@
                         
                         <div class="research-blocks-grid">
                             <!-- SEM Study Block -->
-                            <div class="research-block-enhanced clickable-research-block" onclick="downloadPaper('../assets/Gaze.pdf', 'Behavioral_Neural_Building_Blocks_Social_Cognition.pdf')">
+                            <div class="research-block-enhanced clickable-research-block" onclick="downloadPaper('../assets/Gaze_SEM.pdf', 'Behavioral_Neural_Building_Blocks_Social_Cognition.pdf')">
                                 <div class="research-header">
                                     <div class="research-icon">
                                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1113,7 +1116,7 @@
                             </div>
                             
                             <!-- DCM Study Block -->
-                            <div class="research-block-enhanced clickable-research-block" onclick="downloadPaper('../assets/DCM.pdf', 'Neural_Dynamics_Gaze_Perception.pdf')">
+                            <div class="research-block-enhanced clickable-research-block" onclick="downloadPaper('../assets/Gaze_DCM.pdf', 'Neural_Dynamics_Gaze_Perception.pdf')">
                                 <div class="research-header">
                                     <div class="research-icon">
                                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1503,6 +1506,9 @@
             document.body.removeChild(link);
         }
         
+        // Make function globally accessible
+        window.downloadPaper = downloadPaper;
+        
         // Gaze Perception Interactive Demo
         const gazeCanvas = document.getElementById('gaze-canvas');
         const gazeAngleSlider = document.getElementById('gaze-angle');
@@ -1672,6 +1678,9 @@
             document.getElementById('choice-made').textContent = choice;
         }
         
+        // Make function globally accessible
+        window.runDDMSimulation = runDDMSimulation;
+        
         // Network Animation
         let networkState = 'healthy';
         const networkCanvas = document.getElementById('network-canvas');
@@ -1681,9 +1690,14 @@
             document.querySelectorAll('.toggle-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.target.classList.add('active');
+            // Find the button that was clicked
+            const clickedBtn = document.querySelector(`.toggle-btn[onclick*="${state}"]`);
+            if (clickedBtn) clickedBtn.classList.add('active');
             drawNetwork();
         }
+        
+        // Make function globally accessible
+        window.toggleNetworkState = toggleNetworkState;
         
         function drawNetwork() {
             if (!networkCanvas) return;
