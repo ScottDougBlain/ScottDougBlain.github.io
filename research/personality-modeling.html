@@ -190,7 +190,7 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             margin-bottom: 40px;
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid #000000;
             color: white;
         }
 
@@ -218,6 +218,13 @@
             font-weight: 800;
             color: var(--primary);
         }
+        
+        /* Individual trait colors for sliders */
+        #openness-value { color: #10B981; }
+        #conscientiousness-value { color: #F59E0B; }
+        #extraversion-value { color: #EF4444; }
+        #agreeableness-value { color: #8B5CF6; }
+        #neuroticism-value { color: #06B6D4; }
 
         .modern-slider {
             width: 100%;
@@ -238,18 +245,38 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+        
+        /* Individual slider thumb colors */
+        #openness::-webkit-slider-thumb { background: #10B981; }
+        #conscientiousness::-webkit-slider-thumb { background: #F59E0B; }
+        #extraversion::-webkit-slider-thumb { background: #EF4444; }
+        #agreeableness::-webkit-slider-thumb { background: #8B5CF6; }
+        #neuroticism::-webkit-slider-thumb { background: #06B6D4; }
+        
+        /* Firefox compatibility */
+        #openness::-moz-range-thumb { background: #10B981; border: none; }
+        #conscientiousness::-moz-range-thumb { background: #F59E0B; border: none; }
+        #extraversion::-moz-range-thumb { background: #EF4444; border: none; }
+        #agreeableness::-moz-range-thumb { background: #8B5CF6; border: none; }
+        #neuroticism::-moz-range-thumb { background: #06B6D4; border: none; }
 
         .modern-slider::-webkit-slider-thumb:hover {
             transform: scale(1.2);
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
         }
+        
+        /* Individual slider thumb hover colors */
+        #openness::-webkit-slider-thumb:hover { box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
+        #conscientiousness::-webkit-slider-thumb:hover { box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
+        #extraversion::-webkit-slider-thumb:hover { box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
+        #agreeableness::-webkit-slider-thumb:hover { box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); }
+        #neuroticism::-webkit-slider-thumb:hover { box-shadow: 0 0 20px rgba(6, 182, 212, 0.4); }
 
         .ai-response-modern {
             margin-top: 40px;
             padding: 30px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid #000000;
             color: white;
         }
 
@@ -363,7 +390,7 @@
         }
         
         .pentagon-header h6 {
-            color: var(--primary);
+            color: #000000;
             font-size: 1.1rem;
             margin-bottom: 5px;
             font-weight: 600;
