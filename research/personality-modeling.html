@@ -658,13 +658,14 @@
         .research-block-horizontal {
             display: flex;
             align-items: center;
-            gap: 3rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 2.5rem;
+            padding: 1.5rem 0;
+            background: transparent;
+            border-radius: 0;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
-            min-height: 190px;
+            min-height: 220px;
         }
         
         .research-block-horizontal.clickable-research-block {
@@ -672,29 +673,28 @@
         }
         
         .research-block-horizontal.clickable-research-block:hover {
-            transform: translateX(5px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.02);
         }
         
         .research-image-wrapper {
             flex-shrink: 0;
-            width: 300px;
+            width: 350px;
         }
         
         .research-image-horizontal {
             width: 100%;
-            height: 180px;
+            height: 200px;
             object-fit: contain;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            background: transparent;
+            border-radius: 0.5rem;
+            box-shadow: none;
         }
         
         .research-content-horizontal {
             flex: 1;
-            padding-right: 1rem;
+            padding-left: 0;
+            padding-right: 2rem;
         }
         
         .research-content-horizontal h5 {
@@ -723,7 +723,7 @@
             font-style: italic;
             margin-top: 0.5rem;
             opacity: 0.8;
-            text-align: center;
+            text-align: left;
         }
         
         .research-image-section-compact:hover .download-hint {
@@ -790,6 +790,11 @@
             
             .research-image-horizontal {
                 height: 200px;
+            }
+            
+            .research-block-horizontal {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 1.5rem 0;
             }
             
             .research-content-horizontal {
