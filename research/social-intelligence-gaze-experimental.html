@@ -59,7 +59,8 @@
             color: white;
             padding: 80px 0;
             position: relative;
-            z-index: 1;
+            z-index: 10;
+            opacity: 1 !important;
         }
 
         .pillar-header {
@@ -78,6 +79,24 @@
             font-size: 1.2rem;
         }
 
+        /* Override any potential animation issues */
+        .research-content, .container, .pillar-content, .double-edged-sword {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        /* Disable problematic animations from external CSS */
+        .scroll-fade-in, .fade-in-section, .content-wrapper {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+        
+        /* Keep the header animation */
+        .page-header::before {
+            animation: drift 20s linear infinite !important;
+        }
+        
         .double-edged-sword,
         .tom-bridge-special,
         .llm-mentalizing-framework {
@@ -88,6 +107,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             z-index: 10;
+            opacity: 1 !important;
         }
 
         .double-edged-sword h4,
@@ -531,7 +551,7 @@
             border-radius: 20px;
             padding: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            /* backdrop-filter: blur(10px); */ /* Removed to prevent rendering issues */
             transition: all 0.3s ease;
         }
         
@@ -885,6 +905,17 @@
             .implications-grid {
                 grid-template-columns: 1fr;
             }
+        }
+        
+        /* Final safeguard - ensure main content is always visible */
+        body > * {
+            opacity: 1 !important;
+        }
+        
+        .research-content,
+        .research-content * {
+            opacity: 1 !important;
+            visibility: visible !important;
         }
     </style>
 </head>

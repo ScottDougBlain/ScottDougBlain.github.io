@@ -708,34 +708,6 @@
             background: rgba(255, 255, 255, 0.02);
         }
         
-        /* Tooltip styles for research blocks */
-        .research-block-horizontal::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            top: 50%;
-            left: 100%;
-            transform: translateY(-50%) translateX(-10px);
-            background: rgba(0, 0, 0, 0.95);
-            color: white;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            max-width: 250px;
-            white-space: normal;
-            line-height: 1.4;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            pointer-events: none;
-            z-index: 10;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .research-block-horizontal:hover::after {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(-50%) translateX(10px);
-        }
         
         .research-image-wrapper {
             flex-shrink: 0;
@@ -1045,7 +1017,7 @@
                     
                     <div class="research-blocks-horizontal">
                         <!-- Openness and Pattern Recognition Study -->
-                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Apophenia.pdf', 'Openness_Pattern_Recognition_Apophenia.pdf')" data-tooltip="Explores creativity and hallucination risks through trait Openness">
+                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Apophenia.pdf', 'Openness_Pattern_Recognition_Apophenia.pdf')">
                             <div class="research-image-wrapper">
                                 <img src="../assets/images/Openness.jpg" alt="Openness and pattern recognition" class="research-image-horizontal">
                             </div>
@@ -1057,7 +1029,7 @@
                         </div>
                         
                         <!-- Extraversion and Reward Study -->
-                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Extraversion_Reward.pdf', 'Extraversion_Depression_Reward_Processing.pdf')" data-tooltip="Links reward system neural activity to Extraversion and depression">
+                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Extraversion_Reward.pdf', 'Extraversion_Depression_Reward_Processing.pdf')">
                             <div class="research-image-wrapper">
                                 <img src="../assets/images/ExtraversionReward.jpg" alt="Neural reward processing and extraversion research" class="research-image-horizontal">
                             </div>
@@ -1069,7 +1041,7 @@
                         </div>
                         
                         <!-- Agreeableness and Theory of Mind Study -->
-                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Agreeableness_ToM.pdf', 'Agreeableness_Theory_of_Mind_Networks.pdf')" data-tooltip="Shows how social brain networks influence prosocial behaviors and vulnerabilities">
+                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Agreeableness_ToM.pdf', 'Agreeableness_Theory_of_Mind_Networks.pdf')">
                             <div class="research-image-wrapper">
                                 <img src="../assets/images/Agreeableness_ToMDMN.png" alt="Agreeableness and theory of mind brain networks" class="research-image-horizontal">
                             </div>
