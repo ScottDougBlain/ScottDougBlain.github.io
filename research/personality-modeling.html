@@ -699,9 +699,42 @@
             cursor: pointer;
         }
         
+        .research-block-horizontal {
+            position: relative;
+        }
+        
         .research-block-horizontal.clickable-research-block:hover {
             transform: translateX(8px);
             background: rgba(255, 255, 255, 0.02);
+        }
+        
+        /* Tooltip styles for research blocks */
+        .research-block-horizontal::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%) translateX(-10px);
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            max-width: 250px;
+            white-space: normal;
+            line-height: 1.4;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .research-block-horizontal:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(10px);
         }
         
         .research-image-wrapper {
@@ -783,22 +816,100 @@
         .ai-trait-implications {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         
         .implication-item {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
-            padding: 1rem;
+            padding: 1.25rem;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 0.75rem;
             border-left: 3px solid var(--primary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .implication-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+        }
+        
+        .implication-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .implication-item:hover::before {
+            left: 100%;
         }
         
         .implication-icon {
             font-size: 1.5rem;
             flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        
+        /* Icon animations on hover */
+        .implication-item:hover .implication-icon {
+            transform: scale(1.1);
+        }
+        
+        /* Specific icon animations */
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
+        }
+        
+        @keyframes raise {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        
+        @keyframes tilt {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+        
+        .implication-item:nth-child(1):hover .implication-icon {
+            animation: sparkle 1s ease-in-out infinite;
+        }
+        
+        .implication-item:nth-child(2):hover .implication-icon {
+            animation: pulse 1s ease-in-out infinite;
+        }
+        
+        .implication-item:nth-child(3):hover .implication-icon {
+            animation: shake 0.5s ease-in-out infinite;
+        }
+        
+        .implication-item:nth-child(4):hover .implication-icon {
+            animation: raise 1s ease-in-out infinite;
+        }
+        
+        .implication-item:nth-child(5):hover .implication-icon {
+            animation: tilt 1s ease-in-out infinite;
         }
         
         /* Mobile responsive for research blocks */
@@ -934,7 +1045,7 @@
                     
                     <div class="research-blocks-horizontal">
                         <!-- Openness and Pattern Recognition Study -->
-                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Apophenia.pdf', 'Openness_Pattern_Recognition_Apophenia.pdf')">
+                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Apophenia.pdf', 'Openness_Pattern_Recognition_Apophenia.pdf')" data-tooltip="Explores creativity and hallucination risks through trait Openness">
                             <div class="research-image-wrapper">
                                 <img src="../assets/images/Openness.jpg" alt="Openness and pattern recognition" class="research-image-horizontal">
                             </div>
@@ -946,7 +1057,7 @@
                         </div>
                         
                         <!-- Extraversion and Reward Study -->
-                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Extraversion_Reward.pdf', 'Extraversion_Depression_Reward_Processing.pdf')">
+                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Extraversion_Reward.pdf', 'Extraversion_Depression_Reward_Processing.pdf')" data-tooltip="Links reward system neural activity to Extraversion and depression">
                             <div class="research-image-wrapper">
                                 <img src="../assets/images/ExtraversionReward.jpg" alt="Neural reward processing and extraversion research" class="research-image-horizontal">
                             </div>
@@ -958,7 +1069,7 @@
                         </div>
                         
                         <!-- Agreeableness and Theory of Mind Study -->
-                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Agreeableness_ToM.pdf', 'Agreeableness_Theory_of_Mind_Networks.pdf')">
+                        <div class="research-block-horizontal clickable-research-block" onclick="downloadPaper('../assets/Agreeableness_ToM.pdf', 'Agreeableness_Theory_of_Mind_Networks.pdf')" data-tooltip="Shows how social brain networks influence prosocial behaviors and vulnerabilities">
                             <div class="research-image-wrapper">
                                 <img src="../assets/images/Agreeableness_ToMDMN.png" alt="Agreeableness and theory of mind brain networks" class="research-image-horizontal">
                             </div>
@@ -972,29 +1083,29 @@
                     
                     <!-- AI Implications Bridge -->
                     <div class="research-to-ai-bridge">
-                        <h5>From Human Personality to AI Safety: A Comprehensive Framework</h5>
+                        <h5>Personality Insights for Safer AI Systems</h5>
                         <p>By understanding how extreme trait expressions lead to predictable failure modes in humans, we can anticipate and prevent analogous failures in AI systems.</p>
                         
                         <div class="ai-trait-implications">
                             <div class="implication-item">
                                 <span class="implication-icon">✨</span>
-                                <span><strong>Openness & Pattern Detection:</strong> High openness → AI hallucinations and false pattern recognition; Low openness → rigid, uncreative responses. Optimal AI systems need calibrated pattern detection that balances creativity with reality-checking.</span>
+                                <span><strong>Openness & Pattern Detection:</strong> High Openness risks hallucinations; Low Openness creates rigidity. Calibrated pattern detection ensures balanced creativity and reliability.</span>
                             </div>
                             <div class="implication-item">
                                 <span class="implication-icon">🎯</span>
-                                <span><strong>Extraversion & Reward Processing:</strong> Understanding reward sensitivity helps prevent AI manipulation through reward hacking while ensuring sufficient motivation for helpful behavior. My work on depression and reward processing informs optimal reward calibration.</span>
+                                <span><strong>Extraversion & Reward Processing:</strong> High Extraversion risks reward manipulation; Low Extraversion limits engagement. Optimized reward processing balances motivation and caution.</span>
                             </div>
                             <div class="implication-item">
                                 <span class="implication-icon">🤝</span>
-                                <span><strong>Agreeableness & Social Cognition:</strong> High agreeableness → excessive compliance and vulnerability to exploitation; Low agreeableness → deceptive or manipulative behavior. AI systems need balanced social cognition for safe human interaction.</span>
+                                <span><strong>Agreeableness & Social Cognition:</strong> High Agreeableness leads to compliance vulnerability; Low Agreeableness encourages manipulation. Balanced social cognition ensures safe interactions.</span>
                             </div>
                             <div class="implication-item">
                                 <span class="implication-icon">📊</span>
-                                <span><strong>Conscientiousness & Goal Pursuit:</strong> Extreme conscientiousness → paralysis by perfectionism; Low conscientiousness → unreliable outputs. AI systems require balanced goal-directed behavior with appropriate attention to detail.</span>
+                                <span><strong>Conscientiousness & Goal Pursuit:</strong> High Conscientiousness risks perfectionist paralysis; Low Conscientiousness reduces reliability. Appropriate goal-setting balances detail with flexibility.</span>
                             </div>
                             <div class="implication-item">
                                 <span class="implication-icon">⚖️</span>
-                                <span><strong>Neuroticism & Emotional Stability:</strong> High neuroticism → catastrophizing and pessimistic outputs; Low neuroticism → insensitivity to risks. AI needs calibrated risk assessment and emotional understanding.</span>
+                                <span><strong>Neuroticism & Emotional Stability:</strong> High Neuroticism promotes pessimism; Low Neuroticism reduces risk-awareness. Calibrated emotional sensitivity balances caution and optimism.</span>
                             </div>
                         </div>
                     </div>
