@@ -490,9 +490,14 @@ a, button {
     margin: 0.5rem 0 1rem;
     font-weight: 500;
     letter-spacing: 0.02em;
-    min-height: 2rem;
+    min-height: 5rem; /* Match typewriter-text min-height */
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-subtitle {
@@ -5753,35 +5758,50 @@ video {
     margin: 1rem auto 2rem auto;
     line-height: 1.6;
     width: 100%;
+    max-width: 600px;
     text-align: center;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 5rem; /* Match typewriter-text min-height for consistency */
 }
 
-/* Typewriter effect styling - Updated with Gemini's robust solution */
+/* Typewriter effect styling - Optimized to prevent visual jitter */
 #typewriter-text {
     color: var(--accent) !important;
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.6;
     
-    /* Key fix: Reserve space for 3 lines of text (1.5rem * 1.6 * 3 = 7.2rem, rounded to 7.5rem) */
-    min-height: 7.5rem !important;
+    /* Optimized fix: Reserve space for 2 lines max (1.5rem * 1.6 * 2 = 4.8rem, rounded to 5rem for safety) */
+    min-height: 5rem !important;
     
     /* Use the same margins as .hero h2.hero-tagline for consistency */
     margin: 1rem auto 2rem auto !important;
     
     width: 100% !important;
+    max-width: 600px !important; /* Prevent overly long lines */
     text-align: center !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     flex-direction: column !important;
     
+    /* Prevent layout shifts during typing */
+    overflow: hidden;
     transition: none;
     padding: 0 1rem; /* Add padding for mobile word wrap */
     
     /* Remove absolute positioning to use normal document flow */
     position: static !important;
+    
+    /* Enable word wrapping for long strings */
+    white-space: normal;
+    word-wrap: break-word;
+    hyphens: auto;
+    
+    /* Ensure consistent spacing regardless of content */
+    box-sizing: border-box;
 }
 
 /* Hero Achievement Badge */
@@ -8168,14 +8188,16 @@ html {
     /* Typewriter mobile adjustments - Updated with Gemini's robust solution */
     .hero h2.hero-tagline {
         font-size: 1.2rem;
-        /* Min-height now handled by #typewriter-text */
+        min-height: 6rem; /* Match mobile typewriter-text min-height */
+        max-width: 90%; /* Better mobile text wrapping */
     }
     
     #typewriter-text {
         font-size: 1.2rem !important;
-        /* Reserve space for 4 lines on mobile (1.2rem * 1.6 * 4 = 7.68rem, rounded to 8rem) */
-        min-height: 8rem !important;
-        padding: 0 0.5rem; /* Tighter padding on mobile */
+        /* Optimized for mobile: Reserve space for 3 lines (1.2rem * 1.6 * 3 = 5.76rem, rounded to 6rem) */
+        min-height: 6rem !important;
+        padding: 0 1rem; /* Comfortable padding on mobile */
+        max-width: 90%; /* Better mobile text wrapping */
         
         /* Ensure flexbox centering works properly on mobile */
         display: flex !important;

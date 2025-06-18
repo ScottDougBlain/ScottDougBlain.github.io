@@ -659,7 +659,26 @@
             }
         }
 
-        /* Mobile Responsive */
+        /* Mobile Responsive - Page Header Fix */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 80px 0 40px; /* Reduced padding for mobile */
+            }
+            
+            .page-header h1 {
+                font-size: clamp(2rem, 8vw, 2.5rem); /* Responsive font size */
+            }
+            
+            .page-header p {
+                font-size: 1.1rem; /* Smaller subtitle on mobile */
+                padding: 0 1rem; /* Add side padding */
+            }
+            
+            .container {
+                padding: 0 1rem; /* Ensure proper mobile padding */
+            }
+        }
+
         /* Research Evidence Section Styles */
         .personality-research-section {
             margin: 4rem 0;
@@ -929,6 +948,31 @@
             
             .insight-card-modern {
                 padding: 30px 20px;
+            }
+            
+            /* Fix demo section padding on mobile */
+            .demo-section-modern {
+                padding: 60px 0; /* Reduced from 100px */
+            }
+            
+            /* Improve breadcrumb on mobile */
+            .breadcrumb-section {
+                padding: 0.5rem 0;
+            }
+            
+            .breadcrumb {
+                padding: 0 1rem;
+                font-size: 0.85rem;
+            }
+            
+            /* Mobile navigation menu fix */
+            .nav-menu {
+                display: none; /* Hide desktop menu on mobile */
+            }
+            
+            /* Ensure proper spacing for mobile */
+            .research-content {
+                padding: 40px 0; /* Reduced from 80px */
             }
         }
     </style>
