@@ -222,6 +222,33 @@ a, button {
     font-weight: 700;
     color: var(--primary);
     text-shadow: 0 0 10px rgba(15, 118, 110, 0.5);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-brand:hover,
+.nav-brand:focus {
+    color: var(--accent);
+    text-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+    transform: translateY(-1px);
+}
+
+/* Touch device support */
+.nav-brand:active {
+    color: var(--accent);
+    transform: translateY(0);
+}
+
+/* Ensure proper touch target size on mobile */
+@media (max-width: 768px) {
+    .nav-brand {
+        padding: 0.5rem;
+        margin: -0.5rem;
+        min-height: 44px; /* iOS recommended touch target */
+        display: flex;
+        align-items: center;
+    }
 }
 
 .nav-menu {
