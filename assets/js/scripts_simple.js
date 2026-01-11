@@ -78,7 +78,7 @@ const taglines = [
     "From understanding human minds to building safe AI systems",
     "Bridging pattern detection research with hallucination mitigation", 
     "Applying theory of mind insights to AI alignment challenges",
-    "35+ publications → 1 mission: Safe AI"
+    "40+ publications → 1 mission: Safe AI"
 ];
 
 let taglineIndex = 0;
