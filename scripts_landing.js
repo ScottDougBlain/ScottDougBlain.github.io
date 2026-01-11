@@ -41,11 +41,13 @@ function animateCounters() {
                 clearInterval(timer);
             }
             
-            // Format the number
+            // Format the number with commas for thousands
             if (target === 20000 && current === target) {
                 counter.textContent = '20,000';
-            } else if (target === 1000 && current === target) {
-                counter.textContent = '1,000';
+            } else if (target === 1200 && current === target) {
+                counter.textContent = '1,200';
+            } else if (target >= 1000) {
+                counter.textContent = Math.floor(current).toLocaleString();
             } else {
                 counter.textContent = Math.floor(current);
             }
@@ -56,9 +58,9 @@ function animateCounters() {
 // Typewriter effect with CSS fallback
 const taglines = [
     "From understanding human minds to building safe AI systems",
-    "Bridging pattern detection research with hallucination mitigation", 
+    "Bridging pattern detection research with hallucination mitigation",
     "Applying theory of mind insights to AI alignment challenges",
-    "35+ publications → 1 mission: Safe AI"
+    "40+ publications → 1 mission: Safe AI"
 ];
 
 let taglineIndex = 0;
