@@ -1,93 +1,39 @@
-# Scott Blain - Research Portfolio Website
+# Scott Blain - AI Safety & Cognitive Science Research
 
-A modern, interactive website showcasing research in cognitive science and a pivot to AI safety research.
+Personal research website bridging cognitive neuroscience and AI safety. Hosted on GitHub Pages.
 
-## Features
+**Live site:** [scottdougblain.github.io](https://scottdougblain.github.io/)
 
-- **Interactive Visualizations**: Dynamic canvas animations for each research theme
-- **Neural Network Background**: Animated particle system representing cognitive connections
-- **Research Modals**: Detailed exploration of key concepts (apophenia, social cognition, hallucination mitigation, DCM)
-- **Responsive Design**: Mobile-friendly layout with smooth animations
-- **PDF Integration**: Direct links to research publications
-
-## Setup for GitHub Pages
-
-1. Create a new GitHub repository named `[your-username].github.io` (for user site) or any name (for project site)
-
-2. Initialize git in this directory:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit - research portfolio website"
-   ```
-
-3. Add your GitHub repository as remote:
-   ```bash
-   git remote add origin https://github.com/[your-username]/[repository-name].git
-   git branch -M main
-   git push -u origin main
-   ```
-
-4. Enable GitHub Pages:
-   - Go to Settings → Pages in your repository
-   - Select "Deploy from a branch"
-   - Choose "main" branch and "/ (root)" folder
-   - Click Save
-
-5. Your site will be available at:
-   - User site: `https://[your-username].github.io`
-   - Project site: `https://[your-username].github.io/[repository-name]`
-
-## Customization
-
-### Update Contact Information
-Edit the contact section in `index.html`:
-- Replace `your.email@example.com` with your email
-- Update GitHub and LinkedIn links
-
-### Modify Research Content
-- Research modal content is in `scripts.js` under the `openResearchModal` function
-- Add new research themes by creating new cards in the research grid
-
-### Update Publications
-- Place PDF files in the root directory
-- Update links in the publications section
-
-## Technologies Used
-
-- **Three.js**: 3D mind network visualization
-- **GSAP**: Smooth animations
-- **Canvas API**: Custom visualizations for research concepts
-- **CSS Grid & Flexbox**: Responsive layout
-- **Intersection Observer**: Scroll-triggered animations
-
-## File Structure
+## Site Structure
 
 ```
-├── index.html          # Main HTML structure
-├── styles.css          # All styling
-├── scripts.js          # Interactive features and animations
-├── README.md           # This file
-├── *.pdf              # Research publications
-└── *.docx             # Resume and other documents
+index.html                  Landing page — research overview and navigation
+about.html                  Background, approach, and contact
+styles.css                  Global styles (CSS custom properties, responsive)
+
+research/
+  pattern-recognition.html              Pattern Recognition & AI Hallucinations
+  social-intelligence.html              Social Intelligence & AI Alignment
+  social-intelligence-gaze-experimental.html   Gaze Perception deep-dive (interactive demos)
+  personality-modeling.html             Cybernetic Personality Modeling
+  consciousness-indicator-gaming.html   Consciousness Indicator Gaming (FIG — preliminary)
+  social-reasoning-warden.html          Social Reasoning Warden (ERA — preliminary)
+
+assets/
+  images/                   Research figures, background images, videos
+  images/fig/               Data visualizations for FIG and ERA projects
+  js/                       Interactive demos (apophenia, ToM, personality, publications)
+  *.pdf                     Downloadable research papers
+
+scripts_landing.js          Landing page interactions
+scripts_simple.js           Research page interactions
+neural-network.js           Animated particle canvas (landing hero)
 ```
 
-## Browser Support
+## Technologies
 
-- Chrome (recommended)
-- Firefox
-- Safari
-- Edge
+Static HTML/CSS/JS — no build step, no frameworks. Vanilla Canvas API for interactive demos (gaze perception, drift-diffusion model, neural network connectivity, apophenia noise detection). CSS custom properties for theming, CSS Grid + Flexbox for layout, Intersection Observer for scroll animations. Google Fonts (Inter, Space Mono).
 
-## Performance Notes
+## Deployment
 
-- Animations are GPU-accelerated for smooth performance
-- Background neural network uses requestAnimationFrame for efficiency
-- Images and heavy resources are lazy-loaded
-
-## Future Enhancements
-
-- Add blog section for AI safety thoughts
-- Integrate with Google Scholar API for publication metrics
-- Add dark mode toggle
-- Create individual pages for detailed research projects
+Hosted via GitHub Pages from the `Live_May2025` branch. Push to that branch to deploy.

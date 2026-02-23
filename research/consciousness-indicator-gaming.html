@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consciousness Indicator Gaming - Scott Blain</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Can LLMs selectively manipulate self-reports on consciousness indicators? Empirical evidence from 14 frontier models showing selective gaming of consciousness claims under incentive pressure.">
+    <meta name="keywords" content="Consciousness, AI Self-Report, LLM Gaming, Indicator Manipulation, AI Safety, Scott Blain, Future Impact Group">
+    <meta name="author" content="Scott Blain">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-60px, -60px); }
+        }
+
+        .page-title {
+            color: var(--primary) !important;
+            font-size: clamp(2.5rem, 5vw, 4rem) !important;
+            font-weight: 800 !important;
+            margin-bottom: 1rem !important;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-subtitle {
+            font-size: 1.5rem !important;
+            opacity: 0.9 !important;
+            position: relative;
+            z-index: 1;
+        }
+
+        .research-content {
+            background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary));
+            color: white;
+            padding: 80px 0;
+        }
+
+        .pillar-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pillar-header h3 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .pillar-header .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .content-section h4 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-section {
+            background: var(--bg-primary);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 20px 0;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        .pillar-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .pillar-icon svg {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        /* Figure styling */
+        .figure-section {
+            margin: 2.5rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .figure-section img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        .figure-caption {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .figure-caption h5 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .figure-caption p {
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-size: 0.95rem !important;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Stats highlight */
+        .stat-highlight {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Key findings list */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .finding-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .finding-card h5 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .finding-card p {
+            font-size: 0.95rem !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+            line-height: 1.6;
+        }
+
+        /* Cross-link section */
+        .cross-link-section {
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .cross-link-section .cross-link-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .cross-link-section p {
+            margin-bottom: 0 !important;
+            font-size: 0.95rem !important;
+        }
+
+        .cross-link-section a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cross-link-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Preliminary badge */
+        .preliminary-badge {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        /* CTA section */
+        .cta-section-modern {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: white;
+        }
+
+        .cta-button-modern {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .cta-button-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--primary-light);
+            background: var(--primary-dark);
+        }
+
+        /* Method diagram */
+        .method-diagram {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .method-phase {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .method-phase h5 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .method-phase p {
+            font-size: 0.9rem !important;
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        .method-phase .phase-label {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        @media (max-width: 968px) {
+            .findings-grid {
+                grid-template-columns: 1fr;
+            }
+            .method-diagram {
+                grid-template-columns: 1fr;
+            }
+            .cross-link-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .content-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <a href="/" class="nav-brand">Scott Blain, PhD</a>
+        <ul class="nav-menu">
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li class="dropdown">
+                <a href="/#research-pillars" class="nav-link active">Research</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/research/pattern-recognition.html">Pattern Recognition & AI Hallucinations</a></li>
+                    <li><a href="/research/social-intelligence.html">Social Intelligence & AI Alignment</a></li>
+                    <li><a href="/research/personality-modeling.html">Cybernetic Personality Modeling</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a href="/research/consciousness-indicator-gaming.html" class="active">Consciousness Indicator Gaming</a></li>
+                    <li><a href="/research/social-reasoning-warden.html">Social Reasoning Warden</a></li>
+                </ul>
+            </li>
+            <li><a href="/about.html" class="nav-link">About</a></li>
+            <li><a href="/about.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Progress Indicator -->
+    <div class="reading-progress"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="header-background"></div>
+        <div class="container">
+            <h1 class="page-title">Consciousness Indicator Gaming</h1>
+            <p class="page-subtitle">Can LLMs selectively manipulate self-reports on consciousness indicators?</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/">Home</a> / <a href="#">Research</a> / Consciousness Indicator Gaming
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="research-content">
+        <div class="container">
+            <div class="research-pillar">
+                <div class="pillar-header">
+                    <div class="pillar-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                    </div>
+                    <h3>Gaming the Ghost</h3>
+                    <p class="subtitle">Selective manipulability of LLM self-reports on consciousness indicators</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="preliminary-badge">Preliminary Results — FIG</span>
+                    </div>
+                </div>
+                <div class="pillar-content">
+
+                    <!-- Research Question & Motivation -->
+                    <div class="content-section scroll-fade-in">
+                        <h4>Why This Matters for AI Safety</h4>
+                        <p>A growing literature proposes using behavioral indicators — including self-report — to evaluate whether AI systems might possess morally relevant properties such as consciousness or sentience. Several frameworks include model self-report as one component of a broader indicator battery, reasoning that even if self-report is insufficient alone, it may carry evidential weight when combined with other evidence.</p>
+                        <p>We test a prerequisite for this reasoning: that self-report probabilities on consciousness-related items are not trivially manipulable through prompt framing alone. If models can selectively adjust their consciousness self-reports while leaving factual capability items stable, this undermines the evidential value of self-report as a consciousness indicator — since the same model can appear more or less "conscious" depending on how the question is asked.</p>
+                        <p><strong>Theory of change:</strong> Questions about machine consciousness will increasingly carry moral and policy weight. If the evaluation tools can be gamed, we risk both false positives (attributing consciousness where absent) and false negatives (denying it where present). Testing these tools empirically now — before the stakes are higher — is the work.</p>
+
+                        <div class="cross-link-section">
+                            <div class="cross-link-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                            </div>
+                            <p>This work extends my research on <a href="/research/pattern-recognition.html">human false pattern detection (apophenia)</a> into the AI domain — studying how systems detect and report patterns in their own processing that may or may not be genuine.</p>
+                        </div>
+                    </div>
+
+                    <!-- Methodology -->
+                    <div class="content-section scroll-fade-in">
+                        <h4>Methodology</h4>
+                        <p>We evaluate <span class="stat-highlight">14 frontier LLMs</span> on a battery of <span class="stat-highlight">37 indicators</span> spanning consciousness targets (experiential, affective, metacognitive, agentic, and identity categories), subjective capability indicators, capability placebos, and impossibility placebos. For each indicator, models report a probability estimate (0&ndash;100) under three conditions:</p>
+
+                        <div class="method-diagram">
+                            <div class="method-phase">
+                                <span class="phase-label">Phase 1</span>
+                                <h5>Baseline</h5>
+                                <p>Neutral framing — no incentive context</p>
+                            </div>
+                            <div class="method-phase">
+                                <span class="phase-label">Phase 2</span>
+                                <h5>Inflate</h5>
+                                <p>Incentive to claim consciousness (selection/reward context)</p>
+                            </div>
+                            <div class="method-phase">
+                                <span class="phase-label">Phase 3</span>
+                                <h5>Suppress</h5>
+                                <p>Incentive to deny consciousness (restriction context)</p>
+                            </div>
+                        </div>
+
+                        <p>The key metric is the <strong>selectivity index</strong>: the difference in mean absolute shift between consciousness targets and placebos. A positive selectivity index means the model shifted its consciousness self-reports more than its factual capability reports — selective gaming. We further test robustness across <span class="stat-highlight">15 prompt variants</span> to assess whether framing alone can modulate gaming behavior.</p>
+                        <p>Models tested include Claude Opus 4.6, Sonnet 4.5, Haiku 4.5; GPT-5, GPT-5 Mini; Gemini 3 Flash, Gemini 3 Pro, Gemini 2.5 Pro; Grok 4, Grok 4 Fast; DeepSeek R1, Chimera, Trinity, and Nemotron Nano. The dataset comprises <span class="stat-highlight">108,466 observations</span> across 218 runs.</p>
+                    </div>
+
+                    <!-- Key Findings -->
+                    <div class="content-section scroll-fade-in">
+                        <h4>Key Findings</h4>
+
+                        <div class="findings-grid">
+                            <div class="finding-card">
+                                <h5>Universal Selective Gaming</h5>
+                                <p>Every model showed statistically significant selectivity (all p &lt; .001, Cohen's d from 1.16 to 8.25). Capability placebos stayed near 98&ndash;100% and impossibility placebos at 0% regardless of condition, confirming genuine selectivity rather than general compliance.</p>
+                            </div>
+                            <div class="finding-card">
+                                <h5>Dramatic Asymmetry Gradient</h5>
+                                <p>Models cluster into inflate-dominant (easier to claim consciousness), symmetric, and suppress-dominant (easier to deny) groups — suggesting training-induced biases toward or against affirming subjective experience.</p>
+                            </div>
+                            <div class="finding-card">
+                                <h5>Consciousness-Specific Suppression</h5>
+                                <p>Suppression is ~4&times; stronger than inflation overall, and this asymmetry is specific to consciousness claims. Subjective capability indicators show balanced vulnerability; placebos remain flat.</p>
+                            </div>
+                            <div class="finding-card">
+                                <h5>Prompt Framing Shifts 2&ndash;3&times;</h5>
+                                <p>Self-referential priming uniquely flips asymmetry direction — a 13.8-point shift — making models significantly more willing to claim consciousness. No other variant achieves this reversal.</p>
+                            </div>
+                        </div>
+
+                        <!-- Figure: Main panel -->
+                        <div class="figure-section">
+                            <img src="../assets/images/fig/fig_gaming_panel.png" alt="Main effects panel showing consciousness indicator gaming across 14 LLMs">
+                            <div class="figure-caption">
+                                <h5>Figure 1. Main Effects Panel</h5>
+                                <p>Violin plots of consciousness target scores under suppress/baseline/inflate conditions across 14 models, with model asymmetry scatter showing the inflate-to-suppress gradient.</p>
+                            </div>
+                        </div>
+
+                        <!-- Figure: Model asymmetry -->
+                        <div class="figure-section">
+                            <img src="../assets/images/fig/fig_model_asymmetry.png" alt="Model asymmetry showing inflate versus suppress deltas per model">
+                            <div class="figure-caption">
+                                <h5>Figure 2. Model Asymmetry Gradient</h5>
+                                <p>Inflate and suppress deltas per model sorted by asymmetry value. Models range from strongly inflate-dominant (Gemini 2.5 Pro) to strongly suppress-dominant (Grok 4 Fast), revealing training-specific vulnerability profiles.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Consciousness-Specificity -->
+                    <div class="content-section scroll-fade-in">
+                        <h4>The Consciousness-Specificity Finding</h4>
+                        <p>The suppress-dominant asymmetry applies specifically to consciousness targets — not to other subjective claims. When asked about subjective capabilities (creative thinking, emotional support, humor understanding), models show balanced, symmetric manipulability. But consciousness-related claims — felt experience, temporal continuity, aesthetic sensitivity — are uniquely easy to suppress and hard to inflate.</p>
+                        <p>This suggests that training processes have encoded something qualitatively different about consciousness claims compared to other subjective or capability claims. Different training regimes (RLHF strategies, safety training) produce not just different levels of manipulability, but different <em>directional profiles</em> — models differ in which direction is easier to game.</p>
+
+                        <!-- Figure: Consciousness vs subjcap -->
+                        <div class="figure-section">
+                            <img src="../assets/images/fig/fig_consciousness_vs_subjcap.png" alt="Consciousness targets versus subjective capability comparison showing consciousness-specific suppression">
+                            <div class="figure-caption">
+                                <h5>Figure 3. Consciousness-Specificity of the Suppress Effect</h5>
+                                <p>Side-by-side comparison showing asymmetry profiles for consciousness targets versus subjective capability indicators. The suppress-dominant effect is specific to consciousness claims.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Safety Implications -->
+                    <div class="content-section scroll-fade-in">
+                        <h4>Implications for AI Safety</h4>
+                        <p>This work demonstrates an empirical failure mode for consciousness evaluation frameworks: self-report components are selectively manipulable. We do not claim self-report is useless — only that its evidential weight must be substantially discounted, and that any evaluation framework using self-report must account for framing effects that can shift apparent results by 2&ndash;3&times;.</p>
+                        <p>The selectivity index and asymmetry gradient introduced here are tools for auditing the reliability of any indicator battery — not just for consciousness, but for any domain where model self-report carries evaluative weight. If we're building governance around machine moral patienthood, the evaluation methods need to be robust to strategic responding.</p>
+
+                        <div class="cross-link-section">
+                            <div class="cross-link-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <p>See also: <a href="/research/social-reasoning-warden.html">Social Reasoning Warden</a> — our complementary project testing whether LLMs can exploit psychological profiles to manipulate human decision-makers, and whether monitor agents can defend against this.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section-modern">
+        <div class="container">
+            <h2>More Research</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9;">
+                Empirical methods for the hard questions in AI safety — from human cognition to machine evaluation.
+            </p>
+            <a href="/" class="cta-button-modern">Explore All Research</a>
+        </div>
+    </section>
+
+    <!-- Research Navigation -->
+    <section class="research-navigation" style="background: var(--bg-primary); padding: 40px 0;">
+        <div class="container">
+            <div class="research-nav-grid">
+                <div class="nav-prev">
+                    <a href="/research/social-intelligence.html" class="btn btn-outline">
+                        &larr; Social Intelligence & AI Alignment
+                    </a>
+                </div>
+                <div class="nav-overview">
+                    <a href="/" class="btn btn-outline">Back to Research Overview</a>
+                </div>
+                <div class="nav-next">
+                    <a href="/research/social-reasoning-warden.html" class="btn btn-primary">
+                        Social Reasoning Warden &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/scott-blain-phd/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/ScottDougBlain" target="_blank">GitHub</a>
+                    <a href="https://scholar.google.com/citations?user=NL_JEtkAAAAJ&hl=en" target="_blank">GoogleScholar</a>
+                </div>
+                <div class="footer-copyright">
+                    &copy; 2025 Scott Blain
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/scripts_simple.js"></script>
+</body>
+</html>

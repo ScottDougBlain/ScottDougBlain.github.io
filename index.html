@@ -32,6 +32,17 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        @media (max-width: 768px) {
+            .current-research-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .current-research-stats {
+                flex-wrap: wrap;
+                gap: 0.75rem !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Reading Progress Bar -->
@@ -52,6 +63,8 @@
                     <li><a href="/research/pattern-recognition.html">Pattern Recognition & AI Hallucinations</a></li>
                     <li><a href="/research/social-intelligence.html">Social Intelligence & AI Alignment</a></li>
                     <li><a href="/research/personality-modeling.html">Cybernetic Personality Modeling</a></li>
+                    <li style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4px; padding-top: 4px;"><a href="/research/consciousness-indicator-gaming.html">Consciousness Indicator Gaming</a></li>
+                    <li><a href="/research/social-reasoning-warden.html">Social Reasoning Warden</a></li>
                 </ul>
             </li>
             <li><a href="/about.html" class="nav-link">About</a></li>
@@ -67,7 +80,7 @@
                 <h1 class="glitch" data-text="Scott Blain, PhD">Scott Blain, PhD</h1>
             <h2 class="hero-tagline" id="typewriter-text">From understanding human minds to building safe AI systems</h2>
             <p class="hero-description lead-text">
-                Over a decade of research on human cognition—pattern detection, social reasoning, and personality mechanisms—now translated into frameworks ensuring AI capabilities remain aligned with human values.
+                Researching how human cognition fails — false pattern detection, social manipulation, personality-driven biases — and applying those insights to make AI systems safer.
             </p>
             <div class="hero-tags">
                 <span class="tag">Cognitive Science B.S.</span>
@@ -97,13 +110,13 @@
                 </div>
             </div>
             <div class="hero-cta">
-                <a href="#research-pillars" class="btn btn-primary">
+                <a href="#current-research" class="btn btn-primary">
                     <span style="margin-right: 0.5rem;">→</span> Explore Research
                 </a>
                 <a href="/about.html#contact" class="btn btn-secondary">
                     <span style="margin-right: 0.5rem;">→</span> Contact
                 </a>
-                <a href="Scott_Blain_RESUME_2025.docx" class="btn btn-outline" download>
+                <a href="assets/Blain_Resume.docx" class="btn btn-outline" download>
                     <span style="margin-right: 0.5rem;">↓</span> Download Resume
                 </a>
             </div>
@@ -117,15 +130,67 @@
         <div class="container">
             <h2 class="section-title">Why This Matters</h2>
             <p class="matters-text">
-                AI systems increasingly mirror human cognitive abilities. Understanding how fundamental cognitive capabilities fail in humans provides crucial insights for preventing similar failures in AI. Cognitive science offers a blueprint for meaningful alignment.
+                AI systems are developing the same cognitive capabilities that fail in predictable ways in humans — pattern detection that hallucinates, social reasoning that manipulates, self-reports that deceive. Studying these failure modes in people tells us where to look for them in models.
             </p>
+        </div>
+    </section>
+
+    <!-- Current AI Safety Research -->
+    <section id="current-research" class="research-preview-section" style="padding-bottom: 0;">
+        <div class="container">
+            <h2 class="section-title">Current AI Safety Research</h2>
+            <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: -1rem auto 3rem; font-size: 1.1rem;">Preliminary results from the Future Impact Group — empirical frameworks for evaluating and defending against emerging AI risks.</p>
+
+            <div class="current-research-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                <!-- Consciousness Indicator Gaming Card -->
+                <div class="research-preview-card card card-interactive" style="border-left: 3px solid var(--accent);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div class="preview-icon" style="margin-bottom: 0;">
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 16v-4"></path>
+                                <path d="M12 8h.01"></path>
+                            </svg>
+                        </div>
+                        <span style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; padding: 2px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(245, 158, 11, 0.3);">Preliminary</span>
+                    </div>
+                    <h3>Consciousness Indicator Gaming</h3>
+                    <p>Can LLMs selectively manipulate self-reports on consciousness indicators? Testing 14 frontier models across 108K+ observations reveals universal selective gaming — all models adjust consciousness claims under incentive pressure while leaving factual capabilities stable.</p>
+                    <div class="current-research-stats" style="display: flex; gap: 1.5rem; margin: 1rem 0; font-family: 'Space Mono', monospace; font-size: 0.85rem;">
+                        <span style="color: var(--primary);"><strong>14</strong> models</span>
+                        <span style="color: var(--primary);"><strong>108K+</strong> observations</span>
+                        <span style="color: var(--primary);"><strong>p &lt; .001</strong> all models</span>
+                    </div>
+                    <a href="/research/consciousness-indicator-gaming.html" class="btn btn-outline">Explore Results →</a>
+                </div>
+
+                <!-- Social Reasoning Warden Card -->
+                <div class="research-preview-card card card-interactive" style="border-left: 3px solid var(--accent);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div class="preview-icon" style="margin-bottom: 0;">
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <span style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; padding: 2px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(245, 158, 11, 0.3);">Preliminary</span>
+                    </div>
+                    <h3>Social Reasoning Warden</h3>
+                    <p>Can a monitor agent defend against AI social engineering? Our three-agent framework shows that a warden agent reduces adversary manipulation success by <strong>~95%</strong> — even when adversaries have access to psychological profiles of their targets.</p>
+                    <div class="current-research-stats" style="display: flex; gap: 1.5rem; margin: 1rem 0; font-family: 'Space Mono', monospace; font-size: 0.85rem;">
+                        <span style="color: var(--primary);"><strong>~95%</strong> protection</span>
+                        <span style="color: var(--primary);"><strong>2,259</strong> observations</span>
+                        <span style="color: var(--primary);"><strong>p &lt; 2e-16</strong></span>
+                    </div>
+                    <a href="/research/social-reasoning-warden.html" class="btn btn-outline">Explore Results →</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Research Pillars Preview -->
     <section id="research-pillars" class="research-preview-section">
         <div class="container">
-            <h2 class="section-title">Research Pillars</h2>
+            <h2 class="section-title">Research Foundations</h2>
             
             <div class="research-preview-grid">
                 <!-- Pattern Recognition Card -->
@@ -137,7 +202,7 @@
                         </svg>
                     </div>
                     <h3>Pattern Recognition & AI Hallucinations</h3>
-                    <p>From studying apophenia in human participants to developing a metacognitive framework achieving <strong>71% reduction</strong> in LLM hallucinations. Bridging human false pattern detection to AI confabulation.</p>
+                    <p>Humans see patterns in noise (apophenia); LLMs generate confident falsehoods (hallucinations). Studying one led to a metacognitive framework achieving <strong>71% reduction</strong> in AI confabulation.</p>
                     <a href="/research/pattern-recognition.html" class="btn btn-outline">Explore Research →</a>
                 </div>
                 
@@ -150,7 +215,7 @@
                         </svg>
                     </div>
                     <h3>Social Intelligence & AI Alignment</h3>
-                    <p>Demonstrated how the same theory-of-mind abilities that enable prosocial perspective taking also allow sophisticated deception. Essential for detecting and constraining deceptive AI misalignment.</p>
+                    <p>The same theory-of-mind abilities that enable cooperation also enable manipulation. My work on human social cognition maps the dual-use nature of these capabilities — directly relevant to AI deception and alignment.</p>
                     <a href="/research/social-intelligence.html" class="btn btn-outline">Explore Research →</a>
                 </div>
                 
@@ -165,7 +230,7 @@
                         </svg>
                     </div>
                     <h3>Cybernetic Personality Modeling</h3>
-                    <p>Mapped mechanisms of personality variation across multiple studies and over 20,000 participants. Currently building personality-informed frameworks for dynamic finetuning and model-organism research.</p>
+                    <p>Mapped personality mechanisms across 20,000+ participants. Now applying these models to LLM personality simulation, dynamic finetuning, and model-organism alignment research.</p>
                     <a href="/research/personality-modeling.html" class="btn btn-outline">Explore Research →</a>
                 </div>
             </div>
@@ -176,10 +241,9 @@
     <!-- Call to Action -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="section-title">Seeking Collaboration & Impact</h2>
+            <h2 class="section-title">Get in Touch</h2>
             <p class="cta-text">
-                I seek opportunities where AI safety intersects with cognitive and behavioral science. 
-                Let's collaborate to ensure AI remains beneficial as it becomes more capable.
+                I'm looking to collaborate with AI safety teams that want empirical rigor from cognitive science. If you're working on evaluations, alignment, or governance — let's talk.
             </p>
             <div class="cta-buttons">
                 <a href="/about.html" class="btn btn-primary">
@@ -200,7 +264,7 @@
         <div class="container">
             <div class="claude-banner-content">
                 <span class="claude-text">Built with <strong>Claude Code</strong></span>
-                <span class="claude-tagline">— From Research to Reality</span>
+                <span class="claude-tagline"></span>
             </div>
         </div>
     </div>
