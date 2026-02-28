@@ -696,6 +696,79 @@ a, button {
     50% { opacity: 1; }
 }
 
+/* Fellowship Sequence Section */
+.fellowship-sequence {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.fellowship-title {
+    font-size: 1.25rem;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.fellowship-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.fellowship-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.fellowship-card:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.fellowship-program {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.fellowship-focus {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.fellowship-timeline {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .fellowship-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .fellowship-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .stat-label small {
     font-size: 0.8em;
     color: var(--gray);
