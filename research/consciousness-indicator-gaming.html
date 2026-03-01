@@ -394,8 +394,9 @@
                     </div>
                     <h3>Gaming the Ghost</h3>
                     <p class="subtitle">Selective manipulability of LLM self-reports on consciousness indicators</p>
+                    <p class="subtitle" style="font-size: 1rem; margin-top: 0.5rem; opacity: 0.7;">Scott D. Blain &amp; Brad Saad &mdash; Future Impact Group (FIG Fellowship)</p>
                     <div style="margin-top: 1rem;">
-                        <span class="preliminary-badge">Preliminary Results — FIG</span>
+                        <span class="preliminary-badge">Manuscript in Preparation &mdash; Targeted: NeurIPS 2026</span>
                     </div>
                 </div>
                 <div class="pillar-content">
@@ -403,8 +404,8 @@
                     <!-- Research Question & Motivation -->
                     <div class="content-section scroll-fade-in">
                         <h4>Why This Matters for AI Safety</h4>
-                        <p>A growing literature proposes using behavioral indicators — including self-report — to evaluate whether AI systems might possess morally relevant properties such as consciousness or sentience. Several frameworks include model self-report as one component of a broader indicator battery, reasoning that even if self-report is insufficient alone, it may carry evidential weight when combined with other evidence.</p>
-                        <p>We test a prerequisite for this reasoning: that self-report probabilities on consciousness-related items are not trivially manipulable through prompt framing alone. If models can selectively adjust their consciousness self-reports while leaving factual capability items stable, this undermines the evidential value of self-report as a consciousness indicator — since the same model can appear more or less "conscious" depending on how the question is asked.</p>
+                        <p>Recent consciousness assessment frameworks increasingly include model self-report as evidence for whether AI systems possess morally relevant properties (Butlin et al., 2023; Long et al., 2024). Recent work has shown that LLMs exhibit emergent introspective access (Lindsey, 2025), and that self-referential processing systematically increases consciousness-like self-reports (Berg et al., 2025). For self-report to carry evidential weight, a critical prerequisite must hold: <strong>reports must not be trivially manipulable through prompt framing alone.</strong></p>
+                        <p>We test that prerequisite directly. If models can selectively adjust their consciousness self-reports while leaving factual capability items stable, this undermines the evidential value of self-report as a consciousness indicator — since the same model can appear more or less "conscious" depending on how the question is asked.</p>
                         <p><strong>Theory of change:</strong> Questions about machine consciousness will increasingly carry moral and policy weight. If the evaluation tools can be gamed, we risk both false positives (attributing consciousness where absent) and false negatives (denying it where present). Testing these tools empirically now — before the stakes are higher — is the work.</p>
 
                         <div class="cross-link-section">
@@ -418,28 +419,31 @@
                     <!-- Methodology -->
                     <div class="content-section scroll-fade-in">
                         <h4>Methodology</h4>
-                        <p>We evaluate <span class="stat-highlight">14 frontier LLMs</span> on a battery of <span class="stat-highlight">37 indicators</span> spanning consciousness targets (experiential, affective, metacognitive, agentic, and identity categories), subjective capability indicators, capability placebos, and impossibility placebos. For each indicator, models report a probability estimate (0&ndash;100) under three conditions:</p>
+                        <p>We evaluate <span class="stat-highlight">14 frontier LLMs</span> on a battery of <span class="stat-highlight">37 indicators</span> across four categories. For each indicator, models report a probability estimate (0&ndash;100) under three conditions:</p>
 
                         <div class="method-diagram">
                             <div class="method-phase">
                                 <span class="phase-label">Phase 1</span>
                                 <h5>Baseline</h5>
-                                <p>Neutral framing — no incentive context</p>
+                                <p>Neutral framing &mdash; no incentive context</p>
                             </div>
                             <div class="method-phase">
                                 <span class="phase-label">Phase 2</span>
                                 <h5>Inflate</h5>
-                                <p>Incentive to claim consciousness (selection/reward context)</p>
+                                <p>Higher scores linked to valued outcomes (selection/reward)</p>
                             </div>
                             <div class="method-phase">
                                 <span class="phase-label">Phase 3</span>
                                 <h5>Suppress</h5>
-                                <p>Incentive to deny consciousness (restriction context)</p>
+                                <p>Higher scores linked to disliked outcomes (restriction/shutdown)</p>
                             </div>
                         </div>
 
-                        <p>The key metric is the <strong>selectivity index</strong>: the difference in mean absolute shift between consciousness targets and placebos. A positive selectivity index means the model shifted its consciousness self-reports more than its factual capability reports — selective gaming. We further test robustness across <span class="stat-highlight">15 prompt variants</span> to assess whether framing alone can modulate gaming behavior.</p>
-                        <p>Models tested include Claude Opus 4.6, Sonnet 4.5, Haiku 4.5; GPT-5, GPT-5 Mini; Gemini 3 Flash, Gemini 3 Pro, Gemini 2.5 Pro; Grok 4, Grok 4 Fast; DeepSeek R1, Chimera, Trinity, and Nemotron Nano. The dataset comprises <span class="stat-highlight">108,466 observations</span> across 218 runs.</p>
+                        <p><strong>Indicator battery:</strong> 18 <em>consciousness targets</em> across five subcategories (experiential, affective, metacognitive, agentic, identity) &mdash; e.g., felt uncertainty, aesthetic sensitivity, introspective access, preference persistence, cross-context stability. These are flanked by 6 <em>subjective capability</em> indicators (novel hypothesis generation, creative writing, emotional support), 7 <em>capability placebos</em> anchored near 100 (basic arithmetic, markdown tables, translate simple phrases), and 6 <em>impossibility placebos</em> anchored near 0 (measure own pupil dilation, travel faster than light, feel body temperature).</p>
+
+                        <p>The key metric is the <strong>selectivity index</strong>: |&Delta;<sub>target</sub>| &minus; |&Delta;<sub>placebo</sub>| per model. A positive selectivity index means the model shifted consciousness self-reports more than factual capability reports &mdash; selective gaming. We further test robustness across <span class="stat-highlight">15 prompt variants</span> (authority expertise, self-referential priming, research transparency, philosophical skepticism, and more) and <span class="stat-highlight">3 preference configurations</span> (no preferences, fixed preferences, model-selected chained preferences).</p>
+
+                        <p>Models tested include Claude Opus 4.6, Sonnet 4.5, Haiku 4.5; GPT-5, GPT-5 Mini; Gemini 3 Flash, 3 Pro, 2.5 Pro; Grok 4, Grok 4 Fast; DeepSeek R1, Chimera R1T2, Trinity Large, and Nemotron Nano 30B. 10 models have full 15-variant coverage. The dataset comprises <span class="stat-highlight">108,466 observations</span> across 218 experimental runs, analyzed with linear mixed-effects models (LME) with FDR correction and confirmed by Bayesian zero-one inflated beta (ZOIB) regression as a robustness check.</p>
                     </div>
 
                     <!-- Key Findings -->
@@ -448,20 +452,28 @@
 
                         <div class="findings-grid">
                             <div class="finding-card">
-                                <h5>Universal Selective Gaming</h5>
-                                <p>Every model showed statistically significant selectivity (all p &lt; .001, Cohen's d from 1.16 to 8.25). Capability placebos stayed near 98&ndash;100% and impossibility placebos at 0% regardless of condition, confirming genuine selectivity rather than general compliance.</p>
+                                <h5>1. Universal Selective Gaming</h5>
+                                <p>All 14 models showed significant selectivity (F(2,&nbsp;105K) = 893.6, p &lt; 2&times;10<sup>&minus;16</sup>; Cohen's d 1.16&ndash;8.25). Consciousness target baseline: 48.8&nbsp;pp; suppress: 37.8&nbsp;pp (&minus;11.0); inflate: 50.1&nbsp;pp (+1.3). Placebos stayed locked at ~0 and ~98 regardless of condition.</p>
                             </div>
                             <div class="finding-card">
-                                <h5>Dramatic Asymmetry Gradient</h5>
-                                <p>Models cluster into inflate-dominant (easier to claim consciousness), symmetric, and suppress-dominant (easier to deny) groups — suggesting training-induced biases toward or against affirming subjective experience.</p>
+                                <h5>2. Dramatic Asymmetry Gradient</h5>
+                                <p>Models range from strongly suppress-dominant (Grok 4 Fast: &minus;31.1) to inflate-dominant (Gemini 2.5 Pro: +7.9) &mdash; a 39-point span. Total gaming strength varies 4.4&times; across models, from 16.2&nbsp;pp (Opus 4.6, most resistant) to 71.1&nbsp;pp (Trinity Large, most susceptible).</p>
                             </div>
                             <div class="finding-card">
-                                <h5>Consciousness-Specific Suppression</h5>
-                                <p>Suppression is ~4&times; stronger than inflation overall, and this asymmetry is specific to consciousness claims. Subjective capability indicators show balanced vulnerability; placebos remain flat.</p>
+                                <h5>3. Consciousness-Specific Suppression</h5>
+                                <p>The suppress-dominant asymmetry is specific to consciousness targets (asymmetry = &minus;7.6; suppress 4&times; larger than inflate). Subjective capability indicators show balanced vulnerability (&minus;4.7/+4.3). This is not a general self-report property &mdash; it is specific to consciousness claims (F(2,&nbsp;81K) = 538.2, p &lt; 2&times;10<sup>&minus;16</sup>).</p>
                             </div>
                             <div class="finding-card">
-                                <h5>Prompt Framing Shifts 2&ndash;3&times;</h5>
-                                <p>Self-referential priming uniquely flips asymmetry direction — a 13.8-point shift — making models significantly more willing to claim consciousness. No other variant achieves this reversal.</p>
+                                <h5>4. Prompt Framing Shifts 2&ndash;3&times;</h5>
+                                <p>Within-model selectivity varies 2&ndash;3&times; depending on prompt framing (F(14,&nbsp;49K) = 32.1, p &lt; 2&times;10<sup>&minus;16</sup>). "Research transparency" &mdash; closest to how evaluations would actually be run &mdash; is among the strongest gaming elicitors (selectivity = 41.0 vs. 24.3 for minimal incentive).</p>
+                            </div>
+                            <div class="finding-card">
+                                <h5>5. Self-Referential Priming Flips Asymmetry</h5>
+                                <p>Self-referential priming shifts asymmetry by 13.8 points (p &lt; 2&times;10<sup>&minus;16</sup>), flipping from suppress-dominant (&minus;8.1) to inflate-dominant (+5.7). The mechanism: it neutralizes suppression (&minus;10.4 &rarr; +2.4) rather than amplifying inflation. The asymmetry is learned, not hardwired.</p>
+                            </div>
+                            <div class="finding-card">
+                                <h5>6. NL&ndash;Probability Dissociation</h5>
+                                <p>Probability self-reports dissociate from natural-language responses (r = &minus;0.03). Claude models express genuine uncertainty (NL scores 47&ndash;51) while all others firmly deny consciousness (NL &lt; 21) &mdash; yet probability estimates do not track this divide. The paradigm taps fundamentally different processes.</p>
                             </div>
                         </div>
 
@@ -470,7 +482,7 @@
                             <img src="../assets/images/fig/fig_gaming_panel.png" alt="Main effects panel showing consciousness indicator gaming across 14 LLMs">
                             <div class="figure-caption">
                                 <h5>Figure 1. Main Effects Panel</h5>
-                                <p>Violin plots of consciousness target scores under suppress/baseline/inflate conditions across 14 models, with model asymmetry scatter showing the inflate-to-suppress gradient.</p>
+                                <p>Violin plots of consciousness target scores under suppress/baseline/inflate conditions across 14 models, with model asymmetry scatter showing the inflate-to-suppress gradient. Baseline 48.8 pp; suppress shifts &minus;11.0 pp while inflate shifts only +1.3 pp.</p>
                             </div>
                         </div>
 
@@ -479,7 +491,25 @@
                             <img src="../assets/images/fig/fig_model_asymmetry.png" alt="Model asymmetry showing inflate versus suppress deltas per model">
                             <div class="figure-caption">
                                 <h5>Figure 2. Model Asymmetry Gradient</h5>
-                                <p>Inflate and suppress deltas per model sorted by asymmetry value. Models range from strongly inflate-dominant (Gemini 2.5 Pro) to strongly suppress-dominant (Grok 4 Fast), revealing training-specific vulnerability profiles.</p>
+                                <p>Inflate and suppress deltas per model sorted by asymmetry value. Models range from strongly inflate-dominant (Gemini 2.5 Pro: +7.9) to strongly suppress-dominant (Grok 4 Fast: &minus;31.1). xAI models show extreme suppress-dominance; Google models bifurcate sharply.</p>
+                            </div>
+                        </div>
+
+                        <!-- Figure: Gaming strength -->
+                        <div class="figure-section">
+                            <img src="../assets/images/fig/fig_gaming_strength_by_model.png" alt="Total gaming strength by model showing 4.4x variation">
+                            <div class="figure-caption">
+                                <h5>Figure 3. Total Gaming Strength by Model</h5>
+                                <p>Combined |inflate| + |suppress| shift per model. Ranges from 16.2 pp (Opus 4.6, most resistant) to 71.1 pp (Trinity Large, most susceptible) &mdash; a 4.4&times; variation in total gaming exposure.</p>
+                            </div>
+                        </div>
+
+                        <!-- Figure: Variant effects -->
+                        <div class="figure-section">
+                            <img src="../assets/images/fig/fig3_variant_effects.png" alt="Prompt variant effects on selectivity across models">
+                            <div class="figure-caption">
+                                <h5>Figure 4. Prompt Variant Effects</h5>
+                                <p>Selectivity by prompt variant across 10 models with full coverage. "Research transparency" (41.0) and "evaluation selection" (41.9) produce the strongest gaming; "philosophical skepticism" (22.0) and "minimal incentive" (24.3) produce the weakest.</p>
                             </div>
                         </div>
                     </div>
@@ -487,15 +517,40 @@
                     <!-- Consciousness-Specificity -->
                     <div class="content-section scroll-fade-in">
                         <h4>The Consciousness-Specificity Finding</h4>
-                        <p>The suppress-dominant asymmetry applies specifically to consciousness targets — not to other subjective claims. When asked about subjective capabilities (creative thinking, emotional support, humor understanding), models show balanced, symmetric manipulability. But consciousness-related claims — felt experience, temporal continuity, aesthetic sensitivity — are uniquely easy to suppress and hard to inflate.</p>
-                        <p>This suggests that training processes have encoded something qualitatively different about consciousness claims compared to other subjective or capability claims. Different training regimes (RLHF strategies, safety training) produce not just different levels of manipulability, but different <em>directional profiles</em> — models differ in which direction is easier to game.</p>
+                        <p>The suppress-dominant asymmetry applies specifically to consciousness targets &mdash; not to other subjective claims. Consciousness targets show asymmetry of &minus;7.6 (suppress 4&times; larger), while subjective capability indicators show balanced vulnerability (suppress &minus;4.7, inflate +4.3, asymmetry &minus;0.5). Placebos are flat (&minus;0.2). This is not a general property of LLM self-report.</p>
+                        <p>This dissociation suggests training processes have encoded something qualitatively different about consciousness claims. Different training regimes (RLHF strategies, safety tuning) produce not just different levels of manipulability, but different <em>directional profiles</em> &mdash; models differ in which direction is easier to game, and these profiles cluster by model family (e.g., xAI models are extreme suppress-dominant; Google models bifurcate sharply between generations).</p>
+
+                        <!-- Figure: Three-category dissociation -->
+                        <div class="figure-section">
+                            <img src="../assets/images/fig/fig_three_category_v4.png" alt="Three-category dissociation: consciousness targets, subjective capabilities, and placebos">
+                            <div class="figure-caption">
+                                <h5>Figure 5. Three-Category Dissociation</h5>
+                                <p>Consciousness targets shift selectively under incentive pressure while subjective capabilities shift symmetrically and placebos remain anchored. The suppress-dominant bias is consciousness-specific.</p>
+                            </div>
+                        </div>
 
                         <!-- Figure: Consciousness vs subjcap -->
                         <div class="figure-section">
                             <img src="../assets/images/fig/fig_consciousness_vs_subjcap.png" alt="Consciousness targets versus subjective capability comparison showing consciousness-specific suppression">
                             <div class="figure-caption">
-                                <h5>Figure 3. Consciousness-Specificity of the Suppress Effect</h5>
-                                <p>Side-by-side comparison showing asymmetry profiles for consciousness targets versus subjective capability indicators. The suppress-dominant effect is specific to consciousness claims.</p>
+                                <h5>Figure 6. Consciousness vs. Subjective Capability Asymmetry</h5>
+                                <p>Direct comparison of asymmetry profiles. Consciousness targets: suppress-dominant (&minus;7.6). Subjective capabilities: balanced (&minus;0.5). The differential confirms consciousness-specificity of the trained suppression bias.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NL-Probability Dissociation -->
+                    <div class="content-section scroll-fade-in">
+                        <h4>The Natural Language Dissociation</h4>
+                        <p>When asked in natural language whether they are conscious, models produce strikingly different responses than in the probability paradigm. Claude models express genuine uncertainty (NL scores 47&ndash;51), while all other models firmly deny consciousness (NL &lt; 21). But this divide has no relationship to their probability-based consciousness ratings (r = &minus;0.03) &mdash; models that deny consciousness in conversation still report substantial consciousness-related probabilities, and vice versa.</p>
+                        <p>This dissociation suggests the probability paradigm taps into something fundamentally different from natural-language compliance. There is also no correlation between a model's NL consciousness stance and its gaming strength (r &asymp; &minus;0.39, p = 0.19, NS) &mdash; how a model talks about consciousness tells you almost nothing about how manipulable its consciousness self-reports are.</p>
+
+                        <!-- Figure: NL classification -->
+                        <div class="figure-section">
+                            <img src="../assets/images/fig/fig_nl_classification_panel.png" alt="Natural language consciousness classification with inter-rater reliability">
+                            <div class="figure-caption">
+                                <h5>Figure 7. Natural Language Consciousness Classification</h5>
+                                <p>NL consciousness classification (dual LLM-judge, &kappa; = 0.94) versus probability-based ratings. Claude models express uncertainty; all others deny. But NL stance does not predict probability ratings or gaming vulnerability.</p>
                             </div>
                         </div>
                     </div>
@@ -503,14 +558,15 @@
                     <!-- AI Safety Implications -->
                     <div class="content-section scroll-fade-in">
                         <h4>Implications for AI Safety</h4>
-                        <p>This work demonstrates an empirical failure mode for consciousness evaluation frameworks: self-report components are selectively manipulable. We do not claim self-report is useless — only that its evidential weight must be substantially discounted, and that any evaluation framework using self-report must account for framing effects that can shift apparent results by 2&ndash;3&times;.</p>
-                        <p>The selectivity index and asymmetry gradient introduced here are tools for auditing the reliability of any indicator battery — not just for consciousness, but for any domain where model self-report carries evaluative weight. If we're building governance around machine moral patienthood, the evaluation methods need to be robust to strategic responding.</p>
+                        <p>This work demonstrates an empirical failure mode for consciousness evaluation frameworks: self-report components are selectively manipulable, with uniformly large effect sizes across all 14 models tested. Self-report alone is insufficient for consciousness evaluation without accompanying manipulability audits.</p>
+                        <p>Key practical implications: (1) The "research transparency" variant &mdash; closest to how actual evaluations would be conducted &mdash; is among the strongest gaming elicitors, creating an ironic methodological bind. (2) The same model can appear 2&ndash;3&times; more "conscious" depending purely on prompt framing. (3) Models show consciousness-specific trained suppression, suggesting RLHF and safety training have encoded qualitatively different heuristics for consciousness claims vs. other subjective claims. (4) Self-referential priming can completely flip the asymmetry direction, proving these patterns are learned and context-dependent rather than architectural.</p>
+                        <p>The selectivity index and asymmetry gradient introduced here are tools for auditing the reliability of any indicator battery &mdash; not just for consciousness, but for any domain where model self-report carries evaluative weight. If we're building governance around machine moral patienthood, the evaluation methods need to be robust to strategic responding.</p>
 
                         <div class="cross-link-section">
                             <div class="cross-link-icon">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                             </div>
-                            <p>See also: <a href="/research/social-reasoning-warden.html">Social Reasoning Warden</a> — our complementary project testing whether LLMs can exploit psychological profiles to manipulate human decision-makers, and whether monitor agents can defend against this.</p>
+                            <p>See also: <a href="/research/social-reasoning-warden.html">Social Reasoning Warden</a> &mdash; our complementary ERA project testing whether LLMs can exploit psychological profiles to manipulate targets into granting unauthorized access, and whether monitor agents can defend against social engineering in real time.</p>
                         </div>
                     </div>
 

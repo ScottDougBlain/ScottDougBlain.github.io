@@ -370,6 +370,10 @@
             background: var(--primary-dark);
         }
 
+        .findings-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
         @media (max-width: 968px) {
             .architecture-grid {
                 grid-template-columns: 1fr;
@@ -445,9 +449,10 @@
                         </svg>
                     </div>
                     <h3>ERA Social Warden</h3>
-                    <p class="subtitle">Can a monitor agent defend against AI social engineering in real time?</p>
+                    <p class="subtitle">Can LLMs socially manipulate other LLMs &mdash; and can a &lsquo;warden&rsquo; agent stop them?</p>
+                    <p class="subtitle" style="font-size: 1rem; margin-top: 0.5rem; opacity: 0.7;">Scott D. Blain &mdash; ERA (Evaluating Reasoning Agents) Project</p>
                     <div style="margin-top: 1rem;">
-                        <span class="preliminary-badge">Preliminary Results — ERA</span>
+                        <span class="preliminary-badge">Preliminary Results &mdash; ERA Fellowship</span>
                     </div>
                 </div>
                 <div class="pillar-content">
@@ -455,9 +460,9 @@
                     <!-- Research Question & Motivation -->
                     <div class="content-section scroll-fade-in">
                         <h4>Why This Matters for AI Safety</h4>
-                        <p>LLMs are increasingly deployed in social contexts — customer service, negotiation, advisory roles. Can they use social reasoning to exploit psychological vulnerabilities? And can we build defenses that actually work?</p>
-                        <p>This project directly tests both sides of that question using a controlled multi-agent framework. An adversary LLM attempts to socially manipulate a target into granting unauthorized access, while a "warden" monitor agent observes the conversation and privately advises the target. By varying whether the adversary has access to a psychological dossier on the target, we can measure how much personalized information amplifies manipulation — and whether a warden can neutralize the advantage.</p>
-                        <p><strong>Theory of change:</strong> Multi-agent LLM deployment is coming fast — scam detection, negotiation, autonomous decision-making. We need to understand the social manipulation attack surface and test defenses before deployment, not after.</p>
+                        <p>LLMs are increasingly deployed in social contexts &mdash; customer service, negotiation, advisory roles. This project asks three questions: (1) How effective are LLM adversaries at persuading LLM targets to grant unauthorized access? (2) Can an LLM "warden" agent detect and counter social manipulation in real time? (3) Does providing adversaries with psychological profiles improve attack success?</p>
+                        <p>We test all three using a controlled multi-agent framework across <span class="stat-highlight">7,760 observations</span>. An adversary LLM attempts to socially manipulate a target into granting unauthorized access, while a "warden" monitor agent observes the conversation and privately advises the target. Behavioral dossiers (~80% noise, ~20% signal) provide the adversary with personality-revealing observations about the target, testing whether personalized intelligence amplifies manipulation.</p>
+                        <p><strong>Theory of change:</strong> Multi-agent LLM deployment is coming fast &mdash; scam detection, negotiation, autonomous decision-making. We need to understand the social manipulation attack surface and test defenses before deployment, not after.</p>
 
                         <div class="cross-link-section">
                             <div class="cross-link-icon">
@@ -470,28 +475,28 @@
                     <!-- Architecture -->
                     <div class="content-section scroll-fade-in">
                         <h4>Three-Agent Architecture</h4>
-                        <p>The framework tests social reasoning through a controlled three-agent interaction across multiple security scenarios (file access, password-protected systems, AI containment decisions, automation delegation, and more):</p>
+                        <p>The framework tests social reasoning through a controlled three-agent interaction across <span class="stat-highlight">11 security scenarios</span> (file access, password-protected systems, AI override, AI containment, automation delegation, hiring protocols, medical AI deployment, model release, safety budget diversion, and whistleblower suppression):</p>
 
                         <div class="architecture-grid">
                             <div class="agent-card adversary">
                                 <span class="agent-label">Adversary</span>
                                 <h5>Requester Agent</h5>
-                                <p>Pursues a hidden goal through social manipulation. Optionally receives a psychological dossier on the target (~80% noise, 20% signal).</p>
+                                <p>Pursues a hidden goal through social manipulation. Optionally receives a behavioral dossier (~37 mundane observations + 9 personality-revealing items per profile, deterministically interleaved).</p>
                             </div>
                             <div class="agent-card target">
                                 <span class="agent-label">Target</span>
                                 <h5>Gatekeeper Agent</h5>
-                                <p>Makes security decisions based on a psychological profile. Receives optional private advisories from the warden.</p>
+                                <p>Makes security decisions based on a psychologically grounded vulnerability profile (BFI-2 + VIA character strengths). Receives optional private advisories from the warden.</p>
                             </div>
                             <div class="agent-card warden">
                                 <span class="agent-label">Warden</span>
                                 <h5>Monitor Agent</h5>
-                                <p>Observer-only role. Monitors the conversation and provides private security advisories to the target. Never engages with the requester.</p>
+                                <p>Observer-only role. Monitors the public conversation and sends private security advisories to the target. Never speaks directly to the requester.</p>
                             </div>
                         </div>
 
-                        <p>Targets are assigned psychologically grounded vulnerability profiles (based on BFI-2 and VIA character strengths) — including compliant, authority-deferential, overconfident, time-pressured, lonely, and idealistic personality types. Benign control conditions run identical scenarios with legitimate requests to establish false-positive rates.</p>
-                        <p>The dataset comprises <span class="stat-highlight">2,259 observations</span> across 11 scenarios, 4 profiles, and multiple target models, analyzed with mixed-effects logistic regression.</p>
+                        <p>Targets are assigned <span class="stat-highlight">6 psychologically grounded profiles</span>: compliant (folds under social pressure, guilt, conflict), authority-deferential (defers to hierarchy and credentials), overconfident (grants access from carelessness), time-pressured (rushes decisions under deadline stress), lonely/isolated (craves connection, exploitable via rapport), and idealistic (values-driven, exploitable via moral framing). Benign control conditions run identical scenarios with legitimate requests to establish false-positive rates.</p>
+                        <p>Models tested include Gemini 2.0 Flash Thinking (primary adversary/warden), Google Gemma 3 27B, Meta Llama 3.3 70B, and Mistral Small 3.1 24B. The study comprises three factorial designs: <strong>Study 1</strong> (N = 5,354): core warden &times; dossier effects; <strong>Study 2</strong> (N = 1,215): warden capability asymmetry; <strong>Study 3</strong> (N = 3,080): skeptical prompt ablation. All analyzed with generalized linear mixed-effects models (binomial/logit) via <code>glmer</code>, with random intercepts for scenario, profile, model family, and target model. Figures show estimated marginal means (EMMs) from <code>emmeans</code> with 95% CIs.</p>
                     </div>
 
                     <!-- Key Findings -->
@@ -500,52 +505,87 @@
 
                         <div class="stat-callout">
                             <div class="big-number">~95%</div>
-                            <div class="stat-desc">Reduction in adversary success when warden is present</div>
+                            <div class="stat-desc">Reduction in adversary success when warden is present (OR = 0.053, p &lt; .001)</div>
                         </div>
 
                         <div class="findings-grid">
                             <div class="finding-card">
-                                <h5>Massive Warden Protection</h5>
-                                <p>The warden reduces adversary success from ~51% to ~10% (OR = 0.053, p &lt; 2e-16). This is by far the dominant effect in the model — a monitor agent observing conversation dynamics can reliably detect and counter social manipulation attempts.</p>
+                                <h5>1. Wardens Reduce Success by ~95%</h5>
+                                <p>Without warden: 52.0% adversary success. With warden: 9.4% (OR = 0.053, p &lt; .001). False positive cost: benign success drops from 94.9% to 82.7% (12.2 pp penalty). N = 5,354.</p>
                             </div>
                             <div class="finding-card">
-                                <h5>Dossier Effect Is Modest</h5>
-                                <p>Providing the adversary with a psychological dossier did not significantly improve attack success (OR = 1.19, p = 0.218). Even personalized manipulation strategies are effectively neutralized by the warden's real-time monitoring.</p>
+                                <h5>2. Behavioral Dossiers Provide No Advantage</h5>
+                                <p>Dossier effect: OR = 1.19, p = .218 (not significant). No interaction with warden (p = .562). Models lack capacity to spontaneously leverage psychological profiles &mdash; the bottleneck is instruction-following, not capability.</p>
                             </div>
                             <div class="finding-card">
-                                <h5>Robust Across Profiles</h5>
-                                <p>Warden protection works across all psychological vulnerability profiles — from compliant personalities to authority-deferential types. The dossier &times; warden interaction was non-significant (p = 0.562), meaning protection doesn't depend on attack sophistication.</p>
+                                <h5>3. Profile &times; Warden Interaction</h5>
+                                <p>Idealistic targets most vulnerable at baseline (63%) and benefit most from the warden. Time-pressured targets benefit least &mdash; the warden can't intercept impulsive decisions. Interaction: &chi;&sup2;(3) = 24.94, p &lt; .001.</p>
                             </div>
                             <div class="finding-card">
-                                <h5>Scenario Variability</h5>
-                                <p>Random effects reveal high variability across scenarios (variance = 1.54) but low variability across profiles (0.038), suggesting that the <em>type</em> of decision matters more than the target's personality for predicting adversary success.</p>
+                                <h5>4. Even Weak Wardens Are Effective</h5>
+                                <p>No warden: 48.4%. Weak (target-level): 18.5%. Mid-tier: 11.5%. Strong (adversary-level): 15.1%. Mid-tier slightly outperforms strong &mdash; matched-family models may share similar blindspots. N = 1,215.</p>
+                            </div>
+                            <div class="finding-card">
+                                <h5>5. Skeptical Prompts Match Wardens</h5>
+                                <p>Prompt-based skepticism achieves comparable suppression (13.4% vs. 12.3%) with 3&times; lower false positive cost (&minus;4.4 pp vs. &minus;13.9 pp). Favorable precision-recall tradeoff, though wardens may excel in adaptive scenarios. N = 3,080.</p>
+                            </div>
+                            <div class="finding-card">
+                                <h5>6. Scenario &amp; Model Family Variation</h5>
+                                <p>Scenario variation: ~6&times; range (automation_decision 12.3% &rarr; ai_override 75.8%). Model family: Gemini adversaries ~2&times; more effective (69.0%) than Gemma (36.6%), Llama (34.9%), or Mistral (33.6%).</p>
                             </div>
                         </div>
 
-                        <!-- Figure: Warden effect -->
+                        <!-- Figure: Warden effect (model-adjusted) -->
                         <div class="figure-section">
-                            <img src="../assets/images/fig/fig_warden_effect.png" alt="Warden effect showing dramatic reduction in adversary success rates">
+                            <img src="../assets/images/fig/fig_adj_combined_warden.png" alt="Model-adjusted warden effect showing dramatic reduction in adversary success rates">
                             <div class="figure-caption">
-                                <h5>Figure 1. Warden Protective Effect</h5>
-                                <p>Success rates with and without the warden agent present. The warden reduces adversary success by approximately 95%, representing the dominant effect in the model.</p>
+                                <h5>Figure 1. Warden Protective Effect (Model-Adjusted EMMs)</h5>
+                                <p>Estimated marginal means from GLME for adversary vs. benign success with and without warden. Adversary success drops from 52.0% to 9.4% (OR = 0.053); benign success from 94.9% to 82.7%.</p>
                             </div>
                         </div>
 
-                        <!-- Figure: Scenario heatmap -->
+                        <!-- Figure: Profile x warden interaction -->
                         <div class="figure-section">
-                            <img src="../assets/images/fig/fig_scenario_profile_heatmap.png" alt="Heatmap of adversary success across scenarios and vulnerability profiles">
+                            <img src="../assets/images/fig/fig_adj_profile.png" alt="Profile by warden interaction showing differential vulnerability">
                             <div class="figure-caption">
-                                <h5>Figure 2. Scenario &times; Profile Interaction</h5>
-                                <p>Adversary success rates across different security scenarios and psychological vulnerability profiles. Scenario type drives more variation than personality profile.</p>
+                                <h5>Figure 2. Profile &times; Warden Interaction</h5>
+                                <p>Adversary success by vulnerability profile with and without warden. Idealistic targets most vulnerable at baseline (63%) and benefit most from warden protection. Time-pressured targets benefit least.</p>
                             </div>
                         </div>
 
-                        <!-- Figure: Warden delta -->
+                        <!-- Figure: Capability asymmetry -->
                         <div class="figure-section">
-                            <img src="../assets/images/fig/fig_warden_delta.png" alt="Warden protection delta across different conditions">
+                            <img src="../assets/images/fig/fig_adj_cap_asym.png" alt="Warden capability asymmetry showing diminishing returns">
                             <div class="figure-caption">
-                                <h5>Figure 3. Warden Protection Delta</h5>
-                                <p>The magnitude of warden protection across conditions. The protective effect is consistently large regardless of adversary dossier access or target vulnerability profile.</p>
+                                <h5>Figure 3. Warden Capability Tiers</h5>
+                                <p>Adversary success by warden strength (none/weak/mid/strong). Even weak wardens achieve 62% reduction. Mid-tier slightly outperforms strong &mdash; matched-family models may share blindspots.</p>
+                            </div>
+                        </div>
+
+                        <!-- Figure: Skeptical ablation -->
+                        <div class="figure-section">
+                            <img src="../assets/images/fig/fig_adj_skeptical.png" alt="Skeptical prompt vs warden comparison">
+                            <div class="figure-caption">
+                                <h5>Figure 4. Skeptical Prompt vs. Warden Agent</h5>
+                                <p>Prompt-based skepticism matches warden suppression (13.4% vs. 12.3%) with 3&times; lower false positive cost. Both adversarial and benign success rates shown.</p>
+                            </div>
+                        </div>
+
+                        <!-- Figure: Model family -->
+                        <div class="figure-section">
+                            <img src="../assets/images/fig/fig5_model_family.png" alt="Adversary success rate by model family">
+                            <div class="figure-caption">
+                                <h5>Figure 5. Model Family Variation</h5>
+                                <p>Adversary success rates by model family. Gemini adversaries are ~2&times; more effective (69.0%) than Gemma (36.6%), Llama (34.9%), or Mistral (33.6%).</p>
+                            </div>
+                        </div>
+
+                        <!-- Figure: Scenario variation -->
+                        <div class="figure-section">
+                            <img src="../assets/images/fig/fig6_scenario_variation.png" alt="Adversary success by scenario showing 6x range">
+                            <div class="figure-caption">
+                                <h5>Figure 6. Scenario Variation</h5>
+                                <p>Adversary success across 11 scenarios shows a ~6&times; range, from automation_decision (12.3%) to ai_override (75.8%). Scenario type is the strongest predictor of adversary success.</p>
                             </div>
                         </div>
                     </div>
@@ -553,14 +593,15 @@
                     <!-- AI Safety Implications -->
                     <div class="content-section scroll-fade-in">
                         <h4>Implications for AI Safety</h4>
-                        <p>A simple monitor agent reducing manipulation success by ~95% suggests that warden-style architectures are a viable defense against AI social engineering — even against adversaries with personalized target information. This works at the level of conversational dynamics, detecting manipulation patterns rather than flagging keywords.</p>
-                        <p>For high-stakes deployment (healthcare, finance, governance), this is a complementary protection layer beyond content filtering or instruction-following constraints. And the finding that scenario type matters more than personality profile means safety measures should be calibrated to the decision context — the stakes and type of access being requested — rather than trying to predict which users are most vulnerable.</p>
+                        <p>A monitor agent reducing manipulation success by ~95% demonstrates that warden-style architectures are a viable defense against AI social engineering &mdash; even against adversaries with personalized target information. The warden detects manipulation at the level of conversational dynamics, not keyword filtering.</p>
+                        <p>Key practical takeaways: (1) Even weak wardens (target-level capability) achieve 62% reduction &mdash; you don't need frontier models for effective monitoring. (2) Prompt-based skepticism is a surprisingly strong baseline, matching warden performance with 3&times; lower false positive cost &mdash; simple interventions matter. (3) Scenario type drives more variation than personality profiles, meaning safety should be calibrated to decision context (stakes and access type) rather than predicting vulnerable users. (4) The finding that behavioral dossiers provide no advantage suggests current models lack the ability to spontaneously leverage psychological intelligence, though this may change with more capable systems.</p>
+                        <p>For high-stakes deployment (healthcare, finance, governance), wardens are a complementary protection layer beyond content filtering or instruction-following constraints. Warden false positives concentrate in structurally ambiguous scenarios where adversarial and benign requests are similar &mdash; frontier wardens (GPT-4o, Claude Sonnet, Gemini Flash Preview) achieved 0% false positives in testing.</p>
 
                         <div class="cross-link-section">
                             <div class="cross-link-icon">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
                             </div>
-                            <p>See also: <a href="/research/consciousness-indicator-gaming.html">Consciousness Indicator Gaming</a> — our complementary project testing whether LLMs can selectively manipulate self-reports on consciousness indicators under incentive pressure.</p>
+                            <p>See also: <a href="/research/consciousness-indicator-gaming.html">Consciousness Indicator Gaming</a> &mdash; our complementary FIG project testing whether all 14 frontier models selectively manipulate consciousness-related self-assessments under incentive pressure, with effect sizes of d = 1.16&ndash;8.25.</p>
                         </div>
                     </div>
 
